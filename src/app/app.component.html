@@ -1,40 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Link to Audiowide font used for "BusinessTech" -->
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
-
-  <!-- Page Meta Setup -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RS BusinessTech Logo</title>
 
   <style>
-    /* Importing fonts for RS and tagline */
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Rajdhani:wght@600&display=swap');
 
-    /* Overall page styling */
-    body {
-      background-color: #080808; /* Light background for contrast */
+    * {
       margin: 0;
-      height: 100vh;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #080808;
+      font-family: 'Segoe UI', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      padding: 16px;
     }
 
-    /* Logo container styling */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+    }
+
     .logo {
       display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       align-items: center;
-      background: #000000; /* Deep black background */
+      background: #000000;
       padding: 24px 32px;
       border-radius: 16px;
-      box-shadow: 0 0 40px rgba(212, 175, 55, 0.2); /* Soft gold glow */
+      box-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
     }
 
-    /* RS Circle container */
     .logo-circle {
       position: relative;
       width: 100px;
@@ -42,14 +49,12 @@
       flex-shrink: 0;
     }
 
-    /* SVG Ring around RS */
     .logo-circle svg {
       width: 100%;
       height: 100%;
-      filter: drop-shadow(0 0 10px #d4af37); /* Gold ring glow */
+      filter: drop-shadow(0 0 10px #d4af37);
     }
 
-    /* RS text inside the circle */
     .logo-circle .rs-text {
       position: absolute;
       top: 50%;
@@ -57,54 +62,51 @@
       transform: translate(-50%, -50%);
       font-family: 'Orbitron', sans-serif;
       font-size: 2.6rem;
-      color: #d4af37; /* Gold color */
-      text-shadow: 
+      color: #d4af37;
+      text-shadow:
         0 0 4px #d4af37,
         0 0 10px #fff200,
-        1px 1px 2px rgba(0, 0, 0, 0.7); /* Glowing effect */
+        1px 1px 2px rgba(0, 0, 0, 0.7);
       letter-spacing: 2.5px;
       font-weight: bold;
-      -webkit-text-stroke: 1px #000; /* Adds black stroke around text */
+      -webkit-text-stroke: 1px #000;
     }
 
-    /* Right section containing BusinessTech and tagline */
     .logo-text {
       margin-left: 24px;
+      text-align: center;
     }
 
-    /* BusinessTech main heading */
     .logo-text h1 {
-      font-family: 'Audiowide', sans-serif; /* Tech/luxury style */
+      font-family: 'Audiowide', sans-serif;
       font-size: 2.6rem;
-      color: #d4af37; /* Gold */
+      color: #d4af37;
       letter-spacing: 1px;
       font-weight: 400;
       position: relative;
       display: inline-block;
-      text-shadow: /* 3D shadow effect */
+      text-shadow:
         1px 1px 0 #333,
         2px 2px 0 #222,
         3px 3px 0 #111,
         4px 4px 6px rgba(0, 0, 0, 0.6);
     }
 
-    /* Reflection of BusinessTech heading */
     .logo-text h1::after {
-      content: attr(data-text); /* Duplicate text for reflection */
+      content: attr(data-text);
       position: absolute;
-      top: 60%; /* Slightly closer to original */
+      top: 60%;
       left: 10%;
       width: 100%;
-      transform: scaleY(-0.4) skewX(-12deg); /* Flip vertically and skew left */
+      transform: scaleY(-0.4) skewX(-12deg);
       color: #d4af37;
       opacity: 0.6;
       pointer-events: none;
-      background: linear-gradient(to bottom, rgba(212, 175, 55, 0.3), transparent); /* Gradient fade */
+      background: linear-gradient(to bottom, rgba(212, 175, 55, 0.3), transparent);
       -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
       mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
     }
 
-    /* Tagline text */
     .logo-text p {
       margin: 10px 0 0;
       font-style: italic;
@@ -113,15 +115,13 @@
       font-size: 1.05rem;
     }
 
-    /* Gradient gold-to-white text styling */
     .logo-text .gradient-text {
-      background: linear-gradient(to right, #ffd700, #ffffff); /* Gold to white */
+      background: linear-gradient(to right, #ffd700, #ffffff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 6px rgba(255, 255, 255, 0.3), 0 0 12px rgba(255, 255, 255, 0.15); /* Soft glow */
+      text-shadow: 0 0 6px rgba(255, 255, 255, 0.3), 0 0 12px rgba(255, 255, 255, 0.15);
     }
 
-    /* Special styling for "SMART TECHNOLOGY" */
     .logo-text .highlight {
       font-family: 'Rajdhani', sans-serif;
       font-size: 1.4rem;
@@ -129,33 +129,66 @@
       letter-spacing: 2px;
       padding-left: 5px;
     }
+
+    /* ========== Responsive Styles ========== */
+    @media (max-width: 768px) {
+      .logo {
+        flex-direction: column;
+        padding: 16px 20px;
+        text-align: center;
+      }
+
+      .logo-text {
+        margin-left: 0;
+        margin-top: 16px;
+      }
+
+      .logo-text h1 {
+        font-size: 2rem;
+      }
+
+      .logo-text .highlight {
+        font-size: 1.1rem;
+      }
+
+      .logo-circle {
+        width: 80px;
+        height: 80px;
+      }
+
+      .logo-circle .rs-text {
+        font-size: 2rem;
+      }
+    }
   </style>
 </head>
 
 <body>
-  <div class="logo">
-    <!-- Left circle with gold ring and RS -->
-    <div class="logo-circle">
-      <svg viewBox="0 0 100 100">
-        <defs>
-          <linearGradient id="gold-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#f7e199" />
-            <stop offset="100%" stop-color="#d4af37" />
-          </linearGradient>
-        </defs>
-        <circle cx="50" cy="50" r="45" stroke="url(#gold-gradient)" stroke-width="8" fill="none" />
-        <circle cx="50" cy="50" r="35" fill="rgba(255, 215, 0, 0.05)" />
-      </svg>
-      <div class="rs-text">RS</div>
-    </div>
+  <div class="container">
+    <div class="logo">
+      <!-- Left circle with gold ring and RS -->
+      <div class="logo-circle">
+        <svg viewBox="0 0 100 100">
+          <defs>
+            <linearGradient id="gold-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#f7e199" />
+              <stop offset="100%" stop-color="#d4af37" />
+            </linearGradient>
+          </defs>
+          <circle cx="50" cy="50" r="45" stroke="url(#gold-gradient)" stroke-width="8" fill="none" />
+          <circle cx="50" cy="50" r="35" fill="rgba(255, 215, 0, 0.05)" />
+        </svg>
+        <div class="rs-text">RS</div>
+      </div>
 
-    <!-- Right side: Company name + tagline -->
-    <div class="logo-text">
-      <h1 data-text="BusinessTech">BusinessTech</h1>
-      <p>
-        <span class="gradient-text">Empowering Business with </span>
-        <span class="gradient-text highlight">SMART TECHNOLOGY</span>
-      </p>
+      <!-- Right side: Company name + tagline -->
+      <div class="logo-text">
+        <h1 data-text="BusinessTech">BusinessTech</h1>
+        <p>
+          <span class="gradient-text">Empowering Business with </span>
+          <span class="gradient-text highlight">SMART TECHNOLOGY</span>
+        </p>
+      </div>
     </div>
   </div>
 </body>
