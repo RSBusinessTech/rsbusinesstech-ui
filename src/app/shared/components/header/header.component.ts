@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-   menuOpen = false;  //fixing build failure issue during Prod deployment.
+  menuOpen = false;  //fixing build failure issue during Prod deployment.
   constructor() { }
 
   ngOnInit() {
