@@ -3,40 +3,39 @@
   color: #fff;
   text-align: center;
   padding: 5rem 1rem;
+}
 
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: gold;
+.hero-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: gold;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.hero-section .btn-primary {
+  background-color: gold;
+  color: black;
+  padding: 0.75rem 2rem;
+  border-radius: 5px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.hero-section .btn-primary:hover {
+  background-color: darkgoldenrod;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2rem;
   }
-
-  p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-  }
-
-  .btn-primary {
-    background-color: gold;
-    color: black;
-    padding: 0.75rem 2rem;
-    border-radius: 5px;
-    font-weight: 600;
-    text-decoration: none;
-
-    &:hover {
-      background-color: darkgoldenrod;
-      color: white;
-    }
-  }
-
-  @media (max-width: 768px) {
-    h1 {
-      font-size: 2rem;
-    }
-
-    p {
-      font-size: 1rem;
-    }
+  .hero-section p {
+    font-size: 1rem;
   }
 }
 
@@ -44,46 +43,46 @@
   padding: 4rem 1rem;
   background-color: #f8f8f8;
   text-align: center;
+}
 
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    color: #333;
+.features-section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.features-section .features-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.features-section .feature-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.features-section .feature-card h3 {
+  margin-bottom: 0.8rem;
+  color: #000;
+}
+
+.features-section .feature-card p {
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .features-section .features-grid {
+    flex-direction: column;
+    align-items: center;
   }
 
-  .features-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-
-    .feature-card {
-      background: #fff;
-      padding: 2rem;
-      border-radius: 8px;
-      width: 300px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-
-      h3 {
-        margin-bottom: 0.8rem;
-        color: #000;
-      }
-
-      p {
-        color: #666;
-      }
-    }
-  }
-
-  @media (max-width: 768px) {
-    .features-grid {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .feature-card {
-      width: 100%;
-      max-width: 320px;
-    }
+  .features-section .feature-card {
+    width: 100%;
+    max-width: 320px;
   }
 }
