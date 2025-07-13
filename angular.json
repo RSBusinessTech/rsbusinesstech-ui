@@ -22,9 +22,9 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/sitemap.xml",   //Added for sitemap.xml in order to register with Google search console. 
-              "src/_redirects",    //Added for sitemap.xml in order to register with Google search console.
-              "src/robots.txt"     //Added for robots.txt in order to register with Google search console.
+              "src/sitemap.xml",  
+              "src/_redirects",    
+              "src/robots.txt"     
             ],
             "styles": [
               "src/styles.css"
