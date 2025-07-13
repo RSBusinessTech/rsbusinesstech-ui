@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ContactComponent } from './contact.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ContactRoutingModule } from './contact-routing.module'; // ✅ Import this
+import { ContactRoutingModule } from './contact-routing.module'; 
+import { ContactComponent } from './components/contact/contact.component';
 
 
 @NgModule({
