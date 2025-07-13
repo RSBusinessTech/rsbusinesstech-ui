@@ -3,6 +3,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
+  box-sizing: border-box;
 }
 
 /* HERO SECTION */
@@ -58,13 +59,16 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
+  box-sizing: border-box;
 }
 
 .features-section .feature-card {
   background: #f7f2e8;
   padding: 2rem;
   border-radius: 8px;
-  width: 300px;
+  width: 100%;
+  max-width: 320px;
+  box-sizing: border-box;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   cursor: default;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -95,6 +99,7 @@
   .hero-section h1 {
     font-size: 2rem;
   }
+
   .hero-section p {
     font-size: 1rem;
   }
@@ -106,7 +111,7 @@
 
   .features-section .feature-card {
     width: 100%;
-    max-width: 320px;
+    max-width: 100%;
   }
 }
 
@@ -138,6 +143,3 @@
   text-shadow: 0 0 10px gold;
   transition: transform 0.3s ease, text-shadow 0.3s ease;
 }
-
-
-
