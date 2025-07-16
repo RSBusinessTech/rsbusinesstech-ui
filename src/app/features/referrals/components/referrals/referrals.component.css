@@ -74,6 +74,9 @@ h1 {
   display: inline-block;
   text-align: center;
   transition: background-color 0.3s ease;
+  box-sizing: border-box;
+  max-width: 100%;
+  text-indent: -18px;
 }
 
 .contact-btn:hover {
@@ -83,12 +86,13 @@ h1 {
 .right-panel {
   flex: 1 1 30%;
   background-color: #1f1f1f;
-  padding: 20px;
+  padding: 20px 20px 10px 20px; /* reduced bottom padding */
   border-radius: 8px;
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  justify-content: flex-start;
+  height: fit-content; /* makes the box shrink to fit content */
 }
 
 .qr-image {
@@ -119,7 +123,7 @@ h1 {
   .left-panel,
   .right-panel {
     flex: 1 1 100%;
-    padding-right: 0;
+    padding: 0;
   }
 
   h1 {
@@ -145,9 +149,10 @@ h1 {
 
   .contact-btn {
     width: 100%;
-    text-align: center;
     font-size: 16px;
     margin-top: 10px;
+    padding: 12px;
+    display: block;
   }
 }
 
@@ -169,5 +174,11 @@ h1 {
 
   .contact-info {
     font-size: 14px;
+  }
+
+  .contact-btn {
+    font-size: 14px;
+    padding: 10px;
+    margin: 10px 0;
   }
 }
