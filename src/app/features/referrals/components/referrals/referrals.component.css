@@ -60,7 +60,19 @@ h1 {
   font-weight: bold;
   font-size: 16px;
   margin-bottom: 20px;
+   animation: floatBox 1s ease-in-out infinite;
 }
+
+@keyframes floatBox {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+.referral-box:hover {
+  transform: scale(1.02);
+}
+
 
 .contact-btn {
   background-color: #2563eb;
@@ -132,10 +144,6 @@ h1 {
 
   .services-list li {
     font-size: 16px;
-  }
-
-  .referral-box {
-    font-size: 15px;
   }
 
   .qr-image {
