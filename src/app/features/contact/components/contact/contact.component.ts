@@ -25,7 +25,7 @@ export class ContactComponent implements OnInit {
   //Method to be called while clicked on "Send Email".
    onSubmit() {
     console.log("Submit button clicked!");
-   // if (this.contactForm.valid) {
+   if (this.contactForm.valid) {
       //typecasting of form data into ContactRequest.
        const contactRequest: ContactRequest = this.contactForm.value;
  
@@ -39,7 +39,8 @@ export class ContactComponent implements OnInit {
            console.error("Failed to send email")
          }
        });
-    //}
+    }
+     alert('Message sent successfully!');
   }
 
   ngOnInit() {
