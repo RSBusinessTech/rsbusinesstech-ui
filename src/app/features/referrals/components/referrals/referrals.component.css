@@ -1,3 +1,13 @@
+/* Global container like other pages */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #f9f5e3; 
+}
+
+
 body {
   margin: 0;
   padding: 0;
@@ -10,22 +20,27 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 40px;
-  max-width: 1000px;
-  margin: 40px auto;
-  border-radius: 10px;
   background-color: #f7f2e8;
+  border-radius: 10px;
+  padding: 30px;
+  gap: 20px;
 }
 
 .left-panel {
   flex: 1 1 55%;
-  padding-right: 20px;
+}
+
+.right-panel {
+  flex: 1 1 35%;
+  background-color: #000;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
 }
 
 h1 {
   font-size: 32px;
   margin-bottom: 20px;
-  font-weight: 700;
 }
 
 .highlight {
@@ -35,44 +50,28 @@ h1 {
 .tagline {
   font-size: 16px;
   margin-bottom: 20px;
-  color: #160202;
 }
 
 .services-list {
   list-style: none;
   padding: 0;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .services-list li {
-  margin: 12px 0;
-  font-size: 18px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  margin: 10px 0;
+  font-size: 16px;
 }
 
 .referral-box {
   background-color: #f2b705;
   color: #000;
-  padding: 12px 18px;
+  padding: 15px;
   border-radius: 6px;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 15px;
   margin-bottom: 20px;
-   animation: floatBox 1s ease-in-out infinite;
 }
-
-@keyframes floatBox {
-  0%   { transform: translateY(0); }
-  50%  { transform: translateY(-6px); }
-  100% { transform: translateY(0); }
-}
-
-.referral-box:hover {
-  transform: scale(1.02);
-}
-
 
 .contact-btn {
   background-color: #2563eb;
@@ -97,16 +96,16 @@ h1 {
   cursor: pointer;
 }
 
-.right-panel {
-  flex: 1 1 30%;
-  background-color: #000;
-  padding: 20px 20px 10px 20px; /* reduced bottom padding */
-  border-radius: 8px;
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  height: fit-content; /* makes the box shrink to fit content */
+.qr-image {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  margin: 20px auto;
+  display: block;
+}
+
+.contact-info {
+  color: #fff;
 }
 
 .scrolling-text {
@@ -120,105 +119,39 @@ h1 {
 }
 
 @keyframes scrollLeftRight {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(50%);
-  }
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(50%); }
 }
 
-
-/* .qr-image {
-  width: 180px;
-  height: 180px;
-  margin-bottom: 20px;
-  background-color: white;
-  border-radius: 8px;
-} */
-.qr-image {
-  width: 260px;
-  height: 260;
-  margin-top: 60px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.contact-info {
-  text-align: center;
-  font-size: 20px;
-  color: #eff1ef;
-}
-
-.contact-info p {
-  margin: 8px 0;
-}
-
-/* 📱 Responsive Styling */
+/* 📱 Mobile responsive */
 @media (max-width: 768px) {
   .rs-banner {
     flex-direction: column;
     padding: 20px;
   }
 
-  .left-panel,
-  .right-panel {
-    flex: 1 1 100%;
-    padding: 0;
-  }
-
   h1 {
     font-size: 24px;
   }
 
-  .services-list li {
-    font-size: 16px;
+  .referral-box {
+    font-size: 14px;
   }
 
-  .qr-image {
-    width: 150px;
-    height: 150px;
-  }
-
-  .contact-info {
-    font-size: 16px;
-  }
-
-  .contact-btn {
+   .contact-btn {
     width: 100%;
     font-size: 16px;
     margin-top: 10px;
     padding: 12px;
     display: block;
   }
-}
-
-@media (max-width: 480px) {
-  h1 {
-    font-size: 20px;
-  }
-
-  .tagline,
-  .services-list li,
-  .referral-box {
-    font-size: 14px;
-  }
 
   .qr-image {
-    width: 120px;
-    height: 120px;
+    max-width: 150px;
   }
 
-  .contact-info {
-    font-size: 14px;
-  }
-
-  .contact-btn {
-    font-size: 14px;
-    padding: 10px;
-    margin: 10px 0;
+  .scrolling-text {
+    font-size: 12px;
+    overflow: hidden;
   }
 }
