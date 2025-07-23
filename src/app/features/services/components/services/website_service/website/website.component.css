@@ -1,0 +1,263 @@
+/* ------------------------ */
+/* Global Section Styling */
+/* ------------------------ */
+.website-details-section {
+  padding: 60px 20px;
+  background-color: #f9f5e3;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+  color: #f2b705;
+  word-wrap: break-word;
+}
+
+/* ----------------------------- */
+/* Tech List & Pricing Sections */
+/* ----------------------------- */
+
+.tech-pricing {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-between;
+}
+
+.tech-list,
+.pricing-packages {
+  flex: 1 1 100%;
+  min-width: 280px;
+  background: #000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  padding: 20px;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.tech-list h3,
+.pricing-packages h3 {
+  margin-bottom: 15px;
+  color: #faf7f7;
+}
+
+.tech-list ul,
+.package-card ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+/* -------------------- */
+/* Technology Card Box */
+/* -------------------- */
+.tech-card {
+  background: #f7f2e8;
+  color: #333;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* -------------------- */
+/* Pricing Card Styling */
+/* -------------------- */
+.package-card {
+  background: #f7f2e8;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.package-card.recommended {
+  border: 2px solid #ec6b52;
+}
+
+.package-card h4 {
+  margin: 0 0 10px;
+  color: #2a5a7f;
+}
+
+.package-card .price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #ec6b52;
+}
+
+/* -------------------------- */
+/* Call To Action Button */
+/* -------------------------- */
+.cta-area {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.btn-primary {
+  background-color: #ec6b52;
+  color: #fff;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 50px;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #d15443;
+}
+
+/* --------------------------- */
+/* Technology Table Section */
+/* --------------------------- */
+.tech-title {
+  font-size: 1.6rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2b2d42;
+  font-weight: bold;
+}
+
+.tech-table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tech-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: auto;
+  min-width: 100%;
+  box-sizing: border-box;
+}
+
+.tech-table .key {
+  width: 35%;
+  font-weight: bold;
+  padding: 12px 16px;
+  background-color: #f3f6fd;
+  border: 1px solid #ccc;
+  color: #1a237e;
+  white-space: nowrap;
+}
+
+.tech-table .value {
+  padding: 12px 16px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  color: #333;
+  white-space: normal;
+}
+
+.tech-table-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Prevent overflow inside table cells */
+.tech-table th,
+.tech-table td {
+  padding: 12px 16px;
+  border: 1px solid #ccc;
+  text-align: left;
+  vertical-align: middle;
+  white-space: normal;
+  box-sizing: border-box;
+  word-break: break-word;
+}
+
+.tech-table th {
+  background-color: #f0f4ff;
+  color: #1c2a4a;
+  font-weight: 700;
+}
+
+.tech-table tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* ----------------------- */
+/* Responsive Fixes */
+/* ----------------------- */
+@media (max-width: 768px) {
+  .tech-pricing {
+    flex-direction: column;
+  }
+
+  .tech-list,
+  .pricing-packages {
+    width: 100%;
+    flex: 1 1 100%;
+    margin-bottom: 30px;
+  }
+
+  .tech-table th,
+  .tech-table td {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .package-card .price {
+    font-size: 1.3rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .package-card,
+  .tech-card {
+    padding: 15px;
+  }
+
+  .tech-title {
+    font-size: 1.4rem;
+  }
+
+  .tech-table .key,
+  .tech-table .value {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+/* Desktop View - keep side-by-side */
+@media (min-width: 769px) {
+  .tech-pricing {
+    flex-direction: row;
+  }
+
+  .tech-list,
+  .pricing-packages {
+    flex: 1;
+    max-width: 48%;
+  }
+}
+
+
+
