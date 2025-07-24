@@ -1,15 +1,8 @@
 .services-section {
   padding: 60px 20px;
-  background-color:  #f9f5e3;
+  background-color: #f9f5e3;
   text-align: center;
 }
-
- /*remove underlining of the hyperlinks*/
-.service-card-link,
-.service-card-link * {
-  text-decoration: none !important;
-  color: inherit !important;
-} 
 
 .section-title {
   font-size: 2.5rem;
@@ -24,16 +17,20 @@
   gap: 30px;
 }
 
- .service-card {
+.service-card {
   background-color: #f7f2e8;
   border-radius: 10px;
   padding: 30px 20px;
-  width: 320px; /* fixed width */
-   height: 80%;  
+  width: 320px;
+  height: 250px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
 }
-
 
 .service-card:hover {
   transform: translateY(-10px);
@@ -47,14 +44,33 @@
 
 .service-card h3 {
   font-size: 1.4rem;
-  margin-bottom: 15px;
+  margin: 5px 0;
   color: #222;
+  font-weight: 600;
 }
 
 .service-card p {
   font-size: 1rem;
-  color: #555;
-} 
+  color: #333;
+  line-height: 1.4;
+  margin-top: 10px;
+}
+
+/* Dropdown */
+.dropdown-overlay {
+  margin-top: auto;
+  padding-top: 10px;
+  font-size: 0.95rem;
+}
+
+.dropdown-overlay label {
+  margin-right: 5px;
+}
+
+.dropdown-overlay select {
+  padding: 4px 8px;
+  font-size: 0.9rem;
+}
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -65,7 +81,6 @@
 
   .service-card {
     width: 90%;
+    height: auto;
   }
-
-
 }
