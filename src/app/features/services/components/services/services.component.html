@@ -3,67 +3,53 @@
 
   <div class="services-container">
 
-    <!-- <a [routerLink]="['/services/website']" class="service-card-link"> -->
     <div class="service-card" (click)="onServiceClick('website')">
       <img src="assets/icons/web-dev.png" alt="Web Development Icon" />
       <h3>Website Development</h3>
       <p>We build customized professional websites as per your business requirement.</p>
-          <!-- Country Dropdown (shown only if user clicked Website Development) -->
-         <div *ngIf="showCountrySelector && selectedService === 'website'">
-            <label>Select your country:</label>
-            <select (change)="onCountrySelect($event)">
-               <option value="" disabled selected>Select country</option>
-               <option *ngFor="let country of countries" [value]="country.router">
-                 {{ country.name }}
-              </option>
-          </select>
-        </div>
-    </div>
-    <!-- </a> -->
 
-    <a [routerLink]="['/services']" class="service-card-link">
+      <div *ngIf="showCountrySelector && selectedService === 'website'" class="dropdown-overlay">
+        <label>Select your country: </label>
+        <select (change)="onCountrySelect($event)">
+          <option value="" disabled selected>Select country</option>
+          <option *ngFor="let country of countries" [value]="country.router">
+            {{ country.name }}
+          </option>
+        </select>
+      </div>
+    </div>
+
     <div class="service-card">
-      <img src="assets/icons/business-software.png" alt="Web Development Icon" />
+      <img src="assets/icons/business-software.png" alt="Business Software Icon" />
       <h3>Business Software Solutions</h3>
       <p>We develop a wide range of web-based software solutions to digitize and automate your business processes, making operations smarter and more efficient.</p>
     </div>
-    </a>
 
-    <a [routerLink]="['/services']" class="service-card-link">
     <div class="service-card">
-      <img src="assets/icons/mobile.png" alt="Web Development Icon" />
+      <img src="assets/icons/mobile.png" alt="Mobile App Icon" />
       <h3>Mobile Apps Development</h3>
-       <h3>(Android/iOS)</h3>
-      <p>We design and develop mobile apps for Android and iPhone as per your needs to accelerate you business.</p>
+      <h3>(Android/iOS)</h3>
+      <p>We design and develop mobile apps for Android and iPhone as per your needs to accelerate your business.</p>
     </div>
-    </a>
 
-    <a [routerLink]="['/services']" class="service-card-link">
     <div class="service-card">
-      <img src="assets/icons/seo.png" alt="Web Development Icon" />
+      <img src="assets/icons/seo.png" alt="SEO Icon" />
       <h3>Search Engine Optimization</h3>
-       <h3>(SEO)</h3>
+      <h3>(SEO)</h3>
       <p>We optimize your website for top rankings in search engines, increasing your visibility and attracting more customers online to visit your website.</p>
     </div>
-    </a>
 
-    <a [routerLink]="['/services']" class="service-card-link">
     <div class="service-card">
       <img src="assets/icons/logo-design.png" alt="Logo Design Icon" />
       <h3>Logo Designing</h3>
       <p>Creative and unique logo designing to make your business a luxury brand.</p>
     </div>
-    </a>
 
-    <a [routerLink]="['/services']" class="service-card-link">
     <div class="service-card">
-      <img src="assets/icons/qr-code_rsbusinesstech.png" alt="Logo Design Icon" />
+      <img src="assets/icons/qr-code_rsbusinesstech.png" alt="QR Code Icon" />
       <h3>QR Codes</h3>
       <p>We create customized, professional QR codes designed to boost your business.</p>
     </div>
-    </a>
-
 
   </div>
 </section>
-
