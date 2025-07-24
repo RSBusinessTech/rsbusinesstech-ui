@@ -3,13 +3,23 @@
 
   <div class="services-container">
 
-    <a [routerLink]="['/services/website']" class="service-card-link">
-    <div class="service-card">
+    <!-- <a [routerLink]="['/services/website']" class="service-card-link"> -->
+    <div class="service-card" (click)="onServiceClick('website')">
       <img src="assets/icons/web-dev.png" alt="Web Development Icon" />
       <h3>Website Development</h3>
       <p>We build customized professional websites as per your business requirement.</p>
+          <!-- Country Dropdown (shown only if user clicked Website Development) -->
+         <div *ngIf="showCountrySelector && selectedService === 'website'">
+            <label>Select your country:</label>
+            <select (change)="onCountrySelect($event)">
+               <option value="" disabled selected>Select country</option>
+               <option *ngFor="let country of countries" [value]="country.router">
+                 {{ country.name }}
+              </option>
+          </select>
+        </div>
     </div>
-    </a>
+    <!-- </a> -->
 
     <a [routerLink]="['/services']" class="service-card-link">
     <div class="service-card">
@@ -52,6 +62,8 @@
       <p>We create customized, professional QR codes designed to boost your business.</p>
     </div>
     </a>
+
+
   </div>
 </section>
 
