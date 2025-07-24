@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, UrlSegment } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { PricingByCountry } from '../pricing-details';
 
 @Component({
@@ -8,21 +8,18 @@ import { PricingByCountry } from '../pricing-details';
   styleUrls: ['./website.component.css']
 })
 export class WebsiteComponent implements OnInit {
-  country = 'other';                                     // default fallback.
-  pricing = { basic: '', standard: '', premium: '' };
+  pricing: any = {};
+  countryKey = '';
 
   constructor(private route: ActivatedRoute) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.route.url.subscribe(urlSegments => {
-      const path = urlSegments.map(seg => seg.path).join('/');
-      // Extract country from route like "website-india"
-      const matched = path.match(/website-?([a-z]*)/i);
-      const key = matched && matched[1] ? matched[1].toLowerCase() : 'malaysia';
-      this.country = key;
+      const lastSegment = urlSegments[urlSegments.length - 1].path; // e.g., 'website-new-zealand'
+      this.countryKey = lastSegment.replace('website-', ''); // gives 'new-zealand'
 
-      this.pricing = PricingByCountry[this.country] || PricingByCountry['malaysia'];
+      // Load correct pricing
+      this.pricing = PricingByCountry[this.countryKey] || PricingByCountry['other'];
     });
   }
 }
-
