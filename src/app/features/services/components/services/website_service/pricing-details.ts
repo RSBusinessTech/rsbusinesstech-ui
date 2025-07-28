@@ -4,10 +4,15 @@ export const PricingByCountry = {
     standard: 'Rs. (30,000-70,000)',
     premium: 'Rs. (90,000+)',
   },
-  malaysia: {
-    basic: 'RM (500-1000)',
-    standard: 'RM (1200-2500)',
-    premium: 'RM (3,000-10,000 or above)',
+  // malaysia: {
+  //   basic: 'RM (500-1000)',
+  //   standard: 'RM (1200-2500)',
+  //   premium: 'RM (3,000-10,000 or above)',
+  // },
+    malaysia: {
+    basic: 'RM (1500-3000)',
+    standard: 'RM (3,000-5,000)',
+    premium: 'RM (5,000-10,000 or above)',
   },
   singapore: {
     basic: 'SGD (500-1000)',
@@ -50,8 +55,8 @@ export const PricingByCountry = {
     premium: 'EUR (6000+)',
   },
   philippines: {
-    basic: 'PHP (15,000-30,000)',
-    standard: 'PHP (40,000-90,000)',
+    basic: 'PHP (25,000-60,000)',
+    standard: 'PHP (60,000-90,000)',
     premium: 'PHP (100,000+)',
   },
   thailand: {
