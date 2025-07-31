@@ -1,33 +1,36 @@
 <!doctype html>
 <html lang="en">
-<head> 
-<!--below script is for fevicon.it is optional but helps google to understand our brand identity-->
-<script type="application/ld+json">  
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "url": "https://rsbusinesstech.com",
-  "logo": "https://rsbusinesstech.com/assets/logo.png"
-}
-</script>
-<style>
-  html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background-color: #000; /* matches your footer background */
-  }
-</style>
-
+<head>
   <meta charset="utf-8">
   <title>RS BusinessTech</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="https://rsbusinesstech.com/favicon.ico">   <!-- setting favicon -->
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico"> <!-- served from root -->
+  <link rel="apple-touch-icon" href="assets/logo.png"> <!-- optional for iOS devices -->
+
+  <!-- Structured Data for Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "url": "https://rsbusinesstech.com",
+    "logo": "https://rsbusinesstech.com/assets/logo.png"
+  }
+  </script>
+
+  <!-- Global Styles -->
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background-color: #000; /* matches your footer background */
+    }
+  </style>
 </head>
 <body>
   <app-root></app-root>
-</body>
-</html>
 </body>
 </html>
