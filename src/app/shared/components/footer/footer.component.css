@@ -1,16 +1,14 @@
+/* Base Footer Styles */
 .site-footer {
   background-color: #000;
   color: #ccc;
   text-align: center;
   padding: 2rem 1rem;
-  margin-top: 0;            /* Ensures no gap above */
   width: 100%;
-  /* position: fixed;       // Uncomment this for sticky footer
-  bottom: 0;
-  left: 0; */
+  margin-top: 0;
 }
 
-.site-footer .footer-content {
+.footer-content {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
@@ -19,43 +17,24 @@
   gap: 1rem;
 }
 
+/* Logo */
 .footer-logo {
   height: 40px;
+  width: auto;
+  margin-bottom: 0.5rem;
 }
 
+/* Paragraphs */
 .site-footer p {
   font-size: 0.9rem;
   margin: 0;
   color: #fff;
 }
 
-.site-footer .social-icons {
-  margin-top: 1rem;
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-}
-
-.site-footer .social-icons img {
-  width: 30px;
-  height: 30px;
-  transition: transform 0.3s ease;
-}
-
-.site-footer .social-icons img:hover {
-  transform: scale(1.1);
-}
-
-/* Remove white space after footer */
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #000; /* match footer color */
-}
-
+/* Footer Navigation */
 .footer-nav {
-  margin: 1rem 0;
   font-size: 0.95rem;
+  margin: 1rem 0;
 }
 
 .footer-nav a {
@@ -68,59 +47,100 @@ body {
   text-decoration: underline;
 }
 
-.site-footer {
-  background-color: #000;
-  color: #ffd700;
-  text-align: center;
-  padding: 2rem 1rem;
-}
-
-.site-footer a {
-  color: #fff;
-  text-decoration: none;
-}
-
+/* Footer Links - Services or Menu Items */
 .footer-links {
-  margin-top: 1rem;
   font-size: 0.9rem;
   color: #ffd700;
-}
-
-.footer-contact {
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  color: #fff;
-}
-
-.footer-contact .highlight-text {
-  color: #ffd700; /* yellow (golden) for 'Address:' */
+  margin: 1rem 0 0.5rem;
+  text-align: center;
 }
 
 .footer-links ul {
   list-style: none;
   padding: 0;
   margin: 0.5rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
 }
 
 .footer-links li {
   display: inline-block;
-  margin: 0 10px;
+  color: #fff;
+  font-size: 0.85rem;
+}
+
+/* Contact Info */
+.footer-contact {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #fff;
+  text-align: center;
+}
+
+.footer-contact .highlight-text {
+  color: #ffd700; /* Yellow for "Address:" */
+}
+
+/* Social Icons */
+.social-icons {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
 }
 
 .social-icons img {
   width: 32px;
   height: 32px;
-  margin: 0 8px;
-  vertical-align: middle;
+  margin: 0 5px;
+  transition: transform 0.3s ease;
 }
 
+.social-icons img:hover {
+  transform: scale(1.1);
+}
+
+/* Body Background Fix */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-  .footer-nav,.footer-links {
+  .footer-nav,
+  .footer-links {
     font-size: 13px;
     text-align: center;
     padding: 10px;
+    
+  }
+
+  .footer-links ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .social-icons {
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
   }
 }
 
+/* Make all links inside footer white */
+.site-footer a {
+  color: #fff !important;  /* white color */
+  text-decoration: none;   /* remove underline if needed */
+}
 
-
+/* Optional: on hover, change color to golden/yellow */
+.site-footer a:hover {
+  color: #ffd700 !important;
+  text-decoration: underline;
+}
