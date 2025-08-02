@@ -35,6 +35,7 @@
 .footer-nav {
   font-size: 0.95rem;
   margin: 1rem 0;
+  color: #ffd700;
 }
 
 .footer-nav a {
@@ -63,6 +64,8 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
+  flex-direction: column;
+  align-items: center;
 }
 
 .footer-links li {
