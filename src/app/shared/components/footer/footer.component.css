@@ -34,7 +34,6 @@
 /* Footer Navigation */
 .footer-nav {
   font-size: 0.95rem;
-  margin: 1rem 0;
   color: #ffd700;
 }
 
@@ -90,10 +89,10 @@
 
 /* Contact Info */
 .footer-contact {
-  margin-top: 1rem;
   font-size: 0.9rem;
   color: #fff;
   text-align: center;
+  font-style: normal; /* Removes italic */
 }
 
 .footer-contact .highlight-text {
@@ -102,7 +101,6 @@
 
 /* Social Icons */
 .social-icons {
-  margin-top: 1rem;
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
@@ -168,6 +166,6 @@ body {
 
 /* Optional: on hover, change color to golden/yellow */
 .site-footer a:hover {
-  color: #ffd700 !important;
+  color: darkgoldenrod !important;
   text-decoration: underline;
 }
