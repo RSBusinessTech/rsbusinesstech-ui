@@ -26,6 +26,7 @@
 .site-footer p {
   font-size: 0.9rem;
   margin: 0;
+  color: #fff;
 }
 
 .site-footer .social-icons {
@@ -51,4 +52,75 @@ body {
   padding: 0;
   background-color: #000; /* match footer color */
 }
+
+.footer-nav {
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+
+.footer-nav a {
+  color: #ffd700;
+  margin: 0 0.5rem;
+  text-decoration: none;
+}
+
+.footer-nav a:hover {
+  text-decoration: underline;
+}
+
+.site-footer {
+  background-color: #000;
+  color: #ffd700;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.site-footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-links {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #ffd700;
+}
+
+.footer-contact {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+.footer-contact .highlight-text {
+  color: #ffd700; /* yellow (golden) for 'Address:' */
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0;
+}
+
+.footer-links li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.social-icons img {
+  width: 32px;
+  height: 32px;
+  margin: 0 8px;
+  vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+  .footer-nav,.footer-links {
+    font-size: 13px;
+    text-align: center;
+    padding: 10px;
+  }
+}
+
+
 
