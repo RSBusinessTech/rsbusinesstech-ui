@@ -277,5 +277,51 @@
     max-width: 48%;
   }
 }
+.pricing-card {
+  position: relative;
+  background-color: #fffaf2;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 300px; /* ensures enough space for bottom alignment */
+}
+
+.installment-link {
+  margin-top: auto; /* pushes it to bottom */
+  text-align: right;
+  padding-top: 10px;
+}
+
+.installment-link a {
+  font-size: 0.9em;
+  color: #0a2cee;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.installment-link a:hover {
+  text-decoration: underline;
+  color: #cc000a;
+}
+
+/* Optional: Responsive typography and spacing */
+@media (max-width: 768px) {
+  .pricing-card {
+    padding: 16px;
+  }
+
+  .installment-link a {
+    font-size: 0.85em;
+  }
+}
+
+@media (max-width: 480px) {
+  .installment-link {
+    text-align: right;
+  }
+}
 
 

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ServicesComponent } from './components/services/services.component';
 import { WebsiteComponent } from './components/services/website_service/website/website.component';
+import { WebsiteInstallmentPlanComponent } from './components/installments/website-installment-plan/website-installment-plan.component';
 
 const routes: Routes = [
   { path: '', component: ServicesComponent },                         // Default route
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'website-south-africa', component: WebsiteComponent },
   { path: 'website-new-zealand', component: WebsiteComponent },
   { path: 'website-other', component: WebsiteComponent },
+  { path: 'website/installments', component: WebsiteInstallmentPlanComponent },
 ];
 
 @NgModule({

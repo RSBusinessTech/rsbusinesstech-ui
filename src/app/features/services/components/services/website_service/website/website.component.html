@@ -4,73 +4,70 @@
 
     <div class="tech-pricing"> 
       <div class="tech-list">
-       <h3 class="tech-title">Technologies Used 💻</h3>
-       <div class="tech-table-container">
-         <table class="tech-table">
-           <thead>
-            <tr>
-               <th class="key">Feature</th>
-              <th class="value">Technology</th>
-           </tr>
-         </thead>
-         <tbody>
-           <tr>
-             <td class="key">Frontend</td>
-              <td class="value">Angular 8</td>
-           </tr>
-           <tr>
-             <td class="key">Backend</td>
-             <td class="value">Spring Boot (JAVA)</td>
-           </tr>
-           <tr>
-              <td class="key">Database</td>
-              <td class="value">PostgreSQL</td>
-           </tr>
-           <tr>
-             <td class="key">Version Control System (VCS)</td>
-             <td class="value">GitHub</td>
-           </tr>
-          <tr>
-            <td class="key">Security</td>
-            <td class="value">2FA, JWT Authentication (Spring-Security)</td>
-          </tr>
-          <tr>
-            <td class="key">Responsive UI</td>
-            <td class="value">Flexbox, CSS Grid, Media Queries</td>
-          </tr>
-        </tbody>
-    </table>
-  </div>
+        <h3 class="tech-title">Technologies Used 💻</h3>
+        <div class="tech-table-container">
+          <table class="tech-table">
+            <thead>
+              <tr>
+                <th class="key">Feature</th>
+                <th class="value">Technology</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="key">Frontend</td>
+                <td class="value">Angular 8</td>
+              </tr>
+              <tr>
+                <td class="key">Backend</td>
+                <td class="value">Spring Boot (JAVA)</td>
+              </tr>
+              <tr>
+                <td class="key">Database</td>
+                <td class="value">PostgreSQL</td>
+              </tr>
+              <tr>
+                <td class="key">Version Control System (VCS)</td>
+                <td class="value">GitHub</td>
+              </tr>
+              <tr>
+                <td class="key">Security</td>
+                <td class="value">2FA, JWT Authentication (Spring-Security)</td>
+              </tr>
+              <tr>
+                <td class="key">Responsive UI</td>
+                <td class="value">Flexbox, CSS Grid, Media Queries</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-  <h3 class="tech-title">Estimated Delivery🗓️</h3>
-  <div class="tech-table-container">
-    <table class="tech-table">
-       <thead>
-         <tr>
-           <th class="key">Package</th>
-           <th class="value">Time</th>
-         </tr>
-       </thead>
-       <tbody>
-         <tr>
-           <td class="key">Basic</td>
-           <td class="value">2-4 weeks</td>
-         </tr>
-         <tr>
-           <td class="key">Standard</td>
-           <td class="value">4-8 weeks</td>
-         </tr>
-         <tr>
-           <td class="key">Premium</td>
-           <td class="value">8-16 weeks</td>
-         </tr>
-       </tbody>  
-    </table>
-  </div>
-  
-
-</div>
-
+        <h3 class="tech-title">Estimated Delivery 🗓️</h3>
+        <div class="tech-table-container">
+          <table class="tech-table">
+            <thead>
+              <tr>
+                <th class="key">Package</th>
+                <th class="value">Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="key">Basic</td>
+                <td class="value">2-4 weeks</td>
+              </tr>
+              <tr>
+                <td class="key">Standard</td>
+                <td class="value">4-8 weeks</td>
+              </tr>
+              <tr>
+                <td class="key">Premium</td>
+                <td class="value">8-16 weeks</td>
+              </tr>
+            </tbody>  
+          </table>
+        </div>
+      </div>
 
       <div class="pricing-packages">
         <h3 class="tech-title">Pricing & Packages 💵</h3>
@@ -78,26 +75,36 @@
         <div class="package-card">
           <h4>Basic</h4>
           <p>Ideal for small business.</p>
-          <p class="price"> {{ pricing.basic }}</p>
+          <p class="price">{{ pricing.basic }}</p>
           <ul>
             <li>Upto 5 pages (eg. Home/Products/Services/About/Contact etc).</li>
             <li>Only Displaying content.</li>
             <li>Responsive design (Compatible for all devices eg. Laptop/Mobile/Tablet).</li>
             <li>Frontend only.</li>
           </ul>
+          <div class="installment-link">
+            <a
+              [routerLink]="['/services/website/installments']"
+            >Check Installment Plan</a>
+          </div>
         </div>
 
         <div class="package-card">
           <h4>Standard</h4>
           <p>Ideal for medium/startup business.</p>
-          <p class="price"> {{ pricing.standard }}</p>
+          <p class="price">{{ pricing.standard }}</p>
           <ul>
             <li>Upto 10 pages.</li>
-            <li>Displaying content+Additional Features.</li>
+            <li>Displaying content + Additional Features.</li>
             <li>Responsive design (Compatible for all devices eg. Laptop/Mobile/Tablet).</li>
-            <li>Frontend+Backend+Database.</li>
+            <li>Frontend + Backend + Database.</li>
             <li>SEO (Search Engine Optimization).</li>
           </ul>
+          <div class="installment-link">
+            <a
+              [routerLink]="['/services/website/installments']"
+            >Check Installment Plan</a>
+          </div>
         </div>
 
         <div class="package-card">
@@ -108,17 +115,21 @@
             <li>Unlimited pages.</li>
             <li>Unlimited features.</li>
             <li>Responsive design (Compatible for all devices eg. Laptop/Mobile/Tablet).</li>
-            <li>Frontend+Backend+Database.</li>
+            <li>Frontend + Backend + Database.</li>
             <li>SEO (Search Engine Optimization).</li>
             <li>Support & Maintenance.</li>
           </ul>
+          <div class="installment-link">
+            <a
+              [routerLink]="['/services/website/installments']"
+            >Check Installment Plan</a>
+          </div>
         </div>
-
       </div>
     </div>
-    <div class="cta-area">
-      <a routerLink="/services" class="btn-primary">Go Back</a>
-    </div>
 
+    <div class="cta-area">
+      <a class="btn-primary" (click)="goBack()">Go Back</a>
+    </div>
   </div>
 </section>
