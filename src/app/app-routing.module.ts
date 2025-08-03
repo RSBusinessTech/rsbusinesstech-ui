@@ -14,7 +14,7 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
     scrollPositionRestoration: 'enabled',  // when clicked on a hyperlink, sometimes it will be landed at botton of next page, so to fix that issue we need to enable scrollPositionRestoration.
-    anchorScrolling: 'enabled'  // optional, only if you use fragment anchors
+    anchorScrolling: 'enabled' // optional, only if you use fragment anchors
   })],
   exports: [RouterModule]
 })
