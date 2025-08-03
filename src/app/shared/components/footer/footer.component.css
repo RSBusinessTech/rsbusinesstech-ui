@@ -134,6 +134,10 @@ body {
     padding: 10px;
     
   }
+   .footer-content {
+    padding-right: 2rem;
+  }
+
 
   .footer-links ul {
     flex-direction: column;
