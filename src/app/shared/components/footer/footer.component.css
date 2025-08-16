@@ -1,175 +1,198 @@
-/* Base Footer Styles */
-.site-footer {
+.footer-container {
   background-color: #000;
-  color: #ccc;
-  text-align: center;
-  padding: 2rem 1rem;
-  width: 100%;
-  margin-top: 0;
-}
-
-.footer-content {
+  padding: 40px 20px 20px 20px;
   max-width: 1200px;
   margin: 0 auto;
+  color: #fff;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+
+/* Desktop Logo + Connect with us + Social Icons */
+.footer-logo-connect {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 1rem;
+  align-items: flex-start;
+  margin-left: 10px;       /* Reduced from 40px to shift it slightly left */
+  margin-right: 50px;      /* Added space between logo and next section */
+  min-width: 220px;        /* Increased width to push next column slightly further */
+  margin-top: 18px;
 }
 
-/* Logo */
-.footer-logo {
-  height: 40px;
-  width: auto;
-  margin-bottom: 0.5rem;
+
+.footer-logo img {
+  width: 280px;
+  display: block;
+  margin-bottom: 15px;
+  margin-left: 0;
 }
 
-/* Paragraphs */
-.site-footer p {
-  font-size: 0.9rem;
-  margin: 0;
-  color: #fff;
+.connect-us {
+  color: #fafafa;
+  font-weight: bold;
+  margin-bottom: 15px;
 }
 
-/* Footer Navigation */
-.footer-nav {
-  font-size: 0.95rem;
-  color: #ffd700;
-}
-
-.footer-nav a {
-  color: #ffd700;
-  margin: 0 0.5rem;
-  text-decoration: none;
-}
-
-.footer-nav a:hover {
-  text-decoration: underline;
-}
-
-/* Footer Links - Services or Menu Items */
-.footer-links {
-  font-size: 0.9rem;
-  color: #ffd700;
-  margin: 1rem 0 0.5rem;
-  text-align: center;
-}
-
-.footer-links ul {
-  list-style: none;
-  padding: 0;
-  margin: 0.5rem 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  align-items: center;
-  text-decoration: underline;
-  color: #fff;
-}
-
-.footer-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0.5rem 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  align-items: center;
-  text-decoration: underline;
-  color: #fff;
-}
-
-.footer-links li {
-  display: inline-block;
-  color: #fff;
-  font-size: 0.85rem;
-}
-
-/* Contact Info */
-.footer-contact {
-  font-size: 0.9rem;
-  color: #fff;
-  text-align: center;
-  font-style: normal; /* Removes italic */
-}
-
-.footer-contact .highlight-text {
-  color: #ffd700; /* Yellow for "Address:" */
-}
-
-/* Social Icons */
 .social-icons {
   display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
+  gap: 12px;
 }
 
-.social-icons img {
-  width: 32px;
-  height: 32px;
-  margin: 0 5px;
-  transition: transform 0.3s ease;
+.social-icons a img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
-.social-icons img:hover {
+.social-icons a img:hover {
   transform: scale(1.1);
 }
 
-/* Body Background Fix */
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #000;
+/* Sections */
+.footer-section {
+  flex: 1 1 200px;
+  margin-bottom: 40px;
+  min-width: 180px;
 }
 
-/* Responsive Design */
+.footer-section h3 {
+  color: #ffbf00;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-decoration: underline;
+}
+
+.footer-section ul.address-list {
+  text-decoration: none;
+}
+
+.footer-section ul.address-list li a {
+  text-decoration: none;
+}
+
+.footer-section ul.address-list li a:hover {
+  text-decoration: underline;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.footer-section ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Copyright */
+.footer-bottom {
+  text-align: center;
+  font-size: 13px;
+  color: #ccc;
+}
+
+/* Hide desktop logo-connect on mobile */
+.desktop-only {
+  display: flex;
+}
+
+/* MOBILE RESPONSIVE */
 @media (max-width: 768px) {
-  .footer-nav,
-  .footer-links {
-    font-size: 13px;
+  .footer-container {
+    padding: 30px 10px 20px 10px;
+  }
+
+  .footer-container > .footer-bottom {
+    display: none;
+  }
+
+  .footer-top {
+    display: block;
     text-align: center;
-    padding: 10px;
-    
-  }
-   .footer-content {
-    padding-right: 2rem;
   }
 
-
-  .footer-links ul {
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    text-decoration: underline;
-    color: #fff !important;  /* white color */
+  .footer-section {
+    width: 100%;
+    margin-bottom: 30px;
+    text-align: center;
   }
 
-   .footer-nav ul {
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    text-decoration: underline;
-    color: #fff !important;  /* white color */
+  .footer-section h3 {
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  .footer-section ul li {
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  /* Show mobile-connect-social below Our Services */
+  .mobile-connect-social {
+    display: block;
+    margin-top: 50px;
+  }
+
+  .connect-us {
+    font-weight: normal;
+    margin-bottom: 12px;
+    color: #ffbf00;
   }
 
   .social-icons {
     justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .social-icons a img {
+    width: 30px;
+    height: 30px;
+  }
+
+  /* Logo below connect us in mobile */
+  .footer-logo-connect {
+    display: none;
+  }
+
+  /* Mobile footer logo inside mobile-connect-social */
+  .footer-logo-mobile {
+    width: 160px;
+    margin-top: 25px;
   }
 }
 
-/* Make all links inside footer white */
-.site-footer a {
-  color: #fff !important;  /* white color */
-  text-decoration: none;   /* remove underline if needed */
+/* Force hide mobile-connect-social on desktop */
+@media (min-width: 769px) {
+  .mobile-connect-social {
+    display: none !important;
+  }
 }
 
-/* Optional: on hover, change color to golden/yellow */
-.site-footer a:hover {
-  color: darkgoldenrod !important;
+.footer-section ul li a:hover {
   text-decoration: underline;
+  color: red; /* Add this */
 }
+
+.footer-section ul.address-list li a:hover {
+  text-decoration: underline;
+  color: red; /* Add this */
+}
+
+
+
