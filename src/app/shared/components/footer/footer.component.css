@@ -65,6 +65,22 @@
   color: #ffbf00;
   margin-bottom: 15px;
   font-weight: bold;
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 5px;
+  font-family: Liberation Sans;
+}
+
+/* Underline effect */
+.footer-section h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.2); /* Light, subtle white */
 }
 
 .footer-section ul {
@@ -182,6 +198,13 @@
   .mobile-connect-social {
     display: none !important;
   }
+ .footer-section.services-section {
+    order: 2;
+  }
+  .footer-section.address-section {
+    order: 3;
+  }
+  
 }
 
 .footer-section ul li a:hover {
