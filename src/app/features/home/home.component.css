@@ -36,6 +36,19 @@
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* UNIVERSAL SECTION HEADING STYLE */
+.section-heading {
+  font-family: 'Georgia', serif;
+  text-align: center;
+  font-size: 4.5rem;
+  color: #aaa;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+
+
 .hero-section .btn-primary:hover {
   background-color: darkgoldenrod;
   color: white;
@@ -143,3 +156,182 @@
   text-shadow: 0 0 10px gold;
   transition: transform 0.3s ease, text-shadow 0.3s ease;
 }
+
+/* TECHNOLOGIES SECTION */
+.technologies-section {
+  background: #cac5ba;
+  color: #000;
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+.technologies-section h2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: rgb(219, 48, 18);
+}
+
+.tech-table {
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  border-collapse: collapse;
+  background-color: #f7f2e8;
+  color: #000;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.tech-table th,
+.tech-table td {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.tech-table thead {
+  background-color: #000;
+  font-weight: bold;
+  color:#fdfaf3;
+}
+
+.tech-table tbody tr:nth-child(even) {
+  background-color: #fdfaf3;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tech-table th,
+  .tech-table td {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Add bottom space after the services section */
+.services-section {
+  padding: 0.5rem 1rem 3rem 1rem; /* Increased bottom padding */
+  background: #000;
+  color: white;
+  text-align: center;
+}
+
+.services-title {
+  font-size: 3.0rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  color: gold;
+  opacity: 0;
+  animation: fadeIn 5s ease-in-out 0.5s infinite; /* delay of 0.5s with frequency of 5sec */
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.service-item {
+  /* background: linear-gradient(135deg, #1a1aff, #6a0dad, #ff4d6d); */
+  /* background: linear-gradient(135deg, #000000, #1a1a1a, #FFD700); */
+  background: linear-gradient(135deg, #cecbcb, #5e5959, #FFD700);
+
+  border-left: 4px solid #fff;
+  padding: 1rem;
+  font-weight: bold;
+  text-align: left;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+
+.service-item:hover {
+  background:darkgoldenrod;
+}
+
+/* Wrapper section with full-width red background */
+.service-network-section {
+  background-color: #9b0f0f; /* red background */
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Image that fills full width of the screen */
+.service-network-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0;
+  box-shadow: none;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Optional padding for larger screens */
+@media screen and (min-width: 1025px) {
+  .service-network-section {
+    padding: 0;
+  }
+
+  .service-network-img {
+    border-radius: 0;
+  }
+}
+
+/* Tablet screens */
+@media screen and (max-width: 1024px) {
+  .service-network-section {
+    padding: 0;
+  }
+
+  .service-network-img {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* Mobile screens */
+@media screen and (max-width: 768px) {
+/* Section wrapper */
+.service-network-section {
+  width: 100%;
+  padding: 2rem 1rem;
+  background-color: #c10000; /* red background */
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* prevents horizontal scroll */
+}
+
+/* Image */
+.service-network-img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  object-fit: contain;
+}
+}
+/* UNIVERSAL SECTION HEADING STYLE */
+.section-heading {
+    font-size: 3.0rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: fadeIn 5s ease-in-out 0.5s infinite; /* delay of 0.5s with frequency of 5sec */
+}
+
+
+
+
