@@ -1,0 +1,143 @@
+.clients-section {
+  padding: 50px 20px;
+  background-color: #f9f5e3;
+  color: #fff;
+  text-align: center;
+}
+
+.clients-section h2 {
+  font-size: 2.5em;
+  color: rgb(255, 38, 0);
+  margin-bottom: 40px;
+}
+
+.client-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 1000px;
+  margin: auto;
+  align-items: center;
+}
+
+.client-card {
+  display: flex;
+  flex-direction: row;
+  background-color: #1c1c1c;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 20px;
+  align-items: center; /* center all children vertically */
+  transition: box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 650px;
+  text-align: left;
+  height: auto; /* allow height to adjust */
+  min-height: 170px; /* minimum height */
+}
+
+.client-card:hover {
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+}
+.client-logo img {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;         /* circular shape */
+  object-fit: contain;        /* show full image inside */
+  background-color: white;    /* optional: to handle transparent logos */
+  padding: 5px;               /* optional: to avoid touching circle edges */
+}
+
+.client-logo img {
+  height: 90px;
+  width: 90px;
+  border-radius: 100%;     /* makes the image circular */
+  object-fit: contain;      /* ensures the image covers the circle */
+}
+
+
+.client-details {
+  flex: 1;
+  margin-left: 20px;
+  text-align: left;
+  position: relative;
+}
+
+.client-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.client-header h3 {
+  color: #ffd700;
+  font-size: 1.6em;
+  margin: 0;
+}
+
+.country-flag {
+  width: 54px;
+  height: 40px;
+  border-radius: 3px;
+}
+
+.client-details p {
+  margin: 6px 0; /* reduce vertical margin */
+  color: #ccc;
+  line-height: 1.4; /* reduce line height slightly */
+  font-size: 0.95em;
+}
+
+.client-details a {
+  color: #00aaff;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 5px; /* add some margin above link */
+  display: inline-block;
+}
+
+.client-details a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- MOBILE VIEW ---------- */
+@media (max-width: 768px) {
+  .client-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    padding: 20px 15px;
+  }
+
+  .client-logo img {
+    margin-bottom: 15px;
+  }
+
+  .client-details {
+    margin-left: 0;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .client-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .client-details p {
+    font-size: 0.9em;
+  }
+}
+
+/* ---------- DESKTOP VIEW ---------- */
+@media (min-width: 769px) {
+  .client-card {
+    /* Remove fixed height */
+    height: auto;
+    min-height: 170px;
+    justify-content: flex-start; /* align items to top */
+  }
+}
