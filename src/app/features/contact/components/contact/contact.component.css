@@ -16,6 +16,19 @@
   text-align: center;
   color: rgb(255, 38, 0);
   font-size: 2rem;
+  animation: fadeIn 5s ease-in-out 0.5s infinite; /* delay of 0.5s with frequency of 5sec */
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .contact-section .container p {
