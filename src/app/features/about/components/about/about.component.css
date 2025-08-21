@@ -51,7 +51,6 @@
   margin-bottom: 15px;
   margin: 15px auto 0 auto;   /* centers the paragraph */
   text-align: justify;
-
 }
 
 .section-description {
@@ -114,6 +113,10 @@
   }
 
   .section-description {
+    text-align: center;
+  }
+
+  .section-description-about {
     text-align: center;
   }
 
