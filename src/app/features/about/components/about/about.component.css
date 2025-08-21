@@ -62,22 +62,14 @@
 }
 
 
-/* .section-image {
+ .section-image {
   max-width: 700px;
   height: auto;
   margin: 20px auto;
   display: block;
-} */
+} 
 
-/* Default for all screen sizes */
-.section-image {
-  width: 83%;             /* Use full width of the parent container */
-  height: 400px;           /* Fixed height for consistent appearance */
-  object-fit: cover;       /* Crop from center to maintain aesthetics */
-  border-radius: 8px;      /* Optional: rounded corners like in your example */
-  display: block;
-  margin: 20px auto;
-}
+
 
 .map-link {
   display: block;
