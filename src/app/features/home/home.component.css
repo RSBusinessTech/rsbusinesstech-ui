@@ -161,7 +161,8 @@
 .technologies-section {
   background: #cac5ba;
   color: #000;
-  padding: 4rem 1rem;
+  /* padding: 4rem 1rem; */
+   padding: 2rem 1rem 4rem 1rem; /* less top padding, more bottom */
   text-align: center;
 }
 
