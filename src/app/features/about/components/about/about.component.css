@@ -45,17 +45,38 @@
   margin-bottom: 10px;
 }
 
+.section-description-about {
+  font-size: 1em;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  margin: 15px auto 0 auto;   /* centers the paragraph */
+  text-align: justify;
+
+}
+
 .section-description {
   font-size: 1em;
   line-height: 1.6;
   margin-bottom: 15px;
+  margin: 15px auto 0 auto;   /* centers the paragraph */
 }
 
-.section-image {
-  max-width: 800px;
+
+/* .section-image {
+  max-width: 700px;
   height: auto;
   margin: 20px auto;
   display: block;
+} */
+
+/* Default for all screen sizes */
+.section-image {
+  width: 83%;             /* Use full width of the parent container */
+  height: 400px;           /* Fixed height for consistent appearance */
+  object-fit: cover;       /* Crop from center to maintain aesthetics */
+  border-radius: 8px;      /* Optional: rounded corners like in your example */
+  display: block;
+  margin: 20px auto;
 }
 
 .map-link {
