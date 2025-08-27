@@ -159,7 +159,6 @@ button[type="submit"]:hover:not(:disabled) {
     border-radius: 0;
     margin: 0;
     min-height: auto; /* Fix extra white space */
-    
   }
 
   .left-side,
@@ -180,6 +179,7 @@ button[type="submit"]:hover:not(:disabled) {
     order: 1;
     align-items: stretch;
     background: linear-gradient(90deg, #b9b9b9, #c19e1f 70%, #bba72a);
+    height: 400px;
   }
 
   .right-side form {
@@ -196,5 +196,11 @@ button[type="submit"]:hover:not(:disabled) {
   button[type="submit"] {
     width: 100%;
   }
+  .left-side {
+  display: none;
+  }
 }
+
+
+
 
