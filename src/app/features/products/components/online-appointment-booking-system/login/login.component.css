@@ -179,7 +179,7 @@ button[type="submit"]:hover:not(:disabled) {
     order: 1;
     align-items: stretch;
     background: linear-gradient(90deg, #b9b9b9, #c19e1f 70%, #bba72a);
-    height: 400px;
+    height: 600px;
   }
 
   .right-side form {
