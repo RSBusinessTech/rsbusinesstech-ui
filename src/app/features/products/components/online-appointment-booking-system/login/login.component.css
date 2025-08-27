@@ -1,110 +1,200 @@
-/* ===== LOGIN SECTION ===== */
-.login-section {
-  background-color: #f9f5e3;
+/* Reset & base */
+* {
+  box-sizing: border-box;
+}
+
+.container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 20px;
-  box-sizing: border-box;
+  width: 100%;
+  min-height: 82vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #fff;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 20px auto;
+  max-width: 1200px;
 }
 
-.login-card {
-  background-color: #f7f2e8;
-  border-radius: 10px;
+/* Left side: gradient background with welcome text */
+.left-side {
+  flex: 1;
+  background: linear-gradient(135deg, #7b5cf2, #f97316);
+  color: #fff;
   padding: 40px 30px;
-  width: 100%;
-  max-width: 400px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-/* ===== HEADER ===== */
-.login-card h2 {
-  margin-bottom: 30px;
-  color: rgb(255, 38, 0);
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1.3;
-}
-
-/* ===== FORM LABELS & INPUTS ===== */
-.login-card label {
-  display: block;
-  text-align: left;
-  margin-bottom: 6px;
-  font-weight: 600;
-  color: #333;
-  font-size: 1rem;
-}
-
-.login-card input {
-  width: 100%;
-  height: 48px;
-  padding: 10px 12px;
-  margin-bottom: 20px;
-  border-radius: 6px;
-  border: 1.5px solid #ddd;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
-  box-sizing: border-box;
-}
-
-.login-card input:focus {
-  border-color: rgb(255, 38, 0);
-  outline: none;
-}
-
-/* ===== BUTTON GROUP ===== */
-.button-group {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-top: 10px;
+  justify-content: center;
+  box-shadow: inset 0 0 50px rgba(0,0,0,0.3);
+  /* max-width: 1500px; */
 }
 
-.login-btn,
-.forgot-btn {
-  height: 48px;
-  border-radius: 6px;
+.left-side h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.left-side p {
   font-size: 1.1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+/* Right side: gradient background with centered form */
+.right-side {
+  flex: 1;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(90deg, #b9b9b9, #c19e1f 70%, #bba72a);
+  border-radius: 0 12px 12px 0;
+  align-items: center; /* center form horizontally */
+  max-width: 500px;
+}
+
+/* Form container with max width */
+.right-side form {
+  width: 100%;
+  max-width: 320px;
+}
+
+/* Heading in right side */
+.right-side h3 {
+  margin-bottom: 30px;
+  font-weight: 600;
+  color: #d4b800; /* goldenish text */
+  letter-spacing: 1.2px;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+/* Input groups */
+.input-group {
+  position: relative;
+  margin-bottom: 25px;
   width: 100%;
 }
 
-/* Login Button */
-.login-btn {
-  background-color: rgb(255, 38, 0);
-  color: white;
+.input-group i.icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #a3a3d3;
+}
+
+/* Inputs fill form width */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 12px 12px 45px;
+  border: 1.5px solid #ddd;
+  border-radius: 25px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: #7b5cf2;
+}
+
+/* Options row */
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  margin-bottom: 30px;
+}
+
+.options label {
+  color: #888;
+  user-select: none;
+}
+
+.options a.forgot {
+  text-decoration: none;
+  color: #d4b800;
+  font-weight: 600;
+}
+
+.options a.forgot:hover {
+  text-decoration: underline;
+}
+
+/* Login button */
+button[type="submit"] {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(90deg, #7b5cf2, #f97316);
   border: none;
-}
-
-.login-btn:hover {
-  background-color: #e02c00;
-}
-
-/* Forgot Password Button */
-.forgot-btn {
-  background-color: transparent;
-  color: rgb(255, 38, 0);
-  border: 1.5px solid rgb(255, 38, 0);
-}
-
-.forgot-btn:hover {
-  background-color: rgb(255, 38, 0);
+  border-radius: 25px;
   color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
-/* ===== RESPONSIVE LAYOUT FOR WIDER SCREENS ===== */
-@media (min-width: 600px) {
-  .button-group {
-    flex-direction: row;
-    justify-content: space-between;
+button[type="submit"]:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+button[type="submit"]:hover:not(:disabled) {
+  background: linear-gradient(90deg, #f97316, #7b5cf2);
+}
+
+/* Mobile view adjustments */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    max-width: 100%;
+    border-radius: 0;
+    margin: 0;
+    min-height: auto; /* Fix extra white space */
+    
   }
 
-  .login-btn,
-  .forgot-btn {
-    width: 48%;
+  .left-side,
+  .right-side {
+    flex: none;
+    width: 100vw;
+    padding: 20px 15px;
+    box-sizing: border-box;
+    border-radius: 0;
+    overflow-x: hidden;
+  }
+
+  .left-side {
+    order: 2;
+  }
+
+  .right-side {
+    order: 1;
+    align-items: stretch;
+    background: linear-gradient(90deg, #b9b9b9, #c19e1f 70%, #bba72a);
+  }
+
+  .right-side form {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding-left: 45px;
+  }
+
+  button[type="submit"] {
+    width: 100%;
   }
 }
+

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductsRoutingModule } from './products-routing.module';
 import { LoginComponent } from './components/online-appointment-booking-system/login/login.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -10,7 +11,8 @@ import { LoginComponent } from './components/online-appointment-booking-system/l
   declarations: [ProductsComponent, LoginComponent],
   imports: [
     CommonModule,
-    ProductsRoutingModule
+    ProductsRoutingModule,
+    FormsModule  // <-- add this
   ]
 })
 export class ProductsModule { }

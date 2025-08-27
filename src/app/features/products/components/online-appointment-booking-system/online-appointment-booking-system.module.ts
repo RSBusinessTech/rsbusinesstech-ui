@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OnlineAppointmentBookingSystemRoutingModule } from './online-appointment-booking-system-routing.module';
+import { FormsModule } from '@angular/forms';
+import { AppComponent } from 'src/app/app.component';
 import { LoginComponent } from './login/login.component';
 
-
-
 @NgModule({
-  declarations: [],
+  declarations: [ ],
   imports: [
     CommonModule,
-    OnlineAppointmentBookingSystemRoutingModule
-  ]
-})
+    OnlineAppointmentBookingSystemRoutingModule,
+  ]})
 export class ProductsModule { }
