@@ -19,7 +19,7 @@
 /* Left side: gradient background with welcome text */
 .left-side {
   flex: 1;
-  background: linear-gradient(135deg, #7b5cf2, #f97316);
+  background: linear-gradient(135deg, #0f18b9, #cc8707);
   color: #fff;
   padding: 40px 30px;
   display: flex;
@@ -148,7 +148,7 @@ button[type="submit"]:disabled {
 }
 
 button[type="submit"]:hover:not(:disabled) {
-  background: linear-gradient(90deg, #f97316, #7b5cf2);
+  background: linear-gradient(90deg, #e6dd61, #7b5cf2);
 }
 
 /* Mobile view adjustments */
