@@ -1,0 +1,17 @@
+<aside class="sidebar" [class.open]="isOpen">
+  <!-- Close button only visible on mobile -->
+  <button class="close-btn" (click)="close()">×</button>
+  
+  <div class="logo">Blu Salon</div>
+  <nav>
+    <a routerLink="/overview">Overview</a>
+    <a routerLink="/calendar">Calendar</a>
+    <a routerLink="/customers">Customers</a>
+    <a routerLink="/services">Service Setup</a>
+    <a routerLink="/team">Team</a>
+    <a routerLink="/locations">Locations</a>
+    <a routerLink="/online-booking">Online Booking</a>
+    <a routerLink="/reports">Reports</a>
+    <a routerLink="/sales">Payment & Sales</a>
+  </nav>
+</aside>

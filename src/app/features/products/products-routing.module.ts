@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProductsComponent } from './components/products/products.component';
-import { LoginComponent } from './components/online-appointment-booking-system/login/login.component';
 
 const routes: Routes = [
   { path: '', component: ProductsComponent },
-  { path: 'onlineAppointmentBookingSystem/login', component: LoginComponent }];
+  {
+    path: 'onlineAppointmentBookingSystem',
+    loadChildren: () => import('./components/online-appointment-booking-system/online-appointment-booking-system.module').then(m => m.OnlineAppointmentBookingSystemModule)
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
