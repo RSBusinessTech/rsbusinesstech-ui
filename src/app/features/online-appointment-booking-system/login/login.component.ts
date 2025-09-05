@@ -16,7 +16,7 @@ export class LoginComponent {
     // Add your login logic here
 
      // Navigate to /dashboard
-    this.router.navigate(['/products/onlineAppointmentBookingSystem/dashboard']);
+    this.router.navigate(['/onlineAppointmentBookingSystem/dashboard']);
   }
 
   onRegister() {

@@ -12,6 +12,6 @@ import { DashboardSidebarComponent } from './dashboard-sidebar/dashboard-sidebar
   imports: [
     CommonModule,
     OnlineAppointmentBookingSystemRoutingModule,
-    FormsModule  // for template-driven forms in login component
+    FormsModule,  // for template-driven forms in login component
   ]})
 export class OnlineAppointmentBookingSystemModule { }

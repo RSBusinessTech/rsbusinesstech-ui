@@ -8,11 +8,14 @@
   <div class="overlay" *ngIf="isSidebarOpen && !isDesktop" (click)="toggleSidebar()"></div>
 
   <div class="dashboard-container">
-    <app-dashboard-sidebar [isOpen]="isSidebarOpen" (closeSidebar)="toggleSidebar()"></app-dashboard-sidebar>
+    <app-dashboard-sidebar 
+      [isOpen]="isSidebarOpen" 
+      (closeSidebar)="toggleSidebar()">
+    </app-dashboard-sidebar>
 
-    <div class="dashboard-main">
+    <main class="dashboard-main">
       <router-outlet></router-outlet>
-    </div>
+    </main>
   </div>
 
 </div>
