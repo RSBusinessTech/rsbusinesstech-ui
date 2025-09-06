@@ -9,6 +9,7 @@ import { HomeComponent } from './features/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ClientsComponent } from './features/clients/clients.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
+import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { MainLayoutComponent } from './layouts/main-layout/main-layout.component
     HomeComponent,
     ClientsComponent,
     MainLayoutComponent,
+    DashboardLayoutComponent,
   ],
   imports: [
     BrowserModule,

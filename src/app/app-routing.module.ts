@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './features/home/home.component';
 import { ClientsComponent } from './features/clients/clients.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
+import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
 
 const routes: Routes = [
   // ✅ All regular routes use MainLayout (header/footer)
@@ -24,7 +25,7 @@ const routes: Routes = [
 
  {
   path: 'onlineAppointmentBookingSystem',
-  component: MainLayoutComponent,
+  component: DashboardLayoutComponent,
   loadChildren: () =>
     import('./features/online-appointment-booking-system/online-appointment-booking-system.module')
       .then(m => m.OnlineAppointmentBookingSystemModule)
