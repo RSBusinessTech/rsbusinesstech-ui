@@ -3,9 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './features/home/home.component';
 import { ClientsComponent } from './features/clients/clients.component';
-
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
-import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
 
 const routes: Routes = [
   // ✅ All regular routes use MainLayout (header/footer)
@@ -24,7 +22,6 @@ const routes: Routes = [
     ]
   },
 
-  // ✅ Dashboard-specific route without header/footer
  {
   path: 'onlineAppointmentBookingSystem',
   component: MainLayoutComponent,
