@@ -1,0 +1,224 @@
+/* Mobile first base styles */
+.dashboard-container {
+  max-width: 100%;
+  margin: 30px auto;
+  padding: 15px 12px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #3e2f16;
+  background-color: #fdf9f0;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(198, 152, 70, 0.15);
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* Title */
+.dashboard-title {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #a67330;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 2px #f3e9d2;
+  user-select: none;
+}
+
+/* KPI Cards - single column on mobile */
+.kpi-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.kpi-cards .card.kpi {
+  background: #fff3d1;
+  border-left: 6px solid #c38f00;
+  padding: 1rem 1.3rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(255, 193, 7, 0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: default;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 70px;
+}
+
+.kpi-cards .card.kpi:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(255, 193, 7, 0.3);
+}
+
+.kpi-cards h4 {
+  font-size: 1.1rem;
+  margin: 0;
+  font-weight: 600;
+  color: #7e5f12;
+  letter-spacing: 0.5px;
+}
+
+.kpi-cards .value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #4a3a0c;
+  line-height: 1;
+}
+
+/* Dashboard main - stacked by default on mobile */
+.dashboard-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Left and Right panels full width on mobile */
+.left-panel,
+.right-panel {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Cards style */
+.card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 1.3rem 1.6rem;
+  box-shadow: 0 2px 14px rgba(198, 152, 70, 0.2);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease;
+  word-break: break-word;
+}
+
+.card:hover {
+  box-shadow: 0 10px 30px rgba(198, 152, 70, 0.35);
+}
+
+.card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #a67330;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  text-align: center;
+  user-select: none;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #5a4a1b;
+  overflow-wrap: break-word;
+}
+
+.card ul li {
+  padding: 0.55rem 0;
+  border-bottom: 1px solid #f1e5b3;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card ul li:last-child {
+  border-bottom: none;
+}
+
+.card ul li strong {
+  font-weight: 700;
+  color: #7e5f12;
+  min-width: 75px;
+}
+
+/* Chart container */
+.chart-placeholder {
+  height: 220px;
+  background: #fff7d7;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #bba14c;
+  font-style: italic;
+  font-size: 1.1rem;
+  user-select: none;
+  box-shadow: inset 0 0 12px rgba(198, 152, 70, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Medium screens: tablets and small desktops */
+@media (min-width: 640px) {
+  .kpi-cards {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .dashboard-main {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .left-panel,
+  .right-panel {
+    flex: 1 1 48%;
+  }
+
+  .chart-placeholder {
+    height: 260px;
+  }
+
+  .kpi-cards .card.kpi {
+    min-height: 90px;
+  }
+}
+
+/* Large desktops */
+@media (min-width: 1024px) {
+  .dashboard-container {
+    max-width: 1100px;
+    padding: 2.5rem 3rem;
+  }
+  .dashboard-main {
+    gap: 3rem; /* increased gap between left and right */
+  }
+  
+  .dashboard-title {
+    font-size: 2.4rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .card h3 {
+    font-size: 1.6rem;
+  }
+
+  .kpi-cards .card.kpi {
+    min-height: 110px;
+    padding: 1.4rem 1.7rem;
+  }
+
+  .chart-placeholder {
+    height: 320px;
+  }
+
+  .kpi-cards h4 {
+    font-size: 1.2rem;
+  }
+
+  .kpi-cards .value {
+    font-size: 2.4rem;
+  }
+}
+/* Add vertical spacing between cards inside left and right panels */
+.left-panel .card,
+.right-panel .card {
+  margin-bottom: 1.8rem; /* or 2rem for more breathing room */
+}

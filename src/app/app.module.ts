@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ClientsComponent } from './features/clients/clients.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-l
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule  
   ],
   providers: [],
   bootstrap: [AppComponent]

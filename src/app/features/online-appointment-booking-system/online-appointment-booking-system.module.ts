@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { OnlineAppointmentBookingSystemRoutingModule } from './online-appointment-booking-system-routing.module';
 import { DashboardWrapperComponent } from './dashboard-wrapper/dashboard-wrapper.component';
 import { DashboardSidebarComponent } from './dashboard-sidebar/dashboard-sidebar.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [LoginComponent, DashboardComponent, DashboardWrapperComponent , DashboardSidebarComponent],
@@ -13,5 +14,6 @@ import { DashboardSidebarComponent } from './dashboard-sidebar/dashboard-sidebar
     CommonModule,
     OnlineAppointmentBookingSystemRoutingModule,
     FormsModule,  // for template-driven forms in login component
+    ChartsModule
   ]})
 export class OnlineAppointmentBookingSystemModule { }

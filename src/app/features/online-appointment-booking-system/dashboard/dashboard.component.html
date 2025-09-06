@@ -1,16 +1,73 @@
-<div class="dashboard-content">
-  <h1>Online Appointment Booking System</h1>
-  <p>This is the main dashboard area.</p>
+<div class="dashboard-container">
+  <h2 class="dashboard-title">Today's Overview</h2>
 
-  <!-- Example cards or content -->
-  <div class="cards">
-    <div class="card">
-      <h3>Overview</h3>
-      <p>Summary and statistics...</p>
+  <!-- KPI Cards -->
+  <div class="kpi-cards">
+    <div class="card kpi">
+      <h4>💰 Revenue (Today)</h4>
+      <p class="value">$720</p>
     </div>
-    <div class="card">
-      <h3>Upcoming Appointments</h3>
-      <p>Next bookings and schedule details.</p>
+    <div class="card kpi">
+      <h4>📅 Appointments</h4>
+      <p class="value">18</p>
+    </div>
+    <div class="card kpi">
+      <h4>🙋‍♀️ New Customers</h4>
+      <p class="value">6</p>
+    </div>
+    <div class="card kpi">
+      <h4>🧑‍💼 Regular Customers</h4>
+      <p class="value">8</p>
+    </div>
+  </div>
+
+  <!-- Two Column Layout -->
+  <div class="dashboard-main">
+    <!-- Left -->
+    <div class="left-panel">
+      <div class="card upcoming">
+        <h3>Upcoming Appointments</h3>
+        <ul>
+          <li><strong>10:00 AM</strong> - Jane Doe (Facial)</li>
+          <li><strong>11:30 AM</strong> - John Smith (Haircut)</li>
+          <li><strong>1:00 PM</strong> - Alice Wang (Massage)</li>
+        </ul>
+      </div>
+
+      <div class="card top-services">
+        <h3>Services Booked</h3>
+        <ul>
+          <li>Lash Lift - 12 bookings</li>
+          <li>Hair Styling - 10 bookings</li>
+          <li>Facial - 9 bookings</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Right -->
+    <div class="right-panel">
+      <div class="card chart">
+        <h3>Revenue This Week</h3>
+        <!-- Replace with chart.js later -->
+        <div class="chart-placeholder">
+          <canvas baseChart
+      [datasets]="barChartData"
+      [labels]="barChartLabels"
+      [options]="barChartOptions"
+      [legend]="barChartLegend"
+      [chartType]="barChartType">
+    </canvas>
+        </div>
+      </div>
+
+      <div class="card feedback">
+        <h3>Recent Reviews</h3>
+        <ul>
+          <li>🌟🌟🌟🌟🌟 - “Amazing service!” - Sarah</li>
+          <li>🌟🌟🌟🌟 - “Loved the facial!” - Lisa</li>
+          <li>🌟🌟🌟 - “Waited too long.” - Mike</li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
