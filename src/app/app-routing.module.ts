@@ -27,7 +27,7 @@ const routes: Routes = [
   // ✅ Dashboard-specific route without header/footer
  {
   path: 'onlineAppointmentBookingSystem',
-  component: DashboardLayoutComponent,
+  component: MainLayoutComponent,
   loadChildren: () =>
     import('./features/online-appointment-booking-system/online-appointment-booking-system.module')
       .then(m => m.OnlineAppointmentBookingSystemModule)
