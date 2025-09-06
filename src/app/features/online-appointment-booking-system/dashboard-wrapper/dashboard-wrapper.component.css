@@ -4,7 +4,7 @@
 
 @media (min-width: 768px) {
   .dashboard-wrapper.sidebar-open {
-    margin-left: 200px; /* Shift entire wrapper by sidebar width */
+    margin-left: 220px; /* Shift entire wrapper by sidebar width */
   }
 }
 
