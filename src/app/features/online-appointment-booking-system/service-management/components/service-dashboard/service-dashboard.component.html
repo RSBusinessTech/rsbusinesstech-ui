@@ -1,0 +1,92 @@
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Service ID -->
+    <ng-container matColumnDef="serviceId">
+      <th mat-header-cell *matHeaderCellDef>Service ID</th>
+      <td mat-cell *matCellDef="let element" [attr.data-label]="'Service ID'">
+        {{element.serviceId}}
+      </td>
+    </ng-container>
+
+    <!-- Category -->
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef>Category</th>
+      <td mat-cell *matCellDef="let element" [attr.data-label]="'Category'">
+        {{element.category}}
+      </td>
+    </ng-container>
+
+    <!-- Name -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element" [attr.data-label]="'Name'">
+        {{element.name}}
+      </td>
+    </ng-container>
+
+    <!-- Description -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>Description</th>
+      <td mat-cell *matCellDef="let element" [attr.data-label]="'Description'">
+        {{element.description}}
+      </td>
+    </ng-container>
+
+    <!-- Detailed Description -->
+    <ng-container matColumnDef="detailedDescription">
+      <th mat-header-cell *matHeaderCellDef>Detailed Description</th>
+      <td mat-cell *matCellDef="let element" [attr.data-label]="'Detailed Description'">
+        {{element.detailedDescription}}
+      </td>
+    </ng-container>
+
+    <!-- Junior Price -->
+    <ng-container matColumnDef="juniorPrice">
+      <th mat-header-cell *matHeaderCellDef>Junior Price</th>
+      <td mat-cell *matCellDef="let element" [attr.data-label]="'Junior Price'">
+        {{element.juniorPrice}}
+      </td>
+    </ng-container>
+
+    <!-- Senior Price -->
+    <ng-container matColumnDef="seniorPrice">
+      <th mat-header-cell *matHeaderCellDef>Senior Price</th>
+      <td mat-cell *matCellDef="let element" [attr.data-label]="'Senior Price'">
+        {{element.seniorPrice}}
+      </td>
+    </ng-container>
+
+    <!-- Duration -->
+    <ng-container matColumnDef="duration">
+      <th mat-header-cell *matHeaderCellDef>Duration</th>
+      <td mat-cell *matCellDef="let element" [attr.data-label]="'Duration'">
+        {{element.duration}}
+      </td>
+    </ng-container>
+
+    <!-- Actions -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element" [attr.data-label]="'Actions'">
+        <button mat-icon-button color="primary" (click)="editRow(element)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteRow(element)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <!-- Pagination -->
+  <mat-paginator
+    [length]="dataSource.data.length"
+    [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Select page of services">
+  </mat-paginator>
+</div>

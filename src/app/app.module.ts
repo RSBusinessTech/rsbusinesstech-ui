@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // required for dropdowns
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,9 +25,10 @@ import { ChartsModule } from 'ng2-charts';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,  // <-- Important!
     AppRoutingModule,
     HttpClientModule,
-    ChartsModule  
+    ChartsModule, 
   ],
   providers: [],
   bootstrap: [AppComponent]

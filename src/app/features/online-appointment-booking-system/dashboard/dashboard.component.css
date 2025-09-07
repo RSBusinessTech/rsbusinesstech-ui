@@ -220,5 +220,5 @@
 /* Add vertical spacing between cards inside left and right panels */
 .left-panel .card,
 .right-panel .card {
-  margin-bottom: 1.8rem; /* or 2rem for more breathing room */
+  margin-bottom: 1.8rem; /* or 2rem for more breathing room */ 
 }

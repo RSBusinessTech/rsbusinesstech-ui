@@ -1,0 +1,91 @@
+/* Table styling and layout */
+table {
+  width: 100%;
+}
+
+/* Table Container */
+.mat-elevation-z8 {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+/* Table Styling */
+table.mat-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+}
+
+/* Header Cells */
+th.mat-header-cell {
+  background-color: #c9c8b6;
+  color: #555;
+  font-weight: 600;
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Data Cells */
+td.mat-cell {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f1f1f1;
+  text-align: left;
+}
+
+/* Hover Effect for Rows */
+tr.mat-row:hover {
+  background-color: #fafafa;
+}
+
+/* Pagination Styling */
+mat-paginator {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 14px;
+  color: #555;
+}
+
+mat-paginator .mat-select,
+mat-paginator .mat-paginator-page-size {
+  margin-right: 8px;
+}
+
+mat-paginator .mat-paginator-range-label {
+  margin-right: 8px;
+}
+
+/* Edit/Delete Buttons styling */
+td.action-cell {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+button.mat-icon-button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #1976d2; /* blue for edit */
+  transition: color 0.3s ease;
+}
+
+button.mat-icon-button.warn {
+  color: #d32f2f; /* red for delete */
+}
+
+button.mat-icon-button:hover {
+  opacity: 0.8;
+}
+
+/* Desktop styles: Keep your existing styles */
+
