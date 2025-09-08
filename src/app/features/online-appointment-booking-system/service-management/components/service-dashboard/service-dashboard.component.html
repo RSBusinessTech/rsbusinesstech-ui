@@ -1,84 +1,157 @@
-<div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<!-- Desktop View Table -->
+
+<!-- for filteration [angular-material]. -->
+<mat-form-field class="search-bar-right">
+  <mat-label>Search a service… 🔍</mat-label>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="" />
+</mat-form-field>
+
+<!-- for Export [angular-material]. -->
+<div class="export-buttons">
+  <button mat-raised-button color="primary" class="excel-button" (click)="exporter.exportTable('xlsx')">
+    <mat-icon class="export-icon">file_download</mat-icon>
+    Excel
+  </button>
+  <button mat-raised-button color="accent" class="csv-button" (click)="exporter.exportTable('csv')">
+    <mat-icon class="export-icon">table_chart</mat-icon>
+    CSV
+  </button>
+  <button mat-raised-button color="warn" class="json-button" (click)="exporter.exportTable('json')">
+    <mat-icon class="export-icon">data_object</mat-icon>
+    JSON
+  </button>
+  <button mat-raised-button class="txt-button export-text" (click)="exporter.exportTable('txt')">
+    <mat-icon class="export-icon">description</mat-icon>
+    Text
+  </button>
+</div><br>
+
+<!-- Pagination -->
+<div class="mat-elevation-z8 desktop-table">
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    matTableExporter
+    #exporter="matTableExporter"
+    matSort
+    (matSortChange)="announceSortChange($event)"
+    class="mat-elevation-z8"
+  >
     <!-- Service ID -->
     <ng-container matColumnDef="serviceId">
-      <th mat-header-cell *matHeaderCellDef>Service ID</th>
-      <td mat-cell *matCellDef="let element" [attr.data-label]="'Service ID'">
-        {{element.serviceId}}
-      </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Service ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.serviceId }}</td>
     </ng-container>
 
     <!-- Category -->
     <ng-container matColumnDef="category">
-      <th mat-header-cell *matHeaderCellDef>Category</th>
-      <td mat-cell *matCellDef="let element" [attr.data-label]="'Category'">
-        {{element.category}}
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.editMode; else readModeCat">
+          <input matInput [(ngModel)]="element.category" placeholder="Enter category" />
+        </ng-container>
+        <ng-template #readModeCat>{{ element.category }}</ng-template>
       </td>
     </ng-container>
 
     <!-- Name -->
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Name</th>
-      <td mat-cell *matCellDef="let element" [attr.data-label]="'Name'">
-        {{element.name}}
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.editMode; else readModeName">
+          <input matInput [(ngModel)]="element.name" placeholder="Enter name" />
+        </ng-container>
+        <ng-template #readModeName>{{ element.name }}</ng-template>
       </td>
     </ng-container>
 
     <!-- Description -->
     <ng-container matColumnDef="description">
-      <th mat-header-cell *matHeaderCellDef>Description</th>
-      <td mat-cell *matCellDef="let element" [attr.data-label]="'Description'">
-        {{element.description}}
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.editMode; else readModeDesc">
+          <input matInput [(ngModel)]="element.description" placeholder="Enter description" />
+        </ng-container>
+        <ng-template #readModeDesc>{{ element.description }}</ng-template>
       </td>
     </ng-container>
 
     <!-- Detailed Description -->
     <ng-container matColumnDef="detailedDescription">
-      <th mat-header-cell *matHeaderCellDef>Detailed Description</th>
-      <td mat-cell *matCellDef="let element" [attr.data-label]="'Detailed Description'">
-        {{element.detailedDescription}}
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Detailed Description</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.editMode; else readModeDetDesc">
+          <input
+            matInput
+            [(ngModel)]="element.detailedDescription"
+            placeholder="Enter detailed description"
+          />
+        </ng-container>
+        <ng-template #readModeDetDesc>{{ element.detailedDescription }}</ng-template>
       </td>
     </ng-container>
 
     <!-- Junior Price -->
     <ng-container matColumnDef="juniorPrice">
-      <th mat-header-cell *matHeaderCellDef>Junior Price</th>
-      <td mat-cell *matCellDef="let element" [attr.data-label]="'Junior Price'">
-        {{element.juniorPrice}}
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Junior Price</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.editMode; else readModeJunior">
+          <input matInput [(ngModel)]="element.juniorPrice" placeholder="Enter junior price" />
+        </ng-container>
+        <ng-template #readModeJunior>{{ element.juniorPrice }}</ng-template>
       </td>
     </ng-container>
 
     <!-- Senior Price -->
     <ng-container matColumnDef="seniorPrice">
-      <th mat-header-cell *matHeaderCellDef>Senior Price</th>
-      <td mat-cell *matCellDef="let element" [attr.data-label]="'Senior Price'">
-        {{element.seniorPrice}}
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Senior Price</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.editMode; else readModeSenior">
+          <input matInput [(ngModel)]="element.seniorPrice" placeholder="Enter senior price" />
+        </ng-container>
+        <ng-template #readModeSenior>{{ element.seniorPrice }}</ng-template>
       </td>
     </ng-container>
 
     <!-- Duration -->
     <ng-container matColumnDef="duration">
-      <th mat-header-cell *matHeaderCellDef>Duration</th>
-      <td mat-cell *matCellDef="let element" [attr.data-label]="'Duration'">
-        {{element.duration}}
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Duration</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.editMode; else readModeDuration">
+          <input matInput [(ngModel)]="element.duration" placeholder="Enter duration" />
+        </ng-container>
+        <ng-template #readModeDuration>{{ element.duration }}</ng-template>
       </td>
     </ng-container>
 
     <!-- Actions -->
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Actions</th>
-      <td mat-cell *matCellDef="let element" [attr.data-label]="'Actions'">
-        <button mat-icon-button color="primary" (click)="editRow(element)">
-          <mat-icon>edit</mat-icon>
-        </button>
-        <button mat-icon-button color="warn" (click)="deleteRow(element)">
-          <mat-icon>delete</mat-icon>
-        </button>
+      <td mat-cell *matCellDef="let element" class="action-cell">
+        <ng-container *ngIf="element.editMode; else viewMode">
+          <button mat-icon-button color="primary" (click)="saveRow(element)">
+            <mat-icon>save</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="cancelEdit(element)">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </ng-container>
+        <ng-template #viewMode>
+          <button mat-icon-button color="primary" (click)="editRow(element)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteRow(element)">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button mat-icon-button color="accent" (click)="addNewRow()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </ng-template>
       </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 
   <!-- Pagination -->
@@ -87,6 +160,92 @@
     [pageSize]="5"
     [pageSizeOptions]="[5, 10, 20]"
     showFirstLastButtons
-    aria-label="Select page of services">
+  >
   </mat-paginator>
 </div>
+
+<!-- Mobile View Cards -->
+<div class="mobile-cards">
+  <div class="mobile-card" *ngFor="let element of dataSource.filteredData">
+    <div><strong>Service ID:</strong> {{ element.serviceId }}</div>
+
+    <div>
+      <strong>Category:</strong>
+      <ng-container *ngIf="element.editMode; else readModeCat">
+        <input matInput [(ngModel)]="element.category" placeholder="Enter category" />
+      </ng-container>
+      <ng-template #readModeCat>{{ element.category }}</ng-template>
+    </div>
+
+    <div>
+      <strong>Name:</strong>
+      <ng-container *ngIf="element.editMode; else readModeName">
+        <input matInput [(ngModel)]="element.name" placeholder="Enter name" />
+      </ng-container>
+      <ng-template #readModeName>{{ element.name }}</ng-template>
+    </div>
+
+    <div>
+      <strong>Description:</strong>
+      <ng-container *ngIf="element.editMode; else readModeDesc">
+        <input matInput [(ngModel)]="element.description" placeholder="Enter description" />
+      </ng-container>
+      <ng-template #readModeDesc>{{ element.description }}</ng-template>
+    </div>
+
+    <div>
+      <strong>Details:</strong>
+      <ng-container *ngIf="element.editMode; else readModeDetails">
+        <input matInput [(ngModel)]="element.detailedDescription" placeholder="Enter detailed description" />
+      </ng-container>
+      <ng-template #readModeDetails>{{ element.detailedDescription }}</ng-template>
+    </div>
+
+    <div>
+      <strong>Junior Price:</strong>
+      <ng-container *ngIf="element.editMode; else readModeJunior">
+        <input matInput [(ngModel)]="element.juniorPrice" placeholder="Enter junior price" />
+      </ng-container>
+      <ng-template #readModeJunior>{{ element.juniorPrice }}</ng-template>
+    </div>
+
+    <div>
+      <strong>Senior Price:</strong>
+      <ng-container *ngIf="element.editMode; else readModeSenior">
+        <input matInput [(ngModel)]="element.seniorPrice" placeholder="Enter senior price" />
+      </ng-container>
+      <ng-template #readModeSenior>{{ element.seniorPrice }}</ng-template>
+    </div>
+
+    <div>
+      <strong>Duration:</strong>
+      <ng-container *ngIf="element.editMode; else readModeDuration">
+        <input matInput [(ngModel)]="element.duration" placeholder="Enter duration" />
+      </ng-container>
+      <ng-template #readModeDuration>{{ element.duration }}</ng-template>
+    </div>
+
+    <div class="action-buttons">
+      <ng-container *ngIf="element.editMode; else viewMode">
+        <button mat-icon-button color="primary" (click)="saveRow(element)">
+          <mat-icon>save</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="cancelEdit(element)">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </ng-container>
+      <ng-template #viewMode>
+        <button mat-icon-button color="primary" (click)="editRow(element)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteRow(element)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button color="accent" (click)="addNewRow()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </ng-template>
+    </div>
+  </div>
+</div>
+

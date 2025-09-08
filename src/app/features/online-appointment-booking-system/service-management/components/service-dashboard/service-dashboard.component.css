@@ -1,9 +1,8 @@
-/* Table styling and layout */
+/* General Styling */
 table {
   width: 100%;
 }
 
-/* Table Container */
 .mat-elevation-z8 {
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -12,7 +11,6 @@ table {
   margin-bottom: 20px;
 }
 
-/* Table Styling */
 table.mat-table {
   width: 100%;
   border-collapse: collapse;
@@ -20,7 +18,7 @@ table.mat-table {
   color: #333;
 }
 
-/* Header Cells */
+/* Header */
 th.mat-header-cell {
   background-color: #c9c8b6;
   color: #555;
@@ -39,12 +37,12 @@ td.mat-cell {
   text-align: left;
 }
 
-/* Hover Effect for Rows */
+/* Row Hover */
 tr.mat-row:hover {
   background-color: #fafafa;
 }
 
-/* Pagination Styling */
+/* Paginator */
 mat-paginator {
   margin-top: 16px;
   display: flex;
@@ -54,16 +52,7 @@ mat-paginator {
   color: #555;
 }
 
-mat-paginator .mat-select,
-mat-paginator .mat-paginator-page-size {
-  margin-right: 8px;
-}
-
-mat-paginator .mat-paginator-range-label {
-  margin-right: 8px;
-}
-
-/* Edit/Delete Buttons styling */
+/* Action Buttons */
 td.action-cell {
   display: flex;
   gap: 8px;
@@ -75,17 +64,139 @@ button.mat-icon-button {
   border: none;
   background: transparent;
   cursor: pointer;
-  color: #1976d2; /* blue for edit */
+  color: #1976d2;
   transition: color 0.3s ease;
 }
 
 button.mat-icon-button.warn {
-  color: #d32f2f; /* red for delete */
+  color: #d32f2f;
 }
 
 button.mat-icon-button:hover {
   opacity: 0.8;
 }
 
-/* Desktop styles: Keep your existing styles */
+/* Mobile Styling */
+.desktop-table {
+  display: block;
+}
+
+.mobile-cards {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-table {
+    display: none;
+  }
+
+  .mobile-cards {
+    display: block;
+    padding: 0 8px;
+  }
+
+  .mobile-card {
+    background-color: #f0efea;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: #333;
+  }
+
+  .mobile-card div {
+    margin-bottom: 8px;
+  }
+
+  .mobile-card div strong {
+    display: inline-block;
+    min-width: 140px;
+    color: #555;
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+  }
+}
+
+.search-bar-right {
+  margin-left: 20px;
+  margin-right: 20px;
+  /* display: block; */
+  width: 300px; /* or any desired width */
+}
+
+
+.export-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 16px 550px;
+}
+
+.export-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 8px;
+  font-weight: 500;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+  text-transform: none;
+}
+
+.export-button:hover {
+  transform: translateY(-2px);
+}
+
+.export-icon {
+  font-size: 20px;
+}
+
+.export-text {
+  background-color: #f5f5f5;
+  color: #444;
+}
+
+@media (max-width: 768px) {
+  .export-buttons {
+    flex-direction: column;
+    margin: 16px 20px;
+  }
+
+  .export-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* In your component's CSS or global styles */
+.excel-button {
+  background-color: #e0f7fa;  
+  color: #006064;            
+}
+
+.json-button {
+  background-color: #e8f5e9;
+  color: #000;
+}
+
+.csv-button {
+  background-color: #fffde7;
+  color: #000;
+}
+
+.txt-button {
+  background-color: #fffde7;
+  color: #000;
+}
+
+
+
+
+
 

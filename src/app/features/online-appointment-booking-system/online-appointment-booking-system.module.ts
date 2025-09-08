@@ -10,21 +10,29 @@ import { ChartsModule } from 'ng2-charts';
 import { ServiceDashboardComponent } from './service-management/components/service-dashboard/service-dashboard.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSelectModule } from '@angular/material/select'; // <-- Add MatSelectModule
+import { MatSelectModule } from '@angular/material/select'; 
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSortModule } from '@angular/material/sort';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material';
+import { MatTableExporterModule } from 'mat-table-exporter';
 
 @NgModule({
   declarations: [LoginComponent, DashboardComponent, DashboardWrapperComponent , DashboardSidebarComponent, ServiceDashboardComponent],
   imports: [
     CommonModule,
     OnlineAppointmentBookingSystemRoutingModule,
-    FormsModule,  // for template-driven forms in login component
+    FormsModule,
     ChartsModule,
-    MatTableModule,    //for Data Table.
+    MatTableModule,    // for Data Table.
     MatPaginatorModule, //for Pagination. 
-    MatSelectModule,  // <-- Required for paginator dropdown
+    MatSelectModule,    //for paginator dropdown.
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSortModule,         //for Sorting.
+    MatInputModule,         //for filtering
+    MatFormFieldModule,     //for filtering
+    MatTableExporterModule //for exporting table data into “.xlsx”, “.csv”, “.json”, “.txt” etc files. 
   ]})
 export class OnlineAppointmentBookingSystemModule { }
