@@ -95,12 +95,18 @@ saveRow(element: PeriodicElement) {
   this.dataSource._updateChangeSubscription(); // Refresh table to show changes
 }
 
-cancelEdit(element: PeriodicElement) {
-  if (element._backup) {
-    Object.assign(element, element._backup);
+  cancelEdit(element: PeriodicElement) {
+  // If new row (e.g., serviceId null or 0), remove it completely on cancel
+  if (!element.serviceId) {
+    this.dataSource.data = this.dataSource.data.filter(item => item !== element);
+    this.dataSource._updateChangeSubscription(); // Refresh table
+  } else if (element._backup) {
+    Object.assign(element, element._backup); // Restore original values
     delete element._backup;
+    element.editMode = false;
+  } else {
+    element.editMode = false;
   }
-  element.editMode = false;
 }
 
 }

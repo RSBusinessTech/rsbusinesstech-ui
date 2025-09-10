@@ -1,0 +1,245 @@
+<!-- Customer Management -->
+
+<!-- Filter/Search -->
+<mat-form-field class="search-bar-right">
+  <mat-label>Search a customer 🔍</mat-label>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="" />
+</mat-form-field>
+
+<!-- Export Buttons -->
+<div class="export-buttons">
+  <button mat-raised-button color="primary" class="excel-button" (click)="exporter.exportTable('xlsx')">
+    <mat-icon class="export-icon">file_download</mat-icon>
+    Excel
+  </button>
+  <button mat-raised-button color="accent" class="csv-button" (click)="exporter.exportTable('csv')">
+    <mat-icon class="export-icon">table_chart</mat-icon>
+    CSV
+  </button>
+  <button mat-raised-button color="warn" class="json-button" (click)="exporter.exportTable('json')">
+    <mat-icon class="export-icon">data_object</mat-icon>
+    JSON
+  </button>
+  <button mat-raised-button class="txt-button export-text" (click)="exporter.exportTable('txt')">
+    <mat-icon class="export-icon">description</mat-icon>
+    Text
+  </button>
+</div><br>
+
+<!-- Desktop Table -->
+<div class="mat-elevation-z8 desktop-table">
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    matTableExporter
+    #exporter="matTableExporter"
+    matSort
+    class="mat-elevation-z8"
+  >
+
+    <!-- Customer ID -->
+    <ng-container matColumnDef="customerId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Customer ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.customerId }}</td>
+    </ng-container>
+
+    <!-- Name -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.editMode; else readModeName">
+          <input matInput [(ngModel)]="element.name" placeholder="Enter name" />
+        </ng-container>
+        <ng-template #readModeName>{{ element.name }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- Email -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.editMode; else readModeEmail">
+          <input matInput [(ngModel)]="element.email" placeholder="Enter email" />
+        </ng-container>
+        <ng-template #readModeEmail>{{ element.email }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- Phone Number -->
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone Number</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.editMode; else readModePhone">
+          <input matInput [(ngModel)]="element.phone" placeholder="Enter phone number" />
+        </ng-container>
+        <ng-template #readModePhone>{{ element.phone }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- Service ID -->
+    <ng-container matColumnDef="serviceId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Service ID</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.editMode; else readModeServiceId">
+          <input matInput [(ngModel)]="element.serviceId" placeholder="Enter service ID" />
+        </ng-container>
+        <ng-template #readModeServiceId>{{ element.serviceId }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- Stylist -->
+    <ng-container matColumnDef="stylist">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Stylist</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.editMode; else readModeStylist">
+          <input matInput [(ngModel)]="element.stylist" placeholder="Enter stylist" />
+        </ng-container>
+        <ng-template #readModeStylist>{{ element.stylist }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- Date -->
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.editMode; else readModeDate">
+          <input matInput [(ngModel)]="element.date" placeholder="Enter date" />
+        </ng-container>
+        <ng-template #readModeDate>{{ element.date }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- Time Slot -->
+    <ng-container matColumnDef="time">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Time Slot</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.editMode; else readModeTime">
+          <input matInput [(ngModel)]="element.time" placeholder="Enter time slot" />
+        </ng-container>
+        <ng-template #readModeTime>{{ element.time }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- Actions -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element" class="action-cell">
+        <ng-container *ngIf="element.editMode; else viewMode">
+          <button mat-icon-button color="primary" (click)="saveRow(element)" matTooltip="Save">
+            <mat-icon>save</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="cancelEdit(element)" matTooltip="Cancel">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </ng-container>
+        <ng-template #viewMode>
+          <button mat-icon-button color="primary" (click)="editRow(element)" matTooltip="Edit">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteRow(element)" matTooltip="Delete">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button mat-icon-button color="accent" (click)="addNewRow()" matTooltip="Add New">
+            <mat-icon>add</mat-icon>
+          </button>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <!-- Pagination -->
+  <mat-paginator
+    [length]="dataSource.data.length"
+    [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+  ></mat-paginator>
+</div>
+
+<!-- Mobile View Cards -->
+<div class="mobile-cards">
+  <div class="mobile-card" *ngFor="let element of dataSource.filteredData">
+    <div><strong>Customer ID:</strong> {{ element.customerId }}</div>
+
+    <div>
+      <strong>Name:</strong>
+      <ng-container *ngIf="element.editMode; else mobileReadName">
+        <input matInput [(ngModel)]="element.name" placeholder="Enter name" />
+      </ng-container>
+      <ng-template #mobileReadName>{{ element.name }}</ng-template>
+    </div>
+
+    <div>
+      <strong>Email:</strong>
+      <ng-container *ngIf="element.editMode; else mobileReadEmail">
+        <input matInput [(ngModel)]="element.email" placeholder="Enter email" />
+      </ng-container>
+      <ng-template #mobileReadEmail>{{ element.email }}</ng-template>
+    </div>
+
+    <div>
+      <strong>Phone Number:</strong>
+      <ng-container *ngIf="element.editMode; else mobileReadPhone">
+        <input matInput [(ngModel)]="element.phone" placeholder="Enter phone number" />
+      </ng-container>
+      <ng-template #mobileReadPhone>{{ element.phone }}</ng-template>
+    </div>
+
+    <div>
+      <strong>Service ID:</strong>
+      <ng-container *ngIf="element.editMode; else mobileReadServiceId">
+        <input matInput [(ngModel)]="element.serviceId" placeholder="Enter service ID" />
+      </ng-container>
+      <ng-template #mobileReadServiceId>{{ element.serviceId }}</ng-template>
+    </div>
+
+    <div>
+      <strong>Stylist:</strong>
+      <ng-container *ngIf="element.editMode; else mobileReadStylist">
+        <input matInput [(ngModel)]="element.stylist" placeholder="Enter stylist" />
+      </ng-container>
+      <ng-template #mobileReadStylist>{{ element.stylist }}</ng-template>
+    </div>
+
+    <div>
+      <strong>Date:</strong>
+      <ng-container *ngIf="element.editMode; else mobileReadDate">
+        <input matInput [(ngModel)]="element.date" placeholder="Enter date" />
+      </ng-container>
+      <ng-template #mobileReadDate>{{ element.date }}</ng-template>
+    </div>
+
+    <div>
+      <strong>Time Slot:</strong>
+      <ng-container *ngIf="element.editMode; else mobileReadTime">
+        <input matInput [(ngModel)]="element.time" placeholder="Enter time slot" />
+      </ng-container>
+      <ng-template #mobileReadTime>{{ element.time }}</ng-template>
+    </div>
+
+    <div class="action-buttons">
+      <ng-container *ngIf="element.editMode; else mobileViewMode">
+        <button mat-icon-button color="primary" (click)="saveRow(element)" matTooltip="Save">
+          <mat-icon>save</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="cancelEdit(element)" matTooltip="Cancel">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </ng-container>
+      <ng-template #mobileViewMode>
+        <button mat-icon-button color="primary" (click)="editRow(element)" matTooltip="Edit">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteRow(element)" matTooltip="Delete">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button color="accent" (click)="addNewRow()" matTooltip="Add New">
+          <mat-icon>add</mat-icon>
+        </button>
+      </ng-template>
+    </div>
+  </div>
+</div>
