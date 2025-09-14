@@ -6,7 +6,7 @@
 }
 
 .clients-section h2 {
-  font-size: 2.5em;
+  font-size: 3.0em;
   color: rgb(255, 38, 0);
   margin-bottom: 40px;
   animation: fadeIn 5s ease-in-out 0.5s infinite; /* delay of 0.5s with frequency of 5sec */
