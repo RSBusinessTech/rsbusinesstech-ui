@@ -132,11 +132,13 @@ button.mat-icon-button:hover {
 
 
 .export-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin: 16px 550px;
-}
+    display: flex;
+    justify-content: flex-start; /* align to left */
+    align-items: center;
+    flex-wrap: nowrap; /* force single line */
+    gap: 12px;
+    margin: 16px 20px; /* reduced from 550px for better responsiveness */
+  }
 
 .export-button {
   display: flex;
