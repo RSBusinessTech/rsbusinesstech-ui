@@ -15,7 +15,7 @@
 .contact-section .container h2 {
   text-align: center;
   color: rgb(255, 38, 0);
-  font-size: 2rem;
+  font-size: 3rem;
   animation: fadeIn 5s ease-in-out 0.5s infinite; /* delay of 0.5s with frequency of 5sec */
 }
 
