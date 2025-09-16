@@ -1,0 +1,233 @@
+.blog-wrapper {
+  font-family: 'Inter', sans-serif;
+  color: #222;
+  background-color: #fdfdff;
+  padding: 24px;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background: #fff;
+  padding: 40px 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+  margin-bottom: 40px;
+}
+
+.hero-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.hero .text {
+  flex: 1 1 360px;
+  max-width: 460px; /* Added max width for consistency on mobile */
+}
+
+.hero h1 {
+  font-size: 32px;
+  color: #1a1a3d;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.hero .subheading {
+  font-size: 20px;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 12px;
+}
+
+.hero .meta {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.hero .intro {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.hero-image {
+  flex: 1 1 320px;
+  max-width: 560px; /* Match max-width with .text */
+  box-sizing: border-box;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 860px; /* Match max-width for consistent width */
+  max-height: 360px;
+  border-radius: 12px;
+}
+
+/* Cards Section */
+.cards-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.card {
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.card h2 {
+  font-size: 20px;
+  margin-bottom: 16px;
+  color: #003399;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card li {
+  margin-bottom: 12px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.card li::before {
+  content: "✔";
+  color: #00b894;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+/* Quote */
+.quote {
+  background: #e9f3ff;
+  border-left: 4px solid #1565c0;
+  padding: 20px;
+  font-style: italic;
+  margin-bottom: 40px;
+  border-radius: 8px;
+}
+
+/* CTA Section */
+.cta-section {
+  text-align: center;
+  background: #000;
+  color: #ffbf00;
+  padding: 40px 20px;
+  border-radius: 12px;
+}
+
+.cta-section h2 {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.cta-section p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.cta-button {
+  background-color: #ffbf00;
+  color: #000;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #e3e8ff;
+}
+
+/* Responsive: Mobile Fix Only */
+@media (max-width: 768px) {
+    .hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background: #fff;
+  padding: 0px 10px;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+  margin-bottom: 40px;
+}
+  .hero-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero .text {
+    width: 100%;
+    max-width: 100%; /* Ensures text and image same width */
+    box-sizing: border-box;
+  }
+
+  .hero-image {
+    width: 100%;
+    max-width: 100%; /* Matches .text */
+    margin-top: 0px;
+    box-sizing: border-box;
+    margin-bottom: 0; /* Remove any margin below hero-image */
+    padding-bottom: 0; /* Remove any padding below hero-image */
+    margin-bottom: 0;
+  }
+
+  .hero-image img {
+    display: block;   /* Prevent inline gap */
+    margin: 0;        /* Remove default margin */
+    padding: 0;       /* Remove default padding */
+    line-height: 0;   /* Remove line height space */
+    vertical-align: top; /* Remove any vertical alignment gap */
+  }
+
+  .hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .hero .subheading {
+    font-size: 1.1rem;
+  }
+
+  .hero .intro {
+    font-size: 0.95rem;
+  }
+
+  .cta-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .cta-section p {
+    font-size: 1rem;
+  }
+
+.quote {
+  font-style: italic;
+  font-size: 0.9rem;
+   margin: 0 0 24px 0; /* Add space below the quote */
+}
+
+/* Optional: Link styling */
+.quote a {
+  word-break: break-word;
+  color: #003399;
+  text-decoration: underline;
+}
+  .card {
+    padding: 16px;
+  }
+}
