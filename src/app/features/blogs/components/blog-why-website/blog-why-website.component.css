@@ -33,7 +33,7 @@
 
 .hero h1 {
   font-size: 32px;
-  color: #1a1a3d;
+  color: #ad2121;
   font-weight: 700;
   margin-bottom: 8px;
 }
@@ -87,7 +87,7 @@
 .card h2 {
   font-size: 20px;
   margin-bottom: 16px;
-  color: #003399;
+  color: #b6aa0b;
 }
 
 .card ul {
@@ -112,8 +112,8 @@
 
 /* Quote */
 .quote {
-  background: #e9f3ff;
-  border-left: 4px solid #1565c0;
+  background: #f7f2e8;;
+  border-left: 4px solid #b6aa0b;
   padding: 20px;
   font-style: italic;
   margin-bottom: 40px;
