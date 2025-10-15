@@ -20,10 +20,10 @@ export class BlogHomeComponent implements OnInit {
       url: '/blogs/why-business-needs-website'
     },
     {
-      title: 'Top Trends in Mobile App Development',
+      title: 'Role of Mobile Apps in Business',
       summary: 'Learn what’s trending in mobile apps and how your business can benefit from custom apps.',
       image: 'assets/icons/blog-mobile-apps.png',
-      url: '/blogs/mobile-app-trends-2025'
+      url: '/blogs/role-mobile-apps'
     },
     {
       title: 'QR Codes for Business Growth',
