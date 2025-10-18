@@ -5,9 +5,10 @@ import { BlogHomeComponent } from './components/blog-home/blog-home.component';
 import { BlogsRoutingModule } from './blogs-routing.module';
 import { BlogWhyWebsiteComponent } from './components/blog-why-website/blog-why-website.component';
 import { BlogRoleMobileAppsComponent } from './components/blog-role-mobile-apps/blog-role-mobile-apps.component';
+import { BlogQrCodesComponent } from './components/blog-qr-codes/blog-qr-codes.component';
 
 @NgModule({
-  declarations: [BlogHomeComponent, BlogWhyWebsiteComponent, BlogRoleMobileAppsComponent],
+  declarations: [BlogHomeComponent, BlogWhyWebsiteComponent, BlogRoleMobileAppsComponent, BlogQrCodesComponent],
   imports: [
     CommonModule,
     BlogsRoutingModule,

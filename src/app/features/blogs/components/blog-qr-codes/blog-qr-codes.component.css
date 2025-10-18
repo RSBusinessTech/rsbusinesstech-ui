@@ -1,0 +1,217 @@
+/* ====== Page Background ====== */
+body {
+  background-color: #f4f6f9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.blog-section {
+  background-color: #f9f5e3;
+  padding: 20px 0;
+}
+
+/* ====== Main Blog Container ====== */
+.container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+/* ====== Headings ====== */
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  font-weight: 700;
+  color: #0d1b2a;
+  margin-bottom: 2rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+  color: #1f3c88;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+h2::before {
+  position: absolute;
+  left: 0;
+  top: 3px;
+  color: #ff6b6b;
+  font-size: 1rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+  color: #333;
+  margin-top: 1.8rem;
+  font-weight: 600;
+}
+
+/* ====== Paragraph & List ====== */
+p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 1.5rem;
+}
+
+ul {
+  padding-left: 1.5rem;
+  list-style: disc;
+  margin-bottom: 1.5rem;
+}
+
+ul li {
+  margin-bottom: 0.75rem;
+  font-size: 1.02rem;
+  color: #555;
+}
+
+/* ====== Image Styling ====== */
+img {
+  display: block;
+  width: 100%;
+  max-height: 400px; /* Reduced height for desktop */
+  object-fit: cover; /* Maintains aspect ratio and crops if needed */
+  border-radius: 10px;
+  margin: 0 auto 2rem auto;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+/* ====== Utility Classes ====== */
+.text-center {
+  text-align: center;
+}
+
+.text-danger {
+  color: #d62828;
+}
+
+.mt-4 {
+  margin-top: 1.5rem;
+}
+
+.mt-5 {
+  margin-top: 3rem;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem;
+}
+
+/* ====== Responsive Design ====== */
+@media (max-width: 1200px) {
+  .container {
+    margin: 2rem;
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 2.3rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .container {
+    padding: 1.8rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  p, li {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem;
+  }
+  img {
+    max-height: 250px; /* Smaller height for mobile/tablet */
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  p, li {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  p, li {
+    font-size: 0.9rem;
+  }
+}
+
+/* CTA Section */
+.cta-section {
+  text-align: center;
+  background: #000;
+  color: #ffbf00;
+  padding: 20px 20px;
+  border-radius: 12px;
+}
+
+.cta-section h2 {
+  font-size: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #ffbf00;
+}
+
+.cta-section p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #ffbf00;
+}
+
+.cta-button {
+  background-color: #ffbf00;
+  color: #000;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #e3e8ff;
+}
+
