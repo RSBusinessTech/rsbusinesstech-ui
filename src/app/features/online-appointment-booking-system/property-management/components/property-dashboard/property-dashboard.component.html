@@ -1,0 +1,319 @@
+<!-- Search -->
+<mat-form-field class="search-bar-right">
+  <mat-label>Search a Property 🔍</mat-label>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="" />
+</mat-form-field>
+
+<!-- Export Buttons -->
+<div class="export-buttons">
+  <button mat-raised-button color="primary" (click)="exporter.exportTable('xlsx')">
+    <mat-icon>file_download</mat-icon> Excel
+  </button>
+  <button mat-raised-button color="accent" (click)="exporter.exportTable('csv')">
+    <mat-icon>table_chart</mat-icon> CSV
+  </button>
+  <button mat-raised-button color="warn" (click)="exporter.exportTable('json')">
+    <mat-icon>data_object</mat-icon> JSON
+  </button>
+  <button mat-raised-button (click)="exporter.exportTable('txt')">
+    <mat-icon>description</mat-icon> Text
+  </button>
+</div>
+
+<!-- Desktop Table view -->
+<div class="mat-elevation-z8 desktop-table">
+  <table mat-table [dataSource]="dataSource" matTableExporter #exporter="matTableExporter" matSort class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Property ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.editMode; else readModeName">
+          <input matInput [(ngModel)]="element.name" />
+        </ng-container>
+        <ng-template #readModeName>{{ element.name }}</ng-template>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.editMode; else readModePrice">
+          <input matInput [(ngModel)]="element.price" type="number" />
+        </ng-container>
+        <ng-template #readModePrice>{{ element.price }}</ng-template>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Address</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.editMode; else readModeAddress">
+          <input matInput [(ngModel)]="element.address" />
+        </ng-container>
+        <ng-template #readModeAddress>{{ element.address }}</ng-template>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="bedrooms">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Bedrooms</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.editMode; else readModeBedrooms">
+          <input matInput [(ngModel)]="element.bedrooms" type="number" />
+        </ng-container>
+        <ng-template #readModeBedrooms>{{ element.bedrooms }}</ng-template>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="bathrooms">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Bathrooms</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.editMode; else readModeBathrooms">
+          <input matInput [(ngModel)]="element.bathrooms" type="number" />
+        </ng-container>
+        <ng-template #readModeBathrooms>{{ element.bathrooms }}</ng-template>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="carParks">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Car Parks</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.editMode; else readModeCarParks">
+          <input matInput [(ngModel)]="element.carParks" type="number" />
+        </ng-container>
+        <ng-template #readModeCarParks>{{ element.carParks }}</ng-template>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="furnishing">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Furnishing</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.editMode; else readModeFurnishing">
+          <input matInput [(ngModel)]="element.furnishing" />
+        </ng-container>
+        <ng-template #readModeFurnishing>{{ element.furnishing }}</ng-template>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="sizeSqft">
+      <th mat-header-cell *matHeaderCellDef>Size (sq.ft.)</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.editMode; else readModeSize">
+          <input matInput [(ngModel)]="element.sizeSqft" type="number" />
+        </ng-container>
+        <ng-template #readModeSize>{{ element.sizeSqft }}</ng-template>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="amenities">
+      <th mat-header-cell *matHeaderCellDef>Amenities</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.editMode; else readAmenities">
+          <mat-select [(ngModel)]="element.amenities" multiple>
+            <mat-option *ngFor="let a of amenitiesOptions" [value]="a">{{ a }}</mat-option>
+          </mat-select>
+        </ng-container>
+        <ng-template #readAmenities>{{ element.amenities?.join(', ') }}</ng-template>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="commonFacilities">
+      <th mat-header-cell *matHeaderCellDef>Common Facilities</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.editMode; else readFacilities">
+          <mat-select [(ngModel)]="element.commonFacilities" multiple>
+            <mat-option *ngFor="let cf of commonFacilitiesOptions" [value]="cf">{{ cf }}</mat-option>
+          </mat-select>
+        </ng-container>
+        <ng-template #readFacilities>{{ element.commonFacilities?.join(', ') }}</ng-template>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="location">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Location</th>
+        <td mat-cell *matCellDef="let element">
+          <ng-container *ngIf="element.editMode; else readLocation">
+           <input matInput [(ngModel)]="element.location" placeholder="Enter Location" />
+          </ng-container>
+         <ng-template #readLocation>{{ element.location }}</ng-template>
+        </td>
+    </ng-container>
+
+     <!-- Actions -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element" class="action-cell">
+        <ng-container *ngIf="element.editMode; else viewMode">
+          <button mat-icon-button color="primary" (click)="saveRow(element)" matTooltip="Save">
+            <mat-icon>save</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="cancelEdit(element)" matTooltip="Cancel">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </ng-container>
+        <ng-template #viewMode>
+          <button mat-icon-button color="primary" (click)="editRow(element)" matTooltip="Edit">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteRow(element)" matTooltip="Delete">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button mat-icon-button color="accent" (click)="addNewRow()" matTooltip="Add New">
+            <mat-icon>add</mat-icon>
+          </button>
+        </ng-template>
+      </td>
+    </ng-container>>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <!-- Pagination -->
+  <mat-paginator
+    [length]="dataSource.data.length"
+    [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons>
+  </mat-paginator>
+</div>
+
+<!-- Mobile View Cards -->
+<div class="mobile-cards">
+  <div class="mobile-card" *ngFor="let p of dataSource.data">
+
+<div class="mobile-cards">
+  <div class="mobile-card" *ngFor="let p of dataSource.data">
+    <div>
+      <strong>ID:</strong> {{ p.id }}
+    </div>
+
+    <div>
+      <strong>Name:</strong>
+      <ng-container *ngIf="p.editMode; else mobileReadName">
+        <input matInput [(ngModel)]="p.name" placeholder="Enter Name" />
+      </ng-container>
+      <ng-template #mobileReadName>{{ p.name }}</ng-template>
+    </div>
+
+    <div>
+      <strong>Price:</strong>
+      <ng-container *ngIf="p.editMode; else mobileReadPrice">
+        <input matInput type="number" [(ngModel)]="p.price" placeholder="Enter Price" />
+      </ng-container>
+      <ng-template #mobileReadPrice>{{ p.price }}</ng-template>
+    </div>
+
+    <div>
+      <strong>Address:</strong>
+      <ng-container *ngIf="p.editMode; else mobileReadAddress">
+        <input matInput [(ngModel)]="p.address" placeholder="Enter Address" />
+      </ng-container>
+      <ng-template #mobileReadAddress>{{ p.address }}</ng-template>
+    </div>
+
+    <div>
+      <strong>Bedrooms:</strong>
+      <ng-container *ngIf="p.editMode; else mobileReadBedrooms">
+        <input matInput type="number" [(ngModel)]="p.bedrooms" placeholder="Bedrooms" />
+      </ng-container>
+      <ng-template #mobileReadBedrooms>{{ p.bedrooms }}</ng-template>
+    </div>
+
+    <div>
+      <strong>Bathrooms:</strong>
+      <ng-container *ngIf="p.editMode; else mobileReadBathrooms">
+        <input matInput type="number" [(ngModel)]="p.bathrooms" placeholder="Bathrooms" />
+      </ng-container>
+      <ng-template #mobileReadBathrooms>{{ p.bathrooms }}</ng-template>
+    </div>
+
+    <div>
+      <strong>Car Parks:</strong>
+      <ng-container *ngIf="p.editMode; else mobileReadCarParks">
+        <input matInput type="number" [(ngModel)]="p.carParks" placeholder="Car Parks" />
+      </ng-container>
+      <ng-template #mobileReadCarParks>{{ p.carParks }}</ng-template>
+    </div>
+
+    <div>
+      <strong>Furnishing:</strong>
+      <ng-container *ngIf="p.editMode; else mobileReadFurnishing">
+        <input matInput [(ngModel)]="p.furnishing" placeholder="Enter Furnishing" />
+      </ng-container>
+      <ng-template #mobileReadFurnishing>{{ p.furnishing }}</ng-template>
+    </div>
+
+    <div>
+      <strong>Size (sq.ft.):</strong>
+      <ng-container *ngIf="p.editMode; else mobileReadSize">
+        <input matInput type="number" [(ngModel)]="p.sizeSqft" placeholder="Enter Size" />
+      </ng-container>
+      <ng-template #mobileReadSize>{{ p.sizeSqft }}</ng-template>
+    </div>
+
+    <div>
+      <strong>Amenities:</strong>
+      <ng-container *ngIf="p.editMode; else mobileReadAmenities">
+        <mat-select [(ngModel)]="p.amenities" multiple>
+          <mat-option *ngFor="let a of amenitiesOptions" [value]="a">
+            {{ a }}
+          </mat-option>
+        </mat-select>
+      </ng-container>
+      <ng-template #mobileReadAmenities>
+        {{ p.amenities?.join(', ') }}
+      </ng-template>
+    </div>
+
+    <div>
+      <strong>Common Facilities:</strong>
+      <ng-container *ngIf="p.editMode; else mobileReadFacilities">
+        <mat-select [(ngModel)]="p.commonFacilities" multiple>
+          <mat-option *ngFor="let cf of commonFacilitiesOptions" [value]="cf">
+            {{ cf }}
+          </mat-option>
+        </mat-select>
+      </ng-container>
+      <ng-template #mobileReadFacilities>
+        {{ p.commonFacilities?.join(', ') }}
+      </ng-template>
+    </div>
+
+    <div>
+      <strong>Location:</strong>
+      <ng-container *ngIf="p.editMode; else mobileReadLocation">
+        <input matInput [(ngModel)]="p.location" placeholder="Enter Location" />
+      </ng-container>
+      <ng-template #mobileReadLocation>{{ p.location }}</ng-template>
+    </div>
+
+    <div class="action-buttons">
+      <ng-container *ngIf="p.editMode; else mobileActions">
+        <button mat-icon-button color="primary" (click)="saveRow(p)">
+          <mat-icon>save</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="cancelEdit(p)">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </ng-container>
+
+      <ng-template #mobileActions>
+        <button mat-icon-button color="primary" (click)="editRow(p)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteRow(p)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button color="accent" (click)="addNewRow()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </ng-template>
+    </div>
+
+  </div>
+</div>

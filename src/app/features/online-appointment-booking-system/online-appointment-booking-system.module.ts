@@ -18,9 +18,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material';
 import { MatTableExporterModule } from 'mat-table-exporter';
 import { CustomerDashboardComponent } from './customer-management/components/customer-dashboard/customer-dashboard.component';
+import { PropertyDashboardComponent } from './property-management/components/property-dashboard/property-dashboard.component';
 
 @NgModule({
-  declarations: [LoginComponent, DashboardComponent, DashboardWrapperComponent , DashboardSidebarComponent, ServiceDashboardComponent, CustomerDashboardComponent],
+  declarations: [LoginComponent, DashboardComponent, DashboardWrapperComponent , DashboardSidebarComponent, ServiceDashboardComponent, CustomerDashboardComponent, PropertyDashboardComponent],
   imports: [
     CommonModule,
     OnlineAppointmentBookingSystemRoutingModule,

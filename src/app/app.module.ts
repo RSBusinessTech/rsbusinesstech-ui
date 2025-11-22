@@ -28,7 +28,7 @@ import { BlogHomeComponent } from './features/blogs/components/blog-home/blog-ho
     BrowserModule,
     BrowserAnimationsModule,  // <-- Important!
     AppRoutingModule,
-    HttpClientModule,
+    HttpClientModule,  //HttpClient module.
     ChartsModule, 
   ],
   providers: [],
