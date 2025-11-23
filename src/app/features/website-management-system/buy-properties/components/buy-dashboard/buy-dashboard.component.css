@@ -90,46 +90,27 @@ button.mat-icon-button:hover {
   margin-bottom: 4px;
 }
 
-
-/* ID */
-.mat-elevation-z8 .mat-header-cell:nth-child(1),
-.mat-elevation-z8 .mat-cell:nth-child(1) {
-  width: 20px;
+/* Apply fixed width & ellipsis to all table cells */
+td.mat-cell, th.mat-header-cell {
+  max-width: 2500px;      /* adjust width here */
+  min-width: 20px;
+  height: 60px;          /* fixed height */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-/* Name */
-.mat-elevation-z8 .mat-header-cell:nth-child(2),
-.mat-elevation-z8 .mat-cell:nth-child(2) {
-  width: 150px;
+tr.mat-row:nth-child(even) {
+  background: #fafafa;
 }
 
-/* Address */
-.mat-elevation-z8 .mat-header-cell:nth-child(4),
-.mat-elevation-z8 .mat-cell:nth-child(4) {
-  width: 250px;
+.mat-header-row {
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
 }
 
-/* Car Parks */
-.mat-elevation-z8 .mat-header-cell:nth-child(7){
-  width: 90px;
-}
-
-/* Amenities */
-.mat-elevation-z8 .mat-header-cell:nth-child(10),
-.mat-elevation-z8 .mat-header-cell:nth-child(10){
-  width: 200px;
-}
-
-/* Common Facilities */
-.mat-elevation-z8 .mat-header-cell:nth-child(11),
-.mat-elevation-z8 .mat-header-cell:nth-child(11){
-  width: 200px;
-}
-
-/* Location */
-.mat-elevation-z8 .mat-header-cell:nth-child(12),
-.mat-elevation-z8 .mat-header-cell:nth-child(12){
-  width: 200px;
+td.mat-cell, th.mat-header-cell {
+  padding: 10px 14px;
 }
 
 /* Mobile Styling */

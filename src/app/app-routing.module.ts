@@ -25,11 +25,11 @@ const routes: Routes = [
   },
 
  {
-  path: 'onlineAppointmentBookingSystem',
+  path: 'websiteManagementSystem',
   component: DashboardLayoutComponent,
   loadChildren: () =>
-    import('./features/online-appointment-booking-system/online-appointment-booking-system.module')
-      .then(m => m.OnlineAppointmentBookingSystemModule)
+    import('./features/website-management-system/website-management-system.module')
+      .then(m => m.WebsiteManagementSystemModule)
  }
 ];
 
