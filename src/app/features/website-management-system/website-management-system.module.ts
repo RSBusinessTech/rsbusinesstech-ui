@@ -23,6 +23,7 @@ import { CommercialDashboardComponent } from './commercial-properties/components
 import { Mm2hDashboardComponent } from './mm2h-properties/components/mm2h-dashboard/mm2h-dashboard.component';
 import { NewProjectsDashboardComponent } from './new-projects-properties/components/new-projects-dashboard/new-projects-dashboard.component';
 import { BuyDashboardComponent } from './buy-properties/components/buy-dashboard/buy-dashboard.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [LoginComponent, DashboardComponent, DashboardWrapperComponent , DashboardSidebarComponent, ServiceDashboardComponent, CustomerDashboardComponent, RentalDashboardComponent, BuyDashboardComponent, CommercialDashboardComponent, Mm2hDashboardComponent, NewProjectsDashboardComponent],
@@ -39,6 +40,7 @@ import { BuyDashboardComponent } from './buy-properties/components/buy-dashboard
     MatSortModule,         //for Sorting.
     MatInputModule,         //for filtering
     MatFormFieldModule,     //for filtering
-    MatTableExporterModule //for exporting table data into “.xlsx”, “.csv”, “.json”, “.txt” etc files. 
+    MatTableExporterModule, //for exporting table data into “.xlsx”, “.csv”, “.json”, “.txt” etc files. 
+    MatSnackBarModule       //for Snack.
   ]})
 export class WebsiteManagementSystemModule { }

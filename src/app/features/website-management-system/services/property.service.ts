@@ -10,7 +10,7 @@ import { Property } from '../model/property';
 export class PropertyService {
 
   //url of Rest-API to be called to fetch property.
-  private url = "https://rsbusinesstech-backend.onrender.com/property/getPropertyByType";
+  private baseUrl = "https://rsbusinesstech-backend.onrender.com/property";
   // private url = "http://127.0.0.1:8080/property/getPropertyByType";
 
  
@@ -27,7 +27,7 @@ export class PropertyService {
       return of(this.propertyCache[type]);
     }
 
-    const apiUrl = `${this.url}?type=${type}`;
+    const apiUrl = `${this.baseUrl}/getPropertyByType?type=${type}`;
 
     return this.httpClient.get<Property[]>(apiUrl).pipe(
       tap((data) => {
@@ -40,6 +40,48 @@ export class PropertyService {
   //fetching current cached properties for a given type.
   getCachedProperties(type: string): Property[] | null {
     return this.propertyCache[type] || null;
+  }
+
+    // POST: add a new property
+  addPropertyByType(type: string, property: Property): Observable<string> {
+    const apiUrl = `${this.baseUrl}/addPropertyByType?type=${type}`;
+    return this.httpClient.post<string>(apiUrl, property).pipe(
+      tap((response) => {
+        // Optional: refresh cache
+        if (this.propertyCache[type]) {
+          this.propertyCache[type].push(property);
+        }
+      })
+    );
+  }
+
+  // PUT: update an existing property
+  updatePropertyByType(type: string, property: Property, id: number): Observable<string> {
+    const apiUrl = `${this.baseUrl}/updatePropertyByType?type=${type}&id=${id}`;
+    return this.httpClient.put<string>(apiUrl, property).pipe(
+      tap((response) => {
+        // Optional: update cache
+        if (this.propertyCache[type]) {
+          const index = this.propertyCache[type].findIndex(p => p.id === id);
+          if (index !== -1) {
+            this.propertyCache[type][index] = property;
+          }
+        }
+      })
+    );
+  }
+
+  // DELETE: remove a property by type and id
+  deletePropertyByType(type: string, id: number): Observable<string> {
+    const apiUrl = `${this.baseUrl}/deletePropertyByType?type=${type}&id=${id}`;
+    return this.httpClient.delete<string>(apiUrl).pipe(
+      tap((response) => {
+        // Optional: remove from cache
+        if (this.propertyCache[type]) {
+          this.propertyCache[type] = this.propertyCache[type].filter(p => p.id !== id);
+        }
+      })
+    );
   }
 
 }
