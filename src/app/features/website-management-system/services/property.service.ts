@@ -42,46 +42,44 @@ export class PropertyService {
     return this.propertyCache[type] || null;
   }
 
-    // POST: add a new property
-  addPropertyByType(type: string, property: Property): Observable<string> {
-    const apiUrl = `${this.baseUrl}/addPropertyByType?type=${type}`;
-    return this.httpClient.post<string>(apiUrl, property).pipe(
-      tap((response) => {
-        // Optional: refresh cache
-        if (this.propertyCache[type]) {
-          this.propertyCache[type].push(property);
-        }
-      })
-    );
-  }
+  // POST
+addPropertyByType(type: string, property: Property): Observable<string> {
+  const apiUrl = `${this.baseUrl}/addPropertyByType?type=${type}`;
+  return this.httpClient.post(apiUrl, property, { responseType: 'text' }).pipe(
+    tap((response) => {
+      if (this.propertyCache[type]) {
+        this.propertyCache[type].push(property);
+      }
+    })
+  );
+}
 
-  // PUT: update an existing property
-  updatePropertyByType(type: string, property: Property, id: number): Observable<string> {
-    const apiUrl = `${this.baseUrl}/updatePropertyByType?type=${type}&id=${id}`;
-    return this.httpClient.put<string>(apiUrl, property).pipe(
-      tap((response) => {
-        // Optional: update cache
-        if (this.propertyCache[type]) {
-          const index = this.propertyCache[type].findIndex(p => p.id === id);
-          if (index !== -1) {
-            this.propertyCache[type][index] = property;
-          }
+// PUT
+updatePropertyByType(type: string, property: Property, id: number): Observable<string> {
+  const apiUrl = `${this.baseUrl}/updatePropertyByType?type=${type}&id=${id}`;
+  return this.httpClient.put(apiUrl, property, { responseType: 'text' }).pipe(
+    tap((response) => {
+      if (this.propertyCache[type]) {
+        const index = this.propertyCache[type].findIndex(p => p.id === id);
+        if (index !== -1) {
+          this.propertyCache[type][index] = property;
         }
-      })
-    );
-  }
+      }
+    })
+  );
+}
 
-  // DELETE: remove a property by type and id
-  deletePropertyByType(type: string, id: number): Observable<string> {
-    const apiUrl = `${this.baseUrl}/deletePropertyByType?type=${type}&id=${id}`;
-    return this.httpClient.delete<string>(apiUrl).pipe(
-      tap((response) => {
-        // Optional: remove from cache
-        if (this.propertyCache[type]) {
-          this.propertyCache[type] = this.propertyCache[type].filter(p => p.id !== id);
-        }
-      })
-    );
-  }
+// DELETE
+deletePropertyByType(type: string, id: number): Observable<string> {
+  const apiUrl = `${this.baseUrl}/deletePropertyByType?type=${type}&id=${id}`;
+  return this.httpClient.delete(apiUrl, { responseType: 'text' }).pipe(
+    tap((response) => {
+      if (this.propertyCache[type]) {
+        this.propertyCache[type] = this.propertyCache[type].filter(p => p.id !== id);
+      }
+    })
+  );
+}
+
 
 }
