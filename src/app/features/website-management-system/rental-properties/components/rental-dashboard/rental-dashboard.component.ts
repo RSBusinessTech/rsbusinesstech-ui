@@ -104,6 +104,42 @@ export class RentalDashboardComponent implements OnInit {
     this.dataSource.data = [newRow, ...this.dataSource.data];
   }
 
+  editRow(element: Property) {
+    element._backup = { ...element };
+    element.editMode = true;
+  }
+
+  saveRow(element: Property) {
+  if (!element.id || element.id === 0) {
+    // New row
+    this.saveNewRow(element);
+  } else {
+    // Existing row, call PUT API
+    this.propertyService.updatePropertyByType(this.propertyType, element, element.id).subscribe({
+      next: (response) => {
+        // Show success snackbar
+        this.snackBar.open(response, 'Close', {
+          duration: 3000,
+          panelClass: ['success-snackbar']
+        });
+        this.loadProperties(); // reload to refresh table
+      },
+      error: (err) => {
+        // Show error snackbar
+        this.snackBar.open('Failed to update property!', 'Close', {
+          duration: 6000,
+          panelClass: ['error-snackbar']
+        });
+        console.error('Failed to update property:', err);
+      }
+    });
+  }
+
+  element.editMode = false;
+  delete element._backup;
+  this.dataSource._updateChangeSubscription();
+}
+
 saveNewRow(element: Property) {
   this.propertyService.addPropertyByType(this.propertyType, element).subscribe({
     next: (response) => {
@@ -123,30 +159,6 @@ saveNewRow(element: Property) {
   });
 }
 
-  editRow(element: Property) {
-    element._backup = { ...element };
-    element.editMode = true;
-  }
-
-  saveRow(element: Property) {
-    if (!element.id || element.id === 0) {
-      // New row
-      this.saveNewRow(element);
-    } else {
-      // Existing row, call PUT API
-      this.propertyService.updatePropertyByType(this.propertyType, element, element.id).subscribe({
-        next: (response) => {
-          console.log('Property updated:', response);
-          this.loadProperties(); // reload to refresh table
-        },
-        error: (err) => console.error('Failed to update property:', err)
-      });
-    }
-
-    element.editMode = false;
-    delete element._backup;
-    this.dataSource._updateChangeSubscription();
-  }
 
   cancelEdit(element: Property) {
     if (element._backup) Object.assign(element, element._backup);
@@ -156,20 +168,32 @@ saveNewRow(element: Property) {
   }
 
   deleteRow(element: Property) {
-    if (!element.id || element.id === 0) {
-      // Just remove from table if not yet saved
-      this.dataSource.data = this.dataSource.data.filter(e => e !== element);
-      this.dataSource._updateChangeSubscription();
-      return;
-    }
-
-    // Call DELETE API
-    this.propertyService.deletePropertyByType(this.propertyType, element.id).subscribe({
-      next: (response) => {
-        console.log('Property deleted:', response);
-        this.loadProperties();
-      },
-      error: (err) => console.error('Failed to delete property:', err)
-    });
+  if (!element.id || element.id === 0) {
+    // Just remove from table if not yet saved
+    this.dataSource.data = this.dataSource.data.filter(e => e !== element);
+    this.dataSource._updateChangeSubscription();
+    return;
   }
+
+  // Call DELETE API
+  this.propertyService.deletePropertyByType(this.propertyType, element.id).subscribe({
+    next: (response) => {
+      // Show success snackbar
+      this.snackBar.open(response, 'Close', {
+        duration: 3000,
+        panelClass: ['success-snackbar']
+      });
+      this.loadProperties();
+    },
+    error: (err) => {
+      // Show error snackbar
+      this.snackBar.open('Failed to delete property!', 'Close', {
+        duration: 6000,
+        panelClass: ['error-snackbar']
+      });
+      console.error('Failed to delete property:', err);
+    }
+  });
+}
+
 }
