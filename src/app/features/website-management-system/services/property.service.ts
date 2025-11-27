@@ -43,9 +43,10 @@ export class PropertyService {
   }
 
   // POST
+  // Explicitly setting response as 'text' becuase by default httpClient expects JSON response from REST API.
 addPropertyByType(type: string, property: Property): Observable<string> {
   const apiUrl = `${this.baseUrl}/addPropertyByType?type=${type}`;
-  return this.httpClient.post(apiUrl, property, { responseType: 'text' }).pipe(
+  return this.httpClient.post(apiUrl, property, { responseType: 'text' }).pipe(   
     tap((response) => {
       if (this.propertyCache[type]) {
         this.propertyCache[type].push(property);

@@ -21,6 +21,12 @@ export class RentalDashboardComponent implements OnInit {
 
   dataSource = new MatTableDataSource<Property>([]);
 
+  furnishingOptions: string[] = [
+  'Fully Furnished',
+  'Partly Furnished',
+  'Un-Furnished'
+  ];
+
   amenitiesOptions: string[] = [
     'Private bathroom', 'Family room', 'Flat screen TV', 'Balcony',
     'Air conditioning', 'Kitchen', 'Washing machine', 'Pets allowed',
@@ -195,5 +201,4 @@ saveNewRow(element: Property) {
     }
   });
 }
-
 }

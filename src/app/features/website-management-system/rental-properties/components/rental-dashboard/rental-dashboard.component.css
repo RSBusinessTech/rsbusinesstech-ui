@@ -56,11 +56,12 @@ mat-paginator {
 
 /* Action Buttons */
 td.action-cell {
-  display: flex;
+  /* display: flex;
   gap: 8px;
   justify-content: flex-start;
-  align-items: center;
+  align-items: center; */
 }
+
 
 button.mat-icon-button {
   border: none;
@@ -92,7 +93,7 @@ button.mat-icon-button:hover {
 
 /* Apply fixed width & ellipsis to all table cells */
 td.mat-cell, th.mat-header-cell {
-  max-width: 2500px;      /* adjust width here */
+  max-width: 400px;      /* adjust width here */
   min-width: 20px;
   height: 60px;          /* fixed height */
   overflow: hidden;
@@ -135,6 +136,19 @@ table.mat-table {
     display: none;
   }
 
+  .export-buttons button {
+    width: 40% !important;
+    min-width: 40% !important;
+    justify-content: center !important;
+    text-align: center;
+  }
+
+  .mobile-location-input {
+    max-width: 30px;   /* or any width you prefer */
+    width: 100%;
+    box-sizing: border-box;
+  }
+
   .mobile-cards {
     display: block;
     padding: 0 8px;
@@ -153,6 +167,17 @@ table.mat-table {
 
   .mobile-card div {
     margin-bottom: 8px;
+    white-space: normal !important;   /* allow text wrapping */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* specifically for long URLs like Location */
+  .mobile-card input,
+  .mobile-card ng-template,
+  .mobile-card .location-text {
+    white-space: normal !important;
+    word-break: break-all;
   }
 
   .mobile-card div strong {
@@ -266,4 +291,7 @@ table.mat-table {
   background-color: #f44336 !important;
   color: #fff !important;
 }
+
+
+
 
