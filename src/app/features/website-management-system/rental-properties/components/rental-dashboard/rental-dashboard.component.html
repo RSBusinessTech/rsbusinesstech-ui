@@ -167,6 +167,17 @@
         </td>
     </ng-container>
 
+    <ng-container matColumnDef="videoURL">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Video</th>
+        <td mat-cell *matCellDef="let element">
+          <ng-container *ngIf="element.editMode; else readVideo">
+           <input matInput [(ngModel)]="element.videoURL" placeholder="Enter Video URL" />
+          </ng-container>
+         <ng-template #readVideo>{{ element.videoURL }}</ng-template>
+        </td>
+    </ng-container>
+
+
      <!-- Actions -->
     <ng-container class = "mat-elevation-z8 desktop-table" matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Actions</th>
@@ -315,6 +326,14 @@
         <input matInput [(ngModel)]="p.location" placeholder="Enter Location" />
       </ng-container>
       <ng-template #mobileReadLocation>{{ p.location }}</ng-template>
+    </div>
+
+    <div>
+      <strong>Video:</strong>
+      <ng-container *ngIf="p.editMode; else mobileReadVideo">
+        <input matInput [(ngModel)]="p.videoURL" placeholder="Enter Video" />
+      </ng-container>
+      <ng-template #mobileReadVideo>{{ p.videoURL }}</ng-template>
     </div>
 
     <div class="action-buttons">

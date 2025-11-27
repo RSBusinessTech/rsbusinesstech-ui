@@ -16,7 +16,7 @@ export class RentalDashboardComponent implements OnInit {
   displayedColumns: string[] = [
     'id', 'name', 'price', 'address', 'bedrooms', 'bathrooms',
     'carParks', 'furnishing', 'sizeSqft', 'amenities',
-    'commonFacilities', 'location', 'actions'
+    'commonFacilities', 'location', 'videoURL', 'actions'
   ];
 
   dataSource = new MatTableDataSource<Property>([]);
@@ -61,6 +61,7 @@ export class RentalDashboardComponent implements OnInit {
       if (data.bathrooms) s += data.bathrooms + ' ';
       if (data.carParks) s += data.carParks + ' ';
       if (data.location) s += data.location + ' ';
+      if (data.videoURL) s += data.videoURL + ' ';
       if (data.amenities) s += data.amenities.join(' ') + ' ';
       if (data.commonFacilities) s += data.commonFacilities.join(' ') + ' ';
 
@@ -104,6 +105,7 @@ export class RentalDashboardComponent implements OnInit {
       amenities: [],
       commonFacilities: [],
       location: '',
+      videoURL: '',
       editMode: true
     };
 

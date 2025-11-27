@@ -12,6 +12,7 @@ export interface Property {
   amenities?: string[];
   commonFacilities?: string[];
   location?: string;
+  videoURL?: string;
 
    editMode?: boolean;
   _backup?: Property;

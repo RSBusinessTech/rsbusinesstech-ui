@@ -149,6 +149,12 @@ table.mat-table {
     box-sizing: border-box;
   }
 
+  .mobile-video-input {
+    max-width: 30px;   /* or any width you prefer */
+    width: 100%;
+    box-sizing: border-box;
+  }
+
   .mobile-cards {
     display: block;
     padding: 0 8px;
@@ -172,10 +178,11 @@ table.mat-table {
     overflow-wrap: break-word;
   }
 
-  /* specifically for long URLs like Location */
+  /* specifically for long URLs like , VideoURL */
   .mobile-card input,
   .mobile-card ng-template,
-  .mobile-card .location-text {
+  .mobile-card .location-text,
+  .mobile-card .video-text {
     white-space: normal !important;
     word-break: break-all;
   }
