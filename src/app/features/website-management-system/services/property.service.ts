@@ -44,34 +44,36 @@ export class PropertyService {
 
   // POST
   // Explicitly setting response as 'text' becuase by default httpClient expects JSON response from REST API.
-addPropertyByType(type: string, property: Property): Observable<string> {
+  addPropertyByType(type: string, formData: FormData): Observable<Property> {
   const apiUrl = `${this.baseUrl}/addPropertyByType?type=${type}`;
-  return this.httpClient.post(apiUrl, property, { responseType: 'text' }).pipe(   
-    tap((response) => {
+  return this.httpClient.post<Property>(apiUrl, formData).pipe(
+    tap((savedProperty) => {
       if (this.propertyCache[type]) {
-        this.propertyCache[type].push(property);
+        this.propertyCache[type].push(savedProperty);
       }
     })
   );
-}
+ }
 
-// PUT
-updatePropertyByType(type: string, property: Property, id: number): Observable<string> {
+  // PUT
+ updatePropertyWithImages(type: string, id: number, formData: FormData): Observable<Property> {
   const apiUrl = `${this.baseUrl}/updatePropertyByType?type=${type}&id=${id}`;
-  return this.httpClient.put(apiUrl, property, { responseType: 'text' }).pipe(
-    tap((response) => {
+  return this.httpClient.put<Property>(apiUrl, formData).pipe(
+    tap((updatedProperty) => {
+      // Preserve your cache logic
       if (this.propertyCache[type]) {
         const index = this.propertyCache[type].findIndex(p => p.id === id);
         if (index !== -1) {
-          this.propertyCache[type][index] = property;
+          this.propertyCache[type][index] = updatedProperty; // <--- not skipped
         }
       }
     })
   );
 }
 
-// DELETE
-deletePropertyByType(type: string, id: number): Observable<string> {
+
+ // DELETE
+ deletePropertyByType(type: string, id: number): Observable<string> {
   const apiUrl = `${this.baseUrl}/deletePropertyByType?type=${type}&id=${id}`;
   return this.httpClient.delete(apiUrl, { responseType: 'text' }).pipe(
     tap((response) => {
@@ -80,7 +82,5 @@ deletePropertyByType(type: string, id: number): Observable<string> {
       }
     })
   );
-}
-
-
+ }
 }

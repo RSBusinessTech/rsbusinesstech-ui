@@ -15,17 +15,13 @@ export class RentalDashboardComponent implements OnInit {
 
   displayedColumns: string[] = [
     'id', 'name', 'price', 'address', 'bedrooms', 'bathrooms',
-    'carParks', 'furnishing', 'sizeSqft', 'amenities',
-    'commonFacilities', 'location', 'videoURL', 'actions'
+    'carParks', 'furnishing', 'sizeSqft', 'amenities','commonFacilities',
+    'imageUrls', 'location', 'videoURL', 'actions'
   ];
 
   dataSource = new MatTableDataSource<Property>([]);
 
-  furnishingOptions: string[] = [
-  'Fully Furnished',
-  'Partly Furnished',
-  'Un-Furnished'
-  ];
+  furnishingOptions: string[] = ['Fully Furnished', 'Partly Furnished', 'Un-Furnished'];
 
   amenitiesOptions: string[] = [
     'Private bathroom', 'Family room', 'Flat screen TV', 'Balcony',
@@ -33,15 +29,12 @@ export class RentalDashboardComponent implements OnInit {
     'Dining table', 'Microwave oven', 'Sofa', 'High-speed WiFi', '24-hour security'
   ];
 
-  commonFacilitiesOptions: string[] = [
-    'Gym', 'Outdoor swimming pool', 'Sauna', 'Terrace',
-    'Park', 'Water slide', '24-hour security'
-  ];
+  commonFacilitiesOptions: string[] = ['Gym', 'Outdoor swimming pool', 'Sauna', 'Terrace', 'Park', 'Water slide', '24-hour security'];
 
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort!: MatSort;
 
-  propertyType = 'rent';  // Default property type, can change dynamically
+  propertyType = 'rent';
 
   constructor(
     private propertyService: PropertyService,
@@ -51,7 +44,6 @@ export class RentalDashboardComponent implements OnInit {
   ngOnInit() {
     this.loadProperties();
 
-    // Custom filter
     this.dataSource.filterPredicate = (data: Property, filter: string) => {
       const text = filter.trim().toLowerCase();
       let s = '';
@@ -75,13 +67,12 @@ export class RentalDashboardComponent implements OnInit {
   loadProperties() {
     this.propertyService.getPropertiesByType(this.propertyType).subscribe({
       next: (data: Property[]) => {
+        data.forEach(p => p.imageUrls = p.imageUrls || []);
         this.dataSource.data = data;
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       },
-      error: (err) => {
-        console.error("Failed to fetch properties:", err);
-      }
+      error: (err) => console.error("Failed to fetch properties:", err)
     });
   }
 
@@ -90,9 +81,8 @@ export class RentalDashboardComponent implements OnInit {
   }
 
   // -------------------------
-  // TABLE CRUD LOGIC
+  // ADD / EDIT / CANCEL / DELETE
   // -------------------------
-
   addNewRow() {
     const newRow: Property = {
       id: 0,
@@ -106,67 +96,17 @@ export class RentalDashboardComponent implements OnInit {
       commonFacilities: [],
       location: '',
       videoURL: '',
-      editMode: true
+      editMode: true,
+      selectedImages: []
     };
-
     this.dataSource.data = [newRow, ...this.dataSource.data];
   }
 
   editRow(element: Property) {
     element._backup = { ...element };
     element.editMode = true;
+    element.selectedImages = [];
   }
-
-  saveRow(element: Property) {
-  if (!element.id || element.id === 0) {
-    // New row
-    this.saveNewRow(element);
-  } else {
-    // Existing row, call PUT API
-    this.propertyService.updatePropertyByType(this.propertyType, element, element.id).subscribe({
-      next: (response) => {
-        // Show success snackbar
-        this.snackBar.open(response, 'Close', {
-          duration: 3000,
-          panelClass: ['success-snackbar']
-        });
-        this.loadProperties(); // reload to refresh table
-      },
-      error: (err) => {
-        // Show error snackbar
-        this.snackBar.open('Failed to update property!', 'Close', {
-          duration: 6000,
-          panelClass: ['error-snackbar']
-        });
-        console.error('Failed to update property:', err);
-      }
-    });
-  }
-
-  element.editMode = false;
-  delete element._backup;
-  this.dataSource._updateChangeSubscription();
-}
-
-saveNewRow(element: Property) {
-  this.propertyService.addPropertyByType(this.propertyType, element).subscribe({
-    next: (response) => {
-      this.snackBar.open(response, 'Close', {
-        duration: 3000,
-        panelClass: ['success-snackbar']
-      });
-      this.loadProperties();
-    },
-    error: (err) => {
-      this.snackBar.open('Failed to add property!', 'Close', {
-        duration: 6000,
-        panelClass: ['error-snackbar']
-      });
-      console.error(err);
-    }
-  });
-}
-
 
   cancelEdit(element: Property) {
     if (element._backup) Object.assign(element, element._backup);
@@ -176,31 +116,89 @@ saveNewRow(element: Property) {
   }
 
   deleteRow(element: Property) {
-  if (!element.id || element.id === 0) {
-    // Just remove from table if not yet saved
-    this.dataSource.data = this.dataSource.data.filter(e => e !== element);
-    this.dataSource._updateChangeSubscription();
-    return;
+    if (!element.id || element.id === 0) {
+      this.dataSource.data = this.dataSource.data.filter(e => e !== element);
+      this.dataSource._updateChangeSubscription();
+      return;
+    }
+
+    this.propertyService.deletePropertyByType(this.propertyType, element.id).subscribe({
+      next: (response) => {
+        this.snackBar.open(response, 'Close', { duration: 3000 });
+        this.loadProperties();
+      },
+      error: (err) => {
+        this.snackBar.open('Failed to delete property!', 'Close', { duration: 6000 });
+        console.error(err);
+      }
+    });
   }
 
-  // Call DELETE API
-  this.propertyService.deletePropertyByType(this.propertyType, element.id).subscribe({
-    next: (response) => {
-      // Show success snackbar
-      this.snackBar.open(response, 'Close', {
-        duration: 3000,
-        panelClass: ['success-snackbar']
-      });
+  // -------------------------
+  // IMAGE HANDLING
+  // -------------------------
+  onImageSelected(event: any, element: Property) {
+    const files: FileList = event.target.files;
+    if (!element.selectedImages) element.selectedImages = [];
+    if (!element.imageUrls) element.imageUrls = [];
+
+    const totalImages = element.selectedImages.length + element.imageUrls.length + files.length;
+    if (totalImages > 10) {
+      this.snackBar.open("Maximum 10 images allowed!", "Close", { duration: 3000 });
+      return;
+    }
+
+    Array.from(files).forEach(file => {
+      element.selectedImages!.push(file);
+
+      // preview
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        element.imageUrls!.push(e.target.result);
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  removeImage(element: Property, index: number) {
+    if (element.imageUrls && element.imageUrls.length > index) element.imageUrls.splice(index, 1);
+    if (element.selectedImages && element.selectedImages.length > index) element.selectedImages.splice(index, 1);
+  }
+
+  // -------------------------
+  // SAVE PROPERTY
+  // -------------------------
+saveRow(element: Property) {
+
+  //Clone property without base64 image URLs.
+  const propertyToSend = { ...element };
+  propertyToSend.imageUrls = [];  // send empty or existing server URLs only
+
+  const formData = new FormData();
+
+  //Only send clean property JSON.
+  formData.append('property', new Blob([JSON.stringify(propertyToSend)], { type: 'application/json' }));
+
+  //Append image files.
+  if (element.selectedImages && element.selectedImages.length > 0) {
+    element.selectedImages.forEach(file => formData.append('images', file));
+  }
+
+  const isUpdate = element.id && element.id > 0;
+  const saveObservable = isUpdate
+    ? this.propertyService.updatePropertyWithImages(this.propertyType, element.id, formData)
+    : this.propertyService.addPropertyByType(this.propertyType, formData);
+
+  saveObservable.subscribe({
+    next: () => {
+      this.snackBar.open(isUpdate ? 'Property Updated Successfully!' : 'Property Added Successfully!', 'Close', { duration: 3000 });
       this.loadProperties();
+      element.editMode = false;
     },
-    error: (err) => {
-      // Show error snackbar
-      this.snackBar.open('Failed to delete property!', 'Close', {
-        duration: 6000,
-        panelClass: ['error-snackbar']
-      });
-      console.error('Failed to delete property:', err);
+    error: err => {
+      console.error(err);
+      this.snackBar.open('Failed to save property', 'Close', { duration: 4000 });
     }
   });
-}
+ }
 }

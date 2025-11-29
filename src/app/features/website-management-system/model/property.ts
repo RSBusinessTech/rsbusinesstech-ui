@@ -8,12 +8,14 @@ export interface Property {
   carParks?: number;
   furnishing: string;
   sizeSqft: number;
-  imageUrls?: string[];
-  amenities?: string[];
-  commonFacilities?: string[];
+  amenities: string[];
+  commonFacilities: string[];
+  imageUrls: string[];
   location?: string;
   videoURL?: string;
 
-   editMode?: boolean;
-  _backup?: Property;
+  // Runtime / UI-only fields.
+  editMode?: boolean;               // true when row is being edited.
+  _backup?: Partial<Property>;      // used to store backup for canceling edits.
+  selectedImages?: File[];          // temporary files selected before upload.
 }
