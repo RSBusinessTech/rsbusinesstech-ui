@@ -372,6 +372,6 @@ table.mat-table {
 /* Mobile view (screens ≤ 600px) */
 @media (max-width: 600px) {
   .add-property-btn {
-    margin: 12px 66px;
+    margin: 12px 92px;
   }
 }
