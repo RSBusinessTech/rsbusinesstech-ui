@@ -55,12 +55,12 @@ mat-paginator {
 }
 
 /* Action Buttons */
-td.action-cell {
+/* td.action-cell { */
   /* display: flex;
   gap: 8px;
   justify-content: flex-start;
   align-items: center; */
-}
+/* } */
 
 
 button.mat-icon-button {
