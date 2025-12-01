@@ -372,11 +372,9 @@ table.mat-table {
 /* Mobile view (screens ≤ 600px) */
 @media (max-width: 600px) {
   .add-property-btn {
-    /* margin: 12px 92px; */
     display: flex;
     justify-content: center; /* centers horizontally */
     margin: 12px 0;          /* remove wide side margins */
-    
   }
 }
 
