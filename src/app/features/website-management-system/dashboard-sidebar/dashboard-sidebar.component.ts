@@ -10,6 +10,10 @@ export class DashboardSidebarComponent {
   @Output() closeSidebar = new EventEmitter<void>();
 
   openRental = false;
+  openBuy = false;
+  openCommercial = false;
+  openMm2h = false;
+  openNewProjects = false;
 
   close() {
     this.closeSidebar.emit();
