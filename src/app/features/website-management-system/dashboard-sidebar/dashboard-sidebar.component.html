@@ -7,14 +7,59 @@
     <a routerLink="dashboard">🏠 Home</a>
     <!-- <a routerLink="calendar">📅 Calendar</a>
     <a routerLink="customerManagement">👥 Customer Management</a> -->
-    <a routerLink="rentalProperties">🏙️Rental Properties</a>
-    <a routerLink="buyProperties">🏢Buy Properties</a>
-    <a routerLink="commercialProperties">🏬Commercial Properties</a>
-    <a routerLink="mm2hProperties">🛫MM2H Properties</a>
-    <a routerLink="newProjectsProperties">🏗️New Projects</a>
-    
 
-    <!-- <a routerLink="serviceManagement">💼Service Management</a>
+    <!-- RENTAL PROPERTIES -->
+    <div class="submenu-container" (mouseenter)="openRental = true" (mouseleave)="openRental = false">
+      <a class="parent-link">🏙️ Rental Section</a>
+      <div class="submenu" [class.show]="openRental">
+        <a routerLink="rentalProperties">• Rental Properties</a>
+        <a routerLink="rentalCustomers">• Rental Customers</a>
+        <a routerLink="rentalOwners">• Rental Owners</a>
+      </div>
+    </div>
+
+    <!-- BUY PROPERTIES -->
+    <div class="submenu-container" (mouseenter)="openBuy = true" (mouseleave)="openBuy = false">
+      <a class="parent-link">🏢 Buy Section</a>
+      <div class="submenu" [class.show]="openBuy">
+        <a routerLink="buyProperties">• Buy Properties</a>
+        <a routerLink="buyCustomers">• Buy Customers</a>
+        <a routerLink="buyOwners">• Buy Owners</a>
+      </div>
+    </div>
+
+    <!-- COMMERCIAL PROPERTIES -->
+    <div class="submenu-container" (mouseenter)="openCommercial = true" (mouseleave)="openCommercial = false">
+      <a class="parent-link">🏬 Commercial Section</a>
+      <div class="submenu" [class.show]="openCommercial">
+        <a routerLink="commercialProperties">• Commercial Properties</a>
+        <a routerLink="commercialCustomers">• Commercial Customers</a>
+        <a routerLink="commercialOwners">• Commercial Owners</a>
+      </div>
+    </div>
+
+    <!-- MM2H PROPERTIES -->
+    <div class="submenu-container" (mouseenter)="openMm2h = true" (mouseleave)="openMm2h = false">
+      <a class="parent-link">🛫 MM2H Section</a>
+      <div class="submenu" [class.show]="openMm2h">
+        <a routerLink="mm2hProperties">• MM2H Properties</a>
+        <a routerLink="mm2hCustomers">• MM2H Customers</a>
+        <a routerLink="mm2hOwners">• MM2H Owners</a>
+      </div>
+    </div>
+
+    <!-- NEW PROJECTS -->
+    <div class="submenu-container" (mouseenter)="openNewProjects = true" (mouseleave)="openNewProjects = false">
+      <a class="parent-link">🏗️ New Projects Section</a>
+      <div class="submenu" [class.show]="openNewProjects">
+        <a routerLink="newProjectsProperties">• New Projects Properties</a>
+        <a routerLink="newProjectsCustomers">• New Projects Customers</a>
+        <a routerLink="newProjectsOwners">• New Projects Owners</a>
+      </div>
+    </div>
+
+    <!-- 
+    <a routerLink="serviceManagement">💼Service Management</a>
     <a routerLink="team">👩‍🔧Team</a>
     <a routerLink="location">📍Location</a>
     <a routerLink="online-booking">🌐Online Booking</a>

@@ -16,7 +16,7 @@
         Welcome back! Please enter your credentials to access your account.
       </p>
 
-      <form #loginForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+      <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" novalidate>
         <div class="input-group">
           <i class="icon">👤</i>
           <input

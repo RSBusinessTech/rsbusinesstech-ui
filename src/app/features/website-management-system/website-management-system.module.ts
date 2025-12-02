@@ -24,9 +24,19 @@ import { Mm2hDashboardComponent } from './mm2h-properties/components/mm2h-dashbo
 import { NewProjectsDashboardComponent } from './new-projects-properties/components/new-projects-dashboard/new-projects-dashboard.component';
 import { BuyDashboardComponent } from './buy-properties/components/buy-dashboard/buy-dashboard.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { RentalCustomersComponent } from './rental-properties/components/rental-customers/rental-customers.component';
+import { BuyCustomersComponent } from './buy-properties/components/buy-customers/buy-customers.component';
+import { CommercialCustomersComponent } from './commercial-properties/components/commercial-customers/commercial-customers.component';
+import { Mm2hCustomersComponent } from './mm2h-properties/components/mm2h-customers/mm2h-customers.component';
+import { NewProjectsCustomersComponent } from './new-projects-properties/components/new-projects-customers/new-projects-customers.component';
+import { NewProjectsOwnersComponent } from './new-projects-properties/components/new-projects-owners/new-projects-owners.component';
+import { Mm2hOwnersComponent } from './mm2h-properties/components/mm2h-owners/mm2h-owners.component';
+import { CommercialOwnersComponent } from './commercial-properties/components/commercial-owners/commercial-owners.component';
+import { BuyOwnersComponent } from './buy-properties/components/buy-owners/buy-owners.component';
+import { RentalOwnersComponent } from './rental-properties/components/rental-owners/rental-owners.component';
 
 @NgModule({
-  declarations: [LoginComponent, DashboardComponent, DashboardWrapperComponent , DashboardSidebarComponent, ServiceDashboardComponent, CustomerDashboardComponent, RentalDashboardComponent, BuyDashboardComponent, CommercialDashboardComponent, Mm2hDashboardComponent, NewProjectsDashboardComponent],
+  declarations: [LoginComponent, DashboardComponent, DashboardWrapperComponent , DashboardSidebarComponent, ServiceDashboardComponent, CustomerDashboardComponent, RentalDashboardComponent, BuyDashboardComponent, CommercialDashboardComponent, Mm2hDashboardComponent, NewProjectsDashboardComponent, RentalCustomersComponent, BuyCustomersComponent, CommercialCustomersComponent, Mm2hCustomersComponent, NewProjectsCustomersComponent, NewProjectsOwnersComponent, Mm2hOwnersComponent, CommercialOwnersComponent, BuyOwnersComponent, RentalOwnersComponent],
   imports: [
     CommonModule,
     WebsiteManagementSystemRoutingModule,

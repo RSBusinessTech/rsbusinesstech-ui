@@ -11,12 +11,21 @@ export class LoginComponent {
 
    constructor(private router: Router) {}  // <-- Inject Router
 
-  onSubmit() {
-    alert('Login form submitted!');
+  onSubmit(form: any) {
     // Add your login logic here
+    const username = form.value.username;
+    const password = form.value.password;
 
-     // Navigate to /dashboard
-    this.router.navigate(['/websiteManagementSystem/dashboard']);
+    // Hardcoded credentials
+    const hardcodedUsername = 'rsbusinesstech';
+    const hardcodedPassword = '@gmail.com';
+
+    if (username === hardcodedUsername && password === hardcodedPassword) {
+      alert('Login successful!');
+      this.router.navigate(['/websiteManagementSystem/dashboard']);
+    } else {
+      alert('Invalid username or password. Please try again.');
+    }
   }
 
   onRegister() {
