@@ -132,7 +132,9 @@ nav a.active {
   white-space: normal;    /* <— allows wrapping */
   word-break: break-word; /* <— ensures text never overflows */
   font-size: 13px;        /* smaller text */
-  padding: 6px 10px;      
+  padding: 6px 10px;     
+  
+  line-height: 1.2em;       /* sets line spacing */
 }
 
 .submenu a:last-child {
@@ -143,4 +145,5 @@ nav a.active {
   background: #f5f5f5;
   color: #000;
   background-color: #fcd535;
+  height: 4.2vh;       /* max height for 2 lines */
 }
