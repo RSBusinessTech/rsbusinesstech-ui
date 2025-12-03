@@ -181,7 +181,7 @@ saveRow(element: Property) {
 
   //Append image files.
   if (element.selectedImages && element.selectedImages.length > 0) {
-    element.selectedImages.forEach(file => formData.append('images', file));
+    element.selectedImages.forEach(file => formData.append('images', file, file.name));
   }
 
   const isUpdate = element.id && element.id > 0;

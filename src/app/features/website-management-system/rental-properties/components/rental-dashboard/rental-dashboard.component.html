@@ -159,7 +159,7 @@
       <th mat-header-cell *matHeaderCellDef>Images</th>
       <td mat-cell *matCellDef="let element">
         <ng-container *ngIf="element.editMode; else readModeImages">
-          <input type="file" accept="image/*" multiple (change)="onImageSelected($event, element)" />
+          <input type="file" accept="image/*,.heic,.heif" multiple (change)="onImageSelected($event, element)" />
 
           <div class="img-thumbnail-container">
             <div class="thumbnail" *ngFor="let img of element.imageUrls; let i = index;">
