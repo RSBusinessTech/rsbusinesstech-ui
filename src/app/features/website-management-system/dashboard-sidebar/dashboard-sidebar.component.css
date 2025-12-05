@@ -37,7 +37,7 @@ nav a {
   transition: 0.2s ease;
   background-color: #f9f5e3;  /* box background */
   height: 2.5vh;
-  width: 27.5vh;
+  width: 170px;
   font-size: 15px;
 }
 
@@ -107,7 +107,7 @@ nav a.active {
 .submenu {
   position: absolute;
   top: 0;
-  left: 28vh;               /* aligns submenu to the right of your card */
+  left: 200px;               /* aligns submenu to the right of your card */
   background: #fff;
   border-radius: 6px;
   box-shadow: 0 4px 14px rgba(0,0,0,0.2);

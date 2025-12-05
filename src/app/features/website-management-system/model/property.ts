@@ -11,6 +11,10 @@ export interface Property {
   amenities: string[];
   commonFacilities: string[];
   imageUrls: string[];
+  // 1. Go to Google Maps.
+  // 2. Navigate to your location (or route).
+  // 3. Click Share → Embed a map.
+  // 4. Copy the URL inside the <iframe> tag.
   location?: string;
   videoURL?: string;
 
