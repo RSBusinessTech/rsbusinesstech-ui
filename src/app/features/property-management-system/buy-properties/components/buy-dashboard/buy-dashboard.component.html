@@ -6,16 +6,16 @@
 
 <!-- Export Buttons -->
 <div class="export-buttons">
-  <button mat-raised-button color="primary" (click)="exporter.exportTable('xlsx')">
+  <button mat-raised-button color="primary" (click)="exporter.exportTable('xlsx', {fileName: 'buy'})">
     <mat-icon>file_download</mat-icon> Excel
   </button>
-  <button mat-raised-button color="accent" (click)="exporter.exportTable('csv')">
+  <button mat-raised-button color="accent" (click)="exporter.exportTable('csv', {fileName: 'buy'})">
     <mat-icon>table_chart</mat-icon> CSV
   </button>
-  <button mat-raised-button color="warn" (click)="exporter.exportTable('json')">
+  <button mat-raised-button color="warn" (click)="exporter.exportTable('json', {fileName: 'buy'})">
     <mat-icon>data_object</mat-icon> JSON
   </button>
-  <button mat-raised-button color="primary" style="background: #19796c;" (click)="exporter.exportTable('txt')">
+  <button mat-raised-button color="primary" style="background: #19796c;" (click)="exporter.exportTable('txt', {fileName: 'buy'})">
     <mat-icon>description</mat-icon> Text
   </button>
 </div>

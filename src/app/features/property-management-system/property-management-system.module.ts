@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
-import { WebsiteManagementSystemRoutingModule } from './website-management-system-routing.module';
+import { PropertyManagementSystemRoutingModule } from './property-management-system-routing.module';
 import { DashboardWrapperComponent } from './dashboard-wrapper/dashboard-wrapper.component';
 import { DashboardSidebarComponent } from './dashboard-sidebar/dashboard-sidebar.component';
 import { ChartsModule } from 'ng2-charts';
@@ -39,7 +39,7 @@ import { RentalOwnersComponent } from './rental-properties/components/rental-own
   declarations: [LoginComponent, DashboardComponent, DashboardWrapperComponent , DashboardSidebarComponent, ServiceDashboardComponent, CustomerDashboardComponent, RentalDashboardComponent, BuyDashboardComponent, CommercialDashboardComponent, Mm2hDashboardComponent, NewProjectsDashboardComponent, RentalCustomersComponent, BuyCustomersComponent, CommercialCustomersComponent, Mm2hCustomersComponent, NewProjectsCustomersComponent, NewProjectsOwnersComponent, Mm2hOwnersComponent, CommercialOwnersComponent, BuyOwnersComponent, RentalOwnersComponent],
   imports: [
     CommonModule,
-    WebsiteManagementSystemRoutingModule,
+    PropertyManagementSystemRoutingModule,
     FormsModule,
     ChartsModule,
     MatTableModule,    // for Data Table.
@@ -53,4 +53,4 @@ import { RentalOwnersComponent } from './rental-properties/components/rental-own
     MatTableExporterModule, //for exporting table data into “.xlsx”, “.csv”, “.json”, “.txt” etc files. 
     MatSnackBarModule       //for Snack.
   ]})
-export class WebsiteManagementSystemModule { }
+export class PropertyManagementSystemModule { }

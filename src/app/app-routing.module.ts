@@ -25,11 +25,11 @@ const routes: Routes = [
   },
 
  {
-  path: 'websiteManagementSystem',
+  path: 'propertyManagementSystem',
   component: DashboardLayoutComponent,
   loadChildren: () =>
-    import('./features/website-management-system/website-management-system.module')
-      .then(m => m.WebsiteManagementSystemModule)
+    import('./features/property-management-system/property-management-system.module')
+      .then(m => m.PropertyManagementSystemModule)
  }
 ];
 

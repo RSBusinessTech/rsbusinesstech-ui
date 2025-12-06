@@ -22,7 +22,7 @@ export class LoginComponent {
 
     if (username === hardcodedUsername && password === hardcodedPassword) {
       alert('Login successful!');
-      this.router.navigate(['/websiteManagementSystem/dashboard']);
+      this.router.navigate(['/propertyManagementSystem/dashboard']);
     } else {
       alert('Invalid username or password. Please try again.');
     }
