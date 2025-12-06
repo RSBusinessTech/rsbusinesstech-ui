@@ -157,7 +157,7 @@ nav a.active {
   border-radius: 6px;
   margin-bottom: 10px;
   height: 2.0vh;
-  min-width: 30vh;
+  min-width: 25vh;
   font-size: 15px;
   cursor: pointer;
  }
