@@ -93,7 +93,7 @@ nav a.active {
   border-radius: 6px;
   margin-bottom: 10px;
   height: 2.0vh;
-  width: 580px;
+  width: 17.5vh;
   font-size: 15px;
   cursor: pointer;
 }
@@ -147,3 +147,20 @@ nav a.active {
   background-color: #fcd535;
   height: 4.2vh;       /* max height for 2 lines */
 }
+
+@media (max-width: 767px) {
+  .parent-link {
+  display: block;
+  padding: 12px 16px;
+  background-color: #f9f5e3;
+  color: #b91818;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  height: 2.0vh;
+  min-width: 30vh;
+  font-size: 15px;
+  cursor: pointer;
+ }
+}
+
+
