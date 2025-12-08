@@ -66,9 +66,9 @@ export class RentalCustomersComponent implements OnInit {
     });
   }
 
-  // applyFilter(filterValue: string) {
-  //   this.dataSource.filter = filterValue.trim().toLowerCase();
-  // }
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
   // -------------------------
   // ADD / EDIT / CANCEL / DELETE
