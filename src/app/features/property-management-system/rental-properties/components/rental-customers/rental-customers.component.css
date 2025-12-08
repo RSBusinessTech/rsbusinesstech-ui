@@ -1,0 +1,455 @@
+/* General Styling */
+table {
+  width: 100%;
+}
+
+.mat-elevation-z8 {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  /* overflow: hidden; */
+  overflow: visible;
+  margin-bottom: 20px;
+}
+
+table.mat-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+
+}
+
+/* Header */
+th.mat-header-cell {
+  background-color: #c9c8b6;
+  color: #555;
+  font-weight: 600;
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+  /* text-transform: uppercase; */
+  letter-spacing: 0.5px;
+}
+
+/* Data Cells */
+td.mat-cell {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f1f1f1;
+  text-align: left;
+}
+
+/* Row Hover */
+tr.mat-row:hover {
+  background-color: #fafafa;
+}
+
+/* Paginator */
+mat-paginator {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Action Buttons */
+/* td.action-cell { */
+  /* display: flex;
+  gap: 8px;
+  justify-content: flex-start;
+  align-items: center; */
+/* } */
+
+
+button.mat-icon-button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #1976d2;
+  transition: color 0.3s ease;
+}
+
+button.mat-icon-button.warn {
+  color: #d32f2f;
+}
+
+button.mat-icon-button:hover {
+  opacity: 0.8;
+}
+
+/* Multi-select dropdown in table cells */
+.mat-form-field {
+  width: 100%;
+}
+
+.image-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+/* Apply fixed width & ellipsis to all table cells */
+td.mat-cell, th.mat-header-cell {
+  max-width: 400px;      /* adjust width here */
+  min-width: 20px;
+  height: 60px;          /* fixed height */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+tr.mat-row:nth-child(even) {
+  background: #fafafa;
+}
+
+.mat-header-row {
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
+}
+
+td.mat-cell, th.mat-header-cell {
+  padding: 10px 14px;
+}
+
+/* Mobile Styling */
+.desktop-table {
+  display: block;
+
+  width: 100%;
+  overflow-x: auto;   /* enables horizontal scroll */
+  overflow-y: hidden;
+}
+
+table.mat-table {
+  min-width: 1500px;  /* or more depending on how many columns you have */
+}
+
+.mobile-cards {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-table {
+    display: none;
+  }
+
+  .export-buttons button {
+    width: 65% !important;
+    min-width: 40% !important;
+    justify-content: center !important;
+    text-align: center;
+  }
+
+  .mobile-location-input {
+    max-width: 30px;   /* or any width you prefer */
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .mobile-video-input {
+    max-width: 30px;   /* or any width you prefer */
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .mobile-cards {
+    display: block;
+    padding: 0 8px;
+  }
+
+  .mobile-card {
+    background-color: #f0efea;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: #333;
+  }
+
+  .mobile-card div {
+    margin-bottom: 8px;
+    white-space: normal !important;   /* allow text wrapping */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* specifically for long URLs like , VideoURL */
+  .mobile-card input,
+  .mobile-card ng-template,
+  .mobile-card .location-text,
+  .mobile-card .video-text {
+    white-space: normal !important;
+    word-break: break-all;
+  }
+
+  .mobile-card div strong {
+    display: inline-block;
+    min-width: 140px;
+    color: #555;
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  /* Multi-select & images in mobile card */
+  mat-form-field {
+    width: 100%;
+  }
+
+  .image-row input {
+    flex: 1;
+  }
+}
+
+.search-bar-right {
+  margin-left: 20px;
+  margin-right: 20px;
+  width: 300px;
+}
+
+.export-buttons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 12px;
+  margin: 16px 20px;
+}
+
+.export-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 8px;
+  font-weight: 500;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+  text-transform: none;
+}
+
+.export-button:hover {
+  transform: translateY(-2px);
+}
+
+.export-icon {
+  font-size: 20px;
+}
+
+.export-text {
+  background-color: #f5f5f5;
+  color: #444;
+}
+
+@media (max-width: 768px) {
+  .export-buttons {
+    flex-direction: column;
+    margin: 16px 20px;
+  }
+
+  .export-button,
+  .excel-button,
+  .csv-button,
+  .json-button,
+  .txt-button {
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+    min-width: 100%;
+  }
+}
+
+/* Button colors */
+.excel-button {
+  background-color: #e0f7fa;  
+  color: #006064;            
+}
+
+.json-button {
+  background-color: #e8f5e9;
+  color: #000;
+}
+
+.csv-button {
+  background-color: #fffde7;
+  color: #000;
+}
+
+.txt-button {
+  background-color: #fffde7;
+  color: #000;
+}
+
+
+/* Success */
+.success-snackbar {
+  background-color: #4caf50 !important;
+  color: #fff !important;
+}
+
+.error-snackbar {
+  background-color: #f44336 !important;
+  color: #fff !important;
+}
+
+/* Container with exactly 5 columns */
+.img-thumbnail-container {
+  display: grid;
+  grid-template-columns: repeat(4, 80px); /* 5 images per row */
+  grid-auto-rows: 80px;                   /* each cell is 80x80 */
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* Thumbnail wrapper */
+.thumbnail {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+/* Thumbnail image */
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Close (delete) button */
+.thumbnail-delete-btn {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 22px !important;
+  height: 22px !important;
+  background: white;
+  border-radius: 50%;
+}
+
+/* ---------- MOBILE (≤ 768px) ---------- */
+@media (max-width: 768px) {
+
+  /* reduce grid to prevent overflow */
+  .img-thumbnail-container {
+    display: grid;
+    grid-template-columns: repeat(3, 70px); /* 3 per row mobile */
+    grid-auto-rows: 70px;
+    justify-content: flex-start;
+    gap: 6px;
+  }
+
+  .thumbnail {
+    width: 70px;
+    height: 70px;
+  }
+
+  .thumbnail img {
+    border-radius: 3px;
+  }
+
+  .thumbnail-delete-btn {
+    width: 20px !important;
+    height: 20px !important;
+    top: -4px;
+    right: -4px;
+  }
+}
+
+/* Default / Desktop */
+.add-property-btn {
+  margin: 12px 20px;
+}
+
+/* Mobile view (screens ≤ 600px) */
+@media (max-width: 600px) {
+  .add-property-btn {
+    display: flex;
+    justify-content: center; /* centers horizontally */
+    margin: 12px 0;          /* remove wide side margins */
+  }
+}
+
+/* Container holding the image */
+td.mat-cell .img-thumbnail-container {
+  display: flex;
+  justify-content: center; /* Center the image horizontally */
+  align-items: center;     /* Center the image vertically */
+  height: 100px;           /* Set cell height as needed */
+  overflow: hidden;
+  padding: 4px 0;          /* Some vertical padding */
+}
+
+/* Single image inside the container */
+td.mat-cell .img-thumbnail-container img {
+  width: 100px;             /* Maintain width according to height */
+  height: 100px;            /* Fixed height for all images */
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  object-fit: cover;       /* Maintain aspect ratio, crop if necessary */
+  display: block;
+}
+
+/* Mobile Cards */
+.mobile-cards {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-table {
+    display: none;
+  }
+
+  .mobile-cards {
+    display: block;
+    padding: 0 8px;
+  }
+
+  .mobile-card {
+    background-color: #f0efea;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: #333;
+  }
+
+  .mobile-card div {
+    margin-bottom: 8px;
+    white-space: normal !important;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .mobile-card div strong {
+    display: inline-block;
+    min-width: 120px;
+    color: #555;
+  }
+
+  .mobile-card img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-top: 8px;
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+  }
+}
+
+

@@ -143,7 +143,7 @@ export class RentalDashboardComponent implements OnInit {
     if (!element.imageUrls) element.imageUrls = [];
 
     const totalImages = element.selectedImages.length + element.imageUrls.length + files.length;
-    if (totalImages > 10) {
+    if (totalImages > 20) {
       this.snackBar.open("Maximum 10 images allowed!", "Close", { duration: 3000 });
       return;
     }

@@ -1,1 +1,459 @@
-<p>rental-customers works!</p>
+<!-- Search -->
+<mat-form-field class="search-bar-right">
+  <mat-label>Search Customer 🔍</mat-label>
+  <input matInput (keyup)="applyFilter($event.target.value)" />
+</mat-form-field>
+
+<!-- Export Buttons -->
+<div class="export-buttons">
+  <button mat-raised-button color="primary" (click)="exporter.exportTable('xlsx', {fileName: 'customers'})">
+    <mat-icon>file_download</mat-icon> Excel
+  </button>
+  <button mat-raised-button color="accent" (click)="exporter.exportTable('csv', {fileName: 'customers'})">
+    <mat-icon>table_chart</mat-icon> CSV
+  </button>
+  <button mat-raised-button color="warn" (click)="exporter.exportTable('json', {fileName: 'customers'})">
+    <mat-icon>data_object</mat-icon> JSON
+  </button>
+  <button mat-raised-button color="primary" style="background:#19796c;" (click)="exporter.exportTable('txt', {fileName: 'customers'})">
+    <mat-icon>description</mat-icon> Text
+  </button>
+</div>
+
+<div class="add-property-btn">
+  <button mat-raised-button color="primary" style="background:#28a745;" (click)="addNewRow()">
+    <mat-icon>add</mat-icon> Add Customer
+  </button>
+</div>
+
+<!-- Desktop Table -->
+<div class="mat-elevation-z8 desktop-table">
+  <table mat-table [dataSource]="dataSource" matTableExporter #exporter="matTableExporter" matSort>
+
+    <!-- ID -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Customer ID</th>
+      <td mat-cell *matCellDef="let e">{{ e.id }}</td>
+    </ng-container>
+
+    <!-- propertyId -->
+    <ng-container matColumnDef="propertyId">
+     <th mat-header-cell *matHeaderCellDef>Property ID</th>
+     <td mat-cell *matCellDef="let e">
+     <ng-container *ngIf="e.editMode; else piR">
+      <input matInput type="number" [(ngModel)]="e.propertyId" />
+     </ng-container>
+     <ng-template #piR>
+      <a 
+        [href]="'https://vyenpropertyadvisor.com/viewDetails/rent/' + e.propertyId" 
+        target="_blank" 
+        rel="noopener noreferrer"
+      >
+        {{ e.propertyId }}
+      </a>
+      </ng-template>
+     </td>
+   </ng-container>
+
+
+    <!-- propertyType -->
+    <ng-container matColumnDef="propertyType">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Property Type</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else ptR"><input matInput [(ngModel)]="e.propertyType"></ng-container>
+        <ng-template #ptR>{{ e.propertyType }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- fullName -->
+    <ng-container matColumnDef="fullName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Full Name</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else fnR"><input matInput [(ngModel)]="e.fullName"></ng-container>
+        <ng-template #fnR>{{ e.fullName }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- fatherName -->
+    <ng-container matColumnDef="fatherName">
+      <th mat-header-cell *matHeaderCellDef>Father Name</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else fR"><input matInput [(ngModel)]="e.fatherName"></ng-container>
+        <ng-template #fR>{{ e.fatherName }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- dateOfBirth -->
+    <ng-container matColumnDef="dateOfBirth">
+      <th mat-header-cell *matHeaderCellDef>DOB</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else dobR"><input matInput type="date" [(ngModel)]="e.dateOfBirth"></ng-container>
+        <ng-template #dobR>{{ e.dateOfBirth }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- customerID -->
+    <ng-container matColumnDef="customerID">
+      <th mat-header-cell *matHeaderCellDef>ID Number</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else idR"><input matInput [(ngModel)]="e.customerID"></ng-container>
+        <ng-template #idR>{{ e.customerID }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- customerIDType -->
+    <ng-container matColumnDef="customerIDType">
+      <th mat-header-cell *matHeaderCellDef>ID Type</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else idtR">
+          <mat-select [(ngModel)]="e.customerIDType">
+            <mat-option value="IC">IC</mat-option>
+            <mat-option value="Passport">Passport</mat-option>
+          </mat-select>
+        </ng-container>
+        <ng-template #idtR>{{ e.customerIDType }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- email -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else emailR"><input matInput [(ngModel)]="e.email"></ng-container>
+        <ng-template #emailR>{{ e.email }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- mobileNumber -->
+    <ng-container matColumnDef="mobileNumber">
+      <th mat-header-cell *matHeaderCellDef>Mobile</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else mR"><input matInput [(ngModel)]="e.mobileNumber"></ng-container>
+        <ng-template #mR>{{ e.mobileNumber }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- alternatePhoneNumber -->
+    <ng-container matColumnDef="alternatePhoneNumber">
+      <th mat-header-cell *matHeaderCellDef>Alternate Phone Number</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else apnR"><input matInput [(ngModel)]="e.alternatePhoneNumber"></ng-container>
+        <ng-template #apnR>{{ e.alternatePhoneNumber }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- whatsappNumber -->
+    <ng-container matColumnDef="whatsappNumber">
+      <th mat-header-cell *matHeaderCellDef>Whatsapp Number</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else wnR"><input matInput [(ngModel)]="e.whatsappNumber"></ng-container>
+        <ng-template #wnR>{{ e.whatsappNumber }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- addressLine1 -->
+    <ng-container matColumnDef="addressLine1">
+      <th mat-header-cell *matHeaderCellDef>Address 1</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else a1R"><input matInput [(ngModel)]="e.addressLine1"></ng-container>
+        <ng-template #a1R>{{ e.addressLine1 }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- addressLine2 -->
+    <ng-container matColumnDef="addressLine2">
+      <th mat-header-cell *matHeaderCellDef>Address 2</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else a2R"><input matInput [(ngModel)]="e.addressLine2"></ng-container>
+        <ng-template #a2R>{{ e.addressLine2 }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- city -->
+    <ng-container matColumnDef="city">
+      <th mat-header-cell *matHeaderCellDef>City</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else cityR"><input matInput [(ngModel)]="e.city"></ng-container>
+        <ng-template #cityR>{{ e.city }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- state -->
+    <ng-container matColumnDef="state">
+      <th mat-header-cell *matHeaderCellDef>State</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else stateR"><input matInput [(ngModel)]="e.state"></ng-container>
+        <ng-template #stateR>{{ e.state }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- postalCode -->
+    <ng-container matColumnDef="postalCode">
+      <th mat-header-cell *matHeaderCellDef>Postal Code</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else pcR"><input matInput [(ngModel)]="e.postalCode"></ng-container>
+        <ng-template #pcR>{{ e.postalCode }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- country -->
+    <ng-container matColumnDef="country">
+      <th mat-header-cell *matHeaderCellDef>Country</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else cR"><input matInput [(ngModel)]="e.country"></ng-container>
+        <ng-template #cR>{{ e.country }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- accountStatus -->
+    <ng-container matColumnDef="accountStatus">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else sR">
+          <mat-select [(ngModel)]="e.accountStatus">
+            <mat-option value="Active">Active</mat-option>
+            <mat-option value="Inactive">Inactive</mat-option>
+            <mat-option value="Suspended">Suspended</mat-option>
+          </mat-select>
+        </ng-container>
+        <ng-template #sR>{{ e.accountStatus }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- registrationDate -->
+    <ng-container matColumnDef="registrationDate">
+      <th mat-header-cell *matHeaderCellDef>Registered</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else rdR">
+          <input matInput type="date" [(ngModel)]="e.registrationDate">
+        </ng-container>
+        <ng-template #rdR>{{ e.registrationDate }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- gender -->
+    <ng-container matColumnDef="gender">
+      <th mat-header-cell *matHeaderCellDef>Gender</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else gR">
+          <mat-select [(ngModel)]="e.gender">
+            <mat-option value="Male">Male</mat-option>
+            <mat-option value="Female">Female</mat-option>
+          </mat-select>
+        </ng-container>
+        <ng-template #gR>{{ e.gender }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- rentalAmount -->
+    <ng-container matColumnDef="rentalAmount">
+      <th mat-header-cell *matHeaderCellDef>Rental</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else rAmtR">
+          <input matInput type="number" [(ngModel)]="e.rentalAmount">
+        </ng-container>
+        <ng-template #rAmtR>{{ e.rentalAmount }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- advanceRentalDeposit -->
+    <ng-container matColumnDef="advanceRentalDeposit">
+      <th mat-header-cell *matHeaderCellDef>Advance Deposit</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else ardR">
+          <input matInput type="number" [(ngModel)]="e.advanceRentalDeposit">
+        </ng-container>
+        <ng-template #ardR>{{ e.advanceRentalDeposit }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- utilityDeposit -->
+    <ng-container matColumnDef="utilityDeposit">
+      <th mat-header-cell *matHeaderCellDef>Utility Deposit</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else uR">
+          <input matInput type="number" [(ngModel)]="e.utilityDeposit">
+        </ng-container>
+        <ng-template #uR>{{ e.utilityDeposit }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- totalAmountForTenancy -->
+    <ng-container matColumnDef="totalAmountForTenancy">
+      <th mat-header-cell *matHeaderCellDef>Total Tenancy</th>
+      <td mat-cell *matCellDef="let e">{{ e.totalAmountForTenancy }}</td>
+    </ng-container>
+
+    <!-- rentalStartDate -->
+    <ng-container matColumnDef="rentalStartDate">
+      <th mat-header-cell *matHeaderCellDef>Rental Start</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else rsR">
+          <input matInput type="date" [(ngModel)]="e.rentalStartDate">
+        </ng-container>
+        <ng-template #rsR>{{ e.rentalStartDate }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- rentalDueDate -->
+    <ng-container matColumnDef="rentalDueDate">
+      <th mat-header-cell *matHeaderCellDef>Rental Due</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else rdDueR">
+          <input matInput type="date" [(ngModel)]="e.rentalDueDate">
+        </ng-container>
+        <ng-template #rdDueR>{{ e.rentalDueDate }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- contractStartDate -->
+    <ng-container matColumnDef="contractStartDate">
+      <th mat-header-cell *matHeaderCellDef>Contract Start</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else csR">
+          <input matInput type="date" [(ngModel)]="e.contractStartDate">
+        </ng-container>
+        <ng-template #csR>{{ e.contractStartDate }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- contractEndDate -->
+    <ng-container matColumnDef="contractEndDate">
+      <th mat-header-cell *matHeaderCellDef>Contract End</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else ceR">
+          <input matInput type="date" [(ngModel)]="e.contractEndDate">
+        </ng-container>
+        <ng-template #ceR>{{ e.contractEndDate }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- preferredContactMethod -->
+    <ng-container matColumnDef="preferredContactMethod">
+      <th mat-header-cell *matHeaderCellDef preferred-contact>Contact Method</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else pcmR">
+          <mat-select [(ngModel)]="e.preferredContactMethod">
+            <mat-option value="Phone">Phone</mat-option>
+            <mat-option value="Email">Email</mat-option>
+            <mat-option value="WhatsApp">WhatsApp</mat-option>
+          </mat-select>
+        </ng-container>
+        <ng-template #pcmR>{{ e.preferredContactMethod }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- imageUrl -->
+    <ng-container matColumnDef="imageUrl">
+      <th mat-header-cell *matHeaderCellDef>Image</th>
+      <td mat-cell *matCellDef="let e">
+
+        <ng-container *ngIf="e.editMode; else readImg">
+          <input type="file" accept="image/*" (change)="onImageSelected($event, e)" />
+
+          <div class="img-thumbnail-container">
+            <div class="thumbnail" *ngFor="let img of e.imageUrl; let i = index">
+              <img [src]="img" />
+              <button mat-icon-button color="warn" (click)="removeImage(e, i)">
+                <mat-icon style="font-size:16px;">close</mat-icon>
+              </button>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-template #readImg>
+          <div class="img-thumbnail-container">
+          <a *ngIf="e.imageUrl" [href]="e.imageUrl" target="_blank" rel="noopener noreferrer">
+           <img [src]="e.imageUrl" alt="Property Image" />
+          </a>
+          </div>
+        </ng-template>
+
+      </td>
+    </ng-container>
+
+    <!-- actions -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let e">
+
+        <ng-container *ngIf="e.editMode; else viewActions">
+          <button mat-icon-button color="primary" (click)="saveRow(e)">
+            <mat-icon>save</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="cancelEdit(e)">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </ng-container>
+
+        <ng-template #viewActions>
+          <button mat-icon-button color="primary" (click)="editRow(e)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteRow(e)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </ng-template>
+
+      </td>
+    </ng-container>
+
+    <!-- HEADER + ROWS -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+  </table>
+
+  <mat-paginator [length]="dataSource.data.length" [pageSize]="5" [pageSizeOptions]="[5,10,20]" showFirstLastButtons>
+  </mat-paginator>
+</div>
+
+<!-- Mobile Cards -->
+<div class="mobile-cards">
+  <div class="mobile-card" *ngFor="let e of dataSource.filteredData">
+    <div><strong>Customer ID:</strong> {{ e.id }}</div>
+    <div><strong>Property ID:</strong> <a [href]="'https://vyenpropertyadvisor.com/viewDetails/rent/' + e.propertyId" target="_blank">{{ e.propertyId }}</a></div>
+    <div><strong>Property Type:</strong> {{ e.propertyType }}</div>
+    <div><strong>Full Name:</strong> {{ e.fullName }}</div>
+    <div><strong>Father Name:</strong> {{ e.fatherName }}</div>
+    <div><strong>DOB:</strong> {{ e.dateOfBirth }}</div>
+    <div><strong>ID Number:</strong> {{ e.customerID }}</div>
+    <div><strong>ID Type:</strong> {{ e.customerIDType }}</div>
+    <div><strong>Email:</strong> {{ e.email }}</div>
+    <div><strong>Mobile:</strong> {{ e.mobileNumber }}</div>
+    <div><strong>Alternate Phone:</strong> {{ e.alternatePhoneNumber }}</div>
+    <div><strong>WhatsApp:</strong> {{ e.whatsappNumber }}</div>
+    <div><strong>Address 1:</strong> {{ e.addressLine1 }}</div>
+    <div><strong>Address 2:</strong> {{ e.addressLine2 }}</div>
+    <div><strong>City:</strong> {{ e.city }}</div>
+    <div><strong>State:</strong> {{ e.state }}</div>
+    <div><strong>Postal Code:</strong> {{ e.postalCode }}</div>
+    <div><strong>Country:</strong> {{ e.country }}</div>
+    <div><strong>Status:</strong> {{ e.accountStatus }}</div>
+    <div><strong>Registered:</strong> {{ e.registrationDate }}</div>
+    <div><strong>Gender:</strong> {{ e.gender }}</div>
+    <div><strong>Rental:</strong> {{ e.rentalAmount }}</div>
+    <div><strong>Advance Deposit:</strong> {{ e.advanceRentalDeposit }}</div>
+    <div><strong>Utility Deposit:</strong> {{ e.utilityDeposit }}</div>
+    <div><strong>Total Tenancy:</strong> {{ e.totalAmountForTenancy }}</div>
+    <div><strong>Rental Start:</strong> {{ e.rentalStartDate }}</div>
+    <div><strong>Rental Due:</strong> {{ e.rentalDueDate }}</div>
+    <div><strong>Contract Start:</strong> {{ e.contractStartDate }}</div>
+    <div><strong>Contract End:</strong> {{ e.contractEndDate }}</div>
+    <div><strong>Preferred Contact:</strong> {{ e.preferredContactMethod }}</div>
+    <div *ngIf="e.imageUrl">
+      <strong>Image:</strong>
+      <a *ngIf="e.imageUrl" [href]="e.imageUrl" target="_blank" rel="noopener noreferrer">
+           <img [src]="e.imageUrl" alt="Property Image" />
+      </a>
+    </div>
+    <div class="action-buttons">
+      <button mat-icon-button color="primary" (click)="editRow(e)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="deleteRow(e)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
