@@ -165,10 +165,12 @@ addNewRow() {
   //   reader.readAsDataURL(file);
   // }
 
-  removeImage(element: Customer) {
-    element.imageUrl = '';
-    element.selectedImage = undefined;
+removeImage(customer: any, index: number) {
+  if (customer.imageUrl && customer.imageUrl.length > index) {
+    customer.imageUrl.splice(index, 1);
   }
+}
+
 
   onImageSelected(event: any, element: Customer) {
   const file: File = event.target.files[0];
