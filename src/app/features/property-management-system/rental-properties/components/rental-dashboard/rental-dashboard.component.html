@@ -36,6 +36,18 @@
       <td mat-cell *matCellDef="let element">{{ element.id }}</td>
     </ng-container>
 
+    
+    <!-- Customer ID -->
+    <ng-container matColumnDef="customerId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Customer ID</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.editMode; else readModeCustomerId">
+          <input matInput [(ngModel)]="element.customerId" type="number" />
+        </ng-container>
+        <ng-template #readModeCustomerId>{{ element.customerId }}</ng-template>
+      </td>
+    </ng-container>
+
     <!-- Name -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
@@ -203,6 +215,28 @@
       </td>
     </ng-container>
 
+<!-- Is Active -->
+<ng-container matColumnDef="isActive">
+  <th mat-header-cell *matHeaderCellDef mat-sort-header>Show in Website</th>
+  <td mat-cell *matCellDef="let element">
+    
+    <ng-container *ngIf="element.editMode; else readModeIsActive">
+      <mat-form-field appearance="outline" class="cell-select">
+        <mat-select [(ngModel)]="element.isActive">
+          <mat-option *ngFor="let option of isActiveOptions" [value]="option">
+            {{ option }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </ng-container>
+
+    <ng-template #readModeIsActive>
+      {{ element.isActive }}
+    </ng-template>
+  </td>
+</ng-container>
+
+
     <!-- Actions (NO ADD BUTTON HERE ANYMORE) -->
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Actions</th>
@@ -245,6 +279,14 @@
   <div class="mobile-card" *ngFor="let p of dataSource.data">
     <div>
       <strong>ID:</strong> {{ p.id }}
+    </div>
+
+    <div>
+      <strong>Customer ID:</strong>
+      <ng-container *ngIf="p.editMode; else mobileReadCustomerId">
+        <input matInput type="number" [(ngModel)]="p.customerId" placeholder="Enter Customer ID" />
+      </ng-container>
+      <ng-template #mobileReadCustomerId>{{ p.customerId }}</ng-template>
     </div>
 
     <div>
@@ -409,6 +451,25 @@
       </ng-container>
       <ng-template #mobileReadVideo>{{ p.videoURL }}</ng-template>
     </div>
+
+   <div>
+     <strong>Show In Website:</strong>
+
+     <ng-container *ngIf="p.editMode; else mobileReadIsActive">
+       <mat-form-field appearance="outline" style="width: 100%;">
+       <mat-select [(ngModel)]="p.isActive" placeholder="Select Status">
+         <mat-option *ngFor="let option of isActiveOptions" [value]="option">
+           {{ option }}
+         </mat-option>
+        </mat-select>
+      </mat-form-field>
+     </ng-container>
+
+    <ng-template #mobileReadIsActive>
+     {{ p.isActive }}
+    </ng-template>
+   </div>
+
 
     <div class="action-buttons">
       <ng-container *ngIf="p.editMode; else mobileActions">

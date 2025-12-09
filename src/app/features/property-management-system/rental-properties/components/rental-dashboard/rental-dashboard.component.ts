@@ -14,14 +14,16 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class RentalDashboardComponent implements OnInit {
 
   displayedColumns: string[] = [
-    'id', 'name', 'price', 'address', 'bedrooms', 'bathrooms',
+    'id', 'name', 'customerId', 'price', 'address', 'bedrooms', 'bathrooms',
     'carParks', 'furnishing', 'sizeSqft', 'amenities','commonFacilities',
-    'imageUrls', 'location', 'videoURL', 'actions'
+    'imageUrls', 'location', 'videoURL', 'isActive', 'actions'
   ];
 
   dataSource = new MatTableDataSource<Property>([]);
 
   furnishingOptions: string[] = ['Fully Furnished', 'Partly Furnished', 'Un-Furnished'];
+
+  isActiveOptions: string[] = ['YES', 'NO'];
 
   amenitiesOptions: string[] = [
     'Private bathroom', 'Family room', 'Flat screen TV', 'Balcony',
@@ -87,6 +89,7 @@ export class RentalDashboardComponent implements OnInit {
     const newRow: Property = {
       id: 0,
       name: '',
+      customerId: null,
       price: 0,
       address: '',
       furnishing: '',
@@ -96,6 +99,7 @@ export class RentalDashboardComponent implements OnInit {
       commonFacilities: [],
       location: '',
       videoURL: '',
+      isActive: '',
       editMode: true,
       selectedImages: []
     };

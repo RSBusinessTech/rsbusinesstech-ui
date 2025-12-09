@@ -1,5 +1,6 @@
 export interface Property {
   id: number;
+  customerId?: number;
   name: string;
   price: number;
   address: string;
@@ -17,6 +18,7 @@ export interface Property {
   // 4. Copy the URL inside the <iframe> tag.
   location?: string;
   videoURL?: string;
+  isActive?: string; //Yes = show in UI, No = Don't show in UI.
 
   // Runtime / UI-only fields.
   editMode?: boolean;               // true when row is being edited.
