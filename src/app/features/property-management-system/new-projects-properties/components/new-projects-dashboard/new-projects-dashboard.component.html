@@ -450,13 +450,24 @@
       <ng-template #mobileReadVideo>{{ p.videoURL }}</ng-template>
     </div>
 
-    <div>
-      <strong>Show In Website:</strong>
-      <ng-container *ngIf="p.editMode; else mobileReadIsAcitve">
-        <input matInput [(ngModel)]="p.isActive" placeholder="Enter Show In Website" />
-      </ng-container>
-      <ng-template #mobileReadIsAcitve>{{ p.isActive }}</ng-template>
-    </div>
+
+   <div>
+     <strong>Show In Website:</strong>
+
+     <ng-container *ngIf="p.editMode; else mobileReadIsActive">
+       <mat-form-field appearance="outline" style="width: 100%;">
+       <mat-select [(ngModel)]="p.isActive" placeholder="Select Status">
+        <mat-option *ngFor="let option of isActiveOptions" [value]="option">
+          {{ option }}
+        </mat-option>
+      </mat-select>
+     </mat-form-field>
+    </ng-container>
+
+  <ng-template #mobileReadIsActive>
+    {{ p.isActive }}
+    </ng-template>
+   </div>
 
     <div class="action-buttons">
       <ng-container *ngIf="p.editMode; else mobileActions">
