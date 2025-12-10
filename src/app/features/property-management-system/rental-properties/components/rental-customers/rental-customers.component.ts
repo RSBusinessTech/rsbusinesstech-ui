@@ -16,7 +16,7 @@ export class RentalCustomersComponent implements OnInit {
   displayedColumns: string[] = [
     'id','propertyId','propertyType','fullName','fatherName','dateOfBirth','customerID','customerIDType','email','mobileNumber','alternatePhoneNumber',
     'whatsappNumber','addressLine1','addressLine2','city','state','postalCode','country','accountStatus','registrationDate','preferredContactMethod','gender',
-    'rentalAmount','advanceRentalDeposit','utilityDeposit','totalAmountForTenancy','rentalStartDate','rentalDueDate','contractStartDate',
+    'rentalAmount','advanceRentalDeposit','utilityDeposit','stampingFee','totalAmountForTenancy','rentalDurationInMonths','rentalStartDate','rentalDueDate','contractStartDate',
     'contractEndDate','imageUrl','actions'
   ];
 
@@ -98,7 +98,9 @@ addNewRow() {
     rentalAmount: 0,
     advanceRentalDeposit: 0,
     utilityDeposit: 0,
+    stampingFee:0,
     totalAmountForTenancy: 0,
+    rentalDurationInMonths:0,
     rentalStartDate: '',
     rentalDueDate: '',
     contractStartDate: '',
@@ -113,17 +115,19 @@ addNewRow() {
     imageUrl: '',
     selectedImage: undefined,
     editMode: true,
-    _backup: {}
+    _backup: {},
+    imagePreview: undefined
   };
   this.dataSource.data = [newRow, ...this.dataSource.data];
 }
 
 
-  editRow(element: Customer) {
-    element._backup = { ...element };
-    element.editMode = true;
-    element.selectedImage = undefined;
-  }
+editRow(element: Customer) {
+  element._backup = { ...element };
+  element.editMode = true;
+  // Do NOT clear selectedImage here
+}
+
 
   cancelEdit(element: Customer) {
     if (element._backup) Object.assign(element, element._backup);
@@ -195,7 +199,7 @@ removeImage(customer: any, index: number) {
     formData.append('customer', new Blob([JSON.stringify(customerToSend)], { type: 'application/json' }));
 
     if (element.selectedImage) {
-      formData.append('image', element.selectedImage, element.selectedImage.name);
+      formData.append('images', element.selectedImage, element.selectedImage.name);
     }
 
     const isUpdate = element.id && element.id > 0;

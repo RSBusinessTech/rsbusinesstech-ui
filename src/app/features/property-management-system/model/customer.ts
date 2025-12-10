@@ -1,4 +1,5 @@
 export interface Customer {
+  imagePreview?: string | ArrayBuffer | null;
   //Basic Identification
   id?: number;
   propertyId?: number;
