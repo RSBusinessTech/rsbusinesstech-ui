@@ -130,6 +130,11 @@
       <td mat-cell *matCellDef="let e">
         <ng-container *ngIf="e.editMode; else mR"><input matInput [(ngModel)]="e.mobileNumber"></ng-container>
         <ng-template #mR>{{ e.mobileNumber }}</ng-template>
+        <!-- Call -->
+        <a [href]="'tel:' + e.mobileNumber" target="_blank" 
+          aria-label="Call" class="call-btn" title="Call">
+          <img src="assets/icons/phone.png" alt="Call" />
+        </a>
       </td>
     </ng-container>
 
@@ -148,7 +153,13 @@
       <td mat-cell *matCellDef="let e">
         <ng-container *ngIf="e.editMode; else wnR"><input matInput [(ngModel)]="e.whatsappNumber"></ng-container>
         <ng-template #wnR>{{ e.whatsappNumber }}</ng-template>
+        <!--Whatsapp-->
+         <a [href]="'https://wa.me/' + e.whatsappNumber" target="_blank" 
+            aria-label="WhatsApp" class="whatsapp-btn" title="Chat"> 
+           <img src="assets/icons/whatsapp.svg" alt="WhatsApp" />
+        </a>
       </td>
+      
     </ng-container>
 
     <!-- addressLine1 -->
@@ -526,6 +537,11 @@
         <input matInput [(ngModel)]="e.mobileNumber" />
       </ng-container>
       <ng-template #mobRead>{{ e.mobileNumber }}</ng-template>
+      <!-- Call -->
+        <a [href]="'tel:' + e.mobileNumber" target="_blank" 
+          aria-label="Call" class="call-btn" title="Call">
+          <img src="assets/icons/phone.png" alt="Call" />
+        </a>
     </div>
 
     <!-- Alternate Phone Number -->
@@ -544,6 +560,11 @@
         <input matInput [(ngModel)]="e.whatsappNumber" />
       </ng-container>
       <ng-template #waRead>{{ e.whatsappNumber }}</ng-template>
+      <!--Whatsapp-->
+       <a [href]="'https://wa.me/' + e.whatsappNumber" target="_blank" 
+          aria-label="WhatsApp" class="whatsapp-btn" title="Chat"> 
+         <img src="assets/icons/whatsapp.svg" alt="WhatsApp" />
+       </a>
     </div>
 
     <!-- Address 1 -->

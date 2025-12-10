@@ -445,11 +445,29 @@ td.mat-cell .img-thumbnail-container img {
     margin-top: 8px;
   }
 
-  /* .action-buttons {
-    display: flex;
-    gap: 12px;
-    margin-top: 12px;
-  } */
+   .whatsapp-btn img {
+    width: 26px;
+    height: 26px;
+  }
+   .call-btn img {
+    width: 18px;
+    height: 18px;
+  }
 }
+
+.whatsapp-btn img {
+  width: 28px;
+  height: 28px;
+  transition: transform 0.3s ease;
+}
+
+.call-btn img {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+
+
 
 
