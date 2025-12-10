@@ -58,12 +58,19 @@
 
     <!-- propertyType -->
     <ng-container matColumnDef="propertyType">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Property Type</th>
-      <td mat-cell *matCellDef="let e">
-        <ng-container *ngIf="e.editMode; else ptR"><input matInput [(ngModel)]="e.propertyType"></ng-container>
-        <ng-template #ptR>{{ e.propertyType }}</ng-template>
-      </td>
+     <th mat-header-cell *matHeaderCellDef mat-sort-header>Property Type</th>
+     <td mat-cell *matCellDef="let e">
+      <ng-container *ngIf="e.editMode; else ptR">
+      <mat-select [(ngModel)]="e.propertyType" placeholder="Select Type">
+        <mat-option *ngFor="let type of propertyTypeOptions" [value]="type">
+          {{ type }}
+        </mat-option>
+      </mat-select>
     </ng-container>
+    <ng-template #ptR>{{ e.propertyType }}</ng-template>
+    </td>
+   </ng-container>
+
 
     <!-- fullName -->
     <ng-container matColumnDef="fullName">
@@ -465,13 +472,17 @@
     </div>
 
     <!-- Property Type -->
-    <div>
-      <strong>Property Type:</strong>
-      <ng-container *ngIf="e.editMode; else ptRead">
-        <input matInput [(ngModel)]="e.propertyType" />
-      </ng-container>
-      <ng-template #ptRead>{{ e.propertyType }}</ng-template>
-    </div>
+   <div>
+     <strong>Property Type:</strong>
+     <ng-container *ngIf="e.editMode; else ptRead">
+      <mat-select [(ngModel)]="e.propertyType" placeholder="Select Type">
+      <mat-option *ngFor="let type of propertyTypeOptions" [value]="type">
+        {{ type }}
+      </mat-option>
+      </mat-select>
+    </ng-container>
+    <ng-template #ptRead>{{ e.propertyType }}</ng-template>
+   </div>
 
     <!-- Full Name -->
     <div>
