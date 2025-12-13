@@ -1,0 +1,141 @@
+<!-- ================= LOADING STATE ================= -->
+<div *ngIf="isLoading" class="loading-container">
+  <p>Loading customer details...</p>
+</div>
+
+<!-- ================= ERROR STATE ================= -->
+<div *ngIf="errorMessage && !isLoading" class="error-container">
+  {{ errorMessage }}
+</div>
+
+<!-- ================= CUSTOMER DETAILS VIEW ================= -->
+<div *ngIf="customer && !isLoading" class="customer-card">
+
+  <!-- ================= PROFILE HEADER ================= -->
+ <div class="profile-wrapper">
+  <!-- ================= PROFILE HEADER ================= -->
+  <div class="profile-header">
+    <div class="profile-image-wrapper">
+      <ng-container *ngIf="customer.imageUrl; else noImage">
+        <a
+          [href]="customer.imageUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            class="profile-img-rect clickable"
+            [src]="customer.imageUrl"
+            alt="Customer Image"
+          />
+        </a>
+      </ng-container>
+
+      <ng-template #noImage>
+        <img
+          class="profile-img-rect"
+          src="assets/default-user.png"
+          alt="No Image"
+        />
+      </ng-template>
+    </div>
+
+    <div class="profile-info">
+      <h2>{{ customer.fullName }}</h2>
+      <p>IC / Passport No: {{ customer.customerID }}</p>
+      <p>Property ID: {{ customer.propertyId }}</p>
+
+      <span class="badge">
+        {{ customer.accountStatus }}
+      </span>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ================= DETAILS SECTION ================= -->
+  <div class="details-section">
+
+    <!-- BASIC IDENTIFICATION -->
+    <div class="detail-group">
+      <h4>Basic Identification</h4>
+      <div class="detail-grid">
+        <div><label>Full Name</label><span>{{ customer.fullName }}</span></div>
+        <div><label>Father Name</label><span>{{ customer.fatherName }}</span></div>
+        <div><label>Gender</label><span>{{ customer.gender }}</span></div>
+        <div><label>Date of Birth</label><span>{{ customer.dateOfBirth }}</span></div>
+        <div><label>Customer ID Type</label><span>{{ customer.customerIDType }}</span></div>
+        <div><label>Property Type</label><span>{{ customer.propertyType }}</span></div>
+      </div>
+    </div>
+
+    <!-- CONTACT INFORMATION -->
+    <div class="detail-group">
+      <h4>Contact Information</h4>
+      <div class="detail-grid">
+        <div><label>Email</label><span>{{ customer.email }}</span></div>
+        <div><label>Mobile Number</label><span>{{ customer.mobileNumber }}</span></div>
+        <div><label>Alternate Phone</label><span>{{ customer.alternatePhoneNumber }}</span></div>
+        <div><label>WhatsApp</label><span>{{ customer.whatsappNumber }}</span></div>
+        <div><label>Preferred Contact</label><span>{{ customer.preferredContactMethod }}</span></div>
+      </div>
+    </div>
+
+    <!-- ADDRESS DETAILS -->
+    <div class="detail-group">
+      <h4>Address Details</h4>
+      <div class="detail-grid">
+        <div><label>Address Line 1</label><span>{{ customer.addressLine1 }}</span></div>
+        <div><label>Address Line 2</label><span>{{ customer.addressLine2 }}</span></div>
+        <div><label>City</label><span>{{ customer.city }}</span></div>
+        <div><label>State</label><span>{{ customer.state }}</span></div>
+        <div><label>Country</label><span>{{ customer.country }}</span></div>
+        <div><label>Postal Code</label><span>{{ customer.postalCode }}</span></div>
+      </div>
+    </div>
+
+    <!-- ACCOUNT & MEMBERSHIP -->
+    <div class="detail-group">
+      <h4>Account & Membership</h4>
+      <div class="detail-grid">
+        <div><label>Account Status</label><span>{{ customer.accountStatus }}</span></div>
+        <div><label>Registration Date</label><span>{{ customer.registrationDate }}</span></div>
+      </div>
+    </div>
+
+    <!-- RENTAL INFORMATION -->
+    <div class="detail-group">
+      <h4>Rental Information</h4>
+      <div class="detail-grid">
+        <div><label>Rental Amount</label><span>₹{{ customer.rentalAmount }}</span></div>
+        <div><label>Advance Deposit</label><span>₹{{ customer.advanceRentalDeposit }}</span></div>
+        <div><label>Utility Deposit</label><span>₹{{ customer.utilityDeposit }}</span></div>
+        <div><label>Stamping Fee</label><span>₹{{ customer.stampingFee }}</span></div>
+        <div><label>Total Tenancy</label><span>₹{{ customer.totalAmountForTenancy }}</span></div>
+        <div><label>Duration</label><span>{{ customer.rentalDurationInMonths }} Months</span></div>
+      </div>
+    </div>
+
+    <!-- PURCHASE INFORMATION -->
+    <div class="detail-group">
+      <h4>Purchase Information</h4>
+      <div class="detail-grid">
+        <div><label>Property Price</label><span>₹{{ customer.propertyPrice }}</span></div>
+        <div><label>Stamp Duty</label><span>₹{{ customer.stampDutyFee }}</span></div>
+        <div><label>Registration Fee</label><span>₹{{ customer.registrationFee }}</span></div>
+        <div><label>Down Payment</label><span>₹{{ customer.downPaymentAmount }}</span></div>
+      </div>
+    </div>
+
+    <!-- SYSTEM METADATA -->
+    <div class="detail-group">
+      <h4>System Metadata</h4>
+      <div class="detail-grid">
+        <div><label>Created At</label><span>{{ customer.createdAt }}</span></div>
+        <div><label>Created By</label><span>{{ customer.createdBy }}</span></div>
+        <div><label>Updated At</label><span>{{ customer.updatedAt }}</span></div>
+        <div><label>Updated By</label><span>{{ customer.updatedBy }}</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>

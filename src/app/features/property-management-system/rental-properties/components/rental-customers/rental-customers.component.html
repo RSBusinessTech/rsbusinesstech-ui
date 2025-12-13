@@ -33,12 +33,17 @@
     <!-- ID -->
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Customer ID</th>
-      <td mat-cell *matCellDef="let e">{{ e.id }}</td>
+      <td mat-cell *matCellDef="let e">
+       <a
+         [routerLink]="['/propertyManagementSystem/viewCustomerDetails', e.id]"class="link-id">
+         {{ e.id }}
+       </a>
+      </td>
     </ng-container>
 
     <!-- propertyId -->
     <ng-container matColumnDef="propertyId">
-     <th mat-header-cell *matHeaderCellDef>Property ID</th>
+     <th mat-header-cell *matHeaderCellDef>Property ID  <span style="display: block; font-size: 0.8em; color: gray;">(Property rented by Customer)</span></th>
      <td mat-cell *matCellDef="let e">
      <ng-container *ngIf="e.editMode; else piR">
       <input matInput type="number" [(ngModel)]="e.propertyId" />
@@ -58,7 +63,7 @@
 
     <!-- propertyType -->
     <ng-container matColumnDef="propertyType">
-     <th mat-header-cell *matHeaderCellDef mat-sort-header>Property Type</th>
+     <th mat-header-cell *matHeaderCellDef>Property Type <span style="display: block; font-size: 0.8em; color: gray;">(Type of Property)</span></th>
      <td mat-cell *matCellDef="let e">
       <ng-container *ngIf="e.editMode; else ptR">
       <mat-select [(ngModel)]="e.propertyType" placeholder="Select Type">
@@ -74,7 +79,7 @@
 
     <!-- fullName -->
     <ng-container matColumnDef="fullName">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Full Name</th>
+      <th mat-header-cell *matHeaderCellDef >Full Name <span style="display: block; font-size: 0.8em; color: gray;">(As per IC/Passport)</span></th>
       <td mat-cell *matCellDef="let e">
         <ng-container *ngIf="e.editMode; else fnR"><input matInput [(ngModel)]="e.fullName"></ng-container>
         <ng-template #fnR>{{ e.fullName }}</ng-template>
@@ -92,7 +97,7 @@
 
     <!-- dateOfBirth -->
     <ng-container matColumnDef="dateOfBirth">
-      <th mat-header-cell *matHeaderCellDef>DOB</th>
+      <th mat-header-cell *matHeaderCellDef>Date of Birth</th>
       <td mat-cell *matCellDef="let e">
         <ng-container *ngIf="e.editMode; else dobR"><input matInput type="date" [(ngModel)]="e.dateOfBirth"></ng-container>
         <ng-template #dobR>{{ e.dateOfBirth }}</ng-template>
@@ -101,7 +106,7 @@
 
     <!-- customerID -->
     <ng-container matColumnDef="customerID">
-      <th mat-header-cell *matHeaderCellDef>ID Number</th>
+      <th mat-header-cell *matHeaderCellDef>ID Number <span style="display: block; font-size: 0.8em; color: gray;">(IC/Passport No.)</span></th>
       <td mat-cell *matCellDef="let e">
         <ng-container *ngIf="e.editMode; else idR"><input matInput [(ngModel)]="e.customerID"></ng-container>
         <ng-template #idR>{{ e.customerID }}</ng-template>
@@ -110,7 +115,7 @@
 
     <!-- customerIDType -->
     <ng-container matColumnDef="customerIDType">
-      <th mat-header-cell *matHeaderCellDef>ID Type</th>
+      <th mat-header-cell *matHeaderCellDef>ID Type <span style="display: block; font-size: 0.8em; color: gray;">(IC/Passport)</span></th>
       <td mat-cell *matCellDef="let e">
         <ng-container *ngIf="e.editMode; else idtR">
           <mat-select [(ngModel)]="e.customerIDType">
@@ -240,7 +245,7 @@
 
     <!-- registrationDate -->
     <ng-container matColumnDef="registrationDate">
-      <th mat-header-cell *matHeaderCellDef>Registered</th>
+      <th mat-header-cell *matHeaderCellDef>Registered <span style="display: block; font-size: 0.8em; color: gray;">(since when you know customer)</span></th>
       <td mat-cell *matCellDef="let e">
         <ng-container *ngIf="e.editMode; else rdR">
           <input matInput type="date" [(ngModel)]="e.registrationDate">
@@ -257,6 +262,7 @@
           <mat-select [(ngModel)]="e.gender">
             <mat-option value="Male">Male</mat-option>
             <mat-option value="Female">Female</mat-option>
+            <mat-option value="Other">Other</mat-option>
           </mat-select>
         </ng-container>
         <ng-template #gR>{{ e.gender }}</ng-template>
@@ -265,7 +271,7 @@
 
     <!-- rentalAmount -->
     <ng-container matColumnDef="rentalAmount">
-      <th mat-header-cell *matHeaderCellDef>Rental</th>
+      <th mat-header-cell *matHeaderCellDef>Rental (RM) <span style="display: block; font-size: 0.8em; color: gray;">(per month)</span></th>
       <td mat-cell *matCellDef="let e">
         <ng-container *ngIf="e.editMode; else rAmtR">
           <input matInput type="number" [(ngModel)]="e.rentalAmount">
@@ -276,7 +282,7 @@
 
     <!-- advanceRentalDeposit -->
     <ng-container matColumnDef="advanceRentalDeposit">
-      <th mat-header-cell *matHeaderCellDef>Advance Deposit</th>
+      <th mat-header-cell *matHeaderCellDef>Advance Deposit (RM)</th>
       <td mat-cell *matCellDef="let e">
         <ng-container *ngIf="e.editMode; else ardR">
           <input matInput type="number" [(ngModel)]="e.advanceRentalDeposit">
@@ -287,7 +293,7 @@
 
     <!-- utilityDeposit -->
     <ng-container matColumnDef="utilityDeposit">
-      <th mat-header-cell *matHeaderCellDef>Utility Deposit</th>
+      <th mat-header-cell *matHeaderCellDef>Utility Deposit (RM)</th>
       <td mat-cell *matCellDef="let e">
         <ng-container *ngIf="e.editMode; else uR">
           <input matInput type="number" [(ngModel)]="e.utilityDeposit">
@@ -298,7 +304,7 @@
 
     <!-- stampingFee -->
     <ng-container matColumnDef="stampingFee">
-      <th mat-header-cell *matHeaderCellDef>Stamping Fee</th>
+      <th mat-header-cell *matHeaderCellDef>Stamping Fee (RM)</th>
       <td mat-cell *matCellDef="let e">
         <ng-container *ngIf="e.editMode; else sf">
           <input matInput type="number" [(ngModel)]="e.stampingFee">
@@ -309,13 +315,15 @@
 
     <!-- totalAmountForTenancy -->
     <ng-container matColumnDef="totalAmountForTenancy">
-      <th mat-header-cell *matHeaderCellDef>Total Tenancy</th>
+      <th mat-header-cell *matHeaderCellDef>Total Tenancy Amount (RM)         
+        <span style="display: block; font-size: 0.8em; color: gray;">(1 month rental + 2 months Advanace Deposit +</span>
+        <span style="display: block; font-size: 0.8em; color: gray;"> half month Utility Despsit + Stamping Fee)</span></th>
       <td mat-cell *matCellDef="let e">{{ e.totalAmountForTenancy }}</td>
     </ng-container>
 
     <!-- rentalDurationInMonths -->
     <ng-container matColumnDef="rentalDurationInMonths">
-      <th mat-header-cell *matHeaderCellDef>Rental Duration (Months)</th>
+      <th mat-header-cell *matHeaderCellDef>Tenancy Duration (Months)</th>
       <td mat-cell *matCellDef="let e">
         <ng-container *ngIf="e.editMode; else rdim">
           <input matInput type="number" [(ngModel)]="e.rentalDurationInMonths">
@@ -326,29 +334,24 @@
 
     <!-- rentalStartDate -->
     <ng-container matColumnDef="rentalStartDate">
-      <th mat-header-cell *matHeaderCellDef>Rental Start</th>
-      <td mat-cell *matCellDef="let e">
-        <ng-container *ngIf="e.editMode; else rsR">
-          <input matInput type="date" [(ngModel)]="e.rentalStartDate">
-        </ng-container>
-        <ng-template #rsR>{{ e.rentalStartDate }}</ng-template>
-      </td>
+     <th mat-header-cell *matHeaderCellDef>Rental Start Date <span style="display: block; font-size: 0.8em; color: gray;">(when tenant has to pay monthly Rental)</span></th>
+     <td mat-cell *matCellDef="let e">
+       {{ e.rentalStartDate }}
+     </td>
     </ng-container>
 
-    <!-- rentalDueDate -->
-    <ng-container matColumnDef="rentalDueDate">
-      <th mat-header-cell *matHeaderCellDef>Rental Due</th>
-      <td mat-cell *matCellDef="let e">
-        <ng-container *ngIf="e.editMode; else rdDueR">
-          <input matInput type="date" [(ngModel)]="e.rentalDueDate">
-        </ng-container>
-        <ng-template #rdDueR>{{ e.rentalDueDate }}</ng-template>
-      </td>
-    </ng-container>
+
+   <!-- rentalDueDate -->
+   <ng-container matColumnDef="rentalDueDate">
+     <th mat-header-cell *matHeaderCellDef>Rental Due Date <span style="display: block; font-size: 0.8em; color: gray;">(Last date to pay monthly Rental)</span></th>
+    <td mat-cell *matCellDef="let e">
+     {{ e.rentalDueDate }}
+    </td>
+   </ng-container>
 
     <!-- contractStartDate -->
     <ng-container matColumnDef="contractStartDate">
-      <th mat-header-cell *matHeaderCellDef>Contract Start</th>
+      <th mat-header-cell *matHeaderCellDef>Contract Start Date</th>
       <td mat-cell *matCellDef="let e">
         <ng-container *ngIf="e.editMode; else csR">
           <input matInput type="date" [(ngModel)]="e.contractStartDate">
@@ -359,7 +362,7 @@
 
     <!-- contractEndDate -->
     <ng-container matColumnDef="contractEndDate">
-      <th mat-header-cell *matHeaderCellDef>Contract End</th>
+      <th mat-header-cell *matHeaderCellDef>Contract End Date</th>
       <td mat-cell *matCellDef="let e">
         <ng-container *ngIf="e.editMode; else ceR">
           <input matInput type="date" [(ngModel)]="e.contractEndDate">
@@ -455,12 +458,18 @@
 
     <!-- ID -->
     <div>
-      <strong>Customer ID:</strong> {{ e.id }}
+      <strong>Customer ID:</strong>
+      <a
+       [routerLink]="['/propertyManagementSystem/viewCustomerDetails', e.id]"
+       class="mobile-id-link"
+      >
+       {{ e.id }}
+      </a>
     </div>
 
     <!-- Property ID -->
     <div>
-      <strong>Property ID:</strong>
+      <strong>Property ID :<span style="display: block; font-size: 0.6em; color: gray;">(Property rented by Customer)</span></strong>
       <ng-container *ngIf="e.editMode; else pidRead">
         <input matInput type="number" [(ngModel)]="e.propertyId" />
       </ng-container>
@@ -473,7 +482,7 @@
 
     <!-- Property Type -->
    <div>
-     <strong>Property Type:</strong>
+     <strong>Property Type:<span style="display: block; font-size: 0.6em; color: gray;">(Type of Property)</span></strong>
      <ng-container *ngIf="e.editMode; else ptRead">
       <mat-select [(ngModel)]="e.propertyType" placeholder="Select Type">
       <mat-option *ngFor="let type of propertyTypeOptions" [value]="type">
@@ -486,7 +495,7 @@
 
     <!-- Full Name -->
     <div>
-      <strong>Full Name:</strong>
+      <strong>Full Name:<span style="display: block; font-size: 0.6em; color: gray;">(As per IC/Passport)</span></strong>
       <ng-container *ngIf="e.editMode; else fnRead">
         <input matInput [(ngModel)]="e.fullName" />
       </ng-container>
@@ -504,7 +513,7 @@
 
     <!-- DOB -->
     <div>
-      <strong>DOB:</strong>
+      <strong>Date of Birth:</strong>
       <ng-container *ngIf="e.editMode; else dobRead">
         <input matInput type="date" [(ngModel)]="e.dateOfBirth" />
       </ng-container>
@@ -513,7 +522,7 @@
 
     <!-- Customer ID -->
     <div>
-      <strong>ID Number:</strong>
+      <strong>ID Number: <span style="display: block; font-size: 0.6em; color: gray;">(IC/Passport No.)</span></strong>
       <ng-container *ngIf="e.editMode; else cidRead">
         <input matInput [(ngModel)]="e.customerID" />
       </ng-container>
@@ -522,7 +531,7 @@
 
     <!-- Customer ID Type -->
     <div>
-      <strong>ID Type:</strong>
+      <strong>ID Type: <span style="display: block; font-size: 0.6em; color: gray;">(IC/Passport)</span></strong>
       <ng-container *ngIf="e.editMode; else idTypeRead">
         <mat-select [(ngModel)]="e.customerIDType">
           <mat-option value="IC">IC</mat-option>
@@ -647,7 +656,7 @@
 
     <!-- Registration Date -->
     <div>
-      <strong>Registered:</strong>
+      <strong>Registered: <span style="display: block; font-size: 0.6em; color: gray;">(since when you know customer)</span></strong>
       <ng-container *ngIf="e.editMode; else regRead">
         <input matInput type="date" [(ngModel)]="e.registrationDate" />
       </ng-container>
@@ -661,6 +670,7 @@
         <mat-select [(ngModel)]="e.gender">
           <mat-option value="Male">Male</mat-option>
           <mat-option value="Female">Female</mat-option>
+          <mat-option value="Other">Other</mat-option>
         </mat-select>
       </ng-container>
       <ng-template #genderRead>{{ e.gender }}</ng-template>
@@ -668,7 +678,7 @@
 
     <!-- Rental Amount -->
     <div>
-      <strong>Rental:</strong>
+      <strong>Rental (RM): <span style="display: block; font-size: 0.6em; color: gray;">(per month)</span></strong>
       <ng-container *ngIf="e.editMode; else rentRead">
         <input matInput type="number" [(ngModel)]="e.rentalAmount" />
       </ng-container>
@@ -677,7 +687,7 @@
 
     <!-- Advance Deposit -->
     <div>
-      <strong>Advance Deposit:</strong>
+      <strong>Advance Deposit (RM):</strong>
       <ng-container *ngIf="e.editMode; else advRead">
         <input matInput type="number" [(ngModel)]="e.advanceRentalDeposit" />
       </ng-container>
@@ -686,7 +696,7 @@
 
     <!-- Utility Deposit -->
     <div>
-      <strong>Utility Deposit:</strong>
+      <strong>Utility Deposit (RM):</strong>
       <ng-container *ngIf="e.editMode; else utilRead">
         <input matInput type="number" [(ngModel)]="e.utilityDeposit" />
       </ng-container>
@@ -695,7 +705,7 @@
 
     <!-- Stamping Fee -->
     <div>
-      <strong>Stamping Fee:</strong>
+      <strong>Stamping Fee (RM):</strong>
       <ng-container *ngIf="e.editMode; else stampRead">
         <input matInput type="number" [(ngModel)]="e.stampingFee" />
       </ng-container>
@@ -704,7 +714,9 @@
 
     <!-- Total Amount for Tenancy -->
    <div>
-     <strong>Total Amount for Tenancy:</strong>
+     <strong>Total Tenancy Amount (RM): 
+      <span style="display: block; font-size: 0.6em; color: gray;">(1 month rental + 2 months Advanace Deposit +</span>
+      <span style="display: block; font-size: 0.6em; color: gray;">half month Utility Despsit + Stamping Fee)</span></strong>
      <ng-container *ngIf="e.editMode; else totalRead">
        <input matInput type="number" [(ngModel)]="e.totalAmountForTenancy" />
      </ng-container>
@@ -713,34 +725,28 @@
 
     <!-- Rental Duration -->
     <div>
-      <strong>Rental Duration (months):</strong>
+      <strong>Tenancy Duration (months):</strong>
       <ng-container *ngIf="e.editMode; else durRead">
         <input matInput type="number" [(ngModel)]="e.rentalDurationInMonths" />
       </ng-container>
       <ng-template #durRead>{{ e.rentalDurationInMonths }}</ng-template>
     </div>
 
-    <!-- Rental Start -->
-    <div>
-      <strong>Rental Start:</strong>
-      <ng-container *ngIf="e.editMode; else rsRead">
-        <input matInput type="date" [(ngModel)]="e.rentalStartDate" />
-      </ng-container>
-      <ng-template #rsRead>{{ e.rentalStartDate }}</ng-template>
-    </div>
+    <!-- Rental Start Date (Read-only) -->
+     <div>
+       <strong>Rental Start Date: <span style="display: block; font-size: 0.6em; color: gray;">(when tenant has to pay monthly Rental)</span></strong>
+       <span>{{ e.rentalStartDate }}</span>
+     </div>
 
-    <!-- Rental Due -->
+    <!-- Rental Due Date (Read-only) -->
     <div>
-      <strong>Rental Due:</strong>
-      <ng-container *ngIf="e.editMode; else dueRead">
-        <input matInput type="date" [(ngModel)]="e.rentalDueDate" />
-      </ng-container>
-      <ng-template #dueRead>{{ e.rentalDueDate }}</ng-template>
+     <strong>Rental Due Date: <span style="display: block; font-size: 0.6em; color: gray;">(Last date to pay monthly Rental)</span></strong>
+     <span>{{ e.rentalDueDate }}</span>
     </div>
 
     <!-- Contract Start -->
     <div>
-      <strong>Contract Start:</strong>
+      <strong>Contract Start Date:</strong>
       <ng-container *ngIf="e.editMode; else csReadMobile">
         <input matInput type="date" [(ngModel)]="e.contractStartDate" />
       </ng-container>
@@ -749,7 +755,7 @@
 
     <!-- Contract End -->
     <div>
-      <strong>Contract End:</strong>
+      <strong>Contract End Date:</strong>
       <ng-container *ngIf="e.editMode; else ceReadMobile">
         <input matInput type="date" [(ngModel)]="e.contractEndDate" />
       </ng-container>

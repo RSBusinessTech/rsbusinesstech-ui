@@ -22,7 +22,7 @@ export class RentalCustomersComponent implements OnInit {
 
   dataSource = new MatTableDataSource<Customer>([]);
   customerIDTypeOptions: string[] = ['IC', 'Passport'];
-  propertyTypeOptions: string[] = ['Rent', 'Buy', 'Commercial', 'MM2H', 'New Project'];
+  propertyTypeOptions: string[] = ['Rental', 'Buy', 'Commercial', 'MM2H', 'New Project'];
 
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort!: MatSort;

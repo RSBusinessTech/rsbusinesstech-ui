@@ -39,6 +39,42 @@ export class CustomerService {
     return this.customerCache;
   }
 
+  // Fetch customer by ID
+getCustomerById(id: number | string): Observable<Customer> {
+
+  // 1️⃣ Try to return from cache first (optional but recommended)
+  if (this.customerCache) {
+    const cachedCustomer = this.customerCache.find(
+      c => String(c.id) === String(id)
+    );
+
+    if (cachedCustomer) {
+      return of(cachedCustomer);
+    }
+  }
+
+  // 2️⃣ Call backend API if not found in cache
+  const apiUrl = `${this.baseUrl}/getCustomerById/${id}`;
+
+  return this.httpClient.get<Customer>(apiUrl).pipe(
+    tap((customer) => {
+      // 3️⃣ Update cache with fetched customer
+        if (customer) {
+          if (this.customerCache) {
+            const index = this.customerCache.findIndex(c => c.id === customer.id);
+            if (index !== -1) {
+              this.customerCache[index] = customer;
+            } else {
+              this.customerCache.push(customer);
+            }
+          } else {
+            this.customerCache = [customer];
+          }
+        }
+      })
+    );
+  }
+
   // Add new customer.
   addCustomer(formData: FormData): Observable<Customer> {
     const apiUrl = `${this.baseUrl}/addCustomer`;

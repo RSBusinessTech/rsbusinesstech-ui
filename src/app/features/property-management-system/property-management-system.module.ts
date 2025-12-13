@@ -34,9 +34,10 @@ import { Mm2hOwnersComponent } from './mm2h-properties/components/mm2h-owners/mm
 import { CommercialOwnersComponent } from './commercial-properties/components/commercial-owners/commercial-owners.component';
 import { BuyOwnersComponent } from './buy-properties/components/buy-owners/buy-owners.component';
 import { RentalOwnersComponent } from './rental-properties/components/rental-owners/rental-owners.component';
+import { ViewCustomerDashboardComponent } from './person/view-customer-dashboard/view-customer-dashboard.component';
 
 @NgModule({
-  declarations: [LoginComponent, DashboardComponent, DashboardWrapperComponent , DashboardSidebarComponent, ServiceDashboardComponent, CustomerDashboardComponent, RentalDashboardComponent, BuyDashboardComponent, CommercialDashboardComponent, Mm2hDashboardComponent, NewProjectsDashboardComponent, RentalCustomersComponent, BuyCustomersComponent, CommercialCustomersComponent, Mm2hCustomersComponent, NewProjectsCustomersComponent, NewProjectsOwnersComponent, Mm2hOwnersComponent, CommercialOwnersComponent, BuyOwnersComponent, RentalOwnersComponent],
+  declarations: [LoginComponent, DashboardComponent, DashboardWrapperComponent , DashboardSidebarComponent, ServiceDashboardComponent, CustomerDashboardComponent, RentalDashboardComponent, BuyDashboardComponent, CommercialDashboardComponent, Mm2hDashboardComponent, NewProjectsDashboardComponent, RentalCustomersComponent, BuyCustomersComponent, CommercialCustomersComponent, Mm2hCustomersComponent, NewProjectsCustomersComponent, NewProjectsOwnersComponent, Mm2hOwnersComponent, CommercialOwnersComponent, BuyOwnersComponent, RentalOwnersComponent, ViewCustomerDashboardComponent],
   imports: [
     CommonModule,
     PropertyManagementSystemRoutingModule,

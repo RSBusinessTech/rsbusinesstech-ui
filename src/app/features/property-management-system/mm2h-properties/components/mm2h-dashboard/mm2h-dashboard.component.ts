@@ -34,7 +34,7 @@ export class Mm2hDashboardComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
 
-  propertyType = 'mm2h';
+  propertyType = 'buy';
 
   constructor(
     private propertyService: PropertyService,
