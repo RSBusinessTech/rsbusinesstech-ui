@@ -391,7 +391,7 @@ td.mat-cell .img-thumbnail-container {
 /* Single image inside the container */
 td.mat-cell .img-thumbnail-container img {
   width: 100px;             /* Maintain width according to height */
-  height: 100px;            /* Fixed height for all images */
+  height: 80px;            /* Fixed height for all images */
   border-radius: 4px;
   border: 1px solid #ccc;
   object-fit: cover;       /* Maintain aspect ratio, crop if necessary */
