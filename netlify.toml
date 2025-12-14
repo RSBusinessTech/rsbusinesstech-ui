@@ -1,6 +1,11 @@
 [build]
-command = "npm run build"
-publish = "dist/rsbusinesstech-ui"
+command = "ng build --prod && npx scully"
+publish = "dist/static"
 
 [build.environment]
 NODE_VERSION = "16"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
