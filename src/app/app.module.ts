@@ -12,6 +12,7 @@ import { ClientsComponent } from './features/clients/clients.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
 import { ChartsModule } from 'ng2-charts';
+import { WebDesignKualaLumpurComponent } from './features/seo/components/web-design-kuala-lumpur/web-design-kuala-lumpur.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ChartsModule } from 'ng2-charts';
     HomeComponent,
     ClientsComponent,
     MainLayoutComponent,
-    DashboardLayoutComponent
+    DashboardLayoutComponent,
+    WebDesignKualaLumpurComponent
   ],
   imports: [
     BrowserModule,

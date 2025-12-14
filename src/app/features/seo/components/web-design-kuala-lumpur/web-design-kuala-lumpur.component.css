@@ -1,0 +1,292 @@
+/* ===============================
+   GLOBAL STYLES
+================================ */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  color: #334155;
+  background: #ffffff;
+  line-height: 1.6;
+}
+
+section {
+  padding: 70px 20px;
+}
+
+h1, h2, h3 {
+  color: #0f172a;
+  margin-bottom: 16px;
+}
+
+p {
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ===============================
+   HERO SECTION
+================================ */
+.hero {
+  background: linear-gradient(135deg, #6a7950, #17499b);
+  color: #ffffff;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.hero h1 {
+  font-size: 38px;
+  max-width: 900px;
+  margin: 0 auto 20px;
+  color: #ffffff;
+}
+
+.hero .subtitle {
+  max-width: 820px;
+  margin: 0 auto 30px;
+  font-size: 18px;
+  color: #e5e7eb;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: #f97316;
+  color: #ffffff;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: #ea580c;
+  transform: translateY(-2px);
+}
+
+/* ===============================
+   TRUST BOXES
+================================ */
+.trust-boxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: -30px auto -80px; /* ⬅️ reduce bottom margin */
+}
+
+
+.trust-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 22px;
+  text-align: center;
+  font-weight: 600;
+  color: #0f172a;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* ===============================
+   WHY CHOOSE US
+================================ */
+.why-choose {
+  max-width: 1100px;
+  margin: 0 auto;
+  color: white;
+}
+
+.why-choose ul li {
+  margin-bottom: 12px;
+  color: white;
+}
+
+.why-choose h2 {
+  color: gold;
+}
+
+/* ===============================
+   SERVICES
+================================ */
+.services-list {
+  background: #f8fafc;
+  padding-top: 30px;
+  padding-bottom: 40px;
+}
+
+.services-list > div {
+  max-width: 1100px;
+  margin: 0 auto 30px;
+  padding: 24px;
+  border-left: 5px solid #f97316;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.services-list h3 {
+  margin-top: 0;
+  color: #0f172a;
+}
+
+/* ===============================
+   PORTFOLIO
+================================ */
+.portfolio {
+  max-width: 1200px;
+  max-height: 300px;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+
+.portfolio h2{
+  color: gold;
+}
+
+.portfolio p{
+  color: white;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  margin-top: 10px;
+}
+
+.portfolio-grid .item {
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 500;
+  color: #0f172a;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ===============================
+   TESTIMONIALS
+================================ */
+.testimonials {
+  background: #1c2541;
+  color: #ffffff;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.testimonials h2 {
+  color: #ffffff;
+}
+
+.testimonials p {
+  font-style: italic;
+  max-width: 800px;
+  margin: 0 auto;
+  color: #e5e7eb;
+}
+
+/* ===============================
+   CONTACT FORM
+================================ */
+.contact {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-top: 10px;
+  background-color: #cbd5e1;
+}
+
+.contact h2 {
+  text-align: center;
+}
+
+.contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  /* width: 600px; */
+  align-items: center;
+}
+
+.contact input,
+.contact textarea {
+  padding: 14px;
+  font-size: 15px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  width: 600px;
+}
+
+.contact textarea {
+  resize: vertical;
+  min-height: 130px;
+  width: 600px;
+}
+
+.contact button {
+  background: #f97316;
+  color: #ffffff;
+  padding: 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  width: 600px;
+}
+
+.contact button:hover {
+  background: #ea580c;
+}
+
+/* ===============================
+   RESPONSIVE BREAKPOINTS
+================================ */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 30px;
+  }
+  .hero .subtitle {
+    font-size: 16px;
+  }
+  section {
+    padding: 60px 16px;
+  }
+ .contact {
+  max-width: 400px;
+}
+.contact input,
+.contact textarea {
+   width: 100%;
+}
+
+.contact textarea {
+  width: 100%;
+}
+
+.contact button {
+   width: 100%;
+ }
+
+ .portfolio {
+    padding-top: 10px;
+    padding-bottom: 30px;
+    max-height: 400px;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr; /* stack cards nicely */
+    gap: 16px;
+  }
+}

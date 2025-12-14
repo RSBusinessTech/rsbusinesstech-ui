@@ -83,6 +83,10 @@
   background-color: rgba(255, 255, 255, 0.2); /* Light, subtle white */
 }
 
+.footer-section h3.short-underline::after {
+  width: 65%;
+}
+
 .footer-section ul {
   list-style: none;
   padding: 0;
@@ -205,7 +209,6 @@
   .footer-section.address-section {
     order: 3;
   }
-  
 }
 
 .footer-section ul li a:hover {
