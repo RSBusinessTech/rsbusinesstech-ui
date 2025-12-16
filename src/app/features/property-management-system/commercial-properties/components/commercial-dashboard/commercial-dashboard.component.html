@@ -33,7 +33,14 @@
     <!-- ID Column -->
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Property ID</th>
-      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      <td mat-cell *matCellDef="let element"><a 
+        [href]="'https://vyenpropertyadvisor.com/viewDetails/commercial/' + element.id" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        title="click here to see this Property"
+      >
+        {{ element.id }}
+      </a></td>
     </ng-container>
 
     <!-- Customer ID -->
@@ -276,7 +283,15 @@
 <div class="mobile-cards">
   <div class="mobile-card" *ngFor="let p of dataSource.data">
     <div>
-      <strong>ID:</strong> {{ p.id }}
+      <strong>Property ID:</strong> 
+       <a 
+        [href]="'https://vyenpropertyadvisor.com/viewDetails/commercial/' + p.id" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        title="click here to see this Property"
+      >
+        {{ p.id }}
+      </a>
     </div>
 
      <div>
