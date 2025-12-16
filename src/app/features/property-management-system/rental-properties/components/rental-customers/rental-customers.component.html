@@ -35,7 +35,7 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Customer ID</th>
       <td mat-cell *matCellDef="let e">
        <a
-         [routerLink]="['/propertyManagementSystem/viewCustomerDetails', e.id]"class="link-id">
+         [routerLink]="['/propertyManagementSystem/viewCustomerDetails', e.id]"class="link-id" title="click here to see this Customer">
          {{ e.id }}
        </a>
       </td>
@@ -461,7 +461,7 @@
       <strong>Customer ID:</strong>
       <a
        [routerLink]="['/propertyManagementSystem/viewCustomerDetails', e.id]"
-       class="mobile-id-link"
+       class="mobile-id-link" title="click here to see this Customer"
       >
        {{ e.id }}
       </a>
