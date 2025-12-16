@@ -42,7 +42,16 @@
     <div class="profile-info">
       <h2>{{ customer.fullName }}</h2>
       <p>IC / Passport No: {{ customer.customerID }}</p>
-      <p>Property ID: {{ customer.propertyId }}</p>
+      <p>Property ID: 
+       <a 
+        [href]="'https://vyenpropertyadvisor.com/viewDetails/rent/' + customer.propertyId" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        style="color:white;"
+        title="click here to see this Property"
+      >
+        {{ customer.propertyId }}
+      </a></p>
 
       <span class="badge">
         {{ customer.accountStatus }}
@@ -106,12 +115,12 @@
     <div class="detail-group">
       <h4>Rental Information</h4>
       <div class="detail-grid">
-        <div><label>Rental Amount</label><span>₹{{ customer.rentalAmount }}</span></div>
-        <div><label>Advance Deposit</label><span>₹{{ customer.advanceRentalDeposit }}</span></div>
-        <div><label>Utility Deposit</label><span>₹{{ customer.utilityDeposit }}</span></div>
-        <div><label>Stamping Fee</label><span>₹{{ customer.stampingFee }}</span></div>
-        <div><label>Total Tenancy</label><span>₹{{ customer.totalAmountForTenancy }}</span></div>
-        <div><label>Duration</label><span>{{ customer.rentalDurationInMonths }} Months</span></div>
+        <div><label>Rental Amount</label><span>RM {{ customer.rentalAmount }}</span></div>
+        <div><label>Advance Deposit</label><span>RM {{ customer.advanceRentalDeposit }}</span></div>
+        <div><label>Utility Deposit</label><span>RM {{ customer.utilityDeposit }}</span></div>
+        <div><label>Stamping Fee</label><span>RM {{ customer.stampingFee }}</span></div>
+        <div><label>Total Tenancy</label><span>RM {{ customer.totalAmountForTenancy }}</span></div>
+        <div><label>Rental Duration (Contract)</label><span>{{ customer.rentalDurationInMonths }} Months</span></div>
       </div>
     </div>
 
@@ -119,10 +128,10 @@
     <div class="detail-group">
       <h4>Purchase Information</h4>
       <div class="detail-grid">
-        <div><label>Property Price</label><span>₹{{ customer.propertyPrice }}</span></div>
-        <div><label>Stamp Duty</label><span>₹{{ customer.stampDutyFee }}</span></div>
-        <div><label>Registration Fee</label><span>₹{{ customer.registrationFee }}</span></div>
-        <div><label>Down Payment</label><span>₹{{ customer.downPaymentAmount }}</span></div>
+        <div><label>Property Price</label><span>RM {{ customer.propertyPrice }}</span></div>
+        <div><label>Stamp Duty</label><span>RM {{ customer.stampDutyFee }}</span></div>
+        <div><label>Registration Fee</label><span>RM {{ customer.registrationFee }}</span></div>
+        <div><label>Down Payment</label><span>RM {{ customer.downPaymentAmount }}</span></div>
       </div>
     </div>
 

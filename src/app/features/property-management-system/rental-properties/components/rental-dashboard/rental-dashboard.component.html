@@ -33,7 +33,14 @@
     <!-- ID Column -->
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Property ID</th>
-      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      <td mat-cell *matCellDef="let element"><a 
+        [href]="'https://vyenpropertyadvisor.com/viewDetails/rent/' + element.id" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        title="click here to see this Property"
+      >
+        {{ element.id }}
+      </a></td>
     </ng-container>
 
     
@@ -52,6 +59,7 @@
           element.customerId
         ]"
         class="link-id"
+        title="click here to see this Customer"
       >
         {{ element.customerId }}
       </a>
@@ -281,7 +289,7 @@
   </table>
 
   <!-- Paginator -->
-  <mat-paginator [length]="dataSource.data.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+  <mat-paginator [length]="dataSource.data.length" [pageSize]="10" [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons>
   </mat-paginator>
 </div>
 
@@ -290,7 +298,14 @@
 <div class="mobile-cards">
   <div class="mobile-card" *ngFor="let p of dataSource.data">
     <div>
-      <strong>ID:</strong> {{ p.id }}
+      <strong>ID:</strong> <a 
+        [href]="'https://vyenpropertyadvisor.com/viewDetails/rent/' + p.id" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        title="click here to see this Property"
+      >
+        {{ p.id }}
+      </a>
     </div>
 
      <div>
@@ -300,7 +315,7 @@
       </ng-container>
 
       <ng-template #mobileReadCustomerId>
-       <a *ngIf="p.customerId" [routerLink]="['/propertyManagementSystem/viewCustomerDetails', p.customerId]"class="link-id">
+       <a *ngIf="p.customerId" [routerLink]="['/propertyManagementSystem/viewCustomerDetails', p.customerId]" class="link-id" title="click here to see this Customer">
         {{ p.customerId }}
        </a>
       <span *ngIf="!p.customerId">—</span>

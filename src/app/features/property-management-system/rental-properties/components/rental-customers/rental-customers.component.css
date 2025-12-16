@@ -467,6 +467,10 @@ td.mat-cell .img-thumbnail-container img {
   transition: transform 0.3s ease;
 }
 
+.footer-section address-list {
+  text-decoration: none;
+}
+
 
 
 
