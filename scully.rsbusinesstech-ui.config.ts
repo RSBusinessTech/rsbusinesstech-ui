@@ -12,11 +12,6 @@ export const config: ScullyConfig = {
 //     '/business-software-solutions-kuala-lumpur': {
 //       type: 'default'
 //     },
-//     '/mobile-app-development-kuala-lumpur': {
-//       type: 'default'
-//     },
-//     '/digital-marketing-kuala-lumpur': {
-//       type: 'default'
-//     }
+ 
   }
 };

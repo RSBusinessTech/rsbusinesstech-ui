@@ -132,7 +132,7 @@
       <th mat-header-cell *matHeaderCellDef>Email</th>
       <td mat-cell *matCellDef="let e">
         <ng-container *ngIf="e.editMode; else emailR"><input matInput [(ngModel)]="e.email"></ng-container>
-        <ng-template #emailR>{{ e.email }}</ng-template>
+        <ng-template #emailR>{{ e.email }}<a style = "text-decoration: none;" *ngIf="e.email" [href]="'mailto:' + e.email" target="_blank" title="Send Email">📤</a></ng-template>
       </td>
     </ng-container>
 
@@ -547,7 +547,7 @@
       <ng-container *ngIf="e.editMode; else emailRead">
         <input matInput [(ngModel)]="e.email" />
       </ng-container>
-      <ng-template #emailRead>{{ e.email }}</ng-template>
+      <ng-template #emailRead>{{ e.email }}<a style = "text-decoration: none;" *ngIf="e.email" [href]="'mailto:' + e.email" target="_blank" title="Send Email">📤</a></ng-template>
     </div>
 
     <!-- Mobile Number -->
