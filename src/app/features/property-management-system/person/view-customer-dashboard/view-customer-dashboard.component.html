@@ -44,7 +44,7 @@
       <p>IC / Passport No: {{ customer.customerID }}</p>
       <p>Property ID: 
        <a 
-        [href]="'https://vyenpropertyadvisor.com/viewDetails/rent/' + customer.propertyId" 
+        [routerLink]="['/viewDetails', 'rent', customer.propertyId]"
         target="_blank" 
         rel="noopener noreferrer"
         style="color:white;"
