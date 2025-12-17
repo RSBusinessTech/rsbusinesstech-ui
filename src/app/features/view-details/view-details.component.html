@@ -1,0 +1,254 @@
+<section class="property-details-container">
+  <!-- ================= IMAGE GALLERY ================= -->
+  <section class="image-gallery">
+    <div class="main-image"
+         (touchstart)="onTouchStart($event)"
+         (touchend)="onTouchEnd($event)">
+      <!-- Previous -->
+      <button class="nav-arrow left"
+              (click)="prevImage()"
+              *ngIf="images.length > 1">
+        ‹
+      </button>
+      <!-- MAIN IMAGE (CLICK TO OPEN FULLSCREEN) -->
+      <img
+        [src]="selectedImage"
+        alt="Property Image"
+        class="clickable-image"
+        (click)="openLightbox()" />
+
+      <!-- Next -->
+      <button class="nav-arrow right"
+              (click)="nextImage()"
+              *ngIf="images.length > 1">
+        ›
+      </button>
+    </div>
+    <!-- Thumbnails -->
+    <div class="thumbnail-list">
+      <img
+        *ngFor="let img of images"
+        [src]="img"
+        (click)="selectImage(img)"
+        [class.selected]="img === selectedImage"
+        alt="Thumbnail" />
+    </div>
+  </section>
+
+  <!-- ================= LIGHTBOX ================= -->
+  <!-- ================= FULLSCREEN LIGHTBOX WITH NAV ================= -->
+  <div class="lightbox" *ngIf="showLightbox" (click)="closeLightbox()">
+    <!-- Close -->
+    <span class="close-btn" (click)="closeLightbox()">×</span>
+    <!-- Previous -->
+    <button class="lightbox-arrow left"
+          (click)="prevImage(); $event.stopPropagation()"
+          *ngIf="images.length > 1">
+    ‹
+    </button>
+    <!-- Image -->
+    <img
+    class="lightbox-img"
+    [src]="selectedImage"
+    (click)="$event.stopPropagation()" />
+    <!-- Next -->
+    <button class="lightbox-arrow right"
+          (click)="nextImage(); $event.stopPropagation()"
+          *ngIf="images.length > 1">
+     ›
+    </button>
+  </div>
+
+  <!-- Property Summary -->
+  <section class="property-summary">
+    <h1 class="property-name">{{ property.name }}</h1>
+    <p class="property-address">{{ property.address }}</p>
+    <h2 class="property-price">{{ property.price == 0 ? 'Freehold' : ('RM ' + (property.price | number)) }}<span *ngIf="type === 'rent' && property.price > 0">/month</span></h2>
+
+    <div class="property-features">
+      <div class="feature" *ngFor="let feature of [
+        { icon: '🛏️', value: property.bedrooms, label: 'Bedrooms' },
+        { icon: '🛁', value: property.bathrooms, label: 'Bathrooms' },
+        { icon: '🚘', value: property.carParks, label: 'Car Parkings' },
+        { icon: '📐', value: property.sizeSqft, label: 'sq.ft.' },
+        { icon: '🛋️', value: property.furnishing, label: 'Furniture' }
+      ]">
+        <span class="feature-value">{{ feature.icon }} {{ feature.value }}</span>
+        <span class="feature-label">{{ feature.label }}</span>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- Contact Card -->
+<div class="contact-card">
+  <div class="profile-section">
+    <img src="assets/images/vyen.webp" alt="Agent photo" class="profile-img" />
+    <div class="profile-info">
+      <h3>Vyen</h3>
+      <p>Property Agent</p>
+    </div>
+  </div>
+
+  <button class="whatsapp-btn" (click)="openWhatsApp()">
+    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+  </button>
+
+  <div class="other-ways">
+    <button class="toggle-btn" (click)="toggleEnquiry()">
+      Other ways to enquire
+      <span [class.rotated]="showEnquiry">▼</span>
+    </button>
+
+    <div *ngIf="showEnquiry" class="enquiry-options">
+      <a href="tel:+60162907662">📞 Call</a>
+      <a href="mailto:vyenpropertyadvisor@gmail.com">✉️ Email</a>
+    </div>
+  </div>
+</div>
+
+<!-- Video Gallery (show only if videoURL exists) -->
+<section class="video-gallery" *ngIf="property?.videoURL">
+  <h2 style="color: red;">See on YouTube</h2>
+  <div class="video-grid">
+    <iframe
+      [src]="property?.videoURL | safeUrl"
+      title="Property Video"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+
+<!-- Amenities -->
+<section class="amenities-section">
+  <h2 class="section-title">Amenities</h2>
+
+  <div class="amenities-grid">
+    <div *ngFor="let amenity of displayedAmenities" class="amenity-card">
+      <span class="check-icon">✔</span>
+      <span class="amenity-name">{{ amenity }}</span>
+    </div>
+  </div>
+
+  <button *ngIf="!showAll" class="see-more-btn" (click)="toggleAmenities()">
+    See all {{ amenities.length }} amenities
+  </button>
+
+  <button *ngIf="showAll" class="see-more-btn" (click)="toggleAmenities()">
+    Show less
+  </button>
+</section>
+
+<!-- Common Facilities -->
+<section class="amenities-section">
+  <h2 class="section-title">Common Facilities</h2>
+
+  <div class="amenities-grid">
+    <div *ngFor="let commonFacility of displayedCommonFacilities" class="amenity-card">
+      <span class="check-icon">✔</span>
+      <span class="amenity-name">{{ commonFacility }}</span>
+    </div>
+  </div>
+
+  <button *ngIf="!showAllCommonFacilities" class="see-more-btn" (click)="toggleCommonFacilities()">
+    See all {{ commonFacilities.length }} common facilities
+  </button>
+
+  <button *ngIf="showAllCommonFacilities" class="see-more-btn" (click)="toggleCommonFacilities()">
+    Show less
+  </button>
+</section>
+
+<!-- Location -->
+<div class="content-section">
+  <div class="content-container center-text">
+    <h2 class="section-title">Location</h2>
+
+    <iframe
+      class="google-map"
+      [src]="mapUrl | safeUrl"
+      referrerpolicy="no-referrer-when-downgrade"
+      loading="lazy"
+      width="100%"
+      height="300">
+    </iframe>
+
+    <br><br>
+
+    <!-- Go Back CTA -->
+    <div class="cta-area">
+      <button class="cta-button" (click)="goBack()">← Go Back</button>
+       <!-- Share Button -->
+      <button class="cta-button share-btn" (click)="shareProperty($event)">🔗 Share</button>
+    </div>
+  </div>
+</div>
+
+<!-- More Similar Properties -->
+<section class="featured-rentals" *ngIf="similar.length > 0">
+  <h1 class="marquee-heading" style="color: red">
+    See more available similar properties
+  </h1>
+
+  <div class="rent-grid">
+    <div class="rent-card" *ngFor="let item of similar">
+
+      <!-- Real property image -->
+      <img
+        [src]="item.imageUrls?.length ? item.imageUrls[0] : 'assets/images/property1.png'"
+        loading="lazy"
+        [alt]="item.name"
+      />
+
+      <!-- Center Out-of-Stock / Rented Badge -->
+       <div class="center-stock-badge"
+         *ngIf="item.customerId && item.customerId != 0 && item.customerId != ''">
+          Rented Out
+       </div>  
+
+      <div class="rent-card-info">
+        <h3 style="color: rgb(158, 18, 18);">
+          {{ item.price == 0 ? 'Freehold' : ('RM ' + (item.price | number)) }}<span *ngIf="type === 'rent' && item.price > 0">/month</span>
+        </h3>
+
+        <p>
+          <strong>{{ item.name }}</strong><br />
+          <small>{{ item.address }}</small><br /><br />
+
+          <small>🛏️ {{ item.bedrooms }} &nbsp;&nbsp;</small>
+          <small>🛁 {{ item.bathrooms }} &nbsp;&nbsp;</small>
+          <small>🚘 {{ item.carParks }} &nbsp;&nbsp;</small>
+          <small>🛋️ {{ item.furnishing }} &nbsp;&nbsp;</small>
+          <small>📐 {{ item.sizeSqft }} sq.ft.</small>
+        </p>
+
+        <div class="rent-card-actions">
+          <button class="details-btn" 
+            [routerLink]="item.customerId && item.customerId != 0 && item.customerId != '' ? null : ['/viewDetails', 'rent', item.id]"
+            [disabled]="item.customerId && item.customerId != 0 && item.customerId != ''">
+            View Details&nbsp;&nbsp;
+           </button>
+
+          <!--Call-->
+          <a href="tel:+60162907662" target="_blank" 
+             aria-label="WhatsApp" class="whatsapp-btn" title="Call">
+            <img src="assets/icons/phone.png" alt="WhatsApp" />
+          </a>
+
+          <!--Whatsapp-->
+          <a href="https://wa.me/+60162907662" target="_blank" 
+             aria-label="WhatsApp" class="whatsapp-btn" title="Chat"> 
+            <img src="assets/icons/whatsapp.svg" alt="WhatsApp" />
+          </a>
+          
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+

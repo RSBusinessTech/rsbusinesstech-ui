@@ -35,9 +35,33 @@ import { CommercialOwnersComponent } from './commercial-properties/components/co
 import { BuyOwnersComponent } from './buy-properties/components/buy-owners/buy-owners.component';
 import { RentalOwnersComponent } from './rental-properties/components/rental-owners/rental-owners.component';
 import { ViewCustomerDashboardComponent } from './person/view-customer-dashboard/view-customer-dashboard.component';
+import { SafeUrlPipe } from '../pipes/safe-url.pipe';
+import { ViewDetailsComponent } from '../view-details/view-details.component';
 
 @NgModule({
-  declarations: [LoginComponent, DashboardComponent, DashboardWrapperComponent , DashboardSidebarComponent, ServiceDashboardComponent, CustomerDashboardComponent, RentalDashboardComponent, BuyDashboardComponent, CommercialDashboardComponent, Mm2hDashboardComponent, NewProjectsDashboardComponent, RentalCustomersComponent, BuyCustomersComponent, CommercialCustomersComponent, Mm2hCustomersComponent, NewProjectsCustomersComponent, NewProjectsOwnersComponent, Mm2hOwnersComponent, CommercialOwnersComponent, BuyOwnersComponent, RentalOwnersComponent, ViewCustomerDashboardComponent],
+  declarations: [LoginComponent,
+     DashboardComponent,
+      DashboardWrapperComponent ,
+       DashboardSidebarComponent,
+        ServiceDashboardComponent,
+         CustomerDashboardComponent,
+          RentalDashboardComponent,
+           BuyDashboardComponent,
+            CommercialDashboardComponent,
+             Mm2hDashboardComponent,
+             NewProjectsDashboardComponent,
+              RentalCustomersComponent,
+               BuyCustomersComponent,
+               CommercialCustomersComponent,
+                Mm2hCustomersComponent,
+                 NewProjectsCustomersComponent,
+                  NewProjectsOwnersComponent,
+                   Mm2hOwnersComponent,
+                    CommercialOwnersComponent,
+                     BuyOwnersComponent,
+                      RentalOwnersComponent,
+                      ViewCustomerDashboardComponent,                    
+                    ],
   imports: [
     CommonModule,
     PropertyManagementSystemRoutingModule,
@@ -52,6 +76,6 @@ import { ViewCustomerDashboardComponent } from './person/view-customer-dashboard
     MatInputModule,         //for filtering
     MatFormFieldModule,     //for filtering
     MatTableExporterModule, //for exporting table data into “.xlsx”, “.csv”, “.json”, “.txt” etc files. 
-    MatSnackBarModule       //for Snack.
+    MatSnackBarModule  ,     //for Snack.
   ]})
 export class PropertyManagementSystemModule { }

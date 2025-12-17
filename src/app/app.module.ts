@@ -13,6 +13,8 @@ import { MainLayoutComponent } from './layouts/main-layout/main-layout.component
 import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
 import { ChartsModule } from 'ng2-charts';
 import { WebDesignKualaLumpurComponent } from './features/seo/components/web-design-kuala-lumpur/web-design-kuala-lumpur.component';
+import { ViewDetailsComponent } from './features/view-details/view-details.component';
+import { SafeUrlPipe } from './features/pipes/safe-url.pipe';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { WebDesignKualaLumpurComponent } from './features/seo/components/web-des
     ClientsComponent,
     MainLayoutComponent,
     DashboardLayoutComponent,
-    WebDesignKualaLumpurComponent
+    WebDesignKualaLumpurComponent,
+    ViewDetailsComponent,
+    SafeUrlPipe,
   ],
   imports: [
     BrowserModule,

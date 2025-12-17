@@ -22,6 +22,7 @@ import { CommercialOwnersComponent } from './commercial-properties/components/co
 import { Mm2hOwnersComponent } from './mm2h-properties/components/mm2h-owners/mm2h-owners.component';
 import { NewProjectsOwnersComponent } from './new-projects-properties/components/new-projects-owners/new-projects-owners.component';
 import { ViewCustomerDashboardComponent } from './person/view-customer-dashboard/view-customer-dashboard.component';
+import { ViewDetailsComponent } from '../view-details/view-details.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -44,7 +45,7 @@ const routes: Routes = [
                 { path: 'newProjectsProperties', component: NewProjectsDashboardComponent }, // Add NewProjectsDashboardComponent here.
                 { path: 'newProjectsCustomers', component: NewProjectsCustomersComponent }, // Add CommercialCustomersComponent here.
                 { path: 'newProjectsOwners', component: NewProjectsOwnersComponent }, // Add CommercialOwnersComponent here.
-                { path: 'viewCustomerDetails/:id', component: ViewCustomerDashboardComponent }, // Add ViewCustomerDashboardComponent here.
+                { path: 'viewCustomerDetails/:id', component: ViewCustomerDashboardComponent } // Add ViewCustomerDashboardComponent here.             
      ] },
 ];
 

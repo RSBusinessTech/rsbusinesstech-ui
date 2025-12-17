@@ -6,6 +6,7 @@ import { ClientsComponent } from './features/clients/clients.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
 import { WebDesignKualaLumpurComponent } from './features/seo/components/web-design-kuala-lumpur/web-design-kuala-lumpur.component';
+import { ViewDetailsComponent } from './features/view-details/view-details.component';
 
 const routes: Routes = [
   // ✅ All regular routes use MainLayout (header/footer)
@@ -22,7 +23,8 @@ const routes: Routes = [
       { path: 'clients', component: ClientsComponent },
       { path: 'referrals', loadChildren: () => import('./features/referrals/referrals.module').then(m => m.ReferralsModule) },
       { path: 'contact', loadChildren: () => import('./features/contact/contact.module').then(m => m.ContactModule) },
-      { path: 'web-design-kuala-lumpur', component: WebDesignKualaLumpurComponent }
+      { path: 'web-design-kuala-lumpur', component: WebDesignKualaLumpurComponent },
+      { path: "viewDetails/:type/:id", component: ViewDetailsComponent }
     ]
   },
 

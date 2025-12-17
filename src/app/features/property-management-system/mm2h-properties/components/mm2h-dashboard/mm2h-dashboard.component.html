@@ -34,7 +34,7 @@
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Property ID</th>
       <td mat-cell *matCellDef="let element"><a 
-        [href]="'https://vyenpropertyadvisor.com/viewDetails/buy/' + element.id" 
+        [routerLink]="['/viewDetails', 'buy', element.id]" 
         target="_blank" 
         rel="noopener noreferrer"
         title="click here to see this Property"
@@ -284,7 +284,7 @@
   <div class="mobile-card" *ngFor="let p of dataSource.data">
     <div>
       <strong>Property ID:</strong> <a 
-        [href]="'https://vyenpropertyadvisor.com/viewDetails/buy/' + p.id" 
+        [routerLink]="['/viewDetails', 'buy', p.id]"
         target="_blank" 
         rel="noopener noreferrer"
         title="click here to see this Property"

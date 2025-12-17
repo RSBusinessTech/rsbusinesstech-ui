@@ -34,7 +34,7 @@
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Property ID</th>
       <td mat-cell *matCellDef="let element"><a 
-        [href]="'https://vyenpropertyadvisor.com/viewDetails/commercial/' + element.id" 
+        [routerLink]="['/viewDetails', 'commercial', element.id]" 
         target="_blank" 
         rel="noopener noreferrer"
         title="click here to see this Property"
@@ -285,7 +285,7 @@
     <div>
       <strong>Property ID:</strong> 
        <a 
-        [href]="'https://vyenpropertyadvisor.com/viewDetails/commercial/' + p.id" 
+        [routerLink]="['/viewDetails', 'commercial', p.id]"
         target="_blank" 
         rel="noopener noreferrer"
         title="click here to see this Property"
