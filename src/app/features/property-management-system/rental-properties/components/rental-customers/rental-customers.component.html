@@ -333,6 +333,17 @@
       </td>
     </ng-container>
 
+    <!-- Grace Period (Days)  -->
+    <ng-container matColumnDef="gracePeriodInDays">
+      <th mat-header-cell *matHeaderCellDef>Grace Period (Days)</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else uGPID">
+          <input matInput type="number" [(ngModel)]="e.gracePeriodInDays">
+        </ng-container>
+        <ng-template #uGPID>{{ e.gracePeriodInDays }}</ng-template>
+      </td>
+    </ng-container>
+
     <!-- rentalStartDate -->
     <ng-container matColumnDef="rentalStartDate">
      <th mat-header-cell *matHeaderCellDef>Rental Start Date <span style="display: block; font-size: 0.8em; color: gray;">(when tenant has to pay monthly Rental)</span></th>
@@ -731,6 +742,15 @@
         <input matInput type="number" [(ngModel)]="e.rentalDurationInMonths" />
       </ng-container>
       <ng-template #durRead>{{ e.rentalDurationInMonths }}</ng-template>
+    </div>
+
+    <!-- Grace Period (Days) -->
+    <div>
+      <strong>Grace Period (Days):</strong>
+      <ng-container *ngIf="e.editMode; else gPIDRead">
+        <input matInput type="number" [(ngModel)]="e.gracePeriodInDays" />
+      </ng-container>
+      <ng-template #gPIDRead>{{ e.gracePeriodInDays }}</ng-template>
     </div>
 
     <!-- Rental Start Date (Read-only) -->

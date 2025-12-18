@@ -47,6 +47,7 @@ export interface Customer {
   stampingFee?: number;
   totalAmountForTenancy?: number;
   rentalDurationInMonths?: number;
+  gracePeriodInDays?: number;
   rentalStartDate?: string;
   rentalDueDate?: string;
   contractStartDate?: string;
