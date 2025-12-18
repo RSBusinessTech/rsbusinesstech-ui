@@ -335,7 +335,7 @@
 
     <!-- Grace Period (Days)  -->
     <ng-container matColumnDef="gracePeriodInDays">
-      <th mat-header-cell *matHeaderCellDef>Grace Period (Days)</th>
+      <th mat-header-cell *matHeaderCellDef>Grace Period (Days) <span style="display: block; font-size: 0.8em; color: gray;">(extra days given to tenant to pay rental)</span></th>
       <td mat-cell *matCellDef="let e">
         <ng-container *ngIf="e.editMode; else uGPID">
           <input matInput type="number" [(ngModel)]="e.gracePeriodInDays">
@@ -355,7 +355,7 @@
 
    <!-- rentalDueDate -->
    <ng-container matColumnDef="rentalDueDate">
-     <th mat-header-cell *matHeaderCellDef>Rental Due Date <span style="display: block; font-size: 0.8em; color: gray;">(Last date to pay monthly Rental)</span></th>
+     <th mat-header-cell *matHeaderCellDef>Rental Due Date <span style="display: block; font-size: 0.8em; color: gray;">(last date to pay monthly Rental)</span></th>
     <td mat-cell *matCellDef="let e">
      {{ e.rentalDueDate }}
     </td>
@@ -746,7 +746,7 @@
 
     <!-- Grace Period (Days) -->
     <div>
-      <strong>Grace Period (Days):</strong>
+      <strong>Grace Period (Days): <span style="display: block; font-size: 0.6em; color: gray;">(extra days given to tenant to pay rental)</span></strong>
       <ng-container *ngIf="e.editMode; else gPIDRead">
         <input matInput type="number" [(ngModel)]="e.gracePeriodInDays" />
       </ng-container>
@@ -761,7 +761,7 @@
 
     <!-- Rental Due Date (Read-only) -->
     <div>
-     <strong>Rental Due Date: <span style="display: block; font-size: 0.6em; color: gray;">(Last date to pay monthly Rental)</span></strong>
+     <strong>Rental Due Date: <span style="display: block; font-size: 0.6em; color: gray;">(last date to pay monthly Rental)</span></strong>
      <span>{{ e.rentalDueDate }}</span>
     </div>
 
