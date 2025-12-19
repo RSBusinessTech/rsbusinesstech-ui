@@ -242,6 +242,50 @@
   </td>
 </ng-container>
 
+  <!-- Listed By -->
+    <ng-container matColumnDef="createdBy">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Listed By</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.editMode; else readModeLB">
+          <input matInput [(ngModel)]="element.createdBy" disabled/>
+        </ng-container>
+        <ng-template #readModeLB>{{ element.createdBy }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- Listed On -->
+    <ng-container matColumnDef="createdAt">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Listed On</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.editMode; else readModeLO">
+          <input matInput [(ngModel)]="element.createdAt" disabled/>
+        </ng-container>
+        <ng-template #readModeLO>{{ element.createdAt }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- Updated By -->
+    <ng-container matColumnDef="updatedBy">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Updated By</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.editMode; else readModeUB">
+          <input matInput [(ngModel)]="element.updatedBy" disabled/>
+        </ng-container>
+        <ng-template #readModeUB>{{ element.updatedBy }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- Updated On -->
+    <ng-container matColumnDef="updatedAt">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Updated On</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.editMode; else readModeUO">
+          <input matInput [(ngModel)]="element.updatedAt" disabled/>
+        </ng-container>
+        <ng-template #readModeUO>{{ element.updatedAt }}</ng-template>
+      </td>
+    </ng-container>
+
     <!-- Actions (NO ADD BUTTON HERE ANYMORE) -->
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Actions</th>
@@ -482,6 +526,38 @@
       {{ p.isActive }}
     </ng-template>
    </div>
+
+   <div>
+      <strong>Listed By:</strong>
+      <ng-container *ngIf="p.editMode; else mobileReadLB">
+        <input matInput [(ngModel)]="p.createdBy" disabled/>
+      </ng-container>
+      <ng-template #mobileReadLB>{{ p.createdBy }}</ng-template>
+    </div>
+
+    <div>
+      <strong>Listed On:</strong>
+      <ng-container *ngIf="p.editMode; else mobileReadLO">
+        <input matInput [(ngModel)]="p.createdAt" disabled/>
+      </ng-container>
+      <ng-template #mobileReadLO>{{ p.createdAt }}</ng-template>
+    </div>
+
+    <div>
+      <strong>Updated By:</strong>
+      <ng-container *ngIf="p.editMode; else mobileReadUB">
+        <input matInput [(ngModel)]="p.updatedBy" disabled/>
+      </ng-container>
+      <ng-template #mobileReadUB>{{ p.updatedBy }}</ng-template>
+    </div>
+
+    <div>
+      <strong>Updated On:</strong>
+      <ng-container *ngIf="p.editMode; else mobileReadUO">
+        <input matInput [(ngModel)]="p.updatedAt" disabled/>
+      </ng-container>
+      <ng-template #mobileReadUO>{{ p.updatedAt }}</ng-template>
+    </div>
 
 
     <div class="action-buttons">

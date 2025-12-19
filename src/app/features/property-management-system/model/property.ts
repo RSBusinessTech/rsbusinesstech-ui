@@ -20,6 +20,12 @@ export interface Property {
   videoURL?: string;
   isActive?: string; //Yes = show in UI, No = Don't show in UI.
 
+  //System Metadata
+  createdBy?: string;
+  createdAt?: string;  
+  updatedBy?: string;
+  updatedAt?: string;      
+
   // Runtime / UI-only fields.
   editMode?: boolean;               // true when row is being edited.
   _backup?: Partial<Property>;      // used to store backup for canceling edits.

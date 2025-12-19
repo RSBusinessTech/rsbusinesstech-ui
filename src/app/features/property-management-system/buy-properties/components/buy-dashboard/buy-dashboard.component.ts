@@ -15,7 +15,8 @@ export class BuyDashboardComponent implements OnInit {
   displayedColumns: string[] = [
     'id', 'name', 'customerId', 'price', 'address', 'bedrooms', 'bathrooms',
     'carParks', 'furnishing', 'sizeSqft', 'amenities','commonFacilities',
-    'imageUrls', 'location', 'videoURL', 'isActive', 'actions'
+    'imageUrls', 'location', 'videoURL', 'isActive', 'createdBy','createdAt',
+    'updatedBy','updatedAt','actions'
   ];
 
   dataSource = new MatTableDataSource<Property>([]);
@@ -98,6 +99,10 @@ export class BuyDashboardComponent implements OnInit {
       location: '',
       videoURL: '',
       isActive: '',
+      createdBy: '',
+      createdAt: '',
+      updatedBy: '',
+      updatedAt: '',
       editMode: true,
       selectedImages: []
     };
@@ -203,5 +208,4 @@ saveRow(element: Property) {
     }
   });
  }
-
 }

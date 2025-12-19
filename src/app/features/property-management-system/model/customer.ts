@@ -35,10 +35,10 @@ export interface Customer {
   imagePublicId?: string;
 
   //System Metadata
+  createdBy?: string;
   createdAt?: string;  
-  updatedAt?: string;  
-  createdBy?: string;  
-  updatedBy?: string;  
+  updatedBy?: string;
+  updatedAt?: string;   
 
   //Rental Info.
   rentalAmount?: number;
