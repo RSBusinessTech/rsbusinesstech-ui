@@ -91,7 +91,7 @@
     </div>
 
     <!-- ADDRESS DETAILS -->
-    <div class="detail-group">
+    <div class="detail-group"> <!--Added page-break so that this info will be started on page2 while downloading PDF -->
       <h4>Address Details</h4>
       <div class="detail-grid">
         <div><label>Address Line 1</label><span>{{ customer.addressLine1 }}</span></div>
@@ -113,7 +113,7 @@
     </div>
 
     <!-- RENTAL INFORMATION -->
-    <div class="detail-group page-break">  <!--Added page-break so that this info will be started on page2 while downloading PDF -->
+    <div class="detail-group">  
       <h4>Rental Information</h4>
       <div class="detail-grid">
         <div><label>Rental Amount</label><span>RM {{ customer.rentalAmount }}</span></div>

@@ -149,11 +149,6 @@ span {
   box-shadow: none !important;
 }
 
-/* Kill gradients */
-/* .pdf-mode * {
-  background-image: none !important;
-} */
-
 .download-btn-wrapper {
   display: flex;
   justify-content: center;
@@ -189,33 +184,9 @@ span {
 }
 
 /* ================= FORCE DESKTOP LAYOUT ================= */
-/* .pdf-mode .profile-header {
-  flex-direction: row !important;
-  text-align: left !important;
-  gap: 30px !important;
-} */
-
-/* .pdf-mode .profile-img-rect {
-  width: 260px !important;
-  height: 150px !important;
-  object-fit: cover !important;
-} */
-
-/* .pdf-mode .detail-grid {
-  grid-template-columns: repeat(2, 1fr) !important;
-  gap: 16px !important;
-} */
-
 .pdf-mode .detail-group {
   margin-bottom: 28px !important;
 }
-
-/* .pdf-mode .profile-wrapper {
-  flex-direction: row !important;
-  justify-content: flex-start !important;
-  align-items: flex-start !important;
-  padding: 20px !important;
-} */
 
 .pdf-mode .profile-header {
   flex-direction: row !important;
@@ -240,6 +211,8 @@ span {
   align-items: flex-start !important;
   padding: 20px !important;
 }
+
+
 
 
 
