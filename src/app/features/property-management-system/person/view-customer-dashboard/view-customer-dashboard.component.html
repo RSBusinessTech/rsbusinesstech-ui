@@ -68,12 +68,12 @@
     <div class="detail-group">
       <h4>Basic Identification</h4>
       <div class="detail-grid">
-        <div><label>Full Name</label><span>{{ customer.fullName }}</span></div>
+        <div><label>Full Name <i>(As per IC/Passport)</i></label><span>{{ customer.fullName }}</span></div>
         <div><label>Father Name</label><span>{{ customer.fatherName }}</span></div>
         <div><label>Gender</label><span>{{ customer.gender }}</span></div>
         <div><label>Date of Birth</label><span>{{ customer.dateOfBirth | dateFormat }}</span></div>
-        <div><label>Customer ID</label><span>{{ customer.customerID }}</span></div>
-        <div><label>ID Type</label><span>{{ customer.customerIDType }}</span></div>
+        <div><label>Customer ID <i>(IC/Passport No.)</i></label><span>{{ customer.customerID }}</span></div>
+        <div><label>ID Type <i>(IC/Passport)</i></label><span>{{ customer.customerIDType }}</span></div>
         <div><label>Property Type</label><span>{{ customer.propertyType }}</span></div>
       </div>
     </div>
@@ -116,9 +116,9 @@
     <div class="detail-group">  
       <h4>Rental Information</h4>
       <div class="detail-grid">
-        <div><label>Rental Amount</label><span>RM {{ customer.rentalAmount }}</span></div>
-        <div><label>Rental Start Date</label><span> {{ customer.rentalStartDate | dateFormat }}</span></div>
-        <div><label>Rental Due Date</label><span> {{ customer.rentalDueDate | dateFormat }}</span></div>
+        <div><label>Rental Amount <i>(per month)</i></label><span>RM {{ customer.rentalAmount }}</span></div>
+        <div><label>Rental Start Date <i>(when tenant has to pay monthly Rental)</i></label><span> {{ customer.rentalStartDate | dateFormat }}</span></div>
+        <div><label>Rental Due Date <i>(last date to pay monthly Rental)</i></label><span> {{ customer.rentalDueDate | dateFormat }}</span></div>
       </div>
     </div>
 
@@ -133,7 +133,7 @@
         <div><label>Advance Deposit</label><span>RM {{ customer.advanceRentalDeposit }}</span></div>
         <div><label>Utility Deposit</label><span>RM {{ customer.utilityDeposit }}</span></div>
         <div><label>Stamping Fee</label><span>RM {{ customer.stampingFee }}</span></div>
-        <div><label>Total Amount Paid</label><span>RM {{ customer.totalAmountForTenancy }}</span></div>
+        <div><label>Total Amount Paid <i>(1 month Rental + 2 months Deposit + Utility Despsit + Stamping Fee)</i></label><span>RM {{ customer.totalAmountForTenancy }}</span></div>
       </div>
     </div>
 
