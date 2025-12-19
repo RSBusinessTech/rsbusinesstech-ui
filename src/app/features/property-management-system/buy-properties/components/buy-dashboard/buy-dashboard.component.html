@@ -262,7 +262,7 @@
         <ng-container *ngIf="element.editMode; else readModeLO">
           <input matInput [(ngModel)]="element.createdAt" disabled/>
         </ng-container>
-        <ng-template #readModeLO>{{ element.createdAt }}</ng-template>
+        <ng-template #readModeLO>{{ element.createdAt | dateTimeFormat }}</ng-template>
       </td>
     </ng-container>
 
@@ -284,7 +284,7 @@
         <ng-container *ngIf="element.editMode; else readModeUO">
           <input matInput [(ngModel)]="element.updatedAt" disabled/>
         </ng-container>
-        <ng-template #readModeUO>{{ element.updatedAt }}</ng-template>
+        <ng-template #readModeUO>{{ element.updatedAt | dateTimeFormat }}</ng-template>
       </td>
     </ng-container>
 
@@ -542,7 +542,7 @@
       <ng-container *ngIf="p.editMode; else mobileReadLO">
         <input matInput [(ngModel)]="p.createdAt" disabled/>
       </ng-container>
-      <ng-template #mobileReadLO>{{ p.createdAt }}</ng-template>
+      <ng-template #mobileReadLO>{{ p.createdAt | dateTimeFormat }}</ng-template>
     </div>
 
     <div>
@@ -558,7 +558,7 @@
       <ng-container *ngIf="p.editMode; else mobileReadUO">
         <input matInput [(ngModel)]="p.updatedAt" disabled/>
       </ng-container>
-      <ng-template #mobileReadUO>{{ p.updatedAt }}</ng-template>
+      <ng-template #mobileReadUO>{{ p.updatedAt | dateTimeFormat }}</ng-template>
     </div>
 
 

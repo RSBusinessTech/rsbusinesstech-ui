@@ -37,6 +37,8 @@ import { RentalOwnersComponent } from './rental-properties/components/rental-own
 import { ViewCustomerDashboardComponent } from './person/view-customer-dashboard/view-customer-dashboard.component';
 import { SafeUrlPipe } from '../pipes/safe-url.pipe';
 import { ViewDetailsComponent } from '../view-details/view-details.component';
+import { DateFormatPipe } from '../pipes/date-format.pipe';
+import { DateTimeFormatPipe } from '../pipes/date-time-format.pipe';
 
 @NgModule({
   declarations: [LoginComponent,
@@ -60,7 +62,9 @@ import { ViewDetailsComponent } from '../view-details/view-details.component';
                     CommercialOwnersComponent,
                      BuyOwnersComponent,
                       RentalOwnersComponent,
-                      ViewCustomerDashboardComponent,                    
+                      ViewCustomerDashboardComponent, 
+                      DateTimeFormatPipe, 
+                      DateFormatPipe,                   
                     ],
   imports: [
     CommonModule,

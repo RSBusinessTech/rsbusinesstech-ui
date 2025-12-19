@@ -101,7 +101,7 @@
       <th mat-header-cell *matHeaderCellDef>Date of Birth</th>
       <td mat-cell *matCellDef="let e">
         <ng-container *ngIf="e.editMode; else dobR"><input matInput type="date" [(ngModel)]="e.dateOfBirth"></ng-container>
-        <ng-template #dobR>{{ e.dateOfBirth }}</ng-template>
+        <ng-template #dobR>{{ e.dateOfBirth | dateFormat }}</ng-template>
       </td>
     </ng-container>
 
@@ -251,7 +251,7 @@
         <ng-container *ngIf="e.editMode; else rdR">
           <input matInput type="date" [(ngModel)]="e.registrationDate">
         </ng-container>
-        <ng-template #rdR>{{ e.registrationDate }}</ng-template>
+        <ng-template #rdR>{{ e.registrationDate | dateFormat }}</ng-template>
       </td>
     </ng-container>
 
@@ -348,7 +348,7 @@
     <ng-container matColumnDef="rentalStartDate">
      <th mat-header-cell *matHeaderCellDef>Rental Start Date <span style="display: block; font-size: 0.8em; color: gray;">(when tenant has to pay monthly Rental)</span></th>
      <td mat-cell *matCellDef="let e">
-       {{ e.rentalStartDate }}
+       {{ e.rentalStartDate | dateFormat }}
      </td>
     </ng-container>
 
@@ -357,7 +357,7 @@
    <ng-container matColumnDef="rentalDueDate">
      <th mat-header-cell *matHeaderCellDef>Rental Due Date <span style="display: block; font-size: 0.8em; color: gray;">(last date to pay monthly Rental)</span></th>
     <td mat-cell *matCellDef="let e">
-     {{ e.rentalDueDate }}
+     {{ e.rentalDueDate | dateFormat }}
     </td>
    </ng-container>
 
@@ -368,7 +368,7 @@
         <ng-container *ngIf="e.editMode; else csR">
           <input matInput type="date" [(ngModel)]="e.contractStartDate">
         </ng-container>
-        <ng-template #csR>{{ e.contractStartDate }}</ng-template>
+        <ng-template #csR>{{ e.contractStartDate | dateFormat }}</ng-template>
       </td>
     </ng-container>
 
@@ -379,7 +379,7 @@
         <ng-container *ngIf="e.editMode; else ceR">
           <input matInput type="date" [(ngModel)]="e.contractEndDate">
         </ng-container>
-        <ng-template #ceR>{{ e.contractEndDate }}</ng-template>
+        <ng-template #ceR>{{ e.contractEndDate | dateFormat }}</ng-template>
       </td>
     </ng-container>
 
@@ -424,6 +424,42 @@
           </div>
         </ng-template>
 
+      </td>
+    </ng-container>
+
+    <!-- createdBy -->
+    <ng-container matColumnDef="createdBy">
+      <th mat-header-cell *matHeaderCellDef >Listed By</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else lbR"><input matInput [(ngModel)]="e.createdBy" disabled></ng-container>
+        <ng-template #lbR>{{ e.createdBy }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- createdAt -->
+    <ng-container matColumnDef="createdAt">
+      <th mat-header-cell *matHeaderCellDef >Listed On</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else loR"><input matInput [(ngModel)]="e.createdAt" disabled></ng-container>
+        <ng-template #loR>{{ e.createdAt | dateTimeFormat }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- updatedBy -->
+    <ng-container matColumnDef="updatedBy">
+      <th mat-header-cell *matHeaderCellDef >Updated By</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else ubR"><input matInput [(ngModel)]="e.updatedBy" disabled></ng-container>
+        <ng-template #ubR>{{ e.updatedBy }}</ng-template>
+      </td>
+    </ng-container>
+
+   <!-- updatedAt -->
+    <ng-container matColumnDef="updatedAt">
+      <th mat-header-cell *matHeaderCellDef >Updated On</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else uoR"><input matInput [(ngModel)]="e.updatedAt" disabled></ng-container>
+        <ng-template #uoR>{{ e.updatedAt | dateTimeFormat }}</ng-template>
       </td>
     </ng-container>
 
@@ -529,7 +565,7 @@
       <ng-container *ngIf="e.editMode; else dobRead">
         <input matInput type="date" [(ngModel)]="e.dateOfBirth" />
       </ng-container>
-      <ng-template #dobRead>{{ e.dateOfBirth }}</ng-template>
+      <ng-template #dobRead>{{ e.dateOfBirth | dateFormat }}</ng-template>
     </div>
 
     <!-- Customer ID -->
@@ -672,7 +708,7 @@
       <ng-container *ngIf="e.editMode; else regRead">
         <input matInput type="date" [(ngModel)]="e.registrationDate" />
       </ng-container>
-      <ng-template #regRead>{{ e.registrationDate }}</ng-template>
+      <ng-template #regRead>{{ e.registrationDate | dateFormat }}</ng-template>
     </div>
 
     <!-- Gender -->
@@ -756,13 +792,13 @@
     <!-- Rental Start Date (Read-only) -->
      <div>
        <strong>Rental Start Date: <span style="display: block; font-size: 0.6em; color: gray;">(when tenant has to pay monthly Rental)</span></strong>
-       <span>{{ e.rentalStartDate }}</span>
+       <span>{{ e.rentalStartDate | dateFormat }}</span>
      </div>
 
     <!-- Rental Due Date (Read-only) -->
     <div>
      <strong>Rental Due Date: <span style="display: block; font-size: 0.6em; color: gray;">(last date to pay monthly Rental)</span></strong>
-     <span>{{ e.rentalDueDate }}</span>
+     <span>{{ e.rentalDueDate | dateFormat }}</span>
     </div>
 
     <!-- Contract Start -->
@@ -771,7 +807,7 @@
       <ng-container *ngIf="e.editMode; else csReadMobile">
         <input matInput type="date" [(ngModel)]="e.contractStartDate" />
       </ng-container>
-      <ng-template #csReadMobile>{{ e.contractStartDate }}</ng-template>
+      <ng-template #csReadMobile>{{ e.contractStartDate | dateFormat }}</ng-template>
     </div>
 
     <!-- Contract End -->
@@ -780,7 +816,7 @@
       <ng-container *ngIf="e.editMode; else ceReadMobile">
         <input matInput type="date" [(ngModel)]="e.contractEndDate" />
       </ng-container>
-      <ng-template #ceReadMobile>{{ e.contractEndDate }}</ng-template>
+      <ng-template #ceReadMobile>{{ e.contractEndDate | dateFormat }}</ng-template>
     </div>
 
     <!-- Contact Method -->
@@ -796,26 +832,56 @@
       <ng-template #pcmRead>{{ e.preferredContactMethod }}</ng-template>
     </div>
 
+    <!-- createdBy -->
+    <div>
+      <strong>Listed By:</strong>
+      <ng-container *ngIf="e.editMode; else lbRead">
+        <input matInput [(ngModel)]="e.createdBy" disabled/>
+      </ng-container>
+      <ng-template #lbRead>{{ e.createdBy }}</ng-template>
+    </div>
+
+    <!-- createdAt -->
+    <div>
+      <strong>Listed On:</strong>
+      <ng-container *ngIf="e.editMode; else loRead">
+        <input matInput [(ngModel)]="e.createdAt" disabled/>
+      </ng-container>
+      <ng-template #loRead>{{ e.createdAt | dateTimeFormat }}</ng-template>
+    </div>
+
+    <!-- updatedBy -->
+    <div>
+      <strong>Updated By:</strong>
+      <ng-container *ngIf="e.editMode; else ubRead">
+        <input matInput [(ngModel)]="e.updatedBy" disabled/>
+      </ng-container>
+      <ng-template #ubRead>{{ e.updatedBy }}</ng-template>
+    </div>
+
+    <!-- updatedAt -->
+    <div>
+      <strong>Updated On:</strong>
+      <ng-container *ngIf="e.editMode; else uoRead">
+        <input matInput [(ngModel)]="e.updatedAt" disabled/>
+      </ng-container>
+      <ng-template #uoRead>{{ e.updatedAt | dateTimeFormat }}</ng-template>
+    </div>
+
     <!-- Images -->
     <div>
       <strong>Image:</strong>
-
       <ng-container *ngIf="e.editMode; else imgViewMobile">
-
         <input type="file" accept="image/*" (change)="onImageSelected($event, e)" />
-
         <div class="img-thumbnail-container">
           <img *ngIf="e.imageUrl" [src]="e.imageUrl" />
         </div>
-
       </ng-container>
-
       <ng-template #imgViewMobile>
         <a *ngIf="e.imageUrl" [href]="e.imageUrl" target="_blank">
           <img [src]="e.imageUrl" />
         </a>
       </ng-template>
-
     </div>
 
     <!-- ACTION BUTTONS -->

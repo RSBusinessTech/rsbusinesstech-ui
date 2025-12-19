@@ -16,7 +16,6 @@ import { WebDesignKualaLumpurComponent } from './features/seo/components/web-des
 import { ViewDetailsComponent } from './features/view-details/view-details.component';
 import { SafeUrlPipe } from './features/pipes/safe-url.pipe';
 
-
 @NgModule({
   declarations: [
     AppComponent,
