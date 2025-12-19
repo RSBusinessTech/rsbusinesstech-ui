@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Customer } from '../../model/customer';
 import { CustomerService } from '../../services/customer.service';
+import * as html2pdf from 'html2pdf.js';
 
 @Component({
   selector: 'app-view-customer-dashboard',
@@ -45,4 +46,53 @@ export class ViewCustomerDashboardComponent implements OnInit {
       }
     );
   }
+
+  downloadPdf() {
+  const element = document.getElementById('customerPdf');
+   element.classList.add('pdf-mode');
+
+  if (!element) {
+    console.error('customerPdf element not found!');
+    return;
+  }
+  
+ // safe to use element now
+  const originalOverflow = element.style.overflow;
+  const originalHeight = element.style.height;
+
+  element.style.overflow = 'visible';
+  element.style.height = 'auto';  element.style.overflow = 'visible';
+  element.style.height = 'auto';
+
+  const options = {
+    margin: [10, 10, 10, 10],
+    filename: `Customer_${this.customer.fullName}.pdf`,
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: {
+      scale: 2,
+      scrollY: 0,
+      useCORS: true,
+      windowWidth: element.scrollWidth,
+      windowHeight: element.scrollHeight
+    },
+    jsPDF: {
+      unit: 'mm',
+      format: 'a4',
+      orientation: 'portrait'
+    }
+  };
+
+  html2pdf()
+    .from(element)
+    .set(options)
+    .save()
+    .then(() => {
+      // Restore UI styles
+      element.style.overflow = originalOverflow;
+      element.style.height = originalHeight;
+    });
+
+     // remove class after PDF
+      setTimeout(() => element.classList.remove('pdf-mode'), 1000);
+   }
 }

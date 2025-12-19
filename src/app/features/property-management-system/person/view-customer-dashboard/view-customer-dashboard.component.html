@@ -9,7 +9,7 @@
 </div>
 
 <!-- ================= CUSTOMER DETAILS VIEW ================= -->
-<div *ngIf="customer && !isLoading" class="customer-card">
+<div *ngIf="customer && !isLoading" class="customer-card" id="customerPdf">
 
   <!-- ================= PROFILE HEADER ================= -->
  <div class="profile-wrapper">
@@ -71,8 +71,9 @@
         <div><label>Full Name</label><span>{{ customer.fullName }}</span></div>
         <div><label>Father Name</label><span>{{ customer.fatherName }}</span></div>
         <div><label>Gender</label><span>{{ customer.gender }}</span></div>
-        <div><label>Date of Birth</label><span>{{ customer.dateOfBirth }}</span></div>
-        <div><label>Customer ID Type</label><span>{{ customer.customerIDType }}</span></div>
+        <div><label>Date of Birth</label><span>{{ customer.dateOfBirth | dateFormat }}</span></div>
+        <div><label>Customer ID</label><span>{{ customer.customerID }}</span></div>
+        <div><label>ID Type</label><span>{{ customer.customerIDType }}</span></div>
         <div><label>Property Type</label><span>{{ customer.propertyType }}</span></div>
       </div>
     </div>
@@ -107,20 +108,32 @@
       <h4>Account & Membership</h4>
       <div class="detail-grid">
         <div><label>Account Status</label><span>{{ customer.accountStatus }}</span></div>
-        <div><label>Registration Date</label><span>{{ customer.registrationDate }}</span></div>
+        <div><label>Registration Date</label><span>{{ customer.registrationDate | dateFormat }}</span></div>
       </div>
     </div>
 
     <!-- RENTAL INFORMATION -->
-    <div class="detail-group">
+    <div class="detail-group page-break">  <!--Added page-break so that this info will be started on page2 while downloading PDF -->
       <h4>Rental Information</h4>
       <div class="detail-grid">
         <div><label>Rental Amount</label><span>RM {{ customer.rentalAmount }}</span></div>
+        <div><label>Rental Start Date</label><span> {{ customer.rentalStartDate | dateFormat }}</span></div>
+        <div><label>Rental Due Date</label><span> {{ customer.rentalDueDate | dateFormat }}</span></div>
+      </div>
+    </div>
+
+    <!-- CONTRACT INFORMATION -->
+    <div class="detail-group">
+      <h4>Contract Information</h4>
+      <div class="detail-grid">
+        <div><label>Contract Start Date</label><span> {{ customer.contractStartDate | dateFormat }}</span></div>
+        <div><label>Contract End Date</label><span> {{ customer.contractEndDate | dateFormat }}</span></div>
+        <div><label>Contract Duration</label><span>{{ customer.rentalDurationInMonths }} Months</span></div>
+        <div><label>Advance Rental</label><span>RM {{ customer.rentalAmount }}</span></div>
         <div><label>Advance Deposit</label><span>RM {{ customer.advanceRentalDeposit }}</span></div>
         <div><label>Utility Deposit</label><span>RM {{ customer.utilityDeposit }}</span></div>
         <div><label>Stamping Fee</label><span>RM {{ customer.stampingFee }}</span></div>
-        <div><label>Total Tenancy</label><span>RM {{ customer.totalAmountForTenancy }}</span></div>
-        <div><label>Rental Duration (Contract)</label><span>{{ customer.rentalDurationInMonths }} Months</span></div>
+        <div><label>Total Amount Paid</label><span>RM {{ customer.totalAmountForTenancy }}</span></div>
       </div>
     </div>
 
@@ -135,16 +148,23 @@
       </div>
     </div>
 
-    <!-- SYSTEM METADATA -->
+    <!-- Listing Details -->
     <div class="detail-group">
-      <h4>System Metadata</h4>
+      <h4>Listing Details</h4>
       <div class="detail-grid">
-        <div><label>Created At</label><span>{{ customer.createdAt }}</span></div>
-        <div><label>Created By</label><span>{{ customer.createdBy }}</span></div>
-        <div><label>Updated At</label><span>{{ customer.updatedAt }}</span></div>
+        <div><label>Listed By</label><span>{{ customer.createdBy }}</span></div>
+        <div><label>Listed At</label><span>{{ customer.createdAt | dateTimeFormat  }}</span></div>
         <div><label>Updated By</label><span>{{ customer.updatedBy }}</span></div>
+        <div><label>Updated At</label><span>{{ customer.updatedAt | dateTimeFormat }}</span></div>
       </div>
     </div>
 
   </div>
+ </div>
+
+<!-- Download PDf -->
+<div class="download-btn-wrapper">
+  <button mat-raised-button color="primary" (click)="downloadPdf()">
+    Download Customer Details (PDF)
+  </button>
 </div>

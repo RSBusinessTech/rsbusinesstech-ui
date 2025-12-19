@@ -109,18 +109,141 @@ span {
 
 /* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
-  .profile-header {
+   :not(.pdf-mode) .profile-header {
     flex-direction: column;
     text-align: center;
   }
 
-  .profile-img-rect {
+  :not(.pdf-mode) .profile-img-rect {
     width: 100%;
     height: auto;
   }
 
-  .detail-grid {
+  :not(.pdf-mode) .detail-grid {
     grid-template-columns: 1fr;
   }
 }
+
+/* PDF MODE FIXES */
+.pdf-mode * {
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+.pdf-mode .profile-header,
+.pdf-mode .mat-toolbar,
+.pdf-mode .header,
+.pdf-mode .sticky {
+  position: static !important;
+}
+
+.pdf-mode mat-divider,
+.pdf-mode hr {
+  display: none !important;
+}
+
+/* MOST IMPORTANT (fixes dark band) */
+.pdf-mode .mat-elevation-z2,
+.pdf-mode .mat-elevation-z4,
+.pdf-mode .mat-elevation-z8 {
+  box-shadow: none !important;
+}
+
+/* Kill gradients */
+/* .pdf-mode * {
+  background-image: none !important;
+} */
+
+.download-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* Button styling (optional if using Material) */
+.download-btn-wrapper button {
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Hide button during PDF generation */
+.pdf-mode .download-btn-wrapper {
+  display: none !important;
+}
+
+/* Force new PDF page */
+.page-break {
+  page-break-before: always;
+  break-before: page;
+}
+
+/* Avoid splitting sections across pages */
+.detail-group {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+/* ================= FORCE DESKTOP LAYOUT ================= */
+/* .pdf-mode .profile-header {
+  flex-direction: row !important;
+  text-align: left !important;
+  gap: 30px !important;
+} */
+
+/* .pdf-mode .profile-img-rect {
+  width: 260px !important;
+  height: 150px !important;
+  object-fit: cover !important;
+} */
+
+/* .pdf-mode .detail-grid {
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 16px !important;
+} */
+
+.pdf-mode .detail-group {
+  margin-bottom: 28px !important;
+}
+
+/* .pdf-mode .profile-wrapper {
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  padding: 20px !important;
+} */
+
+.pdf-mode .profile-header {
+  flex-direction: row !important;
+  text-align: left !important;
+  gap: 30px !important;
+}
+
+.pdf-mode .profile-img-rect {
+  width: 260px !important;
+  height: 150px !important;
+  object-fit: cover !important;
+}
+
+.pdf-mode .detail-grid {
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 16px !important;
+}
+
+.pdf-mode .profile-wrapper {
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  padding: 20px !important;
+}
+
+
+
+
+
+
 

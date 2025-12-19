@@ -34,7 +34,8 @@ export class DateTimeFormatPipe implements PipeTransform {
       const strMinutes = ('0' + minutes).slice(-2);
       const strSeconds = ('0' + seconds).slice(-2);
       const ampm = hours >= 12 ? 'PM' : 'AM';
-      timeStr = ` (${strHours}:${strMinutes}:${strSeconds} ${ampm})`;
+      // timeStr = ` (${strHours}:${strMinutes}:${strSeconds} ${ampm})`;
+      timeStr = ` ${strHours}:${strMinutes}:${strSeconds} ${ampm}`;
     }
     return `${month} ${day}, ${year}${timeStr}`;
   }
