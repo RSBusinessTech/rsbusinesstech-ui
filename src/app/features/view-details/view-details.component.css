@@ -120,87 +120,34 @@ html, body {
 }
 
 /* Responsive Breakpoints */
-@media (max-width: 900px) {
+@media (max-width: 765px) {
+  /* Force stacked layout to be tight */
   .property-details-container {
-    flex-direction: column;
-    gap: 25px;
-  }
-  
-  .image-gallery,
-  .property-summary {
-    flex: 1 1 100%;
-    min-width: 100%;
+    gap: 0 !important;
+    margin-top: 5px !important;
+    padding-top: 10px;
   }
 
-  .thumbnail-list img {
-    width: 60px;
-    height: 45px;
-  }
-}
-
-@media (max-width: 480px) {
-  html, body {
-    overflow-x: hidden; /* extra safety */
-  }
-
-  .property-details-container {
-    padding: 10px;
-    margin: 10px auto;
-    box-shadow: none;
-    max-width: 100vw;
-    overflow-x: hidden; 
-  }
-
-  .image-gallery {
-    min-width: 0; /* allow shrinking */
-    width: 100%;
-  }
-
+  /* Kill fixed image height (THIS IS THE KEY FIX) */
   .main-image img {
-    width: 100% !important;  /* force fit */
-    height: 250px !important; /* scale height */
-    max-width: 100vw !important;
-    border-radius: 10px;
+    height: auto !important;
+    max-height: 240px !important;
   }
 
+  /* Remove thumbnail spacing pushing content down */
   .thumbnail-list {
-    width: 100%;
-    overflow-x: auto;
-    padding-bottom: 5px;
-    box-sizing: border-box;
+    margin-top: 6px !important;
+    padding-bottom: 0 !important;
   }
 
-  .thumbnail-list img {
-    width: 60px;
-    height: 45px;
-    max-width: 100%;
-    object-fit: cover;
-    border-radius: 6px;
-    cursor: pointer;
-    opacity: 0.7;
-    border: 2px solid transparent;
-    transition: opacity 0.3s ease, border-color 0.3s ease;
-    flex-shrink: 0;
+  /* Pull property text closer to image */
+  .property-summary {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
   }
 
   .property-name {
-    font-size: 1.5rem;
-  }
-
-  .property-price {
-    font-size: 1.3rem;
-  }
-
-  .property-features {
-    gap: 15px;
-  }
-
-  .feature-value {
-    font-size: 1.2rem;
-  }
-
-  .feature-label {
-    font-size: 0.8rem;
+    margin-top: 8px !important;
   }
 }
 
