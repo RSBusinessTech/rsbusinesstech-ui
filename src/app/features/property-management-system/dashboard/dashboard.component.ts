@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -28,9 +29,11 @@ export class DashboardComponent implements OnInit {
   public barChartData = [
     { data: [1200, 1500, 1000, 1700, 1900, 2200, 2000], label: 'Revenue' }
   ];
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+     // Automatically navigate to the "dashboard" route in order to fix css issue,no other specific reason.
+    this.router.navigate(['dashboard']);
   }
 
 }

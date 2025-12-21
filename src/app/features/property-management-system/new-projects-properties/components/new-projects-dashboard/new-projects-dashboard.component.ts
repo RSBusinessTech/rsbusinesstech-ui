@@ -26,12 +26,13 @@ export class NewProjectsDashboardComponent implements OnInit {
   isActiveOptions: string[] = ['YES', 'NO'];
 
   amenitiesOptions: string[] = [
-    'Private bathroom', 'Family room', 'Flat screen TV', 'Balcony',
+    'Private bathroom', 'Family room', 'Flat screen TV', 'Balcony','Fridge',
     'Air conditioning', 'Kitchen', 'Washing machine', 'Pets allowed',
     'Dining table', 'Microwave oven', 'Sofa', 'High-speed WiFi', '24-hour security'
   ];
 
-  commonFacilitiesOptions: string[] = ['Gym', 'Outdoor swimming pool', 'Sauna', 'Terrace', 'Park', 'Water slide', '24-hour security'];
+ commonFacilitiesOptions: string[] = ['Gym', 'Outdoor swimming pool', 'Sauna', 'Terrace', 'Park', 'Water slide', '24-hour security', 
+    'Entrance porch / car porch','Front yard','Fencing / boundary wal','Main gate', 'Car porch (open or covered)', 'Driveway'];
 
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort!: MatSort;

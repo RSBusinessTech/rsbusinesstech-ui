@@ -82,10 +82,28 @@
     <div class="detail-group">
       <h4>Contact Information</h4>
       <div class="detail-grid">
-        <div><label>Email</label><span>{{ customer.email }}</span></div>
-        <div><label>Mobile Number</label><span>{{ customer.mobileNumber }}</span></div>
+        <div><label>Email</label>
+          <span>{{ customer.email }} 
+            <a style = "text-decoration: none;" *ngIf="customer.email" [href]="'mailto:' + customer.email" target="_blank" title="Send Email">
+            📤
+            </a>
+         </span>
+        </div>
+        <div><label>Mobile Number</label>
+          <span>{{ customer.mobileNumber }}
+            <a [href]="'tel:' + customer.mobileNumber" target="_blank" aria-label="Call" class="call-btn" title="Call"> 
+              <img src="assets/icons/phone.png" alt="Call" />
+            </a>
+          </span> 
+        </div>
         <div><label>Alternate Phone</label><span>{{ customer.alternatePhoneNumber }}</span></div>
-        <div><label>WhatsApp</label><span>{{ customer.whatsappNumber }}</span></div>
+        <div><label>WhatsApp</label>
+          <span>{{ customer.whatsappNumber }}
+            <a [href]="'https://wa.me/' + customer.whatsappNumber" target="_blank" aria-label="WhatsApp" class="whatsapp-btn" title="Chat"> 
+              <img src="assets/icons/whatsapp.svg" alt="WhatsApp" />
+           </a>
+          </span>          
+        </div>    
         <div><label>Preferred Contact</label><span>{{ customer.preferredContactMethod }}</span></div>
       </div>
     </div>
@@ -117,8 +135,8 @@
       <h4>Rental Information</h4>
       <div class="detail-grid">
         <div><label>Rental Amount <i>(per month)</i></label><span>RM {{ customer.rentalAmount }}</span></div>
-        <div><label>Rental Start Date <i>(when tenant has to pay monthly Rental)</i></label><span> {{ customer.rentalStartDate | dateFormat }}</span></div>
-        <div><label>Rental Due Date <i>(last date to pay monthly Rental)</i></label><span> {{ customer.rentalDueDate | dateFormat }}</span></div>
+        <div><label>Rental Start Date <br><i>(when tenant has to pay monthly Rental)</i></label><span> {{ customer.rentalStartDate | dateFormat }}</span></div>
+        <div><label>Rental Due Date <br><i>(last date to pay monthly Rental)</i></label><span> {{ customer.rentalDueDate | dateFormat }}</span></div>
       </div>
     </div>
 
@@ -133,7 +151,8 @@
         <div><label>Advance Deposit</label><span>RM {{ customer.advanceRentalDeposit }}</span></div>
         <div><label>Utility Deposit</label><span>RM {{ customer.utilityDeposit }}</span></div>
         <div><label>Stamping Fee</label><span>RM {{ customer.stampingFee }}</span></div>
-        <div><label>Total Amount Paid <i>(1 month Rental + 2 months Deposit + Utility Despsit + Stamping Fee)</i></label><span>RM {{ customer.totalAmountForTenancy }}</span></div>
+        <div><label style="color:green;font-weight: bold;">Total Amount Refundable <br><i style="color:grey;">(2 months Deposit + Utility Despsit) </i></label><span style="color:red;font-weight: bold;">RM {{ customer.advanceRentalDeposit + customer.utilityDeposit }}</span></div>
+        <div><label style="color:green;font-weight: bold;">Total Amount Paid <br> <i style="color:grey;">(1 month Rental + 2 months Deposit + Utility Despsit + Stamping Fee) </i></label><span style="color:red;font-weight: bold;">RM {{ customer.totalAmountForTenancy }}</span></div>
       </div>
     </div>
 

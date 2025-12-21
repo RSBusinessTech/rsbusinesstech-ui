@@ -65,7 +65,7 @@ export class ViewCustomerDashboardComponent implements OnInit {
 
   const options = {
     margin: [30, 10, 10, 10],
-    filename: `Customer_${this.customer.fullName}.pdf`,
+    filename: `Tenant_${this.customer.fullName}.pdf`,
     image: { type: 'jpeg', quality: 0.98 },
     html2canvas: {
       scale: 2,

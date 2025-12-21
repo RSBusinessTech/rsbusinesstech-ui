@@ -1,72 +1,114 @@
 <div class="dashboard-container">
-  <h2 class="dashboard-title">Today's Analytics</h2>
+  <!-- ================== Dashboard Title ================== -->
+  <h2 class="dashboard-title" style="color: brown;">Overview</h2>
 
-  <!-- KPI Cards -->
+  <!-- ================== Top KPI Cards ================== -->
   <div class="kpi-cards">
     <div class="card kpi">
-      <h4>💰 Revenue (Today)</h4>
-      <p class="value">$720</p>
+      <h4>🏘️ Total Properties</h4>
+      <p class="value">{{ totalProperties }}</p>
     </div>
     <div class="card kpi">
-      <h4>📅 Appointments</h4>
-      <p class="value">18</p>
+      <h4>🏙️ Rental Properties</h4>
+      <p class="value">{{ totalRentalProperties }}</p>
     </div>
     <div class="card kpi">
-      <h4>🙋‍♀️ New Customers</h4>
-      <p class="value">6</p>
+      <h4>🏢 Properties for Sale</h4>
+      <p class="value">{{ totalSaleProperties }}</p>
     </div>
     <div class="card kpi">
-      <h4>🧑 Regular Customers</h4>
-      <p class="value">8</p>
+      <h4>🏬 Commercial Properties</h4>
+      <p class="value">{{ totalCommercialProperties }}</p>
+    </div>
+    <div class="card kpi">
+      <h4>🛫 MM2H Properties</h4>
+      <p class="value">{{ totalCommercialProperties }}</p>
+    </div>
+    <div class="card kpi">
+      <h4>🏗️ New Projects</h4>
+      <p class="value">{{ totalNewProjects }}</p>
+    </div>
+    <div class="card kpi">
+      <h4>🧑‍🤝‍🧑 Tenants</h4>
+      <p class="value">{{ totalTenants }}</p>
+    </div>
+    <div class="card kpi">
+      <h4>🙋‍♂️ Buyers</h4>
+      <p class="value">{{ totalBuyers }}</p>
+    </div>
+    <div class="card kpi">
+      <h4>👤 Owners</h4>
+      <p class="value">{{ totalOwners }}</p>
     </div>
   </div>
 
-  <!-- Two Column Layout -->
+  <!-- ================== Main Dashboard Two Columns ================== -->
   <div class="dashboard-main">
-    <!-- Left -->
+    <!-- ------------------ Left Panel ------------------ -->
     <div class="left-panel">
-      <div class="card upcoming">
-        <h3>Upcoming Appointments</h3>
+      <div class="card lease-expiry">
+        <h3>⏳ Pending Rentals (This Month)</h3>
         <ul>
-          <li><strong>10:00 AM</strong> - Jane Doe (Facial)</li>
-          <li><strong>11:30 AM</strong> - John Smith (Haircut)</li>
-          <li><strong>1:00 PM</strong> - Alice Wang (Massage)</li>
+          <li *ngFor="let lease of expiringLeases">
+            {{ lease.tenantName }} - {{ lease.propertyName }} ({{ lease.expiryDate | date:'dd MMM, yyyy' }})
+          </li>
         </ul>
       </div>
 
-      <div class="card top-services">
-        <h3>Services Booked</h3>
+      <div class="card lease-expiry">
+        <h3>⏳ Contracts Expiring (This Month)</h3>
         <ul>
-          <li>Lash Lift - 12 bookings</li>
-          <li>Hair Styling - 10 bookings</li>
-          <li>Facial - 9 bookings</li>
+          <li *ngFor="let lease of expiringLeases">
+            {{ lease.tenantName }} - {{ lease.propertyName }} ({{ lease.expiryDate | date:'dd MMM, yyyy' }})
+          </li>
         </ul>
       </div>
-    </div>
 
-    <!-- Right -->
+      <!-- Total Properties Rented -->
+      <div class="card lease-expiry">
+        <h3>⏳Properties Rented (This Month)</h3>
+        <ul>
+          <li *ngFor="let lease of expiringLeases">
+            {{ lease.tenantName }} - {{ lease.propertyName }} ({{ lease.expiryDate | date:'dd MMM, yyyy' }})
+          </li>
+        </ul>
+      </div>
+
+      <div class="card lease-expiry">
+        <h3>⏳Properties Sold (This Month)</h3>
+        <ul>
+          <li *ngFor="let lease of expiringLeases">
+            {{ lease.tenantName }} - {{ lease.propertyName }} ({{ lease.expiryDate | date:'dd MMM, yyyy' }})
+          </li>
+        </ul>
+      </div>
+
+    <!-- ------------------ Right Panel ------------------ -->
     <div class="right-panel">
+      <!-- Property Status Chart:  🟢 Occupied(Currently rented out),🔴 Vacant(Available), 🟡 Under Maintenance(Not rentable), 🔵 Reserved(Booking in progress) -->
       <div class="card chart">
-        <h3>Revenue This Week</h3>
-        <!-- Replace with chart.js later -->
+        <h3>Property Status</h3>
         <div class="chart-placeholder">
           <canvas baseChart
-      [datasets]="barChartData"
-      [labels]="barChartLabels"
-      [options]="barChartOptions"
-      [legend]="barChartLegend"
-      [chartType]="barChartType">
-    </canvas>
+            [datasets]="propertyStatusChartData"
+            [labels]="propertyStatusChartLabels"
+            [options]="propertyStatusChartOptions"
+            [legend]="propertyStatusChartLegend"
+            [chartType]="propertyStatusChartType">
+          </canvas>
         </div>
       </div>
 
-      <div class="card feedback">
-        <h3>Recent Reviews</h3>
-        <ul>
-          <li>🌟🌟🌟🌟🌟 - “Amazing service!” - Sarah</li>
-          <li>🌟🌟🌟🌟 - “Loved the facial!” - Lisa</li>
-          <li>🌟🌟🌟 - “Waited too long.” - Mike</li>
-        </ul>
+      <!-- Quick Actions -->
+      <div class="card quick-actions">
+        <h3>⚡ Quick Actions</h3>
+        <div class="actions">
+          <button (click)="addProperty()">Add Rental Property</button>
+          <button (click)="addTenant()">Add Tenant</button>
+          <button (click)="addOwner()">Add Rental Property Owner</button>
+
+          <button (click)="generateReport()">Generate Report</button>
+        </div>
       </div>
     </div>
   </div>

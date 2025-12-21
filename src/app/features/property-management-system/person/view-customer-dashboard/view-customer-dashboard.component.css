@@ -212,7 +212,17 @@ span {
   padding: 20px !important;
 }
 
+.call-btn img {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
 
+.whatsapp-btn img {
+  width: 28px;
+  height: 28px;
+  transition: transform 0.3s ease;
+}
 
 
 

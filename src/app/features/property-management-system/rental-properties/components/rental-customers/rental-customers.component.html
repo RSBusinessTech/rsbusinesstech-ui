@@ -314,6 +314,14 @@
       </td>
     </ng-container>
 
+    <!-- totalAmountRefundable -->
+    <ng-container matColumnDef="totalAmountRefundable">
+      <th mat-header-cell *matHeaderCellDef>Total Refundable Amount (RM)         
+        <span style="display: block; font-size: 0.8em; color: gray;">(2 months Advanace Deposit +</span>
+        <span style="display: block; font-size: 0.8em; color: gray;"> half month Utility Despsit)</span></th>
+      <td mat-cell *matCellDef="let e">{{ e.advanceRentalDeposit + e.utilityDeposit }}</td>
+    </ng-container>
+
     <!-- totalAmountForTenancy -->
     <ng-container matColumnDef="totalAmountForTenancy">
       <th mat-header-cell *matHeaderCellDef>Total Tenancy Amount (RM)         
@@ -760,13 +768,24 @@
       <ng-template #stampRead>{{ e.stampingFee }}</ng-template>
     </div>
 
-    <!-- Total Amount for Tenancy -->
+    <!-- Total Amount for Refund -->
+   <div>
+     <strong>Total Refundable Amount (RM): 
+      <span style="display: block; font-size: 0.6em; color: gray;">(2 months Advanace Deposit +</span>
+      <span style="display: block; font-size: 0.6em; color: gray;">half month Utility Despsit)</span></strong>
+      <ng-container *ngIf="e.editMode; else traRead">
+       <input matInput type="number" [(ngModel)]="e.advanceRentalDeposit" disabled/>
+     </ng-container>
+     <ng-template #traRead>{{ e.advanceRentalDeposit+ e.utilityDeposit }}</ng-template>
+    </div>
+
+   <!-- Total Amount for Tenancy -->
    <div>
      <strong>Total Tenancy Amount (RM): 
       <span style="display: block; font-size: 0.6em; color: gray;">(1 month rental + 2 months Advanace Deposit +</span>
       <span style="display: block; font-size: 0.6em; color: gray;">half month Utility Despsit + Stamping Fee)</span></strong>
      <ng-container *ngIf="e.editMode; else totalRead">
-       <input matInput type="number" [(ngModel)]="e.totalAmountForTenancy" />
+       <input matInput type="number" [(ngModel)]="e.totalAmountForTenancy" disabled/>
      </ng-container>
      <ng-template #totalRead>{{ e.totalAmountForTenancy }}</ng-template>
     </div>

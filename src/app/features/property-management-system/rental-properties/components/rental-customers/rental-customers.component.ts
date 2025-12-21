@@ -16,7 +16,7 @@ export class RentalCustomersComponent implements OnInit {
   displayedColumns: string[] = [
     'id','propertyId','propertyType','fullName','fatherName','dateOfBirth','customerID','customerIDType','email','mobileNumber','alternatePhoneNumber',
     'whatsappNumber','addressLine1','addressLine2','city','state','postalCode','country','accountStatus','registrationDate','preferredContactMethod','gender',
-    'rentalAmount','advanceRentalDeposit','utilityDeposit','stampingFee','totalAmountForTenancy','rentalDurationInMonths','gracePeriodInDays','rentalStartDate',
+    'rentalAmount','advanceRentalDeposit','utilityDeposit','stampingFee','totalAmountRefundable','totalAmountForTenancy','rentalDurationInMonths','gracePeriodInDays','rentalStartDate',
     'rentalDueDate','contractStartDate','contractEndDate','imageUrl','createdBy','createdAt','updatedBy','updatedAt','actions'
   ];
 
