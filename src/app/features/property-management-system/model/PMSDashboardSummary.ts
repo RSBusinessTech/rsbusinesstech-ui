@@ -7,6 +7,7 @@ export interface PMSDashboardSummary {
   totalCommercialProperties: number;
   totalMm2hProperties: number;
   totalNewProjects: number;
+  
   totalTenants: number;
   totalBuyers: number;
   totalOwners: number;
