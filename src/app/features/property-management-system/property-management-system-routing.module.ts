@@ -22,8 +22,6 @@ import { CommercialOwnersComponent } from './commercial-properties/components/co
 import { Mm2hOwnersComponent } from './mm2h-properties/components/mm2h-owners/mm2h-owners.component';
 import { NewProjectsOwnersComponent } from './new-projects-properties/components/new-projects-owners/new-projects-owners.component';
 import { ViewCustomerDashboardComponent } from './person/view-customer-dashboard/view-customer-dashboard.component';
-import { ViewDetailsComponent } from '../view-details/view-details.component';
-
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', component: DashboardWrapperComponent, 
@@ -48,7 +46,6 @@ const routes: Routes = [
                 { path: 'viewCustomerDetails/:id', component: ViewCustomerDashboardComponent } // Add ViewCustomerDashboardComponent here.             
      ] },
 ];
-
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

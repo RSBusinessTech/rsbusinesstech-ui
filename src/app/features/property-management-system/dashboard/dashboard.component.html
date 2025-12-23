@@ -22,7 +22,7 @@
     </div>
     <div class="card kpi">
       <h4>🛫 MM2H Properties</h4>
-      <p class="value">{{ totalCommercialProperties }}</p>
+      <p class="value">{{ totalMm2hProperties }}</p>
     </div>
     <div class="card kpi">
       <h4>🏗️ New Projects</h4>
@@ -49,7 +49,7 @@
       <div class="card lease-expiry">
         <h3>⏳ Pending Rentals (This Month)</h3>
         <ul>
-          <li *ngFor="let lease of expiringLeases">
+          <li *ngFor="let lease of pendingRentalsThisMonth">
             {{ lease.tenantName }} - {{ lease.propertyName }} ({{ lease.expiryDate | date:'dd MMM, yyyy' }})
           </li>
         </ul>
@@ -58,7 +58,7 @@
       <div class="card lease-expiry">
         <h3>⏳ Contracts Expiring (This Month)</h3>
         <ul>
-          <li *ngFor="let lease of expiringLeases">
+          <li *ngFor="let lease of contractsExpiringThisMonth">
             {{ lease.tenantName }} - {{ lease.propertyName }} ({{ lease.expiryDate | date:'dd MMM, yyyy' }})
           </li>
         </ul>
@@ -68,7 +68,7 @@
       <div class="card lease-expiry">
         <h3>⏳Properties Rented (This Month)</h3>
         <ul>
-          <li *ngFor="let lease of expiringLeases">
+          <li *ngFor="let lease of propertiesRentedThisMonth">
             {{ lease.tenantName }} - {{ lease.propertyName }} ({{ lease.expiryDate | date:'dd MMM, yyyy' }})
           </li>
         </ul>
@@ -77,7 +77,7 @@
       <div class="card lease-expiry">
         <h3>⏳Properties Sold (This Month)</h3>
         <ul>
-          <li *ngFor="let lease of expiringLeases">
+          <li *ngFor="let lease of propertiesSoldThisMonth">
             {{ lease.tenantName }} - {{ lease.propertyName }} ({{ lease.expiryDate | date:'dd MMM, yyyy' }})
           </li>
         </ul>
@@ -107,7 +107,7 @@
           <button (click)="addTenant()">Add Tenant</button>
           <button (click)="addOwner()">Add Rental Property Owner</button>
 
-          <button (click)="generateReport()">Generate Report</button>
+          <!-- <button (click)="generateReport()">Generate Report</button> -->
         </div>
       </div>
     </div>

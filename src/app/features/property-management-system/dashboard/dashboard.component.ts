@@ -85,4 +85,16 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  addProperty(): void {
+    this.router.navigate(['propertyManagementSystem/rentalProperties']); // <-- navigate to route
+  }
+
+  addTenant(): void {
+    this.router.navigate(['propertyManagementSystem/rentalCustomers']); // <-- navigate to route
+  }
+
+  addOwner(): void {
+    this.router.navigate(['propertyManagementSystem/rentalOwners']); // <-- navigate to route
+  }
+
 }
