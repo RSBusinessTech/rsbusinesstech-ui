@@ -2,8 +2,15 @@ import { LeaseInfo } from './LeaseInfo';
 
 export interface PMSDashboardSummary {
   totalProperties: number;
+
   totalRentalProperties: number;
+  totalRentedOutProperties : number;
+  totalToBeRentedProperties : number;
+
   totalSaleProperties: number;
+  totalSoldOutProperties : number;
+  totalToBeSoldProperties : number;
+
   totalCommercialProperties: number;
   totalMm2hProperties: number;
   totalNewProjects: number;

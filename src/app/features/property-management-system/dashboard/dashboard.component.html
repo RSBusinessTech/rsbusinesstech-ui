@@ -1,46 +1,100 @@
 <div class="dashboard-container">
   <!-- ================== Dashboard Title ================== -->
-  <h2 class="dashboard-title" style="color: brown;">Overview</h2>
+  <h1 class="dashboard-title" style="color: brown; text-align: center;">Overview</h1>
 
-  <!-- ================== Top KPI Cards ================== -->
-  <div class="kpi-cards">
-    <div class="card kpi">
-      <h4>🏘️ Total Properties</h4>
-      <p class="value">{{ totalProperties }}</p>
-    </div>
-    <div class="card kpi">
-      <h4>🏙️ Rental Properties</h4>
-      <p class="value">{{ totalRentalProperties }}</p>
-    </div>
-    <div class="card kpi">
-      <h4>🏢 Properties for Sale</h4>
-      <p class="value">{{ totalSaleProperties }}</p>
-    </div>
-    <div class="card kpi">
-      <h4>🏬 Commercial Properties</h4>
-      <p class="value">{{ totalCommercialProperties }}</p>
-    </div>
-    <div class="card kpi">
-      <h4>🛫 MM2H Properties</h4>
-      <p class="value">{{ totalMm2hProperties }}</p>
-    </div>
-    <div class="card kpi">
-      <h4>🏗️ New Projects</h4>
-      <p class="value">{{ totalNewProjects }}</p>
-    </div>
-    <div class="card kpi">
-      <h4>🧑‍🤝‍🧑 Tenants</h4>
-      <p class="value">{{ totalTenants }}</p>
-    </div>
-    <div class="card kpi">
-      <h4>🙋‍♂️ Buyers</h4>
-      <p class="value">{{ totalBuyers }}</p>
-    </div>
-    <div class="card kpi">
-      <h4>👤 Owners</h4>
-      <p class="value">{{ totalOwners }}</p>
-    </div>
+<!-- ================== Top KPI Cards ================== -->
+<!-- ===== All Properties ===== -->
+<h3 class="kpi-category-title">🏘️ Total Properties/Clients</h3>
+<div class="kpi-cards category-all">
+  <div class="card kpi">
+    <h4>🏘️ Total Properties</h4>
+    <p class="value">{{ totalProperties }}</p>
   </div>
+  <div class="card kpi clickable">
+    <h4>🧑‍🤝‍🧑 Total Tenants</h4>
+    <p class="value underline" [routerLink]="'/propertyManagementSystem/rentalCustomers'">
+      {{ totalTenants }}
+    </p>
+  </div>
+  <div class="card kpi clickable">
+    <h4>🙋‍♂️ Total Buyers</h4>
+    <p class="value" [routerLink]="'/propertyManagementSystem/buyCustomers'">{{ totalBuyers }}</p>
+  </div>
+  <div class="card kpi">
+    <h4>👤 Total Owners</h4>
+    <p class="value">{{ totalOwners }}</p>
+  </div>
+</div>
+
+<!-- ===== Rental Properties ===== -->
+<h3 class="kpi-category-title">🏙️ Rental Properties</h3>
+<div class="kpi-cards category-rent">
+  <div class="card kpi clickable" [routerLink]="'/propertyManagementSystem/rentalProperties'">
+    <h4>🏙️ Total Rental Properties</h4>
+    <p class="value">{{ totalRentalProperties }}</p>
+  </div>
+  <div class="card kpi clickable" [routerLink]="'/propertyManagementSystem/rentalProperties'">
+    <h4>🏙️ Rented Out</h4>
+    <p class="value">{{ totalRentedOutProperties }}</p>
+  </div>
+  <div class="card kpi clickable" [routerLink]="'/propertyManagementSystem/rentalProperties'">
+    <h4>🏙️ To be Rented</h4>
+    <p class="value">{{ totalToBeRentedProperties }}</p>
+  </div>
+</div>
+
+<!-- ===== Sales Properties ===== -->
+<h3 class="kpi-category-title">🏢 Sales Properties</h3>
+<div class="kpi-cards category-sale">
+  <div class="card kpi clickable" [routerLink]="'/propertyManagementSystem/buyProperties'">
+    <h4>🏢 Total Sale's Properties </h4>
+    <p class="value">{{ totalSaleProperties }}</p>
+  </div>
+  <div class="card kpi clickable" [routerLink]="'/propertyManagementSystem/buyProperties'">
+    <h4>🏢 Sold Out</h4>
+    <p class="value">{{ totalSoldOutProperties }}</p>
+  </div>
+  <div class="card kpi clickable" [routerLink]="'/propertyManagementSystem/buyProperties'">
+    <h4>🏢 To be Sold</h4>
+    <p class="value">{{ totalToBeSoldProperties }}</p>
+  </div>
+</div>
+
+<!-- ===== MM2H Properties ===== -->
+<h3 class="kpi-category-title">🛫 MM2H Properties</h3>
+<div class="kpi-cards category-mm2h">
+  <div class="card kpi clickable" [routerLink]="'/propertyManagementSystem/mm2hProperties'">
+    <h4>🛫 Total MM2H Properties</h4>
+    <p class="value">{{ totalMm2hProperties }}</p>
+  </div>
+   <div class="card kpi clickable" [routerLink]="'/propertyManagementSystem/mm2hProperties'">
+    <h4>🏢 Sold Out</h4>
+    <p class="value">{{ totalSoldOutProperties }}</p>
+  </div>
+  <div class="card kpi clickable" [routerLink]="'/propertyManagementSystem/mm2hProperties'">
+    <h4>🏢 To be Sold</h4>
+    <p class="value">{{ totalToBeSoldProperties }}</p>
+  </div>
+</div>
+
+<!-- ===== Commercial Properties ===== -->
+<h3 class="kpi-category-title">🏬 Commercial Properties</h3>
+<div class="kpi-cards category-commercial">
+  <div class="card kpi clickable" [routerLink]="'/propertyManagementSystem/commercialProperties'">
+    <h4>🏬 Total Commercial Properties</h4>
+    <p class="value">{{ totalCommercialProperties }}</p>
+  </div>
+</div>
+
+<!-- ===== New Projects ===== -->
+<h3 class="kpi-category-title">🏗️ New Projects</h3>
+<div class="kpi-cards category-new-projects">
+  <div class="card kpi clickable" [routerLink]="'/propertyManagementSystem/newProjectsProperties'">
+    <h4>🏗️ Total New Projects</h4>
+    <p class="value">{{ totalNewProjects }}</p>
+  </div>
+</div>
+
 
   <!-- ================== Main Dashboard Two Columns ================== -->
   <div class="dashboard-main">
@@ -106,7 +160,7 @@
           <button (click)="addProperty()">Add Rental Property</button>
           <button (click)="addTenant()">Add Tenant</button>
           <button (click)="addOwner()">Add Rental Property Owner</button>
-
+          
           <!-- <button (click)="generateReport()">Generate Report</button> -->
         </div>
       </div>

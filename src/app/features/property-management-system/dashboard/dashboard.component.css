@@ -2,7 +2,7 @@
 /* ==================== General Dashboard ==================== */
 .dashboard-container {
   max-width: 100%;
-  margin: 30px auto;
+  margin: 0px auto;
   padding: 15px 12px;
   font-family: Arial, sans-serif;
   color: #3e2f16;
@@ -10,7 +10,6 @@
   border-radius: 10px;
   box-sizing: border-box;
   overflow-x: hidden;
-  /* margin-left: 220px; offset for fixed sidebar width */
 }
 
 /* Dashboard Title */
@@ -34,7 +33,7 @@
   margin-bottom: 25px;
 }
 
-.kpi-cards .card.kpi {
+ .kpi-cards .card.kpi {
   flex: 1 1 200px;
   background: #fff;
   padding: 20px;
@@ -58,7 +57,40 @@
   font-size: 22px;
   font-weight: bold;
   color: #2c3e50;
+}  
+
+/* ================= Desktop ONLY: Compact KPI Cards ================= */
+@media screen and (min-width: 800px) {
+.kpi-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
 }
+
+.kpi-cards .card.kpi {
+  flex: 1 1 160px;
+  max-width: 180px;
+  padding: 12px 10px;
+  background: #fff;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.kpi-cards .card.kpi h4 {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.kpi-cards .card.kpi .value {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+}
+
+
 
 /* ==================== Main Dashboard Two Columns ==================== */
 .dashboard-main {
@@ -195,6 +227,47 @@
     width: 100%;
   }
 }
+
+.kpi-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.kpi-cards.category-rent,
+.kpi-cards.category-sale,
+.kpi-cards.category-commercial,
+.kpi-cards.category-mm2h
+.kpi-cards.category-new-projects {
+  margin-top: 20px; /* space between categories */
+}
+
+.kpi-category-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 25px 0 10px 0;
+  color: #5a2d0c; /* darker brown */
+}
+
+/* Existing clickable card style */
+.card.kpi.clickable {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.card.kpi.clickable:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  transform: translateY(-5px);
+  background-color: #c7b089;
+}
+
+/* Underline only the value */
+.card.kpi.clickable .value {
+  text-decoration: underline;
+}
+
+
 
 
 

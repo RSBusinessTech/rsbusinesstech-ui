@@ -12,8 +12,15 @@ import { PMSDashboardSummaryService } from '../services/pms-dashboard-summary.se
 export class DashboardComponent implements OnInit {
   //  ================= KPIs =================
   totalProperties = 0;
+
   totalRentalProperties = 0;
+  totalRentedOutProperties = 0;
+  totalToBeRentedProperties = 0;
+
   totalSaleProperties = 0;
+  totalSoldOutProperties = 0;
+  totalToBeSoldProperties = 0;
+  
   totalCommercialProperties = 0;
   totalMm2hProperties = 0;
   totalNewProjects = 0;
@@ -45,17 +52,24 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
      // Automatically navigate to the "dashboard" route in order to fix css issue,no other specific reason.
     this.router.navigate(['dashboard']);
+     window.scrollTo(0, 0);  //when coming back to dashboard from other UIs, it was scrolling/showing Property status instad of scroll to top, forced to scroll to top.
     this.loadDashboardSummary();
   }
 
   loadDashboardSummary(): void {
     this.pmsDashboardSummaryService.getPMSDashboardSummary().subscribe({
       next: (res: PMSDashboardSummary) => {
-
         // ================= KPIs =================
         this.totalProperties = res.totalProperties;
+
         this.totalRentalProperties = res.totalRentalProperties;
+        this.totalRentedOutProperties = res.totalRentedOutProperties;
+        this.totalToBeRentedProperties = res.totalToBeRentedProperties;
+
         this.totalSaleProperties = res.totalSaleProperties;
+        this.totalSoldOutProperties = res.totalSoldOutProperties;
+        this.totalToBeSoldProperties = res.totalToBeSoldProperties;
+
         this.totalCommercialProperties = res.totalCommercialProperties;
         this.totalMm2hProperties = res.totalMm2hProperties;
         this.totalNewProjects = res.totalNewProjects;
