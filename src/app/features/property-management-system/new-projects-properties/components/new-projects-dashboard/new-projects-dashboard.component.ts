@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { Property } from '../../../model/property';
 import { PropertyService } from '../../../services/property.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-new-projects-dashboard',
@@ -38,13 +39,17 @@ export class NewProjectsDashboardComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
 
   propertyType = 'newProjects';
+  agentId: string;
 
   constructor(
     private propertyService: PropertyService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private authService: AuthService
+    
   ) {}
 
   ngOnInit() {
+    this.agentId = this.authService.getUsername() || ''; 
     this.loadProperties();
 
     this.dataSource.filterPredicate = (data: Property, filter: string) => {
@@ -68,7 +73,7 @@ export class NewProjectsDashboardComponent implements OnInit {
   // LOAD PROPERTIES
   // -------------------------
   loadProperties() {
-    this.propertyService.getPropertiesByType(this.propertyType).subscribe({
+    this.propertyService.getPropertiesByType(this.propertyType, this.agentId,).subscribe({
       next: (data: Property[]) => {
         data.forEach(p => p.imageUrls = p.imageUrls || []);
         this.dataSource.data = data;
@@ -131,7 +136,7 @@ export class NewProjectsDashboardComponent implements OnInit {
       return;
     }
 
-    this.propertyService.deletePropertyByType(this.propertyType, element.id).subscribe({
+    this.propertyService.deletePropertyByType(this.propertyType, this.agentId, element.id).subscribe({
       next: (response) => {
         this.snackBar.open(response, 'Close', { duration: 3000 });
         this.loadProperties();
@@ -195,8 +200,8 @@ saveRow(element: Property) {
 
   const isUpdate = element.id && element.id > 0;
   const saveObservable = isUpdate
-    ? this.propertyService.updatePropertyWithImages(this.propertyType, element.id, formData)
-    : this.propertyService.addPropertyByType(this.propertyType, formData);
+    ? this.propertyService.updatePropertyWithImages(this.propertyType, this.agentId, element.id, formData)
+    : this.propertyService.addPropertyByType(this.propertyType, this.agentId, formData);
 
   saveObservable.subscribe({
     next: () => {

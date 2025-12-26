@@ -1,6 +1,6 @@
-// src/app/login/login.component.ts
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';  // <-- Import Router
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';  // <-- Import Router
 })
 export class LoginComponent {
 
-   constructor(private router: Router) {}  // <-- Inject Router
+  constructor(private router: Router, private authService: AuthService) {}
 
   onSubmit(form: any) {
     // Add your login logic here
@@ -17,10 +17,12 @@ export class LoginComponent {
     const password = form.value.password;
 
     // Hardcoded credentials
-    const hardcodedUsername = 'rsbusinesstech';
+    const hardcodedUsername = 'vyenpropertyadvisor';
+    const hardcodedUsernamedemo = 'rsbusinesstech';
     const hardcodedPassword = '@gmail.com';
 
-    if (username === hardcodedUsername && password === hardcodedPassword) {
+    if ((username === hardcodedUsername || username ===hardcodedUsernamedemo) && password === hardcodedPassword) {
+      this.authService.setUsername(username);  // store logged-in username
       alert('Login successful!');
       this.router.navigate(['/propertyManagementSystem/dashboard']);
     } else {

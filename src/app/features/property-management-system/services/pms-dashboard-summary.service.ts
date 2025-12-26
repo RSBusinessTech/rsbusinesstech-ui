@@ -7,16 +7,17 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PMSDashboardSummaryService {
-  
-  private apiUrl = 'https://rsbusinesstech-backend.onrender.com/propertyManagementSystem/getPMSDashboardSummary';
 
-   constructor(private http: HttpClient) { }
+  private baseUrl =
+    'https://rsbusinesstech-backend.onrender.com/propertyManagementSystem';
 
-   /**
-   * Fetches the dashboard summary from backend
-   * @returns Observable<DashboardSummary>
+  constructor(private http: HttpClient) {}
+
+  /**
+   * Fetch dashboard summary for a specific agent
    */
-  getPMSDashboardSummary(): Observable<PMSDashboardSummary> {
-    return this.http.get<PMSDashboardSummary>(this.apiUrl);
+  getPMSDashboardSummary(agentId: string): Observable<PMSDashboardSummary> {
+    const apiUrl = `${this.baseUrl}/getPMSDashboardSummary/${agentId}`;
+    return this.http.get<PMSDashboardSummary>(apiUrl);
   }
 }

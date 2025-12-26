@@ -10,6 +10,8 @@ import { PropertyService } from '../property-management-system/services/property
 })
 export class ViewDetailsComponent implements OnInit {
 
+  agentId = 'vyenpropertyadvisor';
+
   constructor(
     private location: Location,
     private route: ActivatedRoute,
@@ -104,13 +106,13 @@ handleSwipe() {
     this.id = Number(params.get('id')) || 0;
 
     //Try to load from cache first.
-    const cachedList = this.propertyService.getCachedProperties(this.type);
+    const cachedList = this.propertyService.getCachedProperties(this.type, this.agentId);
 
     if (cachedList) {
       this.preparePropertyData(cachedList);
     } else {
       //Fallback: fetch from backend only when required (refresh or direct link).
-      this.propertyService.getPropertiesByType(this.type).subscribe({
+      this.propertyService.getPropertiesByType(this.type, this.agentId).subscribe({
         next: (data) => this.preparePropertyData(data),
         error: (err) => console.error('Error fetching properties:', err)
       });

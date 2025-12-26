@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LeaseInfo } from '../model/LeaseInfo';
 import { PMSDashboardSummary } from '../model/PMSDashboardSummary';
 import { PMSDashboardSummaryService } from '../services/pms-dashboard-summary.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -47,17 +48,20 @@ export class DashboardComponent implements OnInit {
   propertyStatusChartLegend = true;
   propertyStatusChartOptions = { responsive: true };
 
-  constructor(private router: Router, private pmsDashboardSummaryService: PMSDashboardSummaryService) { }
+  agentId: string;
+
+  constructor(private router: Router, private pmsDashboardSummaryService: PMSDashboardSummaryService, private authService: AuthService) { }
 
   ngOnInit() {
      // Automatically navigate to the "dashboard" route in order to fix css issue,no other specific reason.
     this.router.navigate(['dashboard']);
-     window.scrollTo(0, 0);  //when coming back to dashboard from other UIs, it was scrolling/showing Property status instad of scroll to top, forced to scroll to top.
-    this.loadDashboardSummary();
+    window.scrollTo(0, 0);  //when coming back to dashboard from other UIs, it was scrolling/showing Property status instad of scroll to top, forced to scroll to top.
+    this.agentId = this.authService.getUsername() || '';
+    this.loadDashboardSummary(this.agentId);
   }
 
-  loadDashboardSummary(): void {
-    this.pmsDashboardSummaryService.getPMSDashboardSummary().subscribe({
+  loadDashboardSummary(agentId: string): void {
+    this.pmsDashboardSummaryService.getPMSDashboardSummary(agentId).subscribe({
       next: (res: PMSDashboardSummary) => {
         // ================= KPIs =================
         this.totalProperties = res.totalProperties;

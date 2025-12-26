@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { Customer } from '../../../model/customer';
 import { CustomerService } from '../../../services/customer.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-rental-customers',
@@ -24,15 +25,19 @@ export class RentalCustomersComponent implements OnInit {
   customerIDTypeOptions: string[] = ['IC', 'Passport'];
   propertyTypeOptions: string[] = ['Rental', 'Buy', 'Commercial', 'MM2H', 'New Project'];
 
+  agentId: string;
+
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
 
   constructor(
     private customerService: CustomerService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private authService: AuthService 
   ) {}
 
   ngOnInit() {
+    this.agentId = this.authService.getUsername() || '';
     this.loadCustomers();
 
     // Filter predicate
@@ -48,7 +53,7 @@ export class RentalCustomersComponent implements OnInit {
   // LOAD CUSTOMERS
   // -------------------------
   loadCustomers() {
-    const cached = this.customerService.getCachedCustomers();
+    const cached = this.customerService.getCachedCustomers(this.agentId);
     if (cached) {
       this.dataSource.data = cached;
       this.dataSource.paginator = this.paginator;
@@ -56,7 +61,7 @@ export class RentalCustomersComponent implements OnInit {
       return;
     }
 
-    this.customerService.getAllCustomers().subscribe({
+    this.customerService.getAllCustomers(this.agentId).subscribe({
       next: (data: Customer[]) => {
         data.forEach(c => c.imageUrl = c.imageUrl || ''); // ensure imageUrl is string
         this.dataSource.data = data;
@@ -150,7 +155,7 @@ editRow(element: Customer) {
       return;
     }
 
-    this.customerService.deleteCustomer(element.id).subscribe({
+    this.customerService.deleteCustomer(this.agentId, element.id).subscribe({
       next: (response) => {
         this.snackBar.open(response, 'Close', { duration: 3000 });
         this.loadCustomers();
@@ -211,8 +216,8 @@ removeImage(customer: any, index: number) {
 
     const isUpdate = element.id && element.id > 0;
     const saveObservable = isUpdate
-      ? this.customerService.updateCustomerWithImages(element.id, formData)
-      : this.customerService.addCustomer(formData);
+      ? this.customerService.updateCustomerWithImages(this.agentId, element.id, formData)
+      : this.customerService.addCustomer(this.agentId, formData);
 
     saveObservable.subscribe({
       next: () => {

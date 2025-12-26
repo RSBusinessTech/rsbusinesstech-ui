@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Customer } from '../../model/customer';
 import { CustomerService } from '../../services/customer.service';
 import * as html2pdf from 'html2pdf.js';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-view-customer-dashboard',
@@ -15,26 +16,30 @@ export class ViewCustomerDashboardComponent implements OnInit {
   isLoading = true;
   errorMessage: string;
 
+  agentId: string;
+
   constructor(
     private customerService: CustomerService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
+    this.agentId = this.authService.getUsername() || '';
     const id = this.route.snapshot.paramMap.get('id');
 
     if (id) {
-      this.getCustomer(id);
+      this.getCustomer(id,this.agentId);
     } else {
       this.isLoading = false;
       this.errorMessage = 'Customer ID not found in URL';
     }
   }
 
-  private getCustomer(id: string): void {
+  private getCustomer(id: string, agentId: string): void {
     this.isLoading = true;
 
-    this.customerService.getCustomerById(id).subscribe(
+    this.customerService.getCustomerById(id,agentId).subscribe(
       (data: Customer) => {
         this.customer = data;
         this.isLoading = false;
