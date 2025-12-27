@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Property } from '../property-management-system/model/property';
 import { PropertyService } from '../property-management-system/services/property.service';
+import { AuthService } from '../property-management-system/services/auth.service';
 @Component({
   selector: 'app-view-details',
   templateUrl: './view-details.component.html',
@@ -10,12 +11,13 @@ import { PropertyService } from '../property-management-system/services/property
 })
 export class ViewDetailsComponent implements OnInit {
 
-  agentId = 'vyenpropertyadvisor';
+  agentId: string;
 
   constructor(
     private location: Location,
     private route: ActivatedRoute,
-    private propertyService: PropertyService
+    private propertyService: PropertyService,
+    private authService: AuthService
   ) {}
 
   // Current selected property.
@@ -100,6 +102,7 @@ handleSwipe() {
 }
 
   ngOnInit() {
+  this.agentId = this.authService.getUsername() || ''; 
   this.route.paramMap.subscribe(params => {
     //Extract type & id from route.
     this.type = params.get('type') || 'rent';
@@ -138,7 +141,7 @@ preparePropertyData(list: Property[]) {
   this.videoURL = this.property.videoURL || '';
 
   // Prepare similar properties (exclude current one)
-  this.similar = list.filter(p => p.id !== this.property!.id);
+  this.similar = list.filter(p => p.id !== this.property!.id && this.agentId ===p.agentId);
 
   // Always set the image gallery (with fallback)
   this.images = (this.property.imageUrls && this.property.imageUrls.length > 0)
