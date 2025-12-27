@@ -3,6 +3,7 @@ export interface Customer {
   //Basic Identification
   id?: number;
   propertyId?: number;
+  agentId:string;
   propertyType?: string;
   fullName?: string;
   fatherName?: string;

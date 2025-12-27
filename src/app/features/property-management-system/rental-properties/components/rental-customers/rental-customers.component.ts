@@ -83,6 +83,7 @@ addNewRow() {
   const newRow: Customer = {
     id: 0,
     propertyId: 0,
+    agentId: this.agentId,
     propertyType: '',
     fullName: '',
     fatherName: '',

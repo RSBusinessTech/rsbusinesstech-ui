@@ -94,6 +94,7 @@ export class RentalDashboardComponent implements OnInit {
   addNewRow() {
     const newRow: Property = {
       id: 0,
+      agentId: this.agentId,
       name: '',
       customerId: null,
       price: 0,

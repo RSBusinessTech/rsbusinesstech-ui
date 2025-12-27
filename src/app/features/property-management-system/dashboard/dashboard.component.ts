@@ -54,9 +54,9 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
      // Automatically navigate to the "dashboard" route in order to fix css issue,no other specific reason.
+    this.agentId = this.authService.getUsername() || '';
     this.router.navigate(['dashboard']);
     window.scrollTo(0, 0);  //when coming back to dashboard from other UIs, it was scrolling/showing Property status instad of scroll to top, forced to scroll to top.
-    this.agentId = this.authService.getUsername() || '';
     this.loadDashboardSummary(this.agentId);
   }
 

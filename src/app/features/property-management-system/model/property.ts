@@ -1,5 +1,6 @@
 export interface Property {
   id: number;
+  agentId: string;
   customerId?: number;
   name: string;
   price: number;
