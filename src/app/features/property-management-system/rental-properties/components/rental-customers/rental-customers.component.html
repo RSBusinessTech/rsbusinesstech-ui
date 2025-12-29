@@ -391,6 +391,21 @@
       </td>
     </ng-container>
 
+    <!-- isRentalPaid -->
+    <ng-container matColumnDef="isRentalPaid">
+     <th mat-header-cell *matHeaderCellDef>Is Rental Paid <span style="display: block; font-size: 0.8em; color: gray;">(Select Yes if already paid)</span></th>
+     <td mat-cell *matCellDef="let e">
+      <ng-container *ngIf="e.editMode; else iRPR">
+      <mat-select [(ngModel)]="e.isRentalPaid" placeholder="Select Rental Status">
+        <mat-option *ngFor="let type of isRentalPaidOptions" [value]="type">
+          {{ type }}
+        </mat-option>
+      </mat-select>
+    </ng-container>
+    <ng-template #iRPR>{{ e.isRentalPaid }}</ng-template>
+    </td>
+   </ng-container>
+
     <!-- preferredContactMethod -->
     <ng-container matColumnDef="preferredContactMethod">
       <th mat-header-cell *matHeaderCellDef preferred-contact>Contact Method</th>
@@ -837,6 +852,19 @@
       </ng-container>
       <ng-template #ceReadMobile>{{ e.contractEndDate | dateFormat }}</ng-template>
     </div>
+
+    <!-- Is Rental Paid -->
+   <div>
+     <strong>Is Rental Paid:<span style="display: block; font-size: 0.6em; color: gray;">(select Yes if already paid)</span></strong>
+     <ng-container *ngIf="e.editMode; else iRPRead">
+      <mat-select [(ngModel)]="e.isRentalPaid" placeholder="Select Rental Status">
+      <mat-option *ngFor="let type of isRentalPaidOptions" [value]="type">
+        {{ type }}
+      </mat-option>
+      </mat-select>
+    </ng-container>
+    <ng-template #iRPRead>{{ e.isRentalPaid }}</ng-template>
+   </div>
 
     <!-- Contact Method -->
     <div>

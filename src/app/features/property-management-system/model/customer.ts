@@ -53,6 +53,7 @@ export interface Customer {
   rentalDueDate?: string;
   contractStartDate?: string;
   contractEndDate?: string;
+  isRentalPaid?: string;
 
   //Buy Info.
   propertyPrice?: number;

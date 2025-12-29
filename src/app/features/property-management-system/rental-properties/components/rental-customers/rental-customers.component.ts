@@ -17,13 +17,14 @@ export class RentalCustomersComponent implements OnInit {
   displayedColumns: string[] = [
     'id','propertyId','propertyType','fullName','fatherName','dateOfBirth','customerID','customerIDType','email','mobileNumber','alternatePhoneNumber',
     'whatsappNumber','addressLine1','addressLine2','city','state','postalCode','country','accountStatus','registrationDate','preferredContactMethod','gender',
-    'rentalAmount','advanceRentalDeposit','utilityDeposit','stampingFee','totalAmountRefundable','totalAmountForTenancy','rentalDurationInMonths','gracePeriodInDays','rentalStartDate',
-    'rentalDueDate','contractStartDate','contractEndDate','imageUrl','createdBy','createdAt','updatedBy','updatedAt','actions'
+    'rentalAmount','advanceRentalDeposit','utilityDeposit','stampingFee','totalAmountRefundable','totalAmountForTenancy','rentalDurationInMonths','gracePeriodInDays',
+    'rentalStartDate','rentalDueDate','contractStartDate','contractEndDate','isRentalPaid','imageUrl','createdBy','createdAt','updatedBy','updatedAt','actions'
   ];
 
   dataSource = new MatTableDataSource<Customer>([]);
   customerIDTypeOptions: string[] = ['IC', 'Passport'];
   propertyTypeOptions: string[] = ['Rental', 'Buy', 'Commercial', 'MM2H', 'New Project'];
+  isRentalPaidOptions: string[] = ['No', 'Yes'];
 
   agentId: string;
 
@@ -113,6 +114,7 @@ addNewRow() {
     rentalDueDate: '',
     contractStartDate: '',
     contractEndDate: '',
+    isRentalPaid: 'No',
     propertyPrice: 0,
     stampDutyFee: 0,
     registrationFee: 0,
