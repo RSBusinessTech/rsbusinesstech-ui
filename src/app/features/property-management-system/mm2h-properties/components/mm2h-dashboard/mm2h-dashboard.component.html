@@ -50,7 +50,20 @@
         <ng-container *ngIf="element.editMode; else readModeCustomerId">
           <input matInput [(ngModel)]="element.customerId" type="number" />
         </ng-container>
-        <ng-template #readModeCustomerId>{{ element.customerId }}</ng-template>
+        <ng-template #readModeCustomerId>
+      <a
+        *ngIf="element.customerId"
+        [routerLink]="[
+          '/propertyManagementSystem/viewCustomerDetails',
+          element.customerId
+        ]"
+        class="link-id"
+        title="click here to see this Customer"
+      >
+        {{ element.customerId }}
+      </a>
+      <span *ngIf="!element.customerId">—</span>
+    </ng-template>
       </td>
     </ng-container>
 
@@ -337,13 +350,19 @@
       </a>
     </div>
 
-    <div>
+     <div>
       <strong>Customer ID:</strong>
       <ng-container *ngIf="p.editMode; else mobileReadCustomerId">
-        <input matInput type="number" [(ngModel)]="p.customerId" placeholder="Enter Customer ID" />
+       <input matInput type="number" [(ngModel)]="p.customerId" placeholder="Enter Customer ID"/>
       </ng-container>
-      <ng-template #mobileReadCustomerId>{{ p.customerId }}</ng-template>
-    </div>
+
+      <ng-template #mobileReadCustomerId>
+       <a *ngIf="p.customerId" [routerLink]="['/propertyManagementSystem/viewCustomerDetails', p.customerId]" class="link-id" title="click here to see this Customer">
+        {{ p.customerId }}
+       </a>
+      <span *ngIf="!p.customerId">—</span>
+      </ng-template>
+     </div>
 
     <div>
       <strong>Name:</strong>

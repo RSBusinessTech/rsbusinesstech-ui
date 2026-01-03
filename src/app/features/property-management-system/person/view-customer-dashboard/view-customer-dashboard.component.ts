@@ -109,37 +109,6 @@ export class ViewCustomerDashboardComponent implements OnInit {
     });
 }
 
-// // Add header ONLY on first page
-// private addFirstPageHeader(doc: any) {
-//   const pageWidth = doc.internal.pageSize.getWidth();
-
-//   doc.setPage(1);
-
-//   // Heading text
-//   doc.setFontSize(16);
-//   doc.setTextColor(255, 255, 255); // white
-//   doc.setFont('helvetica', 'bold');
-//   doc.text(
-//     'Tenant Profie',
-//     15,
-//     20
-//   );
-
-//   // Subtle divider line
-//   doc.setDrawColor(200);
-//   doc.setLineWidth(0.5);
-//   doc.line(
-//     15,
-//     24,
-//     pageWidth - 15,
-//     24
-//   );
-
-//   // Reset styles
-//   doc.setFont('helvetica', 'normal');
-//   doc.setFontSize(10);
-//   doc.setTextColor(0);
-// }
 
 private addFirstPageHeader(doc: any) {
   const pageWidth = doc.internal.pageSize.getWidth();
@@ -168,62 +137,6 @@ private addFirstPageHeader(doc: any) {
   doc.setTextColor(0);
 }
 
-
- // Add header/footer logic (LAST PAGE ONLY)
-// private addHeaderFooter(doc: any) {
-//   const logoUrl = '/assets/icons/logo-rsbusinesstech.png';
-//   const website = 'www.rsbusinesstech.com';
-
-//   const pageCount = doc.internal.getNumberOfPages();
-//   const pageWidth = doc.internal.pageSize.getWidth();
-//   const pageHeight = doc.internal.pageSize.getHeight();
-
-//   const lastPage = pageCount;
-//   doc.setPage(lastPage);
-
-//   // ---- Divider line ----
-//   doc.setDrawColor(200); // light gray
-//   doc.setLineWidth(0.3);
-//   doc.line(
-//     15,
-//     pageHeight - 22,
-//     pageWidth - 15,
-//     pageHeight - 22
-//   );
-
-//   // ---- Logo (left) ----
-//   const logoWidth = 60;
-//   const logoHeight = 14;
-//   doc.addImage(
-//     logoUrl,
-//     'PNG',
-//     15,
-//     pageHeight - 20,
-//     logoWidth,
-//     logoHeight
-//   );
-
-//   // ---- Website (center) ----
-//   doc.setFontSize(9);
-//   doc.setTextColor(120);
-//   doc.text(
-//     website,
-//     pageWidth / 2,
-//     pageHeight - 10,
-//     { align: 'center' }
-//   );
-
-//   // ---- Page number (right) ----
-//   doc.text(
-//     `Page ${lastPage} of ${pageCount}`,
-//     pageWidth - 15,
-//     pageHeight - 10,
-//     { align: 'right' }
-//   );
-
-//   // Reset color
-//   doc.setTextColor(0);
-//  }
 private addHeaderFooter(doc: any) {
   const logoUrl = '/assets/icons/logo-rsbusinesstech.png';
   const website = 'www.rsbusinesstech.com';
@@ -276,6 +189,21 @@ private addHeaderFooter(doc: any) {
       doc.setTextColor(0); // Reset color
     }
   }
-}
-
+ }
+ getViewDetailsLink(customer: any) {
+  switch (customer.propertyType) {
+    case 'Rental':
+      return ['/viewDetails', 'rent', customer.propertyId];
+    case 'Buy':
+      return ['/viewDetails', 'buy', customer.propertyId];
+    case 'Commercial':
+      return ['/viewDetails', 'commercial', customer.propertyId];
+      case 'MM2H':
+      return ['/viewDetails', 'mm2h', customer.propertyId];
+      case 'New Project':
+      return ['/viewDetails', 'newprojects', customer.propertyId];
+    default:
+      return null;
+  }
+ }
 }

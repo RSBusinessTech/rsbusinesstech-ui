@@ -1,1 +1,827 @@
-<p>mm2h-customers works!</p>
+<!-- Search -->
+<mat-form-field class="search-bar-right">
+  <mat-label>Search Customer 🔍</mat-label>
+  <input matInput (keyup)="applyFilter($event.target.value)" />
+</mat-form-field>
+
+<!-- Export Buttons -->
+<div class="export-buttons">
+  <button mat-raised-button color="primary" (click)="exporter.exportTable('xlsx', {fileName: 'customers'})">
+    <mat-icon>file_download</mat-icon> Excel
+  </button>
+  <button mat-raised-button color="accent" (click)="exporter.exportTable('csv', {fileName: 'customers'})">
+    <mat-icon>table_chart</mat-icon> CSV
+  </button>
+  <button mat-raised-button color="warn" (click)="exporter.exportTable('json', {fileName: 'customers'})">
+    <mat-icon>data_object</mat-icon> JSON
+  </button>
+  <button mat-raised-button color="primary" style="background:#19796c;" (click)="exporter.exportTable('txt', {fileName: 'customers'})">
+    <mat-icon>description</mat-icon> Text
+  </button>
+</div>
+
+<div class="add-property-btn">
+  <button mat-raised-button color="primary" style="background:#28a745;" (click)="addNewRow()">
+    <mat-icon>add</mat-icon> Add Customer
+  </button>
+</div>
+
+<!-- Desktop Table -->
+<div class="mat-elevation-z8 desktop-table">
+  <table mat-table [dataSource]="dataSource" matTableExporter #exporter="matTableExporter"  matSort>
+
+    <!-- ID -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Customer ID</th>
+      <td mat-cell *matCellDef="let e">
+       <a
+         [routerLink]="['/propertyManagementSystem/viewCustomerDetails', e.id]"class="link-id" title="click here to see this Customer">
+         {{ e.id }}
+       </a>
+      </td>
+    </ng-container>
+
+    <!-- propertyId -->
+    <ng-container matColumnDef="propertyId">
+     <th mat-header-cell *matHeaderCellDef>Property ID  <span style="display: block; font-size: 0.8em; color: gray;">(Property purchased by Customer)</span></th>
+     <td mat-cell *matCellDef="let e">
+     <ng-container *ngIf="e.editMode; else piR">
+      <input matInput type="number" [(ngModel)]="e.propertyId" />
+     </ng-container>
+     <ng-template #piR>
+      <a 
+        [routerLink]="['/viewDetails', 'buy', e.propertyId]"
+        target="_blank" 
+        rel="noopener noreferrer"
+        title="click here to see this Property"
+      >
+        {{ e.propertyId }}
+      </a>
+      </ng-template>
+     </td>
+   </ng-container>
+
+
+    <!-- propertyType -->
+    <ng-container matColumnDef="propertyType">
+     <th mat-header-cell *matHeaderCellDef>Property Type <span style="display: block; font-size: 0.8em; color: gray;">(Type of Property)</span></th>
+     <td mat-cell *matCellDef="let e">
+      <ng-container *ngIf="e.editMode; else ptR">
+      <mat-select [(ngModel)]="e.propertyType" placeholder="Select Type">
+        <mat-option *ngFor="let type of propertyTypeOptions" [value]="type">
+          {{ type }}
+        </mat-option>
+      </mat-select>
+    </ng-container>
+    <ng-template #ptR>{{ e.propertyType }}</ng-template>
+    </td>
+   </ng-container>
+
+
+    <!-- fullName -->
+    <ng-container matColumnDef="fullName">
+      <th mat-header-cell *matHeaderCellDef >Full Name <span style="display: block; font-size: 0.8em; color: gray;">(As per IC/Passport)</span></th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else fnR"><input matInput [(ngModel)]="e.fullName"></ng-container>
+        <ng-template #fnR>{{ e.fullName }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- fatherName -->
+    <ng-container matColumnDef="fatherName">
+      <th mat-header-cell *matHeaderCellDef>Father Name</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else fR"><input matInput [(ngModel)]="e.fatherName"></ng-container>
+        <ng-template #fR>{{ e.fatherName }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- dateOfBirth -->
+    <ng-container matColumnDef="dateOfBirth">
+      <th mat-header-cell *matHeaderCellDef>Date of Birth</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else dobR"><input matInput type="date" [(ngModel)]="e.dateOfBirth"></ng-container>
+        <ng-template #dobR>{{ e.dateOfBirth | dateFormat }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- customerID -->
+    <ng-container matColumnDef="customerID">
+      <th mat-header-cell *matHeaderCellDef>ID Number <span style="display: block; font-size: 0.8em; color: gray;">(IC/Passport No.)</span></th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else idR"><input matInput [(ngModel)]="e.customerID"></ng-container>
+        <ng-template #idR>{{ e.customerID }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- customerIDType -->
+    <ng-container matColumnDef="customerIDType">
+      <th mat-header-cell *matHeaderCellDef>ID Type <span style="display: block; font-size: 0.8em; color: gray;">(IC/Passport)</span></th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else idtR">
+          <mat-select [(ngModel)]="e.customerIDType">
+            <mat-option value="IC">IC</mat-option>
+            <mat-option value="Passport">Passport</mat-option>
+          </mat-select>
+        </ng-container>
+        <ng-template #idtR>{{ e.customerIDType }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- email -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else emailR"><input matInput [(ngModel)]="e.email"></ng-container>
+        <ng-template #emailR>{{ e.email }}<a style = "text-decoration: none;" *ngIf="e.email" [href]="'mailto:' + e.email" target="_blank" title="Send Email">📤</a></ng-template>
+      </td>
+    </ng-container>
+
+    <!-- mobileNumber -->
+    <ng-container matColumnDef="mobileNumber">
+      <th mat-header-cell *matHeaderCellDef>Mobile</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else mR"><input matInput [(ngModel)]="e.mobileNumber"></ng-container>
+        <ng-template #mR>{{ e.mobileNumber }}</ng-template>
+        <!-- Call -->
+        <a [href]="'tel:' + e.mobileNumber" target="_blank" 
+          aria-label="Call" class="call-btn" title="Call">
+          <img src="assets/icons/phone.png" alt="Call" />
+        </a>
+      </td>
+    </ng-container>
+
+    <!-- alternatePhoneNumber -->
+    <ng-container matColumnDef="alternatePhoneNumber">
+      <th mat-header-cell *matHeaderCellDef>Alternate Phone Number</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else apnR"><input matInput [(ngModel)]="e.alternatePhoneNumber"></ng-container>
+        <ng-template #apnR>{{ e.alternatePhoneNumber }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- whatsappNumber -->
+    <ng-container matColumnDef="whatsappNumber">
+      <th mat-header-cell *matHeaderCellDef>Whatsapp Number</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else wnR"><input matInput [(ngModel)]="e.whatsappNumber"></ng-container>
+        <ng-template #wnR>{{ e.whatsappNumber }}</ng-template>
+        <!--Whatsapp-->
+         <a [href]="'https://wa.me/' + e.whatsappNumber" target="_blank" 
+            aria-label="WhatsApp" class="whatsapp-btn" title="Chat"> 
+           <img src="assets/icons/whatsapp.svg" alt="WhatsApp" />
+        </a>
+      </td>
+      
+    </ng-container>
+
+    <!-- addressLine1 -->
+    <ng-container matColumnDef="addressLine1">
+      <th mat-header-cell *matHeaderCellDef>Address 1</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else a1R"><input matInput [(ngModel)]="e.addressLine1"></ng-container>
+        <ng-template #a1R>{{ e.addressLine1 }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- addressLine2 -->
+    <ng-container matColumnDef="addressLine2">
+      <th mat-header-cell *matHeaderCellDef>Address 2</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else a2R"><input matInput [(ngModel)]="e.addressLine2"></ng-container>
+        <ng-template #a2R>{{ e.addressLine2 }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- city -->
+    <ng-container matColumnDef="city">
+      <th mat-header-cell *matHeaderCellDef>City</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else cityR"><input matInput [(ngModel)]="e.city"></ng-container>
+        <ng-template #cityR>{{ e.city }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- state -->
+    <ng-container matColumnDef="state">
+      <th mat-header-cell *matHeaderCellDef>State</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else stateR"><input matInput [(ngModel)]="e.state"></ng-container>
+        <ng-template #stateR>{{ e.state }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- postalCode -->
+    <ng-container matColumnDef="postalCode">
+      <th mat-header-cell *matHeaderCellDef>Postal Code</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else pcR"><input matInput [(ngModel)]="e.postalCode"></ng-container>
+        <ng-template #pcR>{{ e.postalCode }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- country -->
+    <ng-container matColumnDef="country">
+      <th mat-header-cell *matHeaderCellDef>Country</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else cR"><input matInput [(ngModel)]="e.country"></ng-container>
+        <ng-template #cR>{{ e.country }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- accountStatus -->
+    <ng-container matColumnDef="accountStatus">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else sR">
+          <mat-select [(ngModel)]="e.accountStatus">
+            <mat-option value="Active">Active</mat-option>
+            <mat-option value="Inactive">Inactive</mat-option>
+            <mat-option value="Suspended">Suspended</mat-option>
+          </mat-select>
+        </ng-container>
+        <ng-template #sR>{{ e.accountStatus }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- gender -->
+    <ng-container matColumnDef="gender">
+      <th mat-header-cell *matHeaderCellDef>Gender</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else gR">
+          <mat-select [(ngModel)]="e.gender">
+            <mat-option value="Male">Male</mat-option>
+            <mat-option value="Female">Female</mat-option>
+            <mat-option value="Other">Other</mat-option>
+          </mat-select>
+        </ng-container>
+        <ng-template #gR>{{ e.gender }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- propertyPrice -->
+    <ng-container matColumnDef="propertyPrice">
+      <th mat-header-cell *matHeaderCellDef>Propety Price (RM) <span style="display: block; font-size: 0.8em; color: gray;">(price of Priperty)</span></th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else pPR">
+          <input matInput type="number" [(ngModel)]="e.propertyPrice">
+        </ng-container>
+        <ng-template #rpPR>{{ e.propertyPrice }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- stampDutyFee -->
+    <ng-container matColumnDef="stampDutyFee">
+      <th mat-header-cell *matHeaderCellDef>Stamp Duty Fee (RM)</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else sDFR">
+          <input matInput type="number" [(ngModel)]="e.stampDutyFee">
+        </ng-container>
+        <ng-template #sDFR>{{ e.stampDutyFee }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- registrationFee -->
+    <ng-container matColumnDef="registrationFee">
+      <th mat-header-cell *matHeaderCellDef>Registration Fee (RM)</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else rFR">
+          <input matInput type="number" [(ngModel)]="e.registrationFee">
+        </ng-container>
+        <ng-template #rFR>{{ e.registrationFee }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- downPaymentAmount -->
+    <ng-container matColumnDef="downPaymentAmount">
+      <th mat-header-cell *matHeaderCellDef>Down Payment Amount (RM)</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else dPR">
+          <input matInput type="number" [(ngModel)]="e.downPaymentAmount">
+        </ng-container>
+        <ng-template #dPR>{{ e.downPaymentAmount }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- monthlyInstallmentAmount -->
+    <ng-container matColumnDef="monthlyInstallmentAmount">
+      <th mat-header-cell *matHeaderCellDef>Monthly Installment Amount (RM)</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else mIAR">
+          <input matInput type="number" [(ngModel)]="e.monthlyInstallmentAmount">
+        </ng-container>
+        <ng-template #mIAR>{{ e.monthlyInstallmentAmount }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- numberOfInstallments -->
+    <ng-container matColumnDef="numberOfInstallments">
+      <th mat-header-cell *matHeaderCellDef>Number Of Installments</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else nOIR">
+          <input matInput type="number" [(ngModel)]="e.numberOfInstallments">
+        </ng-container>
+        <ng-template #nOIR>{{ e.numberOfInstallments }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- purchaseDate -->
+    <ng-container matColumnDef="purchaseDate">
+      <th mat-header-cell *matHeaderCellDef>Purchase Date</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else pDR">
+          <input matInput type="date" [(ngModel)]="e.purchaseDate">
+        </ng-container>
+        <ng-template #pDR>{{ e.purchaseDate | dateFormat }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- preferredContactMethod -->
+    <ng-container matColumnDef="preferredContactMethod">
+      <th mat-header-cell *matHeaderCellDef preferred-contact>Contact Method</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else pcmR">
+          <mat-select [(ngModel)]="e.preferredContactMethod">
+            <mat-option value="Phone">Phone</mat-option>
+            <mat-option value="Email">Email</mat-option>
+            <mat-option value="WhatsApp">WhatsApp</mat-option>
+          </mat-select>
+        </ng-container>
+        <ng-template #pcmR>{{ e.preferredContactMethod }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- imageUrl -->
+    <ng-container matColumnDef="imageUrl">
+      <th mat-header-cell *matHeaderCellDef>Image</th>
+      <td mat-cell *matCellDef="let e">
+
+        <ng-container *ngIf="e.editMode; else readImg">
+          <input type="file" accept="image/*" (change)="onImageSelected($event, e)" />
+
+          <div class="img-thumbnail-container">
+            <div class="thumbnail" *ngFor="let img of e.imageUrl; let i = index">
+              <img [src]="img" />
+              <button mat-icon-button color="warn" (click)="removeImage(e, i)">
+                <mat-icon style="font-size:16px;">close</mat-icon>
+              </button>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-template #readImg>
+          <div class="img-thumbnail-container">
+          <a *ngIf="e.imageUrl" [href]="e.imageUrl" target="_blank" rel="noopener noreferrer">
+           <img [src]="e.imageUrl" alt="Property Image" />
+          </a>
+          </div>
+        </ng-template>
+
+      </td>
+    </ng-container>
+
+    <!-- createdBy -->
+    <ng-container matColumnDef="createdBy">
+      <th mat-header-cell *matHeaderCellDef >Listed By</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else lbR"><input matInput [(ngModel)]="e.createdBy" disabled></ng-container>
+        <ng-template #lbR>{{ e.createdBy }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- createdAt -->
+    <ng-container matColumnDef="createdAt">
+      <th mat-header-cell *matHeaderCellDef >Listed On</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else loR"><input matInput [(ngModel)]="e.createdAt" disabled></ng-container>
+        <ng-template #loR>{{ e.createdAt | dateTimeFormat }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- updatedBy -->
+    <ng-container matColumnDef="updatedBy">
+      <th mat-header-cell *matHeaderCellDef >Updated By</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else ubR"><input matInput [(ngModel)]="e.updatedBy" disabled></ng-container>
+        <ng-template #ubR>{{ e.updatedBy }}</ng-template>
+      </td>
+    </ng-container>
+
+   <!-- updatedAt -->
+    <ng-container matColumnDef="updatedAt">
+      <th mat-header-cell *matHeaderCellDef >Updated On</th>
+      <td mat-cell *matCellDef="let e">
+        <ng-container *ngIf="e.editMode; else uoR"><input matInput [(ngModel)]="e.updatedAt" disabled></ng-container>
+        <ng-template #uoR>{{ e.updatedAt | dateTimeFormat }}</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- actions -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let e">
+
+        <ng-container *ngIf="e.editMode; else viewActions">
+          <button mat-icon-button color="primary" (click)="saveRow(e)">
+            <mat-icon>save</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="cancelEdit(e)">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </ng-container>
+
+        <ng-template #viewActions>
+          <button mat-icon-button color="primary" (click)="editRow(e)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteRow(e)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </ng-template>
+
+      </td>
+    </ng-container>
+
+    <!-- HEADER + ROWS -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+  </table>
+
+  <mat-paginator [length]="dataSource.data.length" [pageSize]="10" [pageSizeOptions]="[10,20,30]" showFirstLastButtons>
+  </mat-paginator>
+</div>
+
+<!-- Mobile Cards -->
+<!-- Mobile Cards -->
+<div class="mobile-cards">
+  <div class="mobile-card" *ngFor="let e of dataSource.filteredData">
+
+    <!-- ID -->
+    <div>
+      <strong>Customer ID:</strong>
+      <a
+       [routerLink]="['/propertyManagementSystem/viewCustomerDetails', e.id]"
+       class="mobile-id-link" title="click here to see this Customer"
+      >
+       {{ e.id }}
+      </a>
+    </div>
+
+    <!-- Property ID -->
+    <div>
+      <strong>Property ID :<span style="display: block; font-size: 0.6em; color: gray;">(Property purchased by Customer)</span></strong>
+      <ng-container *ngIf="e.editMode; else pidRead">
+        <input matInput type="number" [(ngModel)]="e.propertyId" />
+      </ng-container>
+      <ng-template #pidRead>
+        <a [routerLink]="['/viewDetails', 'buy', e.propertyId]" target="_blank" title="click here to see this Property">
+          {{ e.propertyId }}
+        </a>
+      </ng-template>
+    </div>
+
+    <!-- Property Type -->
+   <div>
+     <strong>Property Type:<span style="display: block; font-size: 0.6em; color: gray;">(Type of Property)</span></strong>
+     <ng-container *ngIf="e.editMode; else ptRead">
+      <mat-select [(ngModel)]="e.propertyType" placeholder="Select Type">
+      <mat-option *ngFor="let type of propertyTypeOptions" [value]="type">
+        {{ type }}
+      </mat-option>
+      </mat-select>
+    </ng-container>
+    <ng-template #ptRead>{{ e.propertyType }}</ng-template>
+   </div>
+
+    <!-- Full Name -->
+    <div>
+      <strong>Full Name:<span style="display: block; font-size: 0.6em; color: gray;">(As per IC/Passport)</span></strong>
+      <ng-container *ngIf="e.editMode; else fnRead">
+        <input matInput [(ngModel)]="e.fullName" />
+      </ng-container>
+      <ng-template #fnRead>{{ e.fullName }}</ng-template>
+    </div>
+
+    <!-- Father Name -->
+    <div>
+      <strong>Father Name:</strong>
+      <ng-container *ngIf="e.editMode; else fatRead">
+        <input matInput [(ngModel)]="e.fatherName" />
+      </ng-container>
+      <ng-template #fatRead>{{ e.fatherName }}</ng-template>
+    </div>
+
+    <!-- DOB -->
+    <div>
+      <strong>Date of Birth:</strong>
+      <ng-container *ngIf="e.editMode; else dobRead">
+        <input matInput type="date" [(ngModel)]="e.dateOfBirth" />
+      </ng-container>
+      <ng-template #dobRead>{{ e.dateOfBirth | dateFormat }}</ng-template>
+    </div>
+
+    <!-- Customer ID -->
+    <div>
+      <strong>ID Number: <span style="display: block; font-size: 0.6em; color: gray;">(IC/Passport No.)</span></strong>
+      <ng-container *ngIf="e.editMode; else cidRead">
+        <input matInput [(ngModel)]="e.customerID" />
+      </ng-container>
+      <ng-template #cidRead>{{ e.customerID }}</ng-template>
+    </div>
+
+    <!-- Customer ID Type -->
+    <div>
+      <strong>ID Type: <span style="display: block; font-size: 0.6em; color: gray;">(IC/Passport)</span></strong>
+      <ng-container *ngIf="e.editMode; else idTypeRead">
+        <mat-select [(ngModel)]="e.customerIDType">
+          <mat-option value="IC">IC</mat-option>
+          <mat-option value="Passport">Passport</mat-option>
+        </mat-select>
+      </ng-container>
+      <ng-template #idTypeRead>{{ e.customerIDType }}</ng-template>
+    </div>
+
+    <!-- Email -->
+    <div>
+      <strong>Email:</strong>
+      <ng-container *ngIf="e.editMode; else emailRead">
+        <input matInput [(ngModel)]="e.email" />
+      </ng-container>
+      <ng-template #emailRead>{{ e.email }}<a style = "text-decoration: none;" *ngIf="e.email" [href]="'mailto:' + e.email" target="_blank" title="Send Email">📤</a></ng-template>
+    </div>
+
+    <!-- Mobile Number -->
+    <div>
+      <strong>Mobile:</strong>
+      <ng-container *ngIf="e.editMode; else mobRead">
+        <input matInput [(ngModel)]="e.mobileNumber" />
+      </ng-container>
+      <ng-template #mobRead>{{ e.mobileNumber }}</ng-template>
+      <!-- Call -->
+        <a [href]="'tel:' + e.mobileNumber" target="_blank" 
+          aria-label="Call" class="call-btn" title="Call">
+          <img src="assets/icons/phone.png" alt="Call" />
+        </a>
+    </div>
+
+    <!-- Alternate Phone Number -->
+    <div>
+      <strong>Alternate Phone:</strong>
+      <ng-container *ngIf="e.editMode; else altRead">
+        <input matInput [(ngModel)]="e.alternatePhoneNumber" />
+      </ng-container>
+      <ng-template #altRead>{{ e.alternatePhoneNumber }}</ng-template>
+    </div>
+
+    <!-- WhatsApp -->
+    <div>
+      <strong>WhatsApp:</strong>
+      <ng-container *ngIf="e.editMode; else waRead">
+        <input matInput [(ngModel)]="e.whatsappNumber" />
+      </ng-container>
+      <ng-template #waRead>{{ e.whatsappNumber }}</ng-template>
+      <!--Whatsapp-->
+       <a [href]="'https://wa.me/' + e.whatsappNumber" target="_blank" 
+          aria-label="WhatsApp" class="whatsapp-btn" title="Chat"> 
+         <img src="assets/icons/whatsapp.svg" alt="WhatsApp" />
+       </a>
+    </div>
+
+    <!-- Address 1 -->
+    <div>
+      <strong>Address 1:</strong>
+      <ng-container *ngIf="e.editMode; else a1Read">
+        <input matInput [(ngModel)]="e.addressLine1" />
+      </ng-container>
+      <ng-template #a1Read>{{ e.addressLine1 }}</ng-template>
+    </div>
+
+    <!-- Address 2 -->
+    <div>
+      <strong>Address 2:</strong>
+      <ng-container *ngIf="e.editMode; else a2Read">
+        <input matInput [(ngModel)]="e.addressLine2" />
+      </ng-container>
+      <ng-template #a2Read>{{ e.addressLine2 }}</ng-template>
+    </div>
+
+    <!-- City -->
+    <div>
+      <strong>City:</strong>
+      <ng-container *ngIf="e.editMode; else cityRead">
+        <input matInput [(ngModel)]="e.city" />
+      </ng-container>
+      <ng-template #cityRead>{{ e.city }}</ng-template>
+    </div>
+
+    <!-- State -->
+    <div>
+      <strong>State:</strong>
+      <ng-container *ngIf="e.editMode; else stateRead">
+        <input matInput [(ngModel)]="e.state" />
+      </ng-container>
+      <ng-template #stateRead>{{ e.state }}</ng-template>
+    </div>
+
+    <!-- Postal Code -->
+    <div>
+      <strong>Postal Code:</strong>
+      <ng-container *ngIf="e.editMode; else zipRead">
+        <input matInput [(ngModel)]="e.postalCode" />
+      </ng-container>
+      <ng-template #zipRead>{{ e.postalCode }}</ng-template>
+    </div>
+
+    <!-- Country -->
+    <div>
+      <strong>Country:</strong>
+      <ng-container *ngIf="e.editMode; else countryRead">
+        <input matInput [(ngModel)]="e.country" />
+      </ng-container>
+      <ng-template #countryRead>{{ e.country }}</ng-template>
+    </div>
+
+    <!-- Status -->
+    <div>
+      <strong>Status:</strong>
+      <ng-container *ngIf="e.editMode; else statusRead">
+        <mat-select [(ngModel)]="e.accountStatus">
+          <mat-option value="Active">Active</mat-option>
+          <mat-option value="Inactive">Inactive</mat-option>
+          <mat-option value="Suspended">Suspended</mat-option>
+        </mat-select>
+      </ng-container>
+      <ng-template #statusRead>{{ e.accountStatus }}</ng-template>
+    </div>
+
+    <!-- Gender -->
+    <div>
+      <strong>Gender:</strong>
+      <ng-container *ngIf="e.editMode; else genderRead">
+        <mat-select [(ngModel)]="e.gender">
+          <mat-option value="Male">Male</mat-option>
+          <mat-option value="Female">Female</mat-option>
+          <mat-option value="Other">Other</mat-option>
+        </mat-select>
+      </ng-container>
+      <ng-template #genderRead>{{ e.gender }}</ng-template>
+    </div>
+
+    <!-- Property Price -->
+    <div>
+      <strong>Property Price (RM): <span style="display: block; font-size: 0.6em; color: gray;">(price of property)</span></strong>
+      <ng-container *ngIf="e.editMode; else pPRead">
+        <input matInput type="number" [(ngModel)]="e.propertyPrice" />
+      </ng-container>
+      <ng-template #pPRead>{{ e.propertyPrice }}</ng-template>
+    </div>
+
+    <!-- Stamp Duty Fee -->
+    <div>
+      <strong>Stamp Duty Fee (RM):</strong>
+      <ng-container *ngIf="e.editMode; else pPRead">
+        <input matInput type="number" [(ngModel)]="e.stampDutyFee" />
+      </ng-container>
+      <ng-template #pPRead>{{ e.stampDutyFee }}</ng-template>
+    </div>
+
+    <!-- Registration Fee -->
+    <div>
+      <strong>Registration Fee (RM):</strong>
+      <ng-container *ngIf="e.editMode; else rFRead">
+        <input matInput type="number" [(ngModel)]="e.registrationFee" />
+      </ng-container>
+      <ng-template #rFRead>{{ e.registrationFee }}</ng-template>
+    </div>
+
+    <!-- Down Payment Amount -->
+    <div>
+      <strong>Down Payment Amount (RM):</strong>
+      <ng-container *ngIf="e.editMode; else dPIRead">
+        <input matInput type="number" [(ngModel)]="e.downPaymentAmount" />
+      </ng-container>
+      <ng-template #dPIRead>{{ e.downPaymentAmount }}</ng-template>
+    </div>
+
+    <!-- Monthly Installment Amount -->
+    <div>
+      <strong>Monthly Installment Amount (RM):</strong>
+      <ng-container *ngIf="e.editMode; else mIARead">
+        <input matInput type="number" [(ngModel)]="e.monthlyInstallmentAmount" />
+      </ng-container>
+      <ng-template #mIARead>{{ e.monthlyInstallmentAmount }}</ng-template>
+    </div>
+
+    <!-- Number Of Installments -->
+    <div>
+      <strong>Number Of Installments:</strong>
+      <ng-container *ngIf="e.editMode; else nOIRead">
+        <input matInput type="number" [(ngModel)]="e.numberOfInstallments" />
+      </ng-container>
+      <ng-template #nOIRead>{{ e.numberOfInstallments }}</ng-template>
+    </div>
+
+    <!-- Purchase Date -->
+    <div>
+      <strong>Purchase Date:</strong>
+      <ng-container *ngIf="e.editMode; else pDRead">
+        <input matInput type="date" [(ngModel)]="e.purchaseDate" />
+      </ng-container>
+      <ng-template #pDRead>{{ e.purchaseDate | dateFormat }}</ng-template>
+    </div>
+    
+    <!-- Contact Method -->
+    <div>
+      <strong>Preferred Contact:</strong>
+      <ng-container *ngIf="e.editMode; else pcmRead">
+        <mat-select [(ngModel)]="e.preferredContactMethod">
+          <mat-option value="Phone">Phone</mat-option>
+          <mat-option value="Email">Email</mat-option>
+          <mat-option value="WhatsApp">WhatsApp</mat-option>
+        </mat-select>
+      </ng-container>
+      <ng-template #pcmRead>{{ e.preferredContactMethod }}</ng-template>
+    </div>
+
+    <!-- createdBy -->
+    <div>
+      <strong>Listed By:</strong>
+      <ng-container *ngIf="e.editMode; else lbRead">
+        <input matInput [(ngModel)]="e.createdBy" disabled/>
+      </ng-container>
+      <ng-template #lbRead>{{ e.createdBy }}</ng-template>
+    </div>
+
+    <!-- createdAt -->
+    <div>
+      <strong>Listed On:</strong>
+      <ng-container *ngIf="e.editMode; else loRead">
+        <input matInput [(ngModel)]="e.createdAt" disabled/>
+      </ng-container>
+      <ng-template #loRead>{{ e.createdAt | dateTimeFormat }}</ng-template>
+    </div>
+
+    <!-- updatedBy -->
+    <div>
+      <strong>Updated By:</strong>
+      <ng-container *ngIf="e.editMode; else ubRead">
+        <input matInput [(ngModel)]="e.updatedBy" disabled/>
+      </ng-container>
+      <ng-template #ubRead>{{ e.updatedBy }}</ng-template>
+    </div>
+
+    <!-- updatedAt -->
+    <div>
+      <strong>Updated On:</strong>
+      <ng-container *ngIf="e.editMode; else uoRead">
+        <input matInput [(ngModel)]="e.updatedAt" disabled/>
+      </ng-container>
+      <ng-template #uoRead>{{ e.updatedAt | dateTimeFormat }}</ng-template>
+    </div>
+
+    <!-- Images -->
+    <div>
+      <strong>Image:</strong>
+      <ng-container *ngIf="e.editMode; else imgViewMobile">
+        <input type="file" accept="image/*" (change)="onImageSelected($event, e)" />
+        <div class="img-thumbnail-container">
+          <img *ngIf="e.imageUrl" [src]="e.imageUrl" />
+        </div>
+      </ng-container>
+      <ng-template #imgViewMobile>
+        <a *ngIf="e.imageUrl" [href]="e.imageUrl" target="_blank">
+          <img [src]="e.imageUrl" />
+        </a>
+      </ng-template>
+    </div>
+
+    <!-- ACTION BUTTONS -->
+    <div class="action-buttons">
+
+      <!-- Edit Mode -->
+      <ng-container *ngIf="e.editMode; else viewActionsMobile">       
+       <button mat-icon-button color="primary" (click)="saveRow(e)">
+         <mat-icon>save</mat-icon>  <!-- Use icon name 'save' -->
+      </button>
+
+      <button mat-icon-button color="warn" (click)="cancelEdit(e)">
+        <mat-icon>cancel</mat-icon>  <!-- Use icon name 'cancel' -->
+      </button>
+      </ng-container>
+
+      <!-- View Mode -->
+      <ng-template #viewActionsMobile>
+        <button mat-icon-button color="primary" (click)="editRow(e)">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button mat-icon-button color="warn" (click)="deleteRow(e)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </ng-template>
+
+    </div>
+
+  </div>
+</div>

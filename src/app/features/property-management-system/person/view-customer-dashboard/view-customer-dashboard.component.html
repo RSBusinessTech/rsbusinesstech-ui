@@ -44,7 +44,7 @@
       <p>IC / Passport No: {{ customer.customerID }}</p>
       <p>Property ID: 
        <a 
-        [routerLink]="['/viewDetails', 'rent', customer.propertyId]"
+        [routerLink]="getViewDetailsLink(customer)"
         target="_blank" 
         rel="noopener noreferrer"
         style="color:white;"
@@ -163,7 +163,10 @@
         <div><label>Property Price</label><span>RM {{ customer.propertyPrice }}</span></div>
         <div><label>Stamp Duty</label><span>RM {{ customer.stampDutyFee }}</span></div>
         <div><label>Registration Fee</label><span>RM {{ customer.registrationFee }}</span></div>
+        <div><label>Purchase Date</label><span>{{ customer.purchaseDate| dateFormat }}</span></div>
         <div><label>Down Payment</label><span>RM {{ customer.downPaymentAmount }}</span></div>
+        <div><label>Number Of Installments</label><span>{{ customer.numberOfInstallments }}</span></div>
+        <div><label>Monthly Installment Amount</label><span>RM {{ customer.monthlyInstallmentAmount }}</span></div>
       </div>
     </div>
 

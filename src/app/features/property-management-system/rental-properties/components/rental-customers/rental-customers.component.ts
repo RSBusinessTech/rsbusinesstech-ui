@@ -41,7 +41,7 @@ export class RentalCustomersComponent implements OnInit {
     this.agentId = this.authService.getUsername() || '';
     this.loadCustomers();
 
-    // Filter predicate
+    // Filter predicate (only for search, Rental type enforced in loadCustomers)
     this.dataSource.filterPredicate = (data: Customer, filter: string) => {
       const text = filter.trim().toLowerCase();
       let s = '';
@@ -51,12 +51,13 @@ export class RentalCustomersComponent implements OnInit {
   }
 
   // -------------------------
-  // LOAD CUSTOMERS
+  // LOAD CUSTOMERS (ONLY RENTAL)
   // -------------------------
   loadCustomers() {
     const cached = this.customerService.getCachedCustomers(this.agentId);
     if (cached) {
-      this.dataSource.data = cached;
+      const rentalCustomers = cached.filter(c => c.propertyType === 'Rental'); // filter here
+      this.dataSource.data = rentalCustomers;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       return;
@@ -64,8 +65,9 @@ export class RentalCustomersComponent implements OnInit {
 
     this.customerService.getAllCustomers(this.agentId).subscribe({
       next: (data: Customer[]) => {
-        data.forEach(c => c.imageUrl = c.imageUrl || ''); // ensure imageUrl is string
-        this.dataSource.data = data;
+        const rentalCustomers = data.filter(c => c.propertyType === 'Rental'); // filter here
+        rentalCustomers.forEach(c => c.imageUrl = c.imageUrl || ''); // ensure imageUrl is string
+        this.dataSource.data = rentalCustomers;
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       },
@@ -80,69 +82,65 @@ export class RentalCustomersComponent implements OnInit {
   // -------------------------
   // ADD / EDIT / CANCEL / DELETE
   // -------------------------
-addNewRow() {
-  const newRow: Customer = {
-    id: 0,
-    propertyId: 0,
-    agentId: this.agentId,
-    propertyType: '',
-    fullName: '',
-    fatherName: '',
-    dateOfBirth: '',
-    customerID: '',
-    customerIDType: 'IC',
-    email: '',
-    mobileNumber: '',
-    addressLine1: '',
-    addressLine2: '',
-    city: '',
-    state: '',
-    postalCode: '',
-    country: '',
-    accountStatus: '',
-    registrationDate: '',
-    preferredContactMethod: '',
-    gender: '',
-    rentalAmount: 0,
-    advanceRentalDeposit: 0,
-    utilityDeposit: 0,
-    stampingFee:0,
-    totalAmountForTenancy: 0,
-    rentalDurationInMonths:0,
-    gracePeriodInDays:0,
-    rentalStartDate: '',
-    rentalDueDate: '',
-    contractStartDate: '',
-    contractEndDate: '',
-    isRentalPaid: 'No',
-    propertyPrice: 0,
-    stampDutyFee: 0,
-    registrationFee: 0,
-    downPaymentAmount: 0,
-    monthlyInstallmentAmount: 0,
-    numberOfInstallments: 0,
-    totalAmountPaid: 0,
-    imageUrl: '',
-    createdBy: '',
-    createdAt: '',
-    updatedBy: '',
-    updatedAt: '',
-    
-    selectedImage: undefined,
-    editMode: true,
-    _backup: {},
-    imagePreview: undefined
-  };
-  this.dataSource.data = [newRow, ...this.dataSource.data];
-}
+  addNewRow() {
+    const newRow: Customer = {
+      id: 0,
+      propertyId: 0,
+      agentId: this.agentId,
+      propertyType: 'Rental', // default to Rental
+      fullName: '',
+      fatherName: '',
+      dateOfBirth: '',
+      customerID: '',
+      customerIDType: 'IC',
+      email: '',
+      mobileNumber: '',
+      addressLine1: '',
+      addressLine2: '',
+      city: '',
+      state: '',
+      postalCode: '',
+      country: '',
+      accountStatus: '',
+      registrationDate: '',
+      preferredContactMethod: '',
+      gender: '',
+      rentalAmount: 0,
+      advanceRentalDeposit: 0,
+      utilityDeposit: 0,
+      stampingFee:0,
+      totalAmountForTenancy: 0,
+      rentalDurationInMonths:0,
+      gracePeriodInDays:0,
+      rentalStartDate: '',
+      rentalDueDate: '',
+      contractStartDate: '',
+      contractEndDate: '',
+      isRentalPaid: 'No',
+      propertyPrice: 0,
+      stampDutyFee: 0,
+      registrationFee: 0,
+      downPaymentAmount: 0,
+      monthlyInstallmentAmount: 0,
+      numberOfInstallments: 0,
+      totalAmountPaid: 0,
+      imageUrl: '',
+      createdBy: '',
+      createdAt: '',
+      updatedBy: '',
+      updatedAt: '',
+      selectedImage: undefined,
+      editMode: true,
+      _backup: {},
+      imagePreview: undefined
+    };
+    this.dataSource.data = [newRow, ...this.dataSource.data];
+  }
 
-
-editRow(element: Customer) {
-  element._backup = { ...element };
-  element.editMode = true;
-  // Do NOT clear selectedImage here
-}
-
+  editRow(element: Customer) {
+    element._backup = { ...element };
+    element.editMode = true;
+  }
 
   cancelEdit(element: Customer) {
     if (element._backup) Object.assign(element, element._backup);
@@ -173,35 +171,22 @@ editRow(element: Customer) {
   // -------------------------
   // IMAGE HANDLING
   // -------------------------
-  // onImageSelected(event: any, element: Customer) {
-  //   const file: File = event.target.files[0];
-  //   if (!file) return;
-
-  //   element.selectedImage = file;
-
-  //   const reader = new FileReader();
-  //   reader.onload = (e: any) => element.imageUrl = e.target.result;
-  //   reader.readAsDataURL(file);
-  // }
-
-removeImage(customer: any, index: number) {
-  if (customer.imageUrl && customer.imageUrl.length > index) {
-    customer.imageUrl.splice(index, 1);
+  removeImage(customer: any, index: number) {
+    if (customer.imageUrl && customer.imageUrl.length > index) {
+      customer.imageUrl.splice(index, 1);
+    }
   }
-}
-
 
   onImageSelected(event: any, element: Customer) {
-  const file: File = event.target.files[0];
-  if (!file) return;
+    const file: File = event.target.files[0];
+    if (!file) return;
 
-  element.selectedImage = file;
+    element.selectedImage = file;
 
-  const reader = new FileReader();
-  reader.onload = (e: any) => element.imageUrl = e.target.result; // single image
-  reader.readAsDataURL(file);
-}
-
+    const reader = new FileReader();
+    reader.onload = (e: any) => element.imageUrl = e.target.result; // single image
+    reader.readAsDataURL(file);
+  }
 
   // -------------------------
   // SAVE CUSTOMER
