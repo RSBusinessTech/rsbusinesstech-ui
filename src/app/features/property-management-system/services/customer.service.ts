@@ -129,8 +129,8 @@ import { tap } from 'rxjs/operators';
 export class CustomerService {
 
   // REST API base URL
-   private baseUrl = 'http://localhost:8080/customer';
-  //private baseUrl = 'https://rsbusinesstech-backend.onrender.com/customer';
+  //private baseUrl = 'http://localhost:8080/customer';
+  private baseUrl = 'https://rsbusinesstech-backend.onrender.com/customer';
 
   // Agent-aware cache: agentId -> Customer[]
   private customerCache: { [agentId: string]: Customer[] } = {};
