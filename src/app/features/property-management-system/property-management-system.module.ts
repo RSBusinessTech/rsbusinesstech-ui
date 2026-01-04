@@ -39,6 +39,7 @@ import { SafeUrlPipe } from '../pipes/safe-url.pipe';
 import { ViewDetailsComponent } from '../view-details/view-details.component';
 import { DateFormatPipe } from '../pipes/date-format.pipe';
 import { DateTimeFormatPipe } from '../pipes/date-time-format.pipe';
+import { ViewOwnerDashboardComponent } from './person/view-owner-dashboard/view-owner-dashboard.component';
 
 @NgModule({
   declarations: [LoginComponent,
@@ -64,7 +65,7 @@ import { DateTimeFormatPipe } from '../pipes/date-time-format.pipe';
                       RentalOwnersComponent,
                       ViewCustomerDashboardComponent, 
                       DateTimeFormatPipe, 
-                      DateFormatPipe,                   
+                      DateFormatPipe, ViewOwnerDashboardComponent,                   
                     ],
   imports: [
     CommonModule,

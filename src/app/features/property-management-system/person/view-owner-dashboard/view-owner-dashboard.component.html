@@ -1,0 +1,151 @@
+<!-- ================= LOADING STATE ================= -->
+<div *ngIf="isLoading" class="loading-container">
+  <p>Loading owner details...</p>
+</div>
+
+<!-- ================= ERROR STATE ================= -->
+<div *ngIf="errorMessage && !isLoading" class="error-container">
+  {{ errorMessage }}
+</div>
+
+<!-- ================= OWNER DETAILS VIEW ================= -->
+<div *ngIf="owner && !isLoading" class="customer-card" id="ownerPdf">
+
+  <!-- ================= PROFILE HEADER ================= -->
+ <div class="profile-wrapper">
+  <!-- ================= PROFILE HEADER ================= -->
+  <div class="profile-header">
+    <div class="profile-image-wrapper">
+      <ng-container *ngIf="owner.imageUrl; else noImage">
+        <a
+          [href]="owner.imageUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            class="profile-img-rect clickable"
+            [src]="owner.imageUrl"
+            alt="Owner Image"
+          />
+        </a>
+      </ng-container>
+
+      <ng-template #noImage>
+        <img
+          class="profile-img-rect"
+          src="assets/default-user.png"
+          alt="No Image"
+        />
+      </ng-template>
+    </div>
+
+    <div class="profile-info">
+      <h2>{{ owner.fullName }}</h2>
+      <p>IC / Passport No: {{ owner.ownerID }}</p>
+      <p>Property ID: 
+       <a 
+        [routerLink]="getViewDetailsLink(owner)"
+        target="_blank" 
+        rel="noopener noreferrer"
+        style="color:white;"
+        title="click here to see this Property"
+      >
+        {{ owner.propertyId }}
+      </a></p>
+
+      <span class="badge">
+        {{ owner.accountStatus }}
+      </span>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ================= DETAILS SECTION ================= -->
+  <div class="details-section">
+
+    <!-- BASIC IDENTIFICATION -->
+    <div class="detail-group">
+      <h4>Basic Identification</h4>
+      <div class="detail-grid">
+        <div><label>Full Name <i>(As per IC/Passport)</i></label><span>{{ owner.fullName }}</span></div>
+        <div><label>Father Name</label><span>{{ owner.fatherName }}</span></div>
+        <div><label>Gender</label><span>{{ owner.gender }}</span></div>
+        <div><label>Date of Birth</label><span>{{ owner.dateOfBirth | dateFormat }}</span></div>
+        <div><label>Owner ID <i>(IC/Passport No.)</i></label><span>{{ owner.ownerID }}</span></div>
+        <div><label>ID Type <i>(IC/Passport)</i></label><span>{{ owner.ownerIDType }}</span></div>
+        <div><label>Property Type</label><span>{{ owner.propertyType }}</span></div>
+      </div>
+    </div>
+
+    <!-- CONTACT INFORMATION -->
+    <div class="detail-group">
+      <h4>Contact Information</h4>
+      <div class="detail-grid">
+        <div><label>Email</label>
+          <span>{{ owner.email }} 
+            <a style = "text-decoration: none;" *ngIf="owner.email" [href]="'mailto:' + owner.email" target="_blank" title="Send Email">
+            📤
+            </a>
+         </span>
+        </div>
+        <div><label>Mobile Number</label>
+          <span>{{ owner.mobileNumber }}
+            <a [href]="'tel:' + owner.mobileNumber" target="_blank" aria-label="Call" class="call-btn" title="Call"> 
+              <img src="assets/icons/phone.png" alt="Call" />
+            </a>
+          </span> 
+        </div>
+        <div><label>Alternate Phone</label><span>{{ owner.alternatePhoneNumber }}</span></div>
+        <div><label>WhatsApp</label>
+          <span>{{ owner.whatsappNumber }}
+            <a [href]="'https://wa.me/' + owner.whatsappNumber" target="_blank" aria-label="WhatsApp" class="whatsapp-btn" title="Chat"> 
+              <img src="assets/icons/whatsapp.svg" alt="WhatsApp" />
+           </a>
+          </span>          
+        </div>    
+        <div><label>Preferred Contact</label><span>{{ owner.preferredContactMethod }}</span></div>
+      </div>
+    </div>
+
+    <!-- ADDRESS DETAILS -->
+    <div class="detail-group"> <!--Added page-break so that this info will be started on page2 while downloading PDF -->
+      <h4>Address Details</h4>
+      <div class="detail-grid">
+        <div><label>Address Line 1</label><span>{{ owner.addressLine1 }}</span></div>
+        <div><label>Address Line 2</label><span>{{ owner.addressLine2 }}</span></div>
+        <div><label>City</label><span>{{ owner.city }}</span></div>
+        <div><label>State</label><span>{{ owner.state }}</span></div>
+        <div><label>Country</label><span>{{ owner.country }}</span></div>
+        <div><label>Postal Code</label><span>{{ owner.postalCode }}</span></div>
+      </div>
+    </div>
+
+    <!-- ACCOUNT & MEMBERSHIP -->
+    <div class="detail-group">
+      <h4>Account & Membership</h4>
+      <div class="detail-grid">
+        <div><label>Account Status</label><span>{{ owner.accountStatus }}</span></div>
+        <div><label>Registration Date</label><span>{{ owner.registrationDate | dateFormat }}</span></div>
+      </div>
+    </div>
+    <!-- Listing Details -->
+    <div class="detail-group">
+      <h4>Listing Details</h4>
+      <div class="detail-grid">
+        <div><label>Listed By</label><span>{{ owner.createdBy }}</span></div>
+        <div><label>Listed At</label><span>{{ owner.createdAt | dateTimeFormat  }}</span></div>
+        <div><label>Updated By</label><span>{{ owner.updatedBy }}</span></div>
+        <div><label>Updated At</label><span>{{ owner.updatedAt | dateTimeFormat }}</span></div>
+      </div>
+    </div>
+
+  </div>
+ </div>
+
+<!-- Download PDf -->
+<div class="download-btn-wrapper">
+  <button mat-raised-button color="primary" (click)="downloadPdf()">
+    Download Owner Details (PDF)
+  </button>
+</div>
