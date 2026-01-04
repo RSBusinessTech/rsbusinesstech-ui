@@ -70,7 +70,7 @@ export class ViewOwnerDashboardComponent implements OnInit {
   
     const options = {
       margin: [30, 10, 10, 10],
-      filename: `Owner${this.owner.fullName}.pdf`,
+      filename: `Owner_${this.owner.fullName}.pdf`,
       image: { type: 'jpeg', quality: 0.98 },
       html2canvas: {
         scale: 2,
