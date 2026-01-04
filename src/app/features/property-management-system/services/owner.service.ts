@@ -10,8 +10,8 @@ import { tap } from 'rxjs/operators';
 export class OwnerService {
 
   // REST API base URL
-    private baseUrl = 'http://localhost:8080/owner';
-    ///private baseUrl = 'https://rsbusinesstech-backend.onrender.com/owner';
+    //private baseUrl = 'http://localhost:8080/owner';
+    private baseUrl = 'https://rsbusinesstech-backend.onrender.com/owner';
   
     // Agent-aware cache: agentId -> Owner[]
     private ownerCache: { [agentId: string]: Owner[] } = {};
