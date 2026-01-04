@@ -246,7 +246,7 @@
 
     <!-- registrationDate -->
     <ng-container matColumnDef="registrationDate">
-      <th mat-header-cell *matHeaderCellDef>Registered <span style="display: block; font-size: 0.8em; color: gray;">(since when you know customer)</span></th>
+      <th mat-header-cell *matHeaderCellDef>Registered <span style="display: block; font-size: 0.8em; color: gray;">(since when you know owner)</span></th>
       <td mat-cell *matCellDef="let e">
         <ng-container *ngIf="e.editMode; else rdR">
           <input matInput type="date" [(ngModel)]="e.registrationDate">
@@ -403,7 +403,7 @@
 
     <!-- Property ID -->
     <div>
-      <strong>Property ID :<span style="display: block; font-size: 0.6em; color: gray;">(Property rented by Customer)</span></strong>
+      <strong>Property ID :<span style="display: block; font-size: 0.6em; color: gray;">(Property owned by Owner)</span></strong>
       <ng-container *ngIf="e.editMode; else pidRead">
         <input matInput type="number" [(ngModel)]="e.propertyId" />
       </ng-container>
@@ -590,7 +590,7 @@
 
     <!-- Registration Date -->
     <div>
-      <strong>Registered: <span style="display: block; font-size: 0.6em; color: gray;">(since when you know customer)</span></strong>
+      <strong>Registered: <span style="display: block; font-size: 0.6em; color: gray;">(since when you know owner)</span></strong>
       <ng-container *ngIf="e.editMode; else regRead">
         <input matInput type="date" [(ngModel)]="e.registrationDate" />
       </ng-container>
