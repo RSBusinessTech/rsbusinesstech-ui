@@ -50,7 +50,7 @@
      </ng-container>
      <ng-template #piR>
       <a 
-        [routerLink]="['/viewDetails', 'rent', e.propertyId]"
+        [routerLink]="['/viewDetails', 'commercial', e.propertyId]"
         target="_blank" 
         rel="noopener noreferrer"
         title="click here to see this Property"
@@ -623,7 +623,7 @@
         <input matInput type="number" [(ngModel)]="e.propertyId" />
       </ng-container>
       <ng-template #pidRead>
-        <a [routerLink]="['/viewDetails', 'rent', e.propertyId]" target="_blank" title="click here to see this Property">
+        <a [routerLink]="['/viewDetails', 'commercial', e.propertyId]" target="_blank" title="click here to see this Property">
           {{ e.propertyId }}
         </a>
       </ng-template>
