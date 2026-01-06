@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class PMSDashboardSummaryService {
 
-  private baseUrl = 'http://localhost:8080/propertyManagementSystem';
-  //private baseUrl = 'https://rsbusinesstech-backend.onrender.com/propertyManagementSystem';
+  //private baseUrl = 'http://localhost:8080/propertyManagementSystem';
+  private baseUrl = 'https://rsbusinesstech-backend.onrender.com/propertyManagementSystem';
 
   constructor(private http: HttpClient) {}
 
