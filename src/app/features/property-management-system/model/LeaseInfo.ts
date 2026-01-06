@@ -1,8 +1,17 @@
 export interface LeaseInfo {
-  tenantId: number;
-  tenantName: string;
-  propertyId: number;
-  propertyName: string;
-  propertyType: string; 
-  expiryDate: string;    
+  //Tenant Info
+  tenantId?: number;
+  tenantName?: string;
+  tenantWhatsappNumber?: string;
+
+  //Property Info
+  propertyId?: number;
+  propertyName?: string;
+
+  //Rental Info
+  rentalStartDate?: string;
+  rentalAmount?: number
+
+  //Contract Info
+  expiryDate?: string;    
 }

@@ -226,6 +226,11 @@
   .quick-actions button {
     width: 100%;
   }
+
+   .whatsapp-btn img {
+    width: 26px;
+    height: 26px;
+  }
 }
 
 .kpi-cards {
@@ -266,6 +271,54 @@
 .card.kpi.clickable .value {
   text-decoration: underline;
 }
+
+.pending-rentals {
+  padding: 20px;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.pending-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.pending-table th {
+  background: #f3f4f6;
+  color: #111827;
+  text-align: left;
+  padding: 10px;
+}
+
+.pending-table td {
+  padding: 10px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.pending-table tr:hover {
+  background: #f9fafb;
+}
+
+.due-date {
+  font-weight: 600;
+  color: red;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 15px;
+  color: #6b7280;
+}
+
+.whatsapp-btn img {
+  width: 28px;
+  height: 28px;
+  transition: transform 0.3s ease;
+}
+
 
 
 

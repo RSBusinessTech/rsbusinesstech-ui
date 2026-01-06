@@ -100,14 +100,58 @@
   <div class="dashboard-main">
     <!-- ------------------ Left Panel ------------------ -->
     <div class="left-panel">
-      <div class="card lease-expiry">
-        <h3>⏳ Pending Rentals (This Month)</h3>
-        <ul>
-          <li *ngFor="let lease of pendingRentalsThisMonth">
-            {{ lease.tenantName }} - {{ lease.propertyName }} ({{ lease.expiryDate | date:'dd MMM, yyyy' }})
-          </li>
-        </ul>
-      </div>
+      <div class="card pending-rentals">
+  <h3>⏳ Pending Rentals (This Month)</h3>
+
+  <div *ngIf="pendingRentalsThisMonth.length === 0" class="empty-state">
+    🎉 No pending rentals this month
+  </div>
+
+  <div class="table-responsive" *ngIf="pendingRentalsThisMonth.length > 0">
+    <table class="pending-table">
+      <thead>
+        <tr>
+          <th>Tenant Name</th>
+          <th>Property</th>
+          <th>Rental Amount (RM)</th>
+          <th>Due Date</th>
+          <th>Chat</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let lease of pendingRentalsThisMonth">
+          <td><a
+                [routerLink]="['/propertyManagementSystem/viewCustomerDetails', lease.tenantId]"
+                class="mobile-id-link" title="click here to see this Tenat"
+                >
+                  {{ lease.tenantName }}
+               </a>
+          </td>
+          <td>
+              <a [routerLink]="['/viewDetails', 'rent', lease.propertyId]" target="_blank" title="click here to see this Property">
+              {{ lease.propertyName }}
+              </a>
+          </td>
+          <td>{{ lease.rentalAmount | number:'1.2-2' }}</td>
+          <td>
+            <span class="due-date">
+              {{ lease.rentalStartDate | dateFormat }}
+            </span>
+          </td>
+          <td>
+            <!--Whatsapp-->
+             <a [href]="'https://wa.me/' + lease.tenantWhatsappNumber" target="_blank" 
+               aria-label="WhatsApp" class="whatsapp-btn" title="Chat"> 
+              <img src="assets/icons/whatsapp.svg" alt="WhatsApp" />
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
 
       <div class="card lease-expiry">
         <h3>⏳ Contracts Expiring (This Month)</h3>
