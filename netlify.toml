@@ -1,6 +1,10 @@
 [build]
-command = "ng build --prod && npx scully"
-publish = "dist/static"
+command = "ng build --prod"
+publish = "dist/rsbusinesstech-ui"
+
+# commenting below 2 lines to disable scully as of now.
+# command = "ng build --prod && npx scully"  
+# publish = "dist/static" 
 
 [build.environment]
 NODE_VERSION = "16"

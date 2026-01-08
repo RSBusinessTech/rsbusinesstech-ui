@@ -13,5 +13,7 @@ export interface LeaseInfo {
   rentalAmount?: number
 
   //Contract Info
-  expiryDate?: string;    
+  rentalDurationInMonths?: number
+  contractStartDate?: string;
+  contractEndDate?: string;    
 }

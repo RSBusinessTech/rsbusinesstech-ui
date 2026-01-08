@@ -301,6 +301,10 @@
 .pending-table tr:hover {
   background: #f9fafb;
 }
+.contract-start-date {
+  font-weight: 600;
+  color: green;
+}
 
 .due-date {
   font-weight: 600;

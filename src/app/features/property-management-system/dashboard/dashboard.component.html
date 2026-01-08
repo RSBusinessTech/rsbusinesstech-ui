@@ -101,65 +101,115 @@
     <!-- ------------------ Left Panel ------------------ -->
     <div class="left-panel">
       <div class="card pending-rentals">
-  <h3>⏳ Pending Rentals (This Month)</h3>
+         <h3>⏳ Contracts Expiring (This Month)</h3>
 
-  <div *ngIf="pendingRentalsThisMonth.length === 0" class="empty-state">
-    🎉 No pending rentals this month
-  </div>
+         <div *ngIf="contractsExpiringThisMonth.length === 0" class="empty-state">
+         🎉 No Contract Expiring this month
+         </div>
 
-  <div class="table-responsive" *ngIf="pendingRentalsThisMonth.length > 0">
-    <table class="pending-table">
-      <thead>
-        <tr>
-          <th>Tenant Name</th>
-          <th>Property</th>
-          <th>Rental Amount (RM)</th>
-          <th>Due Date</th>
-          <th>Chat</th>
-        </tr>
-      </thead>
+         <div class="table-responsive" *ngIf="contractsExpiringThisMonth.length > 0">
+          <table class="pending-table">
+             <thead>
+               <tr>
+                 <th>Tenant</th>
+                 <th>Property</th>
+                 <th>Contract Start Date</th>
+                 <th>Contract Expiry Date</th>
+                 <th>Contract Duration (Months)</th>
+                 <th>Chat</th>
+               </tr>
+             </thead>
 
-      <tbody>
-        <tr *ngFor="let lease of pendingRentalsThisMonth">
-          <td><a
-                [routerLink]="['/propertyManagementSystem/viewCustomerDetails', lease.tenantId]"
-                class="mobile-id-link" title="click here to see this Tenat"
-                >
-                  {{ lease.tenantName }}
-               </a>
-          </td>
-          <td>
-              <a [routerLink]="['/viewDetails', 'rent', lease.propertyId]" target="_blank" title="click here to see this Property">
-              {{ lease.propertyName }}
-              </a>
-          </td>
-          <td>{{ lease.rentalAmount | number:'1.2-2' }}</td>
-          <td>
-            <span class="due-date">
-              {{ lease.rentalStartDate | dateFormat }}
-            </span>
-          </td>
-          <td>
-            <!--Whatsapp-->
-             <a [href]="'https://wa.me/' + lease.tenantWhatsappNumber" target="_blank" 
-               aria-label="WhatsApp" class="whatsapp-btn" title="Chat"> 
-              <img src="assets/icons/whatsapp.svg" alt="WhatsApp" />
-            </a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+           <tbody>
+              <tr *ngFor="let lease of contractsExpiringThisMonth">
+                 <td>
+                   <a
+                    [routerLink]="['/propertyManagementSystem/viewCustomerDetails', lease.tenantId]"
+                    class="mobile-id-link" title="click here to see this Tenat"
+                    >
+                      {{ lease.tenantName }}
+                   </a>
+                 </td>
+                 <td>
+                    <a [routerLink]="['/viewDetails', 'rent', lease.propertyId]" target="_blank" title="click here to see this Property">
+                    {{ lease.propertyName }}
+                    </a>
+                 </td>                
+                 <td>
+                   <span class="contract-start-date">
+                      {{ lease.contractStartDate | dateFormat }}
+                   </span>
+                 </td>
+                 <td>
+                   <span class="due-date">
+                      {{ lease.contractEndDate | dateFormat }}
+                   </span>
+                 </td>
+                 <td>{{ lease.rentalDurationInMonths }}</td>
+                 <td>
+                 <!--Whatsapp-->
+                   <a [href]="'https://wa.me/' + lease.tenantWhatsappNumber" target="_blank" 
+                     aria-label="WhatsApp" class="whatsapp-btn" title="Chat"> 
+                     <img src="assets/icons/whatsapp.svg" alt="WhatsApp" />
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+         </div>
+      </div>
 
+      <div class="card pending-rentals">
+         <h3>⏳ Pending Rentals (This Month)</h3>
 
-      <div class="card lease-expiry">
-        <h3>⏳ Contracts Expiring (This Month)</h3>
-        <ul>
-          <li *ngFor="let lease of contractsExpiringThisMonth">
-            {{ lease.tenantName }} - {{ lease.propertyName }} ({{ lease.expiryDate | date:'dd MMM, yyyy' }})
-          </li>
-        </ul>
+         <div *ngIf="pendingRentalsThisMonth.length === 0" class="empty-state">
+         🎉 No pending rentals this month
+         </div>
+
+         <div class="table-responsive" *ngIf="pendingRentalsThisMonth.length > 0">
+          <table class="pending-table">
+             <thead>
+               <tr>
+                 <th>Tenant Name</th>
+                 <th>Property</th>
+                 <th>Rental Amount (RM)</th>
+                 <th>Due Date</th>
+                 <th>Chat</th>
+               </tr>
+             </thead>
+
+           <tbody>
+              <tr *ngFor="let lease of pendingRentalsThisMonth">
+                 <td>
+                   <a
+                    [routerLink]="['/propertyManagementSystem/viewCustomerDetails', lease.tenantId]"
+                    class="mobile-id-link" title="click here to see this Tenat"
+                    >
+                      {{ lease.tenantName }}
+                   </a>
+                 </td>
+                 <td>
+                    <a [routerLink]="['/viewDetails', 'rent', lease.propertyId]" target="_blank" title="click here to see this Property">
+                    {{ lease.propertyName }}
+                    </a>
+                 </td>
+                 <td class="contract-start-date">{{ lease.rentalAmount | number:'1.2-2' }}</td>
+                 <td>
+                   <span class="due-date">
+                      {{ lease.rentalStartDate | dateFormat }}
+                   </span>
+                 </td>
+                 <td>
+                 <!--Whatsapp-->
+                   <a [href]="'https://wa.me/' + lease.tenantWhatsappNumber" target="_blank" 
+                     aria-label="WhatsApp" class="whatsapp-btn" title="Chat"> 
+                     <img src="assets/icons/whatsapp.svg" alt="WhatsApp" />
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+         </div>
       </div>
 
       <!-- Total Properties Rented -->
