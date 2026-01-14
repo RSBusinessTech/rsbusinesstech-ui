@@ -124,7 +124,7 @@ export class ViewOwnerDashboardComponent implements OnInit {
     doc.setFontSize(16);
     doc.setTextColor(255, 255, 255); // white text
     doc.setFont('helvetica', 'bold');
-    doc.text('Tenant Profile', 15, 20);
+    doc.text('Owner Profile', 15, 20);
   
     // Subtle underline (lighter blue line)
     doc.setDrawColor(100, 140, 200); // lighter blue color for line

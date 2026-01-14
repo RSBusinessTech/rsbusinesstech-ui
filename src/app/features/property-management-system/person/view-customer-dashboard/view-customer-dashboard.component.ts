@@ -69,7 +69,8 @@ export class ViewCustomerDashboardComponent implements OnInit {
   element.style.height = 'auto';
 
   const options = {
-    margin: [30, 10, 10, 10],
+    // margin: [30, 10, 10, 10],
+    margin: [30, 10, 20, 10],
     filename: `Tenant_${this.customer.fullName}.pdf`,
     image: { type: 'jpeg', quality: 0.98 },
     html2canvas: {
@@ -95,6 +96,7 @@ export class ViewCustomerDashboardComponent implements OnInit {
     .then((pdf) => {
       // Add header/footer.
       this.addFirstPageHeader(pdf);
+      // this.removeEmptyLastPage(pdf);
       this.addHeaderFooter(pdf);
     })
     .save()
@@ -206,4 +208,22 @@ private addHeaderFooter(doc: any) {
       return null;
   }
  }
+
+ private removeEmptyLastPage(doc: any) {
+  const pageCount = doc.internal.getNumberOfPages();
+
+  if (pageCount <= 1) return;
+
+  doc.setPage(pageCount);
+
+  // Check if page has almost no content
+  const pageHeight = doc.internal.pageSize.getHeight();
+  const content = doc.internal.pages[pageCount];
+
+  // If page content is too small → remove it
+  if (content && content.length < 10) {
+    doc.deletePage(pageCount);
+  }
+}
+
 }

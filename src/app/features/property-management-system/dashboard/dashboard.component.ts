@@ -37,10 +37,11 @@ export class DashboardComponent implements OnInit {
 
   // ================= CHART =================
   propertyStatusChartLabels: string[] = [
-    'Occupied',
-    'Vacant',
-    'Under Maintenance',
-    'Reserved'
+    'Total Rental Properties',
+    'Total Sales Properties',
+    'Total Commercial Properties',
+    'Total Mm2h Properties',
+    'Total New Projects'
   ];
 
   propertyStatusChartData: any[] = [];
@@ -90,10 +91,11 @@ export class DashboardComponent implements OnInit {
         // ================= CHART =================
         this.propertyStatusChartData = [{
           data: [
-            res.propertyStatusChart.occupied,
-            res.propertyStatusChart.vacant,
-            res.propertyStatusChart.underMaintenance,
-            res.propertyStatusChart.reserved
+            res.propertyStatusChart.totalRentalProperties,
+            res.propertyStatusChart.totalSaleProperties,
+            res.propertyStatusChart.totalCommercialProperties,
+            res.propertyStatusChart.totalMm2hProperties,
+            res.propertyStatusChart.totalNewProjects
           ]
         }];
       },
