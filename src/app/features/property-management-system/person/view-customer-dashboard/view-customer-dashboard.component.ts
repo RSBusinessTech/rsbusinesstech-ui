@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Customer } from '../../model/customer';
 import { CustomerService } from '../../services/customer.service';
 import * as html2pdf from 'html2pdf.js';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-view-customer-dashboard',

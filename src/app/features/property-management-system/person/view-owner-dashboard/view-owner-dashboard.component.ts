@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as html2pdf from 'html2pdf.js';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from 'src/app/auth/services/auth.service';
 import { Owner } from '../../model/owner';
 import { OwnerService } from '../../services/owner.service';
 

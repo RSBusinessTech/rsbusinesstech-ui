@@ -5,7 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { Property } from '../../../model/property';
 import { PropertyService } from '../../../services/property.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AuthService } from '../../../services/auth.service';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-mm2h-dashboard',

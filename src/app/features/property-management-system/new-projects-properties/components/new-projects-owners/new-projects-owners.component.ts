@@ -3,7 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AuthService } from '../../../services/auth.service';
+import { AuthService } from 'src/app/auth/services/auth.service';
 import { OwnerService } from '../../../services/owner.service';
 import { Owner } from '../../../model/owner';
 @Component({

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { LeaseInfo } from '../model/LeaseInfo';
 import { PMSDashboardSummary } from '../model/PMSDashboardSummary';
 import { PMSDashboardSummaryService } from '../services/pms-dashboard-summary.service';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -58,11 +58,11 @@ export class DashboardComponent implements OnInit {
     this.agentId = this.authService.getUsername() || '';
     this.router.navigate(['dashboard']);
     window.scrollTo(0, 0);  //when coming back to dashboard from other UIs, it was scrolling/showing Property status instad of scroll to top, forced to scroll to top.
-    this.loadDashboardSummary(this.agentId);
+    this.loadDashboardSummary();
   }
 
-  loadDashboardSummary(agentId: string): void {
-    this.pmsDashboardSummaryService.getPMSDashboardSummary(agentId).subscribe({
+  loadDashboardSummary(): void {
+    this.pmsDashboardSummaryService.getPMSDashboardSummary().subscribe({
       next: (res: PMSDashboardSummary) => {
         // ================= KPIs =================
         this.totalProperties = res.totalProperties;

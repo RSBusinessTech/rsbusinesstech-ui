@@ -5,7 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { Customer } from '../../../model/customer';
 import { CustomerService } from '../../../services/customer.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AuthService } from '../../../services/auth.service';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-buy-customers',

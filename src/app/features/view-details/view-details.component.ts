@@ -3,7 +3,7 @@ import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Property } from '../property-management-system/model/property';
 import { PropertyService } from '../property-management-system/services/property.service';
-import { AuthService } from '../property-management-system/services/auth.service';
+import { AuthService } from 'src/app/auth/services/auth.service';
 @Component({
   selector: 'app-view-details',
   templateUrl: './view-details.component.html',

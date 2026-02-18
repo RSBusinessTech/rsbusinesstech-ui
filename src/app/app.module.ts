@@ -15,6 +15,8 @@ import { ChartsModule } from 'ng2-charts';
 import { WebDesignKualaLumpurComponent } from './features/seo/components/web-design-kuala-lumpur/web-design-kuala-lumpur.component';
 import { ViewDetailsComponent } from './features/view-details/view-details.component';
 import { SafeUrlPipe } from './features/pipes/safe-url.pipe';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,13 @@ import { SafeUrlPipe } from './features/pipes/safe-url.pipe';
     HttpClientModule,  //HttpClient module.
     ChartsModule, 
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,         //registering Interceptors.
+      useClass: AuthInterceptor,
+      multi: true // <- important!
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
