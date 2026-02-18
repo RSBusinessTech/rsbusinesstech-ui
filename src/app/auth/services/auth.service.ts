@@ -15,7 +15,8 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  private BASE_URL = 'http://localhost:8080/jwt/public';
+  // private BASE_URL = 'http://localhost:8080/jwt/public';
+  private BASE_URL = 'https://rsbusinesstech-backend.onrender.com/jwt/public';
   private _username: string | null = null;
 
   constructor(private http: HttpClient, private tokenService: TokenService, private router: Router) { }
