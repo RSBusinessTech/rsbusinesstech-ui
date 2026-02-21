@@ -14,7 +14,7 @@ export class BlogHomeComponent implements OnInit {
 
   blogs = [
     {
-      title: 'Why Every Business Needs a Website in 2025',
+      title: 'Why Every Business Needs a Website in 2026',
       summary: 'Discover how a modern website built with Angular 8 and Spring Boot can transform your business.',
       image: 'assets/icons/blog-why-website.jpg',
       url: '/blogs/why-business-needs-website'
