@@ -33,7 +33,7 @@ export class BlogHomeComponent implements OnInit {
     },
     {
       title: 'Do you have Access & Refresh Token based JWT Authentication Security in your website?',
-      summary: 'Learn what is JWT Authentication, why is it needed and what are the benefits to securing your website using JWT Authentication.',
+      summary: 'Learn what is JWT Authentication, why is it needed and what are the benefits of securing your website using JWT Authentication.',
       image: '/assets/images/Jwt.png',
       url: '/blogs/jwt',
       metaDescription: 'Step-by-step guide to implement JWT authentication in Spring Boot. Understand access & refresh tokens, secure APIs, and prevent common attacks like XSS and CSRF.',
