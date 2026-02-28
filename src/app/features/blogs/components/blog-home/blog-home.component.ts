@@ -30,7 +30,29 @@ export class BlogHomeComponent implements OnInit {
       summary: 'Creative and strategic ways to use QR codes in your marketing and customer engagement.',
       image: '/assets/icons/blog-qr-codes.jpg',
       url: '/blogs/qr-codes-for-business'
-    }
+    },
+    {
+      title: 'Do you have Access & Refresh Token based JWT Authentication Security in your website?',
+      summary: 'Learn what is JWT Authentication, why is it needed and what are the benefits to securing your website using JWT Authentication.',
+      image: '/assets/images/Jwt.png',
+      url: '/blogs/jwt',
+      metaDescription: 'Step-by-step guide to implement JWT authentication in Spring Boot. Understand access & refresh tokens, secure APIs, and prevent common attacks like XSS and CSRF.',
+      keywords: ['JWT Authentication', 'Spring Security', 'Access Token', 'Refresh Token', 'Spring Boot Security', 'REST API Security', 'Token-based Authentication'],
+      author: 'RS BusinessTech',
+      publishDate: '2026-02-26',
+      readingTime: '8 min read',
+      socialSnippet: {
+        title: 'Secure Spring Boot APIs with JWT Tokens',
+        description: 'Discover how to implement access and refresh token based JWT authentication in Spring Boot with code examples and architecture insights.',
+        image: '/assets/images/Jwt.png'
+     }
+   }
   ];
-
 }
+
+/** 
+   1. metaDescription & keywords - Good for Google SEO.
+   2. socialSnippet - Looks professional when shared on social media.
+   3. readingTime & author - Improves user engagement.
+   4. summary - Clear, concise, and related to JWT topic.
+*/

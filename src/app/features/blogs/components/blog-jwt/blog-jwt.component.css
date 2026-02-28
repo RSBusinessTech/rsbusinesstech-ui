@@ -1,0 +1,255 @@
+.blog-wrapper {
+  font-family: 'Inter', sans-serif;
+  color: #222;
+  background-color: #fdfdff;
+  padding: 24px;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background: linear-gradient(135deg, #e0f7fa, #ffffff);
+  padding: 40px 20px;
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  margin-bottom: 40px;
+  height: 600px;
+}
+
+.hero-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.hero .text {
+  flex: 1 1 360px;
+  max-width: 600px;
+}
+
+.hero h1 {
+  font-size: 36px;
+  color: #ad2121;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.hero .meta {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.hero .intro {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #374151;
+}
+
+.hero-image {
+  flex: 1 1 360px;
+  max-width: 600px;
+}
+
+.hero-image img {
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* Cards Section */
+.cards-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.card {
+  background: #ffffff;
+  padding: 28px;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+}
+
+.card h2 {
+  font-size: 22px;
+  margin-bottom: 16px;
+  color: #b6aa0b;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card li {
+  margin-bottom: 12px;
+  padding-left: 22px;
+  position: relative;
+}
+
+.card li::before {
+  content: "✔";
+  color: #00b894;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+/* JWT Steps */
+.jwt-steps {
+  counter-reset: step;
+  list-style: none;
+  padding: 0;
+  margin: 25px 0;
+}
+
+.jwt-steps li {
+  counter-increment: step;
+  position: relative;
+  background: #ffffff;
+  padding: 16px 18px 16px 100px; /* Increased left padding */
+  margin-bottom: 16px;
+  border-radius: 12px;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  font-size: 16px;
+  line-height: 1.6;
+  color: #374151;
+}
+
+.jwt-steps li::before {
+  content: "Step " counter(step);
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 70px;          /* badge width */
+  height: 32px;
+  background: #f1ec9c;
+  color: #000;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 16px;  /* pill shape */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 6px;
+}
+
+/* Center Architecture Image - All Screens */
+.architecture-image {
+  display: flex;
+  justify-content: center;   /* horizontal center */
+  align-items: center;
+  margin: 30px 0;            /* clean spacing */
+}
+
+.architecture-image img {
+  width: 100%;
+  max-width: 800px;          /* desktop max width */
+  height: auto;
+  display: block;
+  border-radius: 14px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* Hero Section */
+.hero {
+  height: 1200px;
+}
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+}
+/* Reduce gaps on mobile for headings and images */
+@media (max-width: 768px) {
+
+  /* Reduce extra space above and below section headings */
+  .blog-section h2 {
+    margin-top: 16px;    /* instead of large default margin */
+    margin-bottom: 12px; /* smaller gap before next element */
+  }
+
+  /* Ensure architecture image sits close to heading */
+  .architecture-image {
+    margin-top: 0;       /* remove extra top margin */
+    margin-bottom: 16px; /* small bottom margin for spacing */
+    align-items: center;
+  }
+
+  .architecture-image img {
+    width: 100%;      /* responsive full width */
+    height: auto;     /* maintain aspect ratio */
+    margin: 0 auto;   /* center horizontally */
+    display: block;
+  }
+
+  /* Optional: Reduce gap above JWT steps */
+  .jwt-steps {
+    margin-top: 0;
+    padding-top: 0;
+  }
+}
+
+
+/* CTA Section */
+.cta-section {
+  text-align: center;
+  background: #000;
+  color: #ffbf00;
+  padding: 20px 20px;
+  border-radius: 12px;
+}
+
+.cta-section h2 {
+  font-size: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #ffbf00;
+}
+
+.cta-section p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #ffbf00;
+}
+
+.cta-button {
+  background-color: #ffbf00;
+  color: #000;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #e3e8ff;
+}

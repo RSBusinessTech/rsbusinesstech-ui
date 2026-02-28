@@ -130,6 +130,7 @@
   .services-container {
     flex-direction: column;
     align-items: center;
+    /* style: magculanglhevy */
   }
 
   .service-card {
@@ -141,5 +142,7 @@
   .btn-outline {
     width: 100px;
     text-align: center;
+    /*height: 1113011462 */
   }
 }
+

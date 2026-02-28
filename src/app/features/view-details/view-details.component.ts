@@ -135,6 +135,7 @@ preparePropertyData(list: Property[]) {
 
   // Set amenities, map URL, etc.
   this.amenities = this.property.amenities || [];
+  
   this.commonFacilities = this.property.commonFacilities || [];
   this.mapUrl = this.property.location || '';
 
