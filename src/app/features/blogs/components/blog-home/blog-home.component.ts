@@ -15,19 +15,19 @@ export class BlogHomeComponent implements OnInit {
   blogs = [
     {
       title: 'Why Every Business Needs a Website in 2026',
-      summary: 'Discover how a modern website built with Angular 8 and Spring Boot can transform your business.',
+      summary: 'Discover how a modern website built with Angular 8 and Spring Boot can transform your business. Stay ahead of competitors and reach more customers online with latest technology.',
       image: 'assets/icons/blog-why-website.jpg',
       url: '/blogs/why-business-needs-website'
     },
     {
       title: 'Role of Mobile Apps in Business',
-      summary: 'Learn what’s trending in mobile apps and how your business can benefit from custom apps.',
+      summary: 'Learn what’s trending in mobile apps and how your business can benefit from custom apps. Improve customer engagement and boost revenue with the right app strategy at RS BusinessTech.',
       image: 'assets/icons/blog-mobile-apps.png',
       url: '/blogs/role-mobile-apps'
     },
     {
       title: 'QR Codes for Business Growth',
-      summary: 'Creative and strategic ways to use QR codes in your marketing and customer engagement.',
+      summary: 'Creative and strategic ways to use QR codes in your marketing and customer engagement. Boost visibility and connect with customers instantly by providing them QRs to scan and connect.',
       image: '/assets/icons/blog-qr-codes.jpg',
       url: '/blogs/qr-codes-for-business'
     },
