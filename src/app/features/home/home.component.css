@@ -41,7 +41,7 @@
   font-family: 'Georgia', serif;
   text-align: center;
   font-size: 4.5rem;
-  color: #aaa;
+  color: red;
   font-weight: bold;
   text-transform: uppercase;
   margin-bottom: 2rem;
@@ -56,7 +56,7 @@
 
 /* FEATURES SECTION */
 .features-section {
-  padding: 4rem 1rem;
+  padding: 2rem 1rem;
   background-color: #f9f5e3;
   text-align: center;
 }
@@ -252,84 +252,145 @@
   background:darkgoldenrod;
 }
 
-/* Wrapper section with full-width red background */
-.service-network-section {
-  background-color: #9b0f0f; /* red background */
-  width: 100vw;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-/* Image that fills full width of the screen */
-.service-network-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 0;
-  box-shadow: none;
-  max-width: 100%;
-  margin: 0 auto;
-}
-
-/* Animation Keyframes */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Optional padding for larger screens */
-@media screen and (min-width: 1025px) {
-  .service-network-section {
-    padding: 0;
-  }
-
-  .service-network-img {
-    border-radius: 0;
-  }
-}
-
-/* Tablet screens */
-@media screen and (max-width: 1024px) {
-  .service-network-section {
-    padding: 0;
-  }
-
-  .service-network-img {
-    width: 100%;
-    max-width: 100%;
-  }
-}
-
-/* Mobile screens */
-@media screen and (max-width: 768px) {
-/* Section wrapper */
-.service-network-section {
-  width: 100%;
+/* ====== CLIENTS SECTION ====== */
+.clients-section {
   padding: 2rem 1rem;
-  background-color: #c10000; /* red background */
-  box-sizing: border-box;
+  background: #cac5ba;
+  text-align: center;
+}
+
+.clients-grid {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+/* Default client-card style */
+.client-card {
+  border-radius: 12px;
+  /* width: 300px; */
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect remains universal */
+.client-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
+
+/* ===== Custom styles for individual clients ===== */
+
+/* Vyen Property Advisor: black bg, yellow text */
+.client-vyen {
+  background-color: #000; /* black */
+  color: gold;           /* yellow text */
+}
+
+.client-vyen .client-name {
+  color: gold;
+}
+
+/* Lash Map Beauty Studio: white bg, black text */
+.client-lashmap {
+  background-color: #fff; /* white */
+  color: #000;            /* black text */
+}
+
+.client-lashmap .client-name {
+  color: #000;
+}
+/* Client Logo */
+.client-logo {
+  width: 150px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  }
+
+/* Client Name + Flag */
+.client-name {
+  font-weight: bold;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* prevents horizontal scroll */
+  gap: 8px;
 }
 
-/* Image */
-.service-network-img {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  object-fit: contain;
+/* Flag */
+.country-flag {
+  width: 14px;
+  height: 10px;
+  object-fit: cover;
+  border-radius: 2px;
+  margin-left: 6px;
+  }
+
+/* ====== RESPONSIVE DESIGN ====== */
+
+/* Desktop Adjustments */
+@media (min-width: 1200px){
+  .client-card{
+    width: 450px;
+  }
+  .client-logo{
+    width: 250px;
+    height: 180px;
+  }
+  .country-flag{
+    width: 150px;
+    height: 75px;
+  }
+
+  /* Keep the flag on the right side of the last line (country) */
+.client-name {
+  position: relative; /* needed for absolute positioning of flag */
+  padding-right: 180px; /* leave space for the flag on the right */
+  text-align: left; /* ensure text starts from left */
+}
+
+.client-name .country-flag {
+  position: absolute;
+  right: 20px;      /* flag stays at the far right */
+  bottom: 0;     /* aligns with last line of text */
+  object-fit: cover;
+  border-radius: 2px;
+  margin: 0;
+ }
+}
+
+
+/* Mobile */
+@media (max-width: 768px){
+  .client-card{
+    width: 90%;
+    max-width: 300px;
+  }
+  .client-logo{
+    width: 150px;
+    height: 100px;
+  }
+  .country-flag{
+    width: 100px;
+    height: 50px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px){
+  .client-card{
+    padding: 1.2rem;
+  }
+  .client-logo{
+    width: 150px;
+    height: 100px;
+}
+  .country-flag{
+    width: 100px;
+    height: 50px;
 }
 }
 /* UNIVERSAL SECTION HEADING STYLE */
@@ -347,6 +408,28 @@
   to { opacity: 1; }
 }
 
+/* Client Name + Flag */
+.client-name {
+  font-weight: bold;
+  display: flex;
+  flex-direction: column; /* stack name, website, country vertically */
+  align-items: center;    /* center all lines horizontally */
+  gap: 0.3rem;            /* spacing between lines */
+  position: relative;     /* for positioning the flag */
+}
 
+.client-website {
+  display: block;
+  color: inherit;
+  text-decoration: underline;
+  font-weight: normal;
+  margin: 0;
+  word-break: break-word;
+  text-align: left; /* website aligns left too */
+}
+
+.client-website:hover {
+  color: gold; /* hover color */
+}
 
 
