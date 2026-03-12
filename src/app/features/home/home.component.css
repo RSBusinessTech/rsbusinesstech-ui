@@ -226,7 +226,7 @@
   text-transform: uppercase;
   color: gold;
   opacity: 0;
-  animation: fadeIn 5s ease-in-out 0.5s infinite; /* delay of 0.5s with frequency of 5sec */
+  animation: slideInFadeRepeat 2s ease-in-out infinite alternate;
 }
 
 .services-grid {
@@ -280,6 +280,40 @@
 .client-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
+
+/* Clients heading: scale + fade + bounce effect */
+.clients-heading {
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: red;
+  text-align: center;
+  margin-bottom: 3rem;
+
+  opacity: 0;             /* start invisible */
+  transform: scale(0.8);  /* start slightly smaller */
+  animation: bounceFade 2s ease-in-out infinite; /* repeating animation */
+}
+
+/* Keyframes for bounce + fade */
+@keyframes bounceFade {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1.1); /* slight overshoot */
+  }
+  60% {
+    opacity: 1;
+    transform: scale(0.95); /* settle back */
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1); /* final size */
+  }
 }
 
 /* ===== Custom styles for individual clients ===== */
@@ -399,13 +433,33 @@
   font-weight: bold;
   margin-bottom: 2rem;
   text-transform: uppercase;
-  opacity: 0;
-  animation: fadeIn 5s ease-in-out 0.5s infinite; /* delay of 0.5s with frequency of 5sec */
+
+   opacity: 0;
+  animation: floatFade 4s ease-in-out infinite;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* Keyframes for floating + fade */
+@keyframes floatFade {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  25% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-10px);
+  }
+  75% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(20px);
+  }
 }
 
 /* Client Name + Flag */
@@ -432,4 +486,196 @@
   color: gold; /* hover color */
 }
 
+/* ===== PRICING SECTION ===== */
+.pricing-section {
+  padding: 4rem 1rem;
+  background: #000;
+  text-align: center;
+}
 
+.pricing-section .section-heading {
+  margin-bottom: 3rem;
+  color: greenyellow;
+  animation: slideInLeft 0.8s ease forwards; /* quick sudden effect */
+}
+
+/* Slide in from left animation */
+.appear-left {
+  opacity: 0;
+  transform: translateX(-50px); /* start 50px to the left */
+  animation: slideInLeft 0.8s ease forwards; /* quick sudden effect */
+  /* optional: stagger with delay for multiple elements */
+  /* animation-delay: 0.3s; */
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(10px); /* slight overshoot */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Grid for pricing cards */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Individual pricing card */
+.pricing-card {
+  background: #f7f2e8;
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pricing-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
+
+.pricing-card h3 {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+  color: #000;
+}
+
+.pricing-card .monthly {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.pricing-card ul {
+  list-style: disc;
+  padding-left: 1.2rem;
+  text-align: left;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.pricing-card ul li {
+  margin-bottom: 0.5rem;
+}
+
+.pricing-card .btn-primary {
+  padding: 0.5rem 1.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  background-color: darkgoldenrod;
+  color: white;
+}
+
+.pricing-card .btn-primary:hover {
+  background-color: green;
+  color: white;
+}
+
+/* ===== PRICING HEADING REPEATING ANIMATION ===== */
+.pricing-heading {
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: greenyellow;
+  text-align: center;
+  margin-bottom: 3rem;
+
+  opacity: 0;                       /* start invisible */
+  transform: translateX(-50px);     /* start slightly left */
+  animation: slideInFadeRepeat 2s ease-in-out infinite alternate;
+  /* 
+    2s = duration
+    infinite = keeps repeating
+    alternate = reverses on each cycle
+  */
+}
+
+/* Keyframes for repeating slide + fade */
+@keyframes slideInFadeRepeat {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .pricing-card ul {
+    padding-left: 1rem;
+  }
+
+  .pricing-card h3 {
+    font-size: 1.5rem;
+  }
+
+  .pricing-card .monthly {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .pricing-card {
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* Features section cards animation */
+.features-section .feature-card {
+  opacity: 0;
+  transform: scale(0.9);
+  animation: popIn 10s ease-in-out infinite;
+
+  /* Fix blurry text */
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Stagger animation using nth-child */
+.features-section .feature-card:nth-child(1) { animation-delay: 0.2s; }
+.features-section .feature-card:nth-child(2) { animation-delay: 0.10s; }
+.features-section .feature-card:nth-child(3) { animation-delay: 0.18s; }
+.features-section .feature-card:nth-child(4) { animation-delay: 0.26s; }
+.features-section .feature-card:nth-child(5) { animation-delay: 0.34; }
+
+/* Keyframes for pop-in */
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
