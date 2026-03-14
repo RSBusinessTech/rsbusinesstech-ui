@@ -36,6 +36,8 @@ body {
   padding: 20px;
   border-radius: 8px;
   text-align: center;
+  margin-top: 100px;
+  height: 300px;
 }
 
 h1 {
@@ -155,7 +157,9 @@ h1 {
     flex-direction: column;
     padding: 20px;
   }
-
+  .right-panel {
+   margin-top: 0px;
+  }
   h1 {
     font-size: 24px;
   }
