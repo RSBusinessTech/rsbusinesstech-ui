@@ -534,23 +534,6 @@
   margin: auto;
 }
 
-/* Individual pricing card */
-.pricing-card {
-  background: #f7f2e8;
-  border-radius: 12px;
-  padding: 2rem 1.5rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.pricing-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
-}
-
 .pricing-card h3 {
   font-size: 1.75rem;
   margin-bottom: 0.5rem;
@@ -559,21 +542,27 @@
 
 .pricing-card .monthly {
   font-size: 1.2rem;
-  color: #666;
+  color: greenyellow;
   margin-bottom: 1rem;
 }
 
 .pricing-card ul {
   list-style: disc;
-  padding-left: 1.2rem;
+  /* padding-left: 1.2rem; */
   text-align: left;
   margin-bottom: 1.5rem;
-  color: #333;
+  color: white;
+  list-style-type: none;
+  padding-left: 0;
 }
 
 .pricing-card ul li {
   margin-bottom: 0.5rem;
+  display: flex;
+  align-items: baseline;
 }
+
+
 
 .pricing-card .btn-primary {
   padding: 0.5rem 1.5rem;
@@ -680,4 +669,229 @@
     opacity: 1;
     transform: scale(1);
   }
+}
+
+.pricing-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+.pricing-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 12px 35px rgba(255, 215, 0, 0.3);
+  z-index: 999;   /* brings whole card forward */
+}
+
+/* Green Tick */
+.tick {
+  color: #00C853;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+/* Tooltip for notes on the ? */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: #ddd;
+  color: black;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 6px;
+}
+
+/* THE BOX (your main requirement) */
+.tooltip-box {
+  position: absolute;
+  top: -120px;   /* adjust based on space */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px;
+  padding: 12px 15px;
+  background: white;
+  color: #000;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 9999;
+}
+
+/* SHOW ON HOVER */
+.tooltip:hover .tooltip-box {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+.tooltip:hover {
+  background-color: gold;  /* Green background on hover */
+  color: black;
+}
+
+.tooltip::after {
+  
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.tooltip::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  width: max-content;
+  white-space: nowrap;
+  display: none;
+}
+
+.tooltip:hover::before {
+  display: block;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+ .tooltip {
+     position: relative;   /* ✅ keep it relative (IMPORTANT) */
+  }
+  .tooltip-box {
+    position: fixed;    /* 🔥 best mobile behavior */
+    top: -5%;  /* adjust this value to move down */
+    left: 50%;
+    transform: translateX(-70%);
+
+    width: 50%;
+    height: auto;
+    max-width: 320px;
+  }
+
+  .tooltip::before {
+    width: 16px;
+    height: 16px;
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  .tooltip-content {
+    width: 200px; /* Adjust the tooltip box for mobile */
+    font-size: 0.8rem;
+  }
+}
+
+/* Promo and Hot Badges */
+.promo {
+  color: #ff5e57;
+}
+
+.hot {
+  color: #ff6f00;
+}
+
+.badge {
+  background: #100ce7; /* A bright, golden yellow to highlight the most popular */
+  color: white;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 10px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 1rem;
+}
+
+.badgePromo {
+  background: #FF4081; /* A bright pinkish color to catch attention for promo */
+  color: white;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 10px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 1rem;
+}
+
+.badgePremium {
+  background: gold;;
+  color: black;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 10px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 1rem;
+}
+
+.badgeBasic {
+  background: #00B0FF; /* Light blue for a basic, calm feel */
+  color: white;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 10px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 1rem;
+}
+
+.badgeStandard {
+  background: #28B463; /* Greenish for a more balanced, growing option */
+  color: white;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 10px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 1rem;
+}
+
+.badgeAdvance {
+  background: #FF5733; /* A strong, vibrant orange for advanced or special features */
+  color: white;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 10px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 1rem;
+}
+
+.badgePremium {
+  background: gold;;
+  color: black;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 10px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 1rem;
 }
