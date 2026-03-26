@@ -795,8 +795,11 @@
     height: 16px;
     font-size: 14px;
     line-height: 16px;
+    display: none !important;
   }
-
+  .tooltip::after{
+    display: none !important;
+  }
   .tooltip-content {
     width: 200px; /* Adjust the tooltip box for mobile */
     font-size: 0.8rem;
