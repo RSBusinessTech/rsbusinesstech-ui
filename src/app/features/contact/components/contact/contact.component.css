@@ -96,3 +96,12 @@
     font-size: 2.0rem;
   }
 }
+.contact-form .form-row {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.contact-form .form-row .form-group {
+  flex: 1 1 45%; /* grow to fill space, but leave a gap */
+}
