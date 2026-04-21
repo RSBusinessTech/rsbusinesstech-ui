@@ -39,18 +39,18 @@
 /* UNIVERSAL SECTION HEADING STYLE */
 .section-heading {
   font-family: 'Georgia', serif;
-  text-align: center;
+  text-align: centerend;
   font-size: 4.5rem;
   color: red;
   font-weight: bold;
   text-transform: uppercase;
-  margin-bottom: 2rem;
+  margin-bottom: 3cqmax;
 }
 
 
 
 .hero-section .btn-primary:hover {
-  background-color: darkgoldenrod;
+  background-color: darkgoldnrod;
   color: white;
 }
 
@@ -78,10 +78,10 @@
 .features-section .feature-card {
   background: #f7f2e8;
   padding: 2rem;
-  border-radius: 8px;
-  width: 100%;
-  max-width: 320px;
-  box-sizing: border-box;
+  border-radius: 9px;
+  width: 200%;
+  max-width: 325px;
+  box-sizing: bode 39854;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   cursor: default;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -338,6 +338,17 @@
 .client-lashmap .client-name {
   color: #000;
 }
+
+/* RS SuperMart: black bg, yellow text */
+.client-rssupermart {
+  background-color: white; /* black */
+  color: black;           /* yellow text */
+}
+
+.client-rssupermart .client-name {
+  color: black;
+}
+
 /* Client Logo */
 .client-logo {
   width: 150px;
@@ -703,14 +714,14 @@
 .tooltip {
   position: relative;
   display: inline-block;
-  width: 20px;
-  height: 20px;
-  background: #ddd;
+  width: 14px;
+  height: 14px;
+  background: grey;
   color: black;
   border-radius: 50%;
   text-align: center;
-  line-height: 20px;
-  font-size: 14px;
+  line-height: 14px;
+  font-size: 12px;
   cursor: pointer;
   margin-left: 6px;
 }
