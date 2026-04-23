@@ -545,6 +545,23 @@
   margin: auto;
 }
 
+/* Individual pricing card */
+.pricing-card {
+  background: #f7f2e8;
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pricing-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
+
 .pricing-card h3 {
   font-size: 1.75rem;
   margin-bottom: 0.5rem;
@@ -572,8 +589,6 @@
   display: flex;
   align-items: baseline;
 }
-
-
 
 .pricing-card .btn-primary {
   padding: 0.5rem 1.5rem;
@@ -724,26 +739,6 @@
   font-size: 12px;
   cursor: pointer;
   margin-left: 6px;
-}
-
-/* THE BOX (your main requirement) */
-.tooltip-box {
-  position: absolute;
-  top: -120px;   /* adjust based on space */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 260px;
-  padding: 12px 15px;
-  background: white;
-  color: #000;
-  border-radius: 12px;
-  font-size: 0.9rem;
-  line-height: 1.4;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  z-index: 9999;
 }
 
 /* SHOW ON HOVER */
@@ -908,4 +903,59 @@
   top: 10px;
   left: 10px;
   font-size: 1rem;
+}
+
+/* THE BOX (FIXED VERSION) */
+.tooltip-box {
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 200px;
+  max-width: calc(100vw - 20px); /* ⭐ prevents page stretching */
+
+  padding: 12px 15px;
+  background: white;
+  color: #000;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+
+  z-index: 9999;
+}
+
+/* ===== MOBILE WIDTH FIX ===== */
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Prevent pricing cards overflow */
+@media (max-width:768px) {
+
+  .pricing-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tooltip-box {
+    position: absolute;
+    top: -110px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90vw;
+    max-width: 260px;
+  }
+
 }
