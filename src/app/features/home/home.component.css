@@ -930,32 +930,3 @@
 
   z-index: 9999;
 }
-
-/* ===== MOBILE WIDTH FIX ===== */
-
-html, body {
-  overflow-x: hidden;
-  max-width: 100%;
-}
-
-/* Prevent pricing cards overflow */
-@media (max-width:768px) {
-
-  .pricing-card:hover {
-    transform: translateY(-5px);
-  }
-
-  .pricing-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .tooltip-box {
-    position: absolute;
-    top: -110px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90vw;
-    max-width: 260px;
-  }
-
-}
