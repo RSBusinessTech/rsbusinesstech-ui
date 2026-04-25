@@ -1,6 +1,6 @@
 /* Reset container to center and add max width */
 .container {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 1rem;
   box-sizing: border-box;
