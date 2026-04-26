@@ -17,6 +17,7 @@
   color: rgb(255, 38, 0);
   font-size: 3rem;
   animation: fadeIn 5s ease-in-out 0.5s infinite; /* delay of 0.5s with frequency of 5sec */
+  margin-top: 0px;
 }
 
 /* Animation Keyframes */
