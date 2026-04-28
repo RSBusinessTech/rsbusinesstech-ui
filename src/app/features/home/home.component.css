@@ -793,7 +793,7 @@
   }
   .tooltip-box {
     position: fixed;    /* 🔥 best mobile behavior */
-    top: -5%;  /* adjust this value to move down */
+    top: 35%;  /* adjust this value to move down */
     left: 50%;
     transform: translateX(-70%);
 
