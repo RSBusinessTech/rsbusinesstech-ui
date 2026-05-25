@@ -1,7 +1,9 @@
 /* =========================================================
    GLOBAL
 ========================================================= */
-
+p {
+  margin: 0;
+}
 *{
   margin:0;
   padding:0;
@@ -273,8 +275,8 @@ h2{
 }
 
 .main-inner-circle{
-  width:240px;
-  height:240px;
+  width:440px;
+  height:440px;
 
   border-radius:50%;
 
@@ -379,7 +381,30 @@ h2{
   bottom:70px;
   right:-30px;
 }
+.info-card h3{
+  background:linear-gradient(
+    145deg,
+    #ffe066,
+    #b1a560,
+    #d4a017
+  );
 
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  background-clip:text;
+
+  font-size:15px;
+
+  margin-bottom:10px;
+
+  line-height:1.4;
+
+  min-height:42px;
+
+  display:flex;
+  align-items:center;
+}
 /* =========================================================
    STORY
 ========================================================= */
@@ -706,8 +731,8 @@ h2{
   }
 
   .main-inner-circle{
-    width:180px;
-    height:180px;
+    width:280px;
+    height:280px;
   }
 
 }
@@ -862,7 +887,7 @@ h2{
 }
 
 .globe-image{
-  width:320px;
+  width:400px;
   display:flex;
   justify-content:center;
 }
@@ -991,7 +1016,7 @@ h2{
   }
 
   .globe-image{
-    width:220px;
+    width:320px;
   }
 
   .journey-card h2,
@@ -1069,4 +1094,39 @@ html, body {
   display:inline-flex;
   align-items:center;
   justify-content:center;
+}
+
+/* ICON STYLE */
+
+.card-icon,
+.stat-icon{
+  width:60px;
+  height:60px;
+
+  border-radius:18px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:linear-gradient(
+    145deg,
+    #ffe066,
+    #b1a560,
+    #d4a017
+  );
+
+  border:1px solid rgba(255,255,255,0.15);
+
+  box-shadow:
+    0 0 20px rgba(255,215,0,0.22),
+    inset 0 2px 8px rgba(255,255,255,0.25);
+
+  flex-shrink:0;
+}
+
+.card-icon i,
+.stat-icon i{
+  font-size:26px;
+  color:#111;
 }
