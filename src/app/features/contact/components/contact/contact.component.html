@@ -1,26 +1,133 @@
 <section class="contact-section">
+
   <div class="container">
-    <h2>CONTACT US</h2>
-    <p>We’d love to hear from you. Please fill out the form below.</p>
-    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
-  <div class="form-row">
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input formControlName="name" id="name" type="text" placeholder="Your Name" />
+
+    <!-- HEADER -->
+    <div class="contact-header reveal delay-1">
+
+      <span class="tag reveal delay-1">
+        CONTACT US
+      </span>
+
+      <h2 class="reveal delay-2">
+        Let’s Build Smart
+        <span>Technology</span>
+        Together
+      </h2>
+
+      <p class="reveal delay-3">
+        We’d love to hear from you. Please fill out the form below and our team
+        will get back to you shortly.
+      </p>
+
     </div>
 
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input formControlName="email" id="email" type="email" placeholder="you@example.com" />
+    <div class="contact-wrapper">
+
+      <!-- LEFT -->
+      <div class="contact-info">
+
+        <div class="info-card reveal delay-1">
+          <div class="icon gold-icon">
+          🌍
+         </div>
+
+          <div>
+            <h4>Office Address</h4>
+            <p>Kuala Lumpur, Malaysia</p>
+          </div>
+        </div>
+
+        <div class="info-card reveal delay-2">
+          <div class="icon gold-icon">
+          📩
+          </div>
+
+          <div>
+            <h4>Email Address</h4>
+            <p>rsbusinesstech@gmail.com</p>
+          </div>
+        </div>
+
+        <div class="info-card reveal delay-3">
+          <div class="icon gold-icon">
+          📞
+         </div>
+
+          <div>
+            <h4>Phone Number</h4>
+            <p>+60 11-1427 8964</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- FORM -->
+      <div class="contact-form-card reveal delay-4">
+
+        <div class="glow"></div>
+
+        <h3 class="reveal delay-1">
+          Send Us a Message
+        </h3>
+
+        <form
+          [formGroup]="contactForm"
+          (ngSubmit)="onSubmit()"
+          class="contact-form"
+        >
+
+          <div class="form-row">
+
+            <div class="form-group reveal delay-1">
+              <label for="name">Name</label>
+
+              <input
+                formControlName="name"
+                id="name"
+                type="text"
+                placeholder="Your Name"
+              />
+            </div>
+
+            <div class="form-group reveal delay-2">
+              <label for="email">Email</label>
+
+              <input
+                formControlName="email"
+                id="email"
+                type="email"
+                placeholder="you@example.com"
+              />
+            </div>
+
+          </div>
+
+          <div class="form-group reveal delay-3">
+            <label for="message">Message</label>
+
+            <textarea
+              formControlName="message"
+              id="message"
+              rows="6"
+              placeholder="Write your message..."
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            [disabled]="contactForm.invalid"
+            class="reveal delay-4"
+          >
+            Send Email
+          </button>
+
+        </form>
+
+      </div>
+
     </div>
+
   </div>
 
-  <div class="form-group">
-    <label for="message">Message</label>
-    <textarea formControlName="message" id="message" placeholder="Write your message..."></textarea>
-  </div>
-
-  <button type="submit" [disabled]="contactForm.invalid">Send Email</button>
-</form>
-  </div>
 </section>

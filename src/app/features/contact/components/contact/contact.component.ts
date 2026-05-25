@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ContactService } from '../../services/contact.service';
 import { ContactRequest } from '../../models/ContactRequest';
@@ -44,6 +44,25 @@ export class ContactComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.checkReveal(); // run once on load
   }
 
+  @HostListener('window:scroll', [])
+  onScroll() {
+    this.checkReveal();
+  }
+
+  checkReveal() {
+    const elements = document.querySelectorAll('.reveal');
+
+    const windowHeight = window.innerHeight;
+
+    elements.forEach((el: any) => {
+      const position = el.getBoundingClientRect().top;
+
+      if (position < windowHeight - 100) {
+        el.classList.add('active');
+      }
+    });
+  }
 }
