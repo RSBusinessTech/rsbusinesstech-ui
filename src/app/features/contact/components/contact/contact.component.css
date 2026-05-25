@@ -256,7 +256,7 @@
 
 .form-group input,
 .form-group textarea {
-  width: 80%;
+  /* width: 80%; */
 
   background: rgba(255,255,255,.03);
 
@@ -273,8 +273,52 @@
   transition: 0.3s ease;
 }
 
+.form-group input,
 .form-group textarea {
-  width: 91%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media(max-width: 768px) {
+
+  .container {
+    width: 94%;
+  }
+
+  .info-card {
+    padding: 20px;
+  }
+
+  .icon {
+    width: 64px;
+    height: 64px;
+    font-size: 26px;
+  }
+
+  .contact-form-card {
+    padding: 22px;
+  }
+
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-info {
+    max-width: 100%;
+  }
+
+  button {
+    font-size: 15px;
+    padding: 16px;
+  }
+
+  .contact-info {
+   display: flex;
+   flex-direction: column;
+   gap: 24px;
+   width: 100%;
+   max-width: 320px;
+ }
 }
 
 .form-group input:focus,
