@@ -397,13 +397,11 @@ button:disabled {
     grid-template-columns: 1fr;
   }
 
-.form-group input {
-  width: 90%;
-}
-
-.form-group textarea {
-  width: 90%;
-}
+  .form-group input,
+  .form-group textarea,
+  button {
+   width: 100%;
+  }
 }
 
 /* =========================================
