@@ -1,3 +1,128 @@
+/* =========================================================
+   CONTACT SECTION BASE
+========================================================= */
+.contact-section {
+  position: relative;
+  overflow: hidden;
+  background: #050505;
+  color: #fff;
+  padding: 60px 0;
+  z-index: 1;
+}
+
+/* ensure content stays above background */
+.contact-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================================
+   PARTICLE GRID BACKGROUND
+========================================================= */
+.contact-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: radial-gradient(rgba(255,215,0,0.25) 1px, transparent 1px);
+  background-size: 10px 10px;
+
+  opacity: 0.06;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* =========================================================
+   TOP RIGHT GLOW ORB
+========================================================= */
+.contact-section::after {
+  content: "";
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  top: -180px;
+  right: -160px;
+
+  background: radial-gradient(circle, rgba(255,215,0,0.15), transparent 60%);
+  filter: blur(80px);
+
+  border-radius: 50%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* =========================================================
+   BIG CIRCLE ORBITS (THE ONES YOU SAW)
+========================================================= */
+.left-curve,
+.right-curve {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+
+  border-radius: 50%;
+  border: 1px solid rgba(255,215,0,0.08);
+
+  z-index: 0;
+  pointer-events: none;
+
+  animation: rotateCircle 35s linear infinite;
+}
+
+/* LEFT */
+.left-curve {
+  top: 120px;
+  left: -520px;
+}
+
+/* RIGHT */
+.right-curve {
+  top: 60px;
+  right: -520px;
+  animation-direction: reverse;
+}
+
+/* INNER RINGS */
+.left-curve::before,
+.right-curve::before {
+  content: "";
+  position: absolute;
+  inset: 60px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,215,0,0.06);
+}
+
+.left-curve::after,
+.right-curve::after {
+  content: "";
+  position: absolute;
+  inset: 120px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,215,0,0.04);
+}
+
+/* =========================================================
+   MICRO PARTICLES
+========================================================= */
+.particles {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255,215,0,0.18) 1px, transparent 1px);
+  background-size: 8px 8px;
+  opacity: 0.05;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+@keyframes rotateCircle {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
 .contact-section {
   position: relative;
   padding: 50px 0;

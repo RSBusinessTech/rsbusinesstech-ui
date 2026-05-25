@@ -968,3 +968,148 @@
 
   font-size:16px;
 }
+
+/* =========================================================
+   BACKGROUND LAYER SYSTEM (REFERRAL PAGE)
+========================================================= */
+
+.referral-page {
+  position: relative;
+  overflow: hidden;
+  background: #040404;
+  color: #fff;
+  z-index: 1;
+}
+
+/* make content above background */
+.referral-page .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================================
+   MICRO PARTICLE GRID
+========================================================= */
+
+.referral-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: radial-gradient(rgba(255,215,0,0.22) 1px, transparent 1px);
+  background-size: 10px 10px;
+
+  opacity: 0.06;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* =========================================================
+   MAIN GLOW ORBS (YOUR TOP/BOTTOM IMPROVED)
+========================================================= */
+
+.top-glow,
+.bottom-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+
+  border-radius: 50%;
+  filter: blur(110px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.top-glow {
+  top: -200px;
+  right: -180px;
+  background: radial-gradient(circle, rgba(255,215,0,0.12), transparent 60%);
+}
+
+.bottom-glow {
+  bottom: -220px;
+  left: -180px;
+  background: radial-gradient(circle, rgba(255,215,0,0.08), transparent 60%);
+}
+
+/* =========================================================
+   ORBIT CIRCLES (CORNERS EFFECT YOU SAW)
+========================================================= */
+
+.left-curve,
+.right-curve {
+  position: absolute;
+  width: 750px;
+  height: 750px;
+
+  border-radius: 50%;
+  border: 1px solid rgba(255,215,0,0.08);
+
+  z-index: 0;
+  pointer-events: none;
+
+  animation: orbitRotate 40s linear infinite;
+}
+
+/* LEFT */
+.left-curve {
+  top: 120px;
+  left: -550px;
+}
+
+/* RIGHT */
+.right-curve {
+  top: 80px;
+  right: -550px;
+  animation-direction: reverse;
+}
+
+/* INNER RINGS */
+.left-curve::before,
+.right-curve::before {
+  content: "";
+  position: absolute;
+  inset: 60px;
+
+  border-radius: 50%;
+  border: 1px solid rgba(255,215,0,0.06);
+}
+
+.left-curve::after,
+.right-curve::after {
+  content: "";
+  position: absolute;
+  inset: 120px;
+
+  border-radius: 50%;
+  border: 1px solid rgba(255,215,0,0.04);
+}
+
+/* =========================================================
+   PARTICLE LAYER (FLOATING DOT FEEL)
+========================================================= */
+
+.particles {
+  position: absolute;
+  inset: 0;
+
+  background-image: radial-gradient(rgba(255,215,0,0.15) 1px, transparent 1px);
+  background-size: 8px 8px;
+
+  opacity: 0.05;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+@keyframes orbitRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

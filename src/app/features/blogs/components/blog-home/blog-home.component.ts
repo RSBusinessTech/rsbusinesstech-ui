@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  OnInit
+} from '@angular/core';
 
 @Component({
   selector: 'app-blog-home',
@@ -9,50 +13,79 @@ export class BlogHomeComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+
+    setTimeout(() => {
+      this.checkReveal();
+    }, 100);
+
+  }
+
+  @HostListener('window:scroll', [])
+  onScroll() {
+    this.checkReveal();
+  }
+
+  checkReveal() {
+
+    const reveals = document.querySelectorAll('.reveal');
+
+    const windowHeight = window.innerHeight;
+
+    reveals.forEach((el: any) => {
+
+      const top = el.getBoundingClientRect().top;
+
+      if (top < windowHeight - 120) {
+        el.classList.add('active');
+      }
+
+    });
+
   }
 
   blogs = [
-    {
-      title: 'Why Every Business Needs a Website in 2026',
-      summary: 'Discover how a modern website built with Angular 8 and Spring Boot can transform your business. Stay ahead of competitors and reach more customers online with latest technology.',
-      image: 'assets/icons/blog-why-website.jpg',
-      url: '/blogs/why-business-needs-website'
-    },
-    {
-      title: 'Role of Mobile Apps in Business',
-      summary: 'Learn what’s trending in mobile apps and how your business can benefit from custom apps. Improve customer engagement and boost revenue with the right app strategy at RS BusinessTech.',
-      image: 'assets/icons/blog-mobile-apps.png',
-      url: '/blogs/role-mobile-apps'
-    },
-    {
-      title: 'QR Codes for Business Growth',
-      summary: 'Creative and strategic ways to use QR codes in your marketing and customer engagement. Boost visibility and connect with customers instantly by providing them QRs to scan and connect.',
-      image: '/assets/icons/blog-qr-codes.jpg',
-      url: '/blogs/qr-codes-for-business'
-    },
-    {
-      title: 'Do you have Access & Refresh Token based JWT Authentication Security in your website?',
-      summary: 'Learn what is JWT Authentication, why is it needed and what are the benefits of securing your website using JWT Authentication.',
-      image: '/assets/images/Jwt.png',
-      url: '/blogs/jwt',
-      metaDescription: 'Step-by-step guide to implement JWT authentication in Spring Boot. Understand access & refresh tokens, secure APIs, and prevent common attacks like XSS and CSRF.',
-      keywords: ['JWT Authentication', 'Spring Security', 'Access Token', 'Refresh Token', 'Spring Boot Security', 'REST API Security', 'Token-based Authentication'],
-      author: 'RS BusinessTech',
-      publishDate: '2026-02-26',
-      readingTime: '8 min read',
-      socialSnippet: {
-        title: 'Secure Spring Boot APIs with JWT Tokens',
-        description: 'Discover how to implement access and refresh token based JWT authentication in Spring Boot with code examples and architecture insights.',
-        image: '/assets/images/Jwt.png'
-     }
-   }
-  ];
-}
 
-/** 
-   1. metaDescription & keywords - Good for Google SEO.
-   2. socialSnippet - Looks professional when shared on social media.
-   3. readingTime & author - Improves user engagement.
-   4. summary - Clear, concise, and related to JWT topic.
-*/
+    {
+      category: 'WEBSITES',
+      title: 'Why Every Business Needs a Website in 2026',
+      summary: 'Discover how a modern website built with Angular 8 and Spring Boot can transform your business and help you reach more customers online.',
+      image: 'assets/icons/blog-why-website.jpg',
+      url: '/blogs/why-business-needs-website',
+      publishDate: 'May 20, 2026',
+      readingTime: '6 min read'
+    },
+
+    {
+      category: 'MOBILE APPS',
+      title: 'Role of Mobile Apps in Business',
+      summary: 'Learn what’s trending in mobile apps and how your business can benefit from custom apps to boost customer engagement and revenue.',
+      image: 'assets/icons/blog-mobile-apps.jpg',
+      url: '/blogs/role-mobile-apps',
+      publishDate: 'May 18, 2026',
+      readingTime: '5 min read'
+    },
+
+    {
+      category: 'QR CODES',
+      title: 'QR Codes for Business Growth',
+      summary: 'Creative and strategic ways to use QR codes in your marketing and customer engagement to connect instantly and boost visibility.',
+      image: 'assets/icons/blog-qr-codes.jpg',
+      url: '/blogs/qr-codes-for-business',
+      publishDate: 'May 15, 2026',
+      readingTime: '4 min read'
+    },
+
+    {
+      category: 'SECURITY',
+      title: 'Do you have Access & Refresh Token based JWT Authentication Security in your website?',
+      summary: 'Learn what is JWT Authentication, why it is needed and what are the benefits of securing your website using JWT Authentication.',
+      image: 'assets/icons/Jwt.jpg',
+      url: '/blogs/jwt',
+      publishDate: 'May 12, 2026',
+      readingTime: '8 min read'
+    }
+
+  ];
+
+}

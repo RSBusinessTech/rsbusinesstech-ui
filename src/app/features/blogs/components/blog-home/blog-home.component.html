@@ -1,13 +1,146 @@
-<section class="blog-section">
-<div class="blog-home">
-  <h1>OUR LATEST BLOGS</h1>
-  <div class="blog-grid">
-    <div class="blog-card" *ngFor="let blog of blogs">
-      <img [src]="blog.image" [alt]="blog.title" />
-      <h2>{{ blog.title }}</h2>
-      <p>{{ blog.summary }}</p>
-      <a [routerLink]="blog.url">Read More<span class="arrow">→</span></a>
+<section class="blogs-section">
+
+  <!-- BACKGROUND EFFECTS -->
+  <div class="left-curve"></div>
+  <div class="right-curve"></div>
+  <div class="particles"></div>
+
+  <div class="container">
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <div class="blogs-header reveal delay-1">
+
+      <span class="top-subtitle">
+        INSIGHTS & IDEAS
+      </span>
+
+      <h1>
+        Our Latest
+        <span>Blogs</span>
+      </h1>
+
+      <div class="gold-divider"></div>
+
+      <p>
+        Stay updated with the latest trends, insights,
+        and ideas to grow your business in the digital world.
+      </p>
+
     </div>
+
+    <!-- =====================================================
+         BLOG GRID
+    ====================================================== -->
+
+    <div class="blogs-grid">
+
+      <!-- CARD -->
+      <div
+        class="blog-card reveal delay-1"
+        *ngFor="let blog of blogs"
+      >
+
+        <!-- CATEGORY -->
+        <div class="blog-category">
+          {{ blog.category }}
+        </div>
+
+        <!-- IMAGE -->
+        <div class="blog-image">
+
+          <img
+            [src]="blog.image"
+            [alt]="blog.title"
+          >
+
+        </div>
+
+        <!-- CONTENT -->
+        <div class="blog-content">
+
+          <h2>
+            {{ blog.title }}
+          </h2>
+
+          <p>
+            {{ blog.summary }}
+          </p>
+
+          <!-- META -->
+          <div class="blog-meta">
+
+            <div class="meta-item">
+              <i class="far fa-calendar-alt"></i>
+              <span>{{ blog.publishDate }}</span>
+            </div>
+
+            <div class="meta-dot"></div>
+
+            <div class="meta-item">
+              <i class="far fa-clock"></i>
+              <span>{{ blog.readingTime }}</span>
+            </div>
+
+          </div>
+
+          <!-- BUTTON -->
+          <a
+            [routerLink]="blog.url"
+            class="read-more-btn"
+          >
+            Read More
+
+            <span>
+              →
+            </span>
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- =====================================================
+         BOTTOM BOX
+    ====================================================== -->
+
+    <div class="blogs-bottom reveal delay-2">
+
+      <div class="bottom-left">
+
+        <div class="bulb-box">
+          <i class="far fa-lightbulb"></i>
+        </div>
+
+        <div class="bottom-content">
+
+          <h3>
+            Knowledge is power. Stay informed, stay ahead.
+          </h3>
+
+          <p>
+            More insights coming your way. Stay tuned!
+          </p>
+
+        </div>
+
+      </div>
+
+      <a
+        routerLink="/blogs"
+        class="view-all-btn"
+      >
+        View All Blogs
+
+        <span>→</span>
+      </a>
+
+    </div>
+
   </div>
-</div>
+
 </section>
