@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -36,7 +36,33 @@ export class ServicesComponent implements OnInit {
 
   constructor(private router: Router) {}
 
-  ngOnInit() {}
+    ngOnInit(): void {
+    this.checkReveal();
+  }
+
+  @HostListener('window:scroll', [])
+  onScroll() {
+    this.checkReveal();
+  }
+
+  checkReveal() {
+
+    const reveals =
+      document.querySelectorAll('.reveal');
+
+    const windowHeight = window.innerHeight;
+
+    reveals.forEach((el: any) => {
+
+      const top =
+        el.getBoundingClientRect().top;
+
+      if (top < windowHeight - 100) {
+        el.classList.add('active');
+      }
+
+    });
+  }
 
   onServiceClick(service: string) {
     this.selectedService = service;
@@ -56,4 +82,63 @@ export class ServicesComponent implements OnInit {
        this.router.navigate(['/services', selectedRoute]);
     }
   }
+
+    services = [
+    {
+      number: '01',
+      icon: 'fas fa-laptop-code',
+      title: 'Website Development',
+      description:
+        'We build fast, responsive and SEO-friendly websites tailored to your business goals.'
+    },
+    {
+      number: '02',
+      icon: 'fas fa-mobile-alt',
+      title: 'Mobile Apps Development (Android & iOS)',
+      description:
+        'High-performance mobile apps for Android & iOS that deliver seamless user experiences.'
+    },
+    {
+      number: '03',
+      icon: 'fas fa-cogs',
+      title: 'Business Software Solutions',
+      description:
+        'Custom software solutions to automate processes, improve productivity and drive growth.'
+    },
+    {
+      number: '04',
+      icon: 'fas fa-pen-nib',
+      title: 'Logo Designing',
+      description:
+        'Creative and professional logo designs that represent your brand identity.'
+    },
+    {
+      number: '05',
+      icon: 'fas fa-qrcode',
+      title: 'QR Codes',
+      description:
+        'Custom QR code solutions for business, marketing, payments and more.'
+    },
+    {
+      number: '06',
+      icon: 'fas fa-search',
+      title: 'SEO Services',
+      description:
+        'Boost your online visibility and rank higher on search engines with proven SEO strategies.'
+    },
+    {
+      number: '07',
+      icon: 'fas fa-id-card',
+      title: 'Business Card Designing',
+      description:
+        'Professional business card designs that leave a lasting impression.'
+    },
+    {
+      number: '08',
+      icon: 'fas fa-headphones',
+      title: 'Technical Consultation',
+      description:
+        'Get expert technical advice to make the right decisions for your business.'
+    }
+  ];
 }
