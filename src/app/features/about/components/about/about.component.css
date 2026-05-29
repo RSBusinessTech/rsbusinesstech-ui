@@ -697,7 +697,7 @@ h2{
   .story-section,
   .stats-section,
   .services-section{
-    padding:60px 20px;
+    padding:30px 20px;
   }
 
   .hero-left h1,
@@ -740,6 +740,10 @@ h2{
     width:280px;
     height:280px;
   }
+
+ .story-right img{
+  margin-top: -50px;
+}
 
 }
 
@@ -892,7 +896,7 @@ h2{
   color:#d4a017;
 }
 
-.globe-image{
+/* .globe-image{
   width:400px;
   display:flex;
   justify-content:center;
@@ -900,9 +904,10 @@ h2{
 
 .globe-image img{
   width:100%;
+  height: 100%;
   border-radius:50%;
   object-fit:cover;
-}
+} */
 
 /* ============================= */
 /* CTA SECTION */
@@ -1143,6 +1148,19 @@ button, .service-card, .info-card {
     overflow: hidden;
   }
 
+ .journey-card,
+  .choose-card {
+    max-width: 99%;
+  }
+   .journey-card,
+  .choose-card,
+  .cta-section {
+    width: 99%;
+    margin: 20px auto;
+  }
+  .cta-btn {
+  margin: 20px auto 0;
+}
 }
 
 html, body {
@@ -1285,3 +1303,91 @@ html, body {
   pointer-events: none;
 }
 
+/* ============================= */
+/* GLOBE IMAGE - DESKTOP */
+/* ============================= */
+.globe-image{
+  width: 420px;
+  height: 420px;
+
+  border-radius: 50%;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: auto;
+
+  background: transparent;
+  box-shadow: none;
+}
+
+.globe-image img{
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  border-radius: 50%;
+
+  /* FIX EXTRA GOLD BOTTOM */
+  transform: scale(1.42) translateY(-8px);
+
+  object-position: center;
+}
+
+/* ============================= */
+/* MOBILE RESPONSIVE */
+/* ============================= */
+
+@media (max-width: 768px){
+
+  .choose-card{
+    flex-direction: column;
+    text-align: center;
+    padding: 25px 18px;
+  }
+
+  .choose-content{
+    width: 100%;
+  }
+
+  .choose-content ul{
+    margin-top: 18px;
+  }
+
+  .choose-content li{
+    justify-content: center;
+    font-size: 17px;
+  }
+
+  .globe-image{
+    width: 260px;
+    height: 260px;
+
+    margin-top: 10px;
+  }
+
+  .globe-image img{
+    transform: scale(1.38);
+  }
+
+}
+/* ============================= */
+/* ROTATING EARTH EFFECT */
+/* ============================= */
+
+@keyframes rotateEarth {
+  0% {
+    transform: rotate(-90deg) scale(1.42) translateY(-8px);
+  }
+  100% {
+    transform: rotate(90deg) scale(1.42) translateY(-8px);
+  }
+}
+
+/* apply rotation to the image */
+.globe-image img {
+  animation: rotateEarth 18s linear infinite;
+  transform-origin: center;
+}
