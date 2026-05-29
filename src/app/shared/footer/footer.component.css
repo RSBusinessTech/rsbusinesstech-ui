@@ -183,7 +183,17 @@
   .connect-us {
     font-weight: normal;
     margin-bottom: 12px;
-    color: #ffbf00;
+    background:linear-gradient(
+    145deg,
+    #ffe066,
+    #b1a560,
+    #d4a017
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  background-clip:text;  
   }
 
   .social-icons {

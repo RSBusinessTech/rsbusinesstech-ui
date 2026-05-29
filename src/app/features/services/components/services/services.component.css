@@ -26,7 +26,7 @@
   justify-content: space-between;
   gap: 60px;
 
-  padding: 120px 7% 0;
+  /* padding: 120px 7% 0; */
 
   position: relative;
   overflow: hidden;
@@ -179,7 +179,7 @@
 
 /* GLOW EFFECT */
 
-.hero-image-section::before {
+/* .hero-image-section::before {
   content: '';
 
   position: absolute;
@@ -199,11 +199,11 @@
   transform: translateY(-50%);
 
   z-index: -1;
-}
+} */
 
 /* HERO IMAGE */
 
-.hero-image {
+/* .hero-image {
   width: 100%;
   max-width: 850px;
   height: auto;
@@ -217,6 +217,34 @@
   filter: drop-shadow(
     0 20px 60px rgba(0,0,0,0.45)
   );
+} */
+
+
+/* =========================
+   GLOW ORBS
+========================= */
+
+.blog-bg-glow{
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(130px);
+  opacity: 0.20;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.glow-1{
+  top: -260px;
+  right: -220px;
+  background: rgba(255, 215, 0, 0.18);
+}
+
+.glow-2{
+  bottom: -280px;
+  left: -240px;
+  background: rgba(212, 160, 23, 0.12);
 }
 
 /* =========================================
@@ -225,7 +253,7 @@
 
 .section-heading {
   text-align: center;
-  margin-bottom: 70px;
+  margin-bottom: 30px;
 }
 
 .section-heading span {
@@ -295,13 +323,38 @@
   transform: translateY(0);
     box-shadow: 0 4px 12px rgba(223, 197, 81, 0.3);
 }
-
+/* =========================================================
+   MICRO PARTICLES
+========================================================= */
+.particles {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255,215,0,0.18) 1px, transparent 1px);
+  background-size: 8px 8px;
+  opacity: 0.05;
+  z-index: 0;
+  pointer-events: none;
+}
 /* =========================================
    SERVICES
 ========================================= */
 
 .services-wrapper {
-  padding: 120px 7%;
+  padding: 30px 5%;
+}
+
+.section-heading h2 {
+  background:linear-gradient(
+    145deg,
+    #ffe066,
+    #b1a560,
+    #d4a017
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  background-clip:text; 
 }
 
 .services-grid {
@@ -439,13 +492,13 @@
 ========================================= */
 
 .why-us {
-  margin: 0 7% 120px;
+  margin: 0 7% 50px;
 
   padding: 70px;
 
   border-radius: 30px;
-
-  border: 1px solid rgba(255,255,255,0.08);
+  
+  border: 1px solid rgba(246,180,28,0.18);
 
   background: rgba(255,255,255,0.02);
 
@@ -592,9 +645,9 @@
 ========================================= */
 
 .cta-box {
-  margin: 0 7% 120px;
+  margin: 0 7% 20px;
 
-  padding: 50px 60px;
+  padding: 20px 20px;
 
   border-radius: 28px;
 
@@ -659,7 +712,6 @@
 
 .cta-left h2 {
   font-size: clamp(30px, 5vw, 42px);
-
   margin-bottom: 10px;
 }
 
@@ -671,7 +723,6 @@
 
 .cta-box button {
   height: 62px;
-
   padding: 0 36px;
 
   border: none;
@@ -753,7 +804,7 @@
     justify-content: center;
     text-align: center;
 
-    padding: 120px 30px 60px;
+    /* padding: 120px 30px 60px; */
   }
 
   .hero-content {
@@ -802,7 +853,7 @@
   .hero-section {
     min-height: auto;
 
-    padding: 100px 20px 50px;
+    /* padding: 100px 20px 50px; */
 
     gap: 40px;
   }
@@ -829,7 +880,7 @@
   }
 
   .services-wrapper {
-    padding: 90px 20px;
+    padding: 40px 20px;
   }
 
   .services-grid {
@@ -846,7 +897,7 @@
   }
 
   .why-us {
-    margin: 0 20px 80px;
+    margin: 0 20px 40px;
 
     padding: 40px 25px;
   }
@@ -856,7 +907,7 @@
   }
 
   .cta-box {
-    margin: 0 20px 80px;
+    margin: 0 20px 0px;
 
     flex-direction: column;
 
@@ -916,7 +967,7 @@
 
   overflow: hidden;
 
-  padding: 120px 0 80px;
+  padding: 0px 0 40px;
 
   background:
     radial-gradient(circle at top right,
@@ -952,8 +1003,8 @@
 
   line-height: 1.05;
 
-  margin-top: 25px;
-  margin-bottom: 28px;
+  /* margin-top: 25px; */
+  margin-bottom: 20px;
 
   font-weight: 800;
 }
@@ -1072,7 +1123,6 @@
 /* RIGHT */
 
 .hero-right {
-
   position: relative;
 }
 
@@ -1117,7 +1167,7 @@
 
 /* GLOW */
 
-.hero-image-card::before {
+/* .hero-image-card::before {
 
   content: "";
 
@@ -1136,7 +1186,7 @@
   right: -40px;
 
   z-index: -1;
-}
+} */
 
 /* =========================================
    RESPONSIVE
@@ -1170,7 +1220,7 @@
 
   .hero-section {
 
-    padding: 100px 0 60px;
+    /* padding: 100px 0 60px; */
   }
 
   .hero-left h1 {

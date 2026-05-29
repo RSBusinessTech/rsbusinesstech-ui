@@ -855,6 +855,10 @@ linear-gradient(
     font-size:30px;
   }
 
+  .client-card a{
+   font-size: 15px;
+  }
+
 }
 
 @media(max-width:480px){
