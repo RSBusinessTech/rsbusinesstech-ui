@@ -103,7 +103,12 @@ h2{
   left:0;
   width:100%;
   height:3px;
-  background:#d4af37;
+  background:linear-gradient(
+    145deg,
+    #ffe066,
+    #b1a560,
+    #d4a017
+  );
 }
 
 .nav-btn{
@@ -488,7 +493,7 @@ h2{
 ========================================================= */
 
 .services-section{
-  padding:80px 70px;
+  padding:30px 70px;
 }
 
 .center-heading{
@@ -751,7 +756,7 @@ h2{
 
 .journey-card,
 .choose-card{
-  flex:1;
+  flex:0 1 650px;   /* smaller width */
   min-width:320px;
   background:#0a0a0a;
   border:1px solid rgba(255, 187, 0, 0.25);
@@ -971,7 +976,68 @@ h2{
   position:relative;
   overflow:hidden;
 }
+/* ============================= */
+/* CTA SECTION */
+/* ============================= */
 
+.cta-section{
+
+  max-width:1200px;
+
+  margin:30px auto 0;
+
+  padding:22px 30px;
+
+  background:#0a0a0a;
+
+  border:1px solid rgba(255, 187, 0, 0.25);
+
+  border-radius:20px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  flex-wrap:wrap;
+
+  gap:20px;
+}
+
+/* LEFT SIDE */
+
+.cta-left{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+/* ICON */
+
+.cta-left i{
+  font-size:30px;
+}
+
+/* TITLE */
+
+.cta-left h2{
+  font-size:28px;
+  margin-bottom:4px;
+  line-height:1.2;
+}
+
+/* TEXT */
+
+.cta-left p{
+  font-size:15px;
+  color:#aaa;
+}
+
+/* BUTTON */
+
+.cta-btn{
+  padding:12px 28px;
+  font-size:16px;
+}
 /* HOVER */
 .cta-btn:hover{
 
@@ -1096,7 +1162,6 @@ html, body {
   align-items:center;
   justify-content:center;
 }
-
 /* ICON STYLE */
 
 .card-icon,
@@ -1219,3 +1284,4 @@ html, body {
   z-index: 0;
   pointer-events: none;
 }
+

@@ -935,18 +935,12 @@
 /* =========================================================
    TOP SUBTITLE
 ========================================================= */
-/* =========================================================
-   REDUCE GAP BETWEEN
-   INSIGHTS & IDEAS
-   AND
-   OUR LATEST BLOGS
-========================================================= */
 
 .top-subtitle {
 
   display: inline-block;
 
-  margin-bottom: -6px; /* ultra close */
+  margin-bottom: -6px;  /* very less gap */
 
   font-size: 14px;
 
@@ -957,18 +951,21 @@
   color: #f4c84f;
 }
 
+/* =========================================================
+   MAIN TITLE
+========================================================= */
+
 .blogs-header h1 {
 
   font-size: 68px;
 
-  line-height: .95; /* tighter */
+  line-height: 1;
 
   font-weight: 800;
 
-  margin-top: 0;
-
-  margin-bottom: 4px;
+  margin-bottom: 4px;  /* reduced */
 }
+
 /* =========================================================
    GOLD DIVIDER
 ========================================================= */
