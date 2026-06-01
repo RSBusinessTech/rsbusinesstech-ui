@@ -233,12 +233,32 @@
 
 .footer-section ul li a:hover {
   text-decoration: underline;
-  color: red; /* Add this */
+  background:linear-gradient(
+    145deg,
+    #ffe066,
+    #b1a560,
+    #d4a017
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  background-clip:text;
 }
 
 .footer-section ul.address-list li a:hover {
   text-decoration: underline;
-  color: red; /* Add this */
+  background:linear-gradient(
+    145deg,
+    #ffe066,
+    #b1a560,
+    #d4a017
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  background-clip:text;
 }
 /* =========================================================
    FOOTER - PREMIUM TECH FONT STYLING
