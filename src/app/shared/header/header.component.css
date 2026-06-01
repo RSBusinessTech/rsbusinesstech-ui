@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 .site-header {
   background-color: #000;
   color: #fff;
   padding: 1rem 0;
+  font-family: 'Poppins', sans-serif;
 }
 
 .site-header .container {
@@ -23,7 +26,8 @@
   font-size: 1.5rem;
   background: none;
   border: none;
-  color: #fff;
+  color: #d4a017;
+  font-family: 'Poppins', sans-serif;
 }
 
 .site-header .container .nav-links {
@@ -32,13 +36,14 @@
 }
 
 .site-header .container .nav-links a {
-  background-color: #f9f5e3;  /* box background */
-  color: black;               /* text color */
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
   text-decoration: none;
+  font-family: 'Poppins', sans-serif;
   font-weight: 500;
   padding: 0.5rem 1rem;
   border-radius: 5px;
-  margin-left: 0.5rem;        /* spacing between boxes */
+  margin-left: 0.5rem;
   display: inline-block;
   transition: background-color 0.3s ease, color 0.3s ease;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -46,8 +51,14 @@
 
 .site-header .container .nav-links a:hover,
 .site-header .container .nav-links a:focus {
-  background-color: darkgoldenrod;
-  color: white;
+  background: linear-gradient(
+    145deg,
+    #f7d774,
+    #d4a017,
+    #b8860b
+  );
+
+  color: #000;
   outline: none;
   cursor: pointer;
 }
@@ -69,6 +80,39 @@
   }
 
   .site-header .container .nav-links a {
-    padding: 0.5rem 1rem; /* consistent padding for mobile */
+    padding: 0.5rem 1rem;
   }
+}
+
+/* ================================
+   FUTURISTIC TECH FONT SYSTEM
+================================ */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  background: rgba(5, 5, 5, 0.95);
+  backdrop-filter: blur(10px);
+
+  border-bottom: 1px solid rgba(212,160,23,0.15);
+
+  padding: 1rem 0;
+
+  font-family: 'Poppins', sans-serif;
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.site-header .logo img {
+  height: 50px;
 }

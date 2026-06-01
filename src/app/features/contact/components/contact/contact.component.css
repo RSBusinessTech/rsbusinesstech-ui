@@ -678,5 +678,74 @@ button,
     transform: scale(1);
     opacity: .6;
   }
+}
 
+/* =========================================================
+   CONTACT SECTION - PREMIUM TECH FONT STYLING
+========================================================= */
+
+/* MAIN H2 HEADING */
+.contact-section h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* CONTACT TAG */
+.contact-section .tag {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+/* PARAGRAPH UNDER HEADING */
+.contact-header p {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* INFO CARD HEADINGS */
+.contact-info h4 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* INFO CARD TEXT */
+.contact-info p {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+}
+
+/* FORM TITLE */
+.contact-form-card h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* LABELS */
+.contact-form label {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  font-size: 0.8rem;
+}
+
+/* INPUT TEXT */
+.contact-form input,
+.contact-form textarea {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+/* BUTTON */
+.contact-form button {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }

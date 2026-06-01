@@ -16,8 +16,18 @@
       </p>
 
       <div class="hero-buttons reveal">
-        <a class="btn-primary">Get Free Consultation</a>
-        <a class="btn-outline">View Our Work</a>
+        <a
+          class="btn-primary"
+          href="https://wa.me/+601114278964?text=Hello,%20I%20would%20like%20to%20get%20a%20free%20consultation."
+          target="_blank">
+          Get Free Consultation
+        </a>
+
+        <a
+          href="https://rsbusinesstech.com/clients"
+          class="btn-outline">
+          View Our Work
+        </a>
       </div>
 
       <div class="hero-features">
@@ -46,28 +56,155 @@
 
     </div>
 
-    <div class="hero-right reveal">
+    <!-- RIGHT SIDE -->
+  <div class="hero-right reveal">
 
-      <div class="hero-slider reveal">
-        <div
-          class="slide"
-          *ngFor="let slide of heroSlides; let i=index"
-          [class.active]="i===currentSlide">
+  <div class="hero-slider reveal">
 
-          <img [src]="slide.image" [alt]="slide.title">
-        </div>
+    <!-- Slides -->
+    <div
+      class="slide"
+      *ngFor="let slide of heroSlides; let i=index"
+      [class.active]="i===currentSlide">
 
-        <div class="slider-dots reveal">
-          <span
-            *ngFor="let slide of heroSlides; let i=index"
-            [class.active]="i===currentSlide"
-            (click)="goToSlide(i)">
-          </span>
-        </div>
-      </div>
+      <img
+        [src]="slide.image"
+        [alt]="'Slide ' + (i+1)"
+        (click)="openImage(i)"
+        class="clickable-image">
 
     </div>
 
+    <!-- Dots -->
+    <div class="slider-dots reveal">
+      <span
+        *ngFor="let slide of heroSlides; let i=index"
+        [class.active]="i===currentSlide"
+        (click)="goToSlide(i)">
+      </span>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- IMAGE PREVIEW MODAL -->
+<div
+  class="image-modal"
+  *ngIf="selectedImage"
+  (click)="closeImage()">
+
+  <div
+    class="modal-content"
+    (click)="$event.stopPropagation()">
+
+    <!-- Close -->
+    <button
+      class="close-btn"
+      (click)="closeImage()">
+      <i class="fas fa-times"></i>
+    </button>
+
+    <!-- Previous -->
+    <button
+      class="nav-btn prev-btn"
+      (click)="prevImage(); $event.stopPropagation()">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+
+    <!-- Image -->
+    <img
+      [src]="selectedImage"
+      alt="Preview">
+
+    <!-- Next -->
+    <button
+      class="nav-btn next-btn"
+      (click)="nextImage(); $event.stopPropagation()">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+
+    <!-- Download -->
+    <div class="modal-actions">
+
+      <a
+        [href]="selectedImage"
+        download
+        class="download-btn">
+
+        <i class="fas fa-download"></i>
+        Download
+
+      </a>
+
+    </div>
+
+   </div>
+
+   </div>
+
+  <!-- =========================================
+       IMAGE PREVIEW MODAL
+  ========================================== -->
+
+  <div
+    class="image-modal"
+    *ngIf="selectedImage"
+    (click)="closeImage()">
+
+    <div
+      class="modal-content"
+      (click)="$event.stopPropagation()">
+
+      <!-- CLOSE -->
+      <button
+        class="close-btn"
+        (click)="closeImage()">
+
+        <i class="fas fa-times"></i>
+
+      </button>
+
+      <!-- PREVIOUS -->
+      <button
+        class="nav-btn prev-btn"
+        (click)="prevImage()">
+
+        <i class="fas fa-chevron-left"></i>
+
+      </button>
+
+      <!-- IMAGE -->
+      <img
+        [src]="selectedImage"
+        alt="Preview">
+
+      <!-- NEXT -->
+      <button
+        class="nav-btn next-btn"
+        (click)="nextImage()">
+
+        <i class="fas fa-chevron-right"></i>
+
+      </button>
+
+      <!-- DOWNLOAD -->
+      <div class="modal-actions">
+
+        <a
+          [href]="selectedImage"
+          download
+          class="download-btn">
+
+          <i class="fas fa-download"></i>
+          Download Image
+
+        </a>
+
+      </div>
+
+    </div>
+   </div>
   </section>
 
    <!-- ==== TRUSTED CLIENTS ======-->
@@ -234,7 +371,7 @@
       <i class="fas fa-laptop-code"></i>
 
       <div>
-        <h3>5+</h3>
+        <h3>10+</h3>
         <p>Technology Solutions</p>
       </div>
     </div>
@@ -339,14 +476,6 @@
 <section class="process-section">
 
   <div class="process-header reveal">
-  <!-- Premium Divider -->
-  <!-- <div class="premium-divider reveal">
-    <span></span>
-    <div class="divider-icon">
-      <i class="fas fa-microchip"></i>
-    </div>
-    <span></span>
-  </div> -->
 
     <span class="process-badge">
       HOW WE WORK
@@ -1926,6 +2055,70 @@
 
   </div>
   </section>
+
+  <!-- FAQ SECTION -->
+<section class="faq-section">
+
+  <div class="section-heading reveal">
+    <h2 class="red-title reveal delay-1">Frequently Asked Questions</h2>
+  </div>
+
+  <div class="faq-grid">
+
+    <!-- LEFT COLUMN -->
+    <div class="faq-column">
+
+      <div
+        class="faq-item reveal"
+        *ngFor="let faq of leftFaqs; let i=index"
+        (click)="toggleFaq(faq)"
+      >
+
+        <div class="faq-question">
+          <span>{{faq.question}}</span>
+
+          <i
+            class="fas"
+            [ngClass]="faq.open ? 'fa-minus' : 'fa-plus'"
+          ></i>
+        </div>
+
+        <div class="faq-answer" [class.open]="faq.open">
+          <p>{{faq.answer}}</p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="faq-column">
+
+      <div
+        class="faq-item reveal"
+        *ngFor="let faq of rightFaqs; let i=index"
+        (click)="toggleFaq(faq)"
+      >
+
+        <div class="faq-question">
+          <span>{{faq.question}}</span>
+
+          <i
+            class="fas"
+            [ngClass]="faq.open ? 'fa-minus' : 'fa-plus'"
+          ></i>
+        </div>
+
+        <div class="faq-answer" [class.open]="faq.open">
+          <p>{{faq.answer}}</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+ </section>
 
 
 

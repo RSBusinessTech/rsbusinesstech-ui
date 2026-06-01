@@ -7,9 +7,9 @@
   grid-template-columns:1fr 1fr;
   align-items:center;
   gap:60px;
-  min-height:100vh;
-  padding:10px 3%;
-  margin-top: -50px;;
+  min-height:600px;
+  padding:20px 3%;
+  margin-top: -50px;
 }
 
 .hero-left{
@@ -21,6 +21,7 @@
   display:flex;
   justify-content:center;
   align-items:center;
+  margin-top: -20px;
 }
 
 /* ==========================================
@@ -101,6 +102,7 @@
   display:flex;
   align-items:center;
   justify-content:center;
+   text-decoration: none;
 }
 
 .btn-primary{
@@ -2682,5 +2684,487 @@
     padding: 10px 14px;
     font-size: 0.9rem;
   }
+}
 
+/* ==========================================
+   FAQ SECTION
+========================================== */
+
+.faq-section{
+  padding:20px 5%;
+  font-size:4rem;
+}
+
+.faq-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+}
+
+.faq-column{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+/* ==========================================
+   FAQ ITEM
+========================================== */
+
+.faq-item{
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(18,18,18,.95),
+      rgba(6,6,6,.95)
+    );
+
+  border:1px solid rgba(212,160,23,.25);
+
+  border-radius:14px;
+
+  overflow:hidden;
+
+  cursor:pointer;
+
+  transition:.3s ease;
+}
+
+.faq-item:hover{
+  border-color:#d4a017;
+
+  box-shadow:
+    0 0 20px rgba(212,160,23,.10);
+}
+
+/* ==========================================
+   QUESTION
+========================================== */
+
+.faq-question{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:20px 24px;
+
+  color:#fff;
+  font-size:1rem;
+  font-weight:500;
+}
+
+.faq-question i{
+
+  background:linear-gradient(
+    145deg,
+    #ffe066,
+    #b1a560,
+    #d4a017
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  font-size:18px;
+
+  flex-shrink:0;
+}
+
+/* ==========================================
+   ANSWER
+========================================== */
+
+.faq-answer{
+
+  max-height:0;
+  overflow:hidden;
+
+  transition:max-height .35s ease;
+}
+
+.faq-answer.open{
+  max-height:200px;
+}
+
+.faq-answer p{
+
+  padding:0 24px 20px;
+
+  color:#bdbdbd;
+
+  line-height:1.8;
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media(max-width:768px){
+
+  .faq-grid{
+    grid-template-columns:1fr;
+  }
+
+  .faq-question{
+    font-size:0.9rem;
+    word-break:break-word;
+  }
+
+  .faq-item{
+    width:100%;
+    box-sizing:border-box;
+  }
+
+  .faq-answer p{
+    font-size:0.9rem;
+  }
+}
+
+/* ==========================================
+   FAQ HEADING
+========================================== */
+
+.faq-section .section-heading{
+  width:100%;
+  max-width:800px;
+
+  margin:0 auto 40px;
+  text-align:center;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  margin-top: 0px;
+}
+
+.faq-section .section-heading h2{
+  margin:15px 0 0;
+  text-align:center;
+}
+
+.faq-section .section-heading span{
+  text-align:center;
+}
+
+@media (min-width:769px){
+  .faq-section .section-heading h2{
+    font-size:3rem;
+    line-height:1.2;
+  }
+}
+
+.clickable-image{
+  cursor:pointer;
+  transition:.3s ease;
+}
+
+.clickable-image:hover{
+  transform:scale(1.02);
+}
+
+/* Modal */
+
+.image-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.9);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:99999;
+}
+
+.modal-content{
+  position:relative;
+  width:90%;
+  max-width:1200px;
+}
+
+.modal-content img{
+  width:100%;
+  max-height:85vh;
+  object-fit:contain;
+  border-radius:12px;
+}
+
+.close-btn{
+  position:absolute;
+  top:-50px;
+  right:0;
+  background:none;
+  border:none;
+  color:white;
+  font-size:28px;
+  cursor:pointer;
+}
+
+.modal-actions{
+  margin-top:20px;
+  text-align:center;
+}
+
+.download-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 24px;
+
+  background:linear-gradient(
+    145deg,
+    #ffe066,
+    #b1a560,
+    #d4a017
+  );
+
+  color:#000;
+  text-decoration:none;
+  border-radius:10px;
+  font-weight:600;
+}
+
+/* ==========================================
+   IMAGE PREVIEW MODAL
+========================================== */
+
+.clickable-image{
+  cursor:pointer;
+  transition:.3s ease;
+}
+
+.clickable-image:hover{
+  transform:scale(1.02);
+}
+
+.image-modal{
+
+  position:fixed;
+  inset:0;
+
+  background:rgba(0,0,0,.92);
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  z-index:999999;
+}
+
+.modal-content{
+
+  position:relative;
+
+  width:90%;
+  max-width:1200px;
+
+  text-align:center;
+}
+
+.modal-content img{
+
+  width:100%;
+  max-height:85vh;
+
+  object-fit:contain;
+
+  border-radius:14px;
+}
+
+/* CLOSE */
+.close-btn{
+  position:absolute;
+  top:15px;
+  right:15px;
+
+  width:50px;
+  height:50px;
+
+  border:none;
+  border-radius:50%;
+
+  background:rgba(0,0,0,.75);
+  color:#fff;
+
+  font-size:22px;
+  cursor:pointer;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  z-index:999999;
+
+  transition:.3s ease;
+}
+
+.close-btn:hover{
+  background:#d4a017;
+  color:#000;
+  transform:scale(1.1);
+}
+
+/* NAVIGATION */
+
+.nav-btn{
+
+  position:absolute;
+
+  top:50%;
+
+  transform:translateY(-50%);
+
+  width:60px;
+  height:60px;
+
+  border:none;
+
+  border-radius:50%;
+
+  background:rgba(0,0,0,.65);
+
+  color:#fff;
+
+  cursor:pointer;
+
+  font-size:22px;
+
+  transition:.3s ease;
+}
+
+.nav-btn:hover{
+
+  background:#d4a017;
+
+  color:#000;
+}
+
+.prev-btn{
+  left:-80px;
+}
+
+.next-btn{
+  right:-80px;
+}
+
+/* DOWNLOAD */
+
+.modal-actions{
+  margin-top:20px;
+}
+
+.download-btn{
+
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+
+  padding:14px 24px;
+
+  border-radius:12px;
+
+  text-decoration:none;
+  font-weight:600;
+
+  background:linear-gradient(
+    145deg,
+    #ffe066,
+    #b1a560,
+    #d4a017
+  );
+
+  color:#000;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+  .prev-btn{
+    left:10px;
+  }
+
+  .next-btn{
+    right:10px;
+  }
+
+  .nav-btn{
+    width:45px;
+    height:45px;
+    font-size:18px;
+  }
+
+  .close-btn{
+    top:-45px;
+    font-size:24px;
+  }
+}
+
+/* Premium Tech Font */
+/* =========================================
+   PREMIUM TECH FONT - RS BusinessTech
+========================================= */
+
+/* Hero Heading */
+.hero-section h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* All Main Section Headings */
+.section-heading h2,
+.process-header h2,
+.tech-header h2,
+.why-header h2,
+.pricing-section h2,
+.faq-section h2,
+.home-services h2,
+.trusted-section h2,
+.recent-work-section h2,
+.testimonial-section h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Service Titles */
+.service-card h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+/* Pricing Plan Names */
+.pricing-card h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Process Titles */
+.process-step h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+}
+
+/* Why Choose Us Titles */
+.why-card h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+}
+
+/* Recent Work Titles */
+.work-content h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+}
+
+/* Client Names */
+.client-name {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
 }

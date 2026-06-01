@@ -21,7 +21,6 @@
     #b1a560,
     #d4a017
   );
-
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -78,7 +77,7 @@
 ========================================================= */
 
 .hero-section {
-  min-height: 100vh;
+  min-height: 600px;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -173,7 +172,17 @@
 }
 
 .feature-card i {
-  color: #ffe066;
+  background:linear-gradient(
+    145deg,
+    #ffe066,
+    #b1a560,
+    #d4a017
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  background-clip:text;
   font-size: 18px;
 }
 
@@ -193,7 +202,17 @@
 }
 
 .section-heading span {
-  color: #d4a017;
+  background:linear-gradient(
+    145deg,
+    #ffe066,
+    #b1a560,
+    #d4a017
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  background-clip:text;
   font-size: 14px;
   letter-spacing: 2px;
 }
@@ -405,7 +424,17 @@
 }
 
 .stat-box i {
-  color: #ffe066;
+  background:linear-gradient(
+    145deg,
+    #ffe066,
+    #b1a560,
+    #d4a017
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  background-clip:text;
   font-size: 36px;
   margin-bottom: 20px;
 }
@@ -467,7 +496,17 @@
 }
 
 .cta-icon i {
-  color: #ffe066;
+  background:linear-gradient(
+    145deg,
+    #ffe066,
+    #b1a560,
+    #d4a017
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  background-clip:text;
   font-size: 32px;
 }
 
@@ -611,3 +650,62 @@
   }
 }
 
+/* ==============================
+   SERVICES PAGE PREMIUM TYPOGRAPHY
+============================== */
+
+/* Main Hero Heading */
+.hero-left h1 {
+
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1.2;
+}
+
+/* Section Headings */
+.section-heading h2,
+.why-left h2,
+.cta-left h2 {
+
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1.2;
+}
+
+/* Service Titles */
+.service-card h3 {
+
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  line-height: 1.3;
+}
+
+/* Technology Cards */
+.stat-box h3 {
+
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+/* Feature Cards */
+.feature-card span {
+
+  font-family: 'Orbitron', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.6px;
+}
+
+/* Section Labels */
+.section-heading span,
+.section-tag {
+
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}

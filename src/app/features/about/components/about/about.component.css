@@ -1391,3 +1391,26 @@ html, body {
   animation: rotateEarth 18s linear infinite;
   transform-origin: center;
 }
+
+/* Premium Tech Font */
+.hero-section h1,
+.story-section h2,
+.center-heading h2,
+.journey-card h2,
+.cta-left h2,
+.stat-card h2 {
+
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1.2;
+}
+
+/* Small tech headings */
+.info-card h3,
+.timeline-item h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}

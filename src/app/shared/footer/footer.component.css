@@ -240,5 +240,90 @@
   text-decoration: underline;
   color: red; /* Add this */
 }
+/* =========================================================
+   FOOTER - PREMIUM TECH FONT STYLING
+========================================================= */
 
+/* FOOTER GENERAL TEXT */
+.footer-container {
+  font-family: 'Inter', sans-serif;
+  color: #cfcfcf;
+}
+
+/* FOOTER HEADINGS */
+.footer-container h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+/* SPECIAL UNDERLINE HEADINGS */
+.footer-container .short-underline,
+.footer-container .address-title {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* LINKS */
+.footer-container a {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: #cfcfcf;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.footer-container a:hover {
+  color: #d4a017;
+}
+
+/* LIST ITEMS */
+.footer-container ul li {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+/* CONNECT TEXT */
+.footer-container .connect-us {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 0.85rem;
+  color: #fff;
+}
+
+/* SOCIAL ICON AREA (label optional styling) */
+.footer-container .social-icons a {
+  font-family: inherit;
+}
+
+/* FOOTER LOGO TEXT FEEL (optional if any text near logo) */
+.footer-logo-connect {
+  font-family: 'Inter', sans-serif;
+}
+
+/* ADDRESS + CONTACT TEXT */
+.footer-container .address-section,
+.footer-container .address-list li {
+  font-family: 'Inter', sans-serif;
+}
+
+/* FOOTER BOTTOM COPYRIGHT */
+/* .footer-container {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #999;
+} */
+
+/* MOBILE CONNECT AREA */
+.mobile-connect-social {
+  font-family: 'Inter', sans-serif;
+}
 

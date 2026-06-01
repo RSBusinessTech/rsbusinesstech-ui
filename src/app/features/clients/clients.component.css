@@ -1085,3 +1085,54 @@ linear-gradient(
   color:#111;
   font-size:14px;
 }
+
+/* =====================================================
+   PREMIUM TECH FONT - CLIENTS PAGE
+===================================================== */
+
+.clients-hero h1,
+.clients-header h2,
+.cta-left h2,
+.client-card h3,
+.stat-box h2,
+.feature-box h4,
+.global-presence-top h3 {
+
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 1px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.2;
+}
+
+/* Optional: Premium glowing headings */
+.clients-hero h1,
+.clients-header h2,
+.cta-left h2 {
+
+  text-shadow:
+    0 0 10px rgba(255,255,255,0.12),
+    0 0 25px rgba(255,255,255,0.06);
+}
+
+/* Client company names */
+.client-card h3 {
+
+  font-size: 1.15rem;
+  letter-spacing: 0.8px;
+}
+
+/* Stats numbers */
+.stat-box h2 {
+
+  font-size: 2rem;
+  letter-spacing: 2px;
+}
+
+/* Global presence heading */
+.global-presence-top h3 {
+
+  font-size: 1rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}

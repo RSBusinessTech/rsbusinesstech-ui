@@ -20,6 +20,55 @@ export class HomeComponent implements OnInit {
     image: 'assets/images/slideshow3.jpg'
   }
 ];
+
+selectedImage: string | null = null;
+selectedIndex = 0;
+
+openImage(index: number): void {
+  this.selectedIndex = index;
+  this.selectedImage = this.heroSlides[index].image;
+}
+
+nextImage(): void {
+  this.selectedIndex =
+    (this.selectedIndex + 1) % this.heroSlides.length;
+
+  this.selectedImage =
+    this.heroSlides[this.selectedIndex].image;
+}
+
+prevImage(): void {
+  this.selectedIndex =
+    (this.selectedIndex - 1 + this.heroSlides.length) %
+    this.heroSlides.length;
+
+  this.selectedImage =
+    this.heroSlides[this.selectedIndex].image;
+}
+
+closeImage(): void {
+  this.selectedImage = null;
+}
+
+@HostListener('window:keydown', ['$event'])
+handleKeyboard(event: KeyboardEvent) {
+
+  if (!this.selectedImage) return;
+
+  if (event.key === 'ArrowRight') {
+    this.nextImage();
+  }
+
+  if (event.key === 'ArrowLeft') {
+    this.prevImage();
+  }
+
+  if (event.key === 'Escape') {
+    this.closeImage();
+  }
+
+}
+
 currentProject = 0;
 
 projects = [
@@ -120,6 +169,51 @@ projects = [
     });
 
   }
+
+  leftFaqs = [
+  {
+    question: 'How long does it take to build a website?',
+    answer: 'Most websites are completed within 1-4 weeks depending on complexity.',
+    open: false
+  },
+  {
+    question: 'How much does a website or software project cost?',
+    answer: 'The cost depends on your requirements, features and project complexity. We offer affordable solutions for startups, SMEs and enterprises. Contact us for a free consultation and custom quotation.',
+    open: false
+  },
+  {
+    question: 'Do you provide domain and hosting?',
+    answer: 'Yes. We can provide domain registration, hosting setup and ongoing maintenance.',
+    open: false
+  },
+  {
+    question: 'Will my website be mobile-friendly?',
+    answer: 'Absolutely. All websites are fully responsive and optimized for mobile devices.',
+    open: false
+  }
+ ];
+
+rightFaqs = [
+  {
+    question: 'Do you provide support after delivery?',
+    answer: 'Yes. We provide ongoing support, updates and technical assistance.',
+    open: false
+  },
+  {
+    question: 'Can you redesign my existing website?',
+    answer: 'Yes. We can modernize and improve your current website design and performance.',
+    open: false
+  },
+  {
+    question: 'Do you develop mobile apps?',
+    answer: 'Yes. We develop Android, iOS and cross-platform mobile applications.',
+    open: false
+  }
+];
+
+toggleFaq(faq: any): void {
+  faq.open = !faq.open;
+}
 
 
 }

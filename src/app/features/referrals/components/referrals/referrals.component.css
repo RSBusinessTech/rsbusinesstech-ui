@@ -1113,3 +1113,118 @@
     transform: rotate(360deg);
   }
 }
+
+/* =========================================================
+   REFERRAL PAGE - PREMIUM TECH FONT STYLING
+========================================================= */
+
+/* HERO MAIN HEADING */
+.referral-hero h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* HERO PARAGRAPH */
+.referral-hero p {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* SECTION TAGS */
+.section-tag {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+/* HERO BUTTON TEXT */
+.hero-buttons a {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* INCOME CARD TITLE */
+.income-header h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* INCOME HEADER SUBTEXT */
+.income-header span {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+}
+
+/* INCOME SERVICE ITEMS */
+.income-item span {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+}
+
+/* INCOME PERCENTAGE */
+.income-item strong {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+}
+
+/* STEP NUMBERS */
+.step-number {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+}
+
+/* STEP TITLES */
+.step-card h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* STEP DESCRIPTION */
+.step-card p {
+  font-family: 'Inter', sans-serif;
+}
+
+/* SERVICE TITLES (override for this page only) */
+.services-section .service-card h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* SERVICE DESCRIPTION */
+.services-section .service-card p {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+}
+
+/* CTA HEADING */
+.cta-box h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   REFERRAL PAGE - ALL H2 HEADINGS (UPDATED)
+========================================================= */
+
+.referral-page h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Optional: slightly refined spacing for better premium feel */
+.referral-page h2 {
+  margin-bottom: 10px;
+}

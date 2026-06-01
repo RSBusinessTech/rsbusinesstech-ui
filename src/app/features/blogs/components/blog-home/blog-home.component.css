@@ -144,7 +144,17 @@
 
   font-weight: 700;
 
-  color: #f4c84f;
+  background:linear-gradient(
+    145deg,
+    #ffe066,
+    #b1a560,
+    #d4a017
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  background-clip:text; 
 }
 
 .blogs-header h1 {
@@ -303,7 +313,17 @@
 
   border: 1px solid rgba(255,215,0,0.35);
 
-  color: #ffd54f;
+  background:linear-gradient(
+    145deg,
+    #ffe066,
+    #b1a560,
+    #d4a017
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  background-clip:text; 
 
   font-size: 13px;
 
@@ -402,8 +422,17 @@
 }
 
 .meta-item i {
+  background:linear-gradient(
+    145deg,
+    #ffe066,
+    #b1a560,
+    #d4a017
+  );
 
-  color: #d4a017;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  background-clip:text; 
 }
 
 .meta-dot {
@@ -413,7 +442,12 @@
 
   border-radius: 50%;
 
-  background: #d4a017;
+  background: linear-gradient(
+    145deg,
+    #ffe066,
+    #b1a560,
+    #d4a017
+  );
 }
 
 /* =========================================================
@@ -430,7 +464,17 @@
 
   text-decoration: none;
 
-  color: #ffd54f;
+  background:linear-gradient(
+    145deg,
+    #ffe066,
+    #b1a560,
+    #d4a017
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  background-clip:text;
 
   font-size: 20px;
 
@@ -531,7 +575,17 @@
 
 .bottom-content p {
 
-  color: #ffd54f;
+  background:linear-gradient(
+    145deg,
+    #ffe066,
+    #b1a560,
+    #d4a017
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  background-clip:text;
 
   font-size: 22px;
 }
@@ -559,7 +613,17 @@
 
   text-decoration: none;
 
-  color: #ffd54f;
+  background:linear-gradient(
+    145deg,
+    #ffe066,
+    #b1a560,
+    #d4a017
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  background-clip:text;
 
   font-size: 20px;
 
@@ -948,7 +1012,17 @@
 
   font-weight: 700;
 
-  color: #f4c84f;
+  background:linear-gradient(
+    145deg,
+    #ffe066,
+    #b1a560,
+    #d4a017
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  background-clip:text;
 }
 
 /* =========================================================
@@ -1006,4 +1080,53 @@
   line-height: 1.6;
 
   font-size: 16px;
+}
+
+/* ==============================
+   BLOG PAGE PREMIUM TYPOGRAPHY
+============================== */
+
+/* Main Hero Heading */
+.blogs-header h1 {
+
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1.2;
+}
+
+/* Blog Titles */
+.blog-content h2 {
+
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  line-height: 1.35;
+}
+
+/* Bottom CTA Heading */
+.bottom-content h3 {
+
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  line-height: 1.4;
+}
+
+/* Category Tag */
+.blog-category {
+
+  font-family: 'Orbitron', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Read More Button */
+.read-more-btn {
+
+  font-family: 'Orbitron', sans-serif;
+  font-size: 13px;
+  letter-spacing: 1px;
 }
