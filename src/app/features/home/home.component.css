@@ -3104,7 +3104,6 @@
 /* =========================================
    PREMIUM TECH FONT - RS BusinessTech
 ========================================= */
-
 /* Hero Heading */
 .hero-section h1 {
   font-family: 'Orbitron', sans-serif;
@@ -3137,13 +3136,6 @@
   font-size: 1.05rem;
 }
 
-/* Pricing Plan Names */
-/* .pricing-card h3 {
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 700;
-  letter-spacing: 1px;
-} */
-
 /* Process Titles */
 .process-step h3 {
   font-family: 'Orbitron', sans-serif;
@@ -3167,4 +3159,13 @@
   font-family: 'Orbitron', sans-serif;
   font-weight: 600;
   font-size: 0.95rem;
+}
+
+.faq-answer p{
+  padding:0 24px 20px;
+  color:#bdbdbd;
+  font-size:1rem !important;
+  font-weight:500 !important;
+  line-height:1.8;
+  margin:0;
 }
