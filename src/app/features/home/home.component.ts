@@ -81,6 +81,10 @@ projects = [
    this.currentProject = index;
   }
 
+  goToSlide(index: number): void {
+  this.currentSlide = index;
+}
+
  currentSlide = 0;
 
  ngOnInit() {
