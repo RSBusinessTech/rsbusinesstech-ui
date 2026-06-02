@@ -756,19 +756,35 @@ h2{
   gap:25px;
   margin-top:40px;
   flex-wrap:wrap;
+  justify-content:center;
 }
 
 .journey-card,
 .choose-card{
-  flex:0 1 650px;   /* smaller width */
+  flex:0 1 650px; 
   min-width:320px;
   background:#0a0a0a;
   border:1px solid rgba(255, 187, 0, 0.25);
   border-radius:24px;
   padding:35px;
   position:relative;
-  overflow:hidden;
+  overflow:visible;
+
+  flex:1 1 800px;
+
+  width:75%;
+
+  max-width:none;
+
+  margin:0 auto;
 }
+
+.choose-card{
+  width:90%;
+  max-width:950px;
+  margin:0 auto;
+ }
+
 
 .section-tag{
   color:#d4a017;
@@ -1071,30 +1087,32 @@ h2{
 /* ============================= */
 /* MOBILE RESPONSIVE */
 /* ============================= */
-
-@media(max-width:991px){
-
-  .timeline{
-    flex-wrap:wrap;
-    row-gap:35px;
+@media(min-width:1280px){
+  /* .hero-section,
+  .story-section{
+    grid-template-columns:1fr;
   }
 
-  .timeline::before{
-    display:none;
+  .stats-section{
+    grid-template-columns:1fr 1fr;
   }
 
-  .choose-card{
-    flex-direction:column;
+  .services-grid{
+    grid-template-columns:1fr 1fr;
   }
 
-  .globe-image{
-    width:320px;
+  .hero-left{
+    text-align:center;
   }
 
-  .journey-card h2,
-  .cta-left h2{
-    font-size:34px;
+  .hero-left p{
+    margin:auto;
   }
+
+  .hero-btn{
+    margin:auto;
+    margin-top:40px;
+  } */
 
 }
 
@@ -1413,4 +1431,234 @@ html, body {
   font-weight: 600;
   letter-spacing: 1px;
   text-transform: uppercase;
+}
+/* =========================================================
+   RESPONSIVE FIXES (ADD AT VERY BOTTOM)
+========================================================= */
+
+/* ---------- 1440px laptops ---------- */
+
+@media (max-width: 1440px){
+
+  .hero-left h1{
+    font-size:58px;
+  }
+
+  .main-circle{
+    width:380px;
+    height:380px;
+  }
+
+  .main-inner-circle{
+    width:400px;
+    height:400px;
+  }
+
+  .info-card{
+    width:240px;
+  }
+
+}
+
+/* ---------- MacBook Air / 13" laptops ---------- */
+
+@media (max-width: 1280px){
+
+  .hero-section{
+    gap:30px;
+  }
+
+  .hero-left h1{
+    font-size:50px;
+  }
+
+  .hero-left p{
+    font-size:16px;
+  }
+
+  .main-circle{
+    width:340px;
+    height:340px;
+  }
+
+  .main-inner-circle{
+    width:360px;
+    height:360px;
+  }
+
+  .hero-right{
+    transform:scale(.9);
+  }
+
+  .info-card{
+    width:220px;
+    padding:18px;
+  }
+
+  .card-1{
+    left:0;
+  }
+
+  .card-2{
+    right:0;
+  }
+
+  .card-3{
+    left:0;
+  }
+
+  .card-4{
+    right:0;
+  }
+
+}
+
+/* ---------- Tablets ---------- */
+
+@media (max-width: 1024px){
+
+  .hero-section,
+  .story-section{
+    grid-template-columns:1fr;
+  }
+
+  .hero-left{
+    text-align:center;
+  }
+
+  .hero-left p{
+    margin:auto;
+  }
+
+  .hero-btn{
+    margin:40px auto 0;
+  }
+
+  .hero-right{
+    margin-top:20px;
+    transform:none;
+  }
+
+  .stats-section{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .services-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .choose-card{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .choose-content li{
+    justify-content:center;
+  }
+
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 768px){
+
+  .hero-left h1{
+    font-size:38px;
+  }
+
+  .story-left h2,
+  .center-heading h2,
+  .journey-card h2{
+    font-size:34px;
+  }
+
+  .stats-section,
+  .services-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero-right{
+    height:auto;
+  }
+
+  .info-card{
+    position:relative;
+    width:100%;
+    left:auto;
+    right:auto;
+    top:auto;
+    bottom:auto;
+    margin-top:15px;
+  }
+
+  .hero-right{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+  }
+
+  .main-circle{
+    width:280px;
+    height:280px;
+  }
+
+  .main-inner-circle{
+    width:260px;
+    height:260px;
+  }
+
+  .globe-image{
+    width:260px;
+    height:260px;
+  }
+
+  .timeline{
+    flex-wrap:wrap;
+    gap:25px;
+  }
+
+  .timeline::before{
+    display:none;
+  }
+
+}
+
+/* ---------- Small Phones ---------- */
+
+@media (max-width: 480px){
+
+  .hero-left h1{
+    font-size:30px;
+  }
+
+  .story-left h2,
+  .center-heading h2,
+  .journey-card h2{
+    font-size:28px;
+  }
+
+  .cta-left h2{
+    font-size:24px;
+  }
+
+  .main-circle{
+    width:240px;
+    height:240px;
+  }
+
+  .main-inner-circle{
+    width:220px;
+    height:220px;
+  }
+
+  .globe-image{
+    width:220px;
+    height:220px;
+  }
+
+  .hero-btn,
+  .cta-btn{
+    width:100%;
+  }
+
 }
