@@ -1061,16 +1061,13 @@ h2{
 }
 /* HOVER */
 .cta-btn:hover{
-
   background:linear-gradient(
     145deg,
     #ffe066,
     #b1a560,
     #d4a017
   );
-
   -webkit-text-fill-color:#111;
-
   color:#111;
 
   box-shadow:
@@ -1439,10 +1436,12 @@ html, body {
 /* ---------- 1440px laptops ---------- */
 
 @media (max-width: 1440px){
-
-  .hero-left h1{
-    font-size:58px;
+  .hero-section{
+    margin-top: -30px;
   }
+  /* .hero-left h1{
+    font-size:58px;
+  } */
 
   .main-circle{
     width:380px;
@@ -1461,9 +1460,7 @@ html, body {
 }
 
 /* ---------- MacBook Air / 13" laptops ---------- */
-
 @media (max-width: 1280px){
-
   .hero-section{
     gap:30px;
   }
@@ -1514,9 +1511,7 @@ html, body {
 }
 
 /* ---------- Tablets ---------- */
-
 @media (max-width: 1024px){
-
   .hero-section,
   .story-section{
     grid-template-columns:1fr;
@@ -1561,7 +1556,6 @@ html, body {
 /* ---------- Mobile ---------- */
 
 @media (max-width: 768px){
-
   .hero-left h1{
     font-size:38px;
   }
