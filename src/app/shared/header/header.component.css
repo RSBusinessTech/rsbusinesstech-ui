@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 .site-header {
-  background-color: #000;
+  background-color: black;
   color: #fff;
   padding: 1rem 0;
   font-family: 'Poppins', sans-serif;
@@ -26,7 +26,17 @@
   font-size: 1.5rem;
   background: none;
   border: none;
-  color: #d4a017;
+  background:linear-gradient(
+    145deg,
+    #ffe066,
+    #b1a560,
+    #d4a017
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  background-clip:text; 
   font-family: 'Poppins', sans-serif;
 }
 
@@ -51,11 +61,11 @@
 
 .site-header .container .nav-links a:hover,
 .site-header .container .nav-links a:focus {
-  background: linear-gradient(
+   background:linear-gradient(
     145deg,
-    #f7d774,
-    #d4a017,
-    #b8860b
+    #ffe066,
+    #b1a560,
+    #d4a017
   );
 
   color: #000;
@@ -92,7 +102,7 @@
   top: 0;
   z-index: 1000;
 
-  background: rgba(5, 5, 5, 0.95);
+  background: #000;
   backdrop-filter: blur(10px);
 
   border-bottom: 1px solid rgba(212,160,23,0.15);
