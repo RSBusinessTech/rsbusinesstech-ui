@@ -1,106 +1,220 @@
-/* Blog Wrapper */
-.blog-wrapper {
-  color: #222;
-  background-color: #f9fafd;
-  min-height: 100vh;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root{
+  --gold-gradient: linear-gradient(
+    145deg,
+    #ffe066,
+    #b1a560,
+    #d4a017
+  );
 }
 
-/* Hero Section */
-.hero-section {
-  position: relative;
-  height: 380px;
-  overflow: hidden;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-.hero-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.65);
+/* ==========================
+   BLOG WRAPPER
+========================== */
+
+.blog-wrapper{
+  font-family:'Poppins',sans-serif;
+  background:#000;
+  color:#f5f5f5;
+  min-height:100vh;
+  padding-bottom:40px;
 }
 
-.hero-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  text-align: center;
-  padding: 0 20px;
-  max-width: 700px;
+/* ==========================
+   HERO SECTION
+========================== */
+
+.hero-section{
+  position:relative;
+  height:450px;
+  overflow:hidden;
+
+  border:1px solid rgba(212,160,23,.15);
+
+  border-radius:0 0 24px 24px;
 }
 
-.hero-title {
-  font-size: 2.8rem;
-  font-weight: 700;
-  margin-bottom: 12px;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+.hero-image{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+
+  filter:brightness(.3);
 }
 
-.hero-subtitle {
-  font-size: 1.25rem;
-  margin-bottom: 20px;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+.hero-overlay{
+  position:absolute;
+  top:50%;
+  left:50%;
+
+  transform:translate(-50%,-50%);
+
+  width:90%;
+  max-width:900px;
+
+  text-align:center;
 }
 
-.btn-contact {
-  background-color: #000;
-  color: white;
-  border: none;
-  padding: 14px 32px;
-  font-size: 1.1rem;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0,122,204,0.4);
+.hero-title{
+  font-size:3.2rem;
+  font-weight:700;
+
+  margin-bottom:15px;
+
+  background:var(--gold-gradient);
+
+  -webkit-background-clip:text;
+  /* -webkit-text-fill-color:transparent; */
+  background-clip:text;
 }
 
-.btn-contact:hover {
-  background-color: darkgoldenrod;
-  color: white;
+.hero-subtitle{
+  color:#ddd;
+
+  font-size:1.2rem;
+
+  margin-bottom:25px;
+
+  line-height:1.8;
 }
 
-/* Content Container */
-.content-container {
-  max-width: 850px;
-  margin: 40px auto 60px auto;
-  background: white;
-  border-radius: 8px;
-  padding: 35px 40px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+/* ==========================
+   HERO BUTTON
+========================== */
+
+.btn-contact{
+  background:var(--gold-gradient);
+
+  color:#000;
+   background:linear-gradient(
+    145deg,
+    #ffe066,
+    #b1a560,
+    #d4a017
+  );
+
+  border:none;
+
+  padding:14px 32px;
+
+  border-radius:12px;
+
+  font-size:1rem;
+
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:.3s ease;
+
+  box-shadow:
+    0 0 15px rgba(212,160,23,.25);
 }
 
-.content-container p {
-  font-size: 1.125rem;
-  line-height: 1.8;
-  margin-bottom: 24px;
-  color: #333;
+.btn-contact:hover{
+  transform:translateY(-3px);
+   background:linear-gradient(
+    145deg,
+    #ffe066,
+    #b1a560,
+    #d4a017
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  background-clip:text; 
+
+  box-shadow:
+    0 0 30px rgba(255,224,102,.35);
 }
 
-.content-container h2 {
-  color: #b6aa0b;
-  font-size: 1.8rem;
-  margin-top: 40px;
-  margin-bottom: 16px;
-  font-weight: 700;
-  border-left: 4px solid #000;
-  padding-left: 12px;
+/* ==========================
+   CONTENT
+========================== */
+
+.content-container{
+  max-width:1000px;
+
+  margin:40px auto;
+
+  padding:35px;
+
+  background:#050505;
+
+  border:1px solid rgba(212,160,23,.15);
+
+  border-radius:24px;
+
+  box-shadow:
+    0 0 20px rgba(212,160,23,.05);
 }
 
-/* CTA Section */
-.cta-section {
-  text-align: center;
-  background: #000;
-  color: #ffbf00;
-  padding: 20px 20px;
-  border-radius: 12px;
+.content-container p{
+  color:#ddd;
+
+  font-size:1.05rem;
+
+  line-height:1.9;
+
+  margin-bottom:20px;
 }
 
-.cta-section h2 {
-  font-size: 30px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+/* ==========================
+   SECTION HEADINGS
+========================== */
+
+.content-container h2{
+  margin-top:40px;
+  margin-bottom:15px;
+
+  font-size:1.6rem;
+
+  background:var(--gold-gradient);
+
+  -webkit-background-clip:text;
+  /* -webkit-text-fill-color:transparent; */
+  background-clip:text;
+
+  /* border-left:4px solid #d4a017; */
+
+  padding-left:14px;
+}
+/* ==========================
+   CTA
+========================== */
+
+.cta-section{
+  background:#050505;
+
+  border-radius:24px;
+
+  border:1px solid rgba(212,160,23,.2);
+
+  padding:60px 20px;
+
+  text-align:center;
+
+  box-shadow:
+    0 0 25px rgba(212,160,23,.08);
+}
+
+.cta-section h2{
+  font-size:2.5rem;
+
+  background:var(--gold-gradient);
+
+  -webkit-background-clip:text;
+  /* -webkit-text-fill-color:transparent; */
+
+  margin-bottom:15px;
    background:linear-gradient(
     145deg,
     #ffe066,
@@ -114,9 +228,10 @@
   background-clip:text; 
 }
 
-.cta-section p {
-  font-size: 18px;
-  margin-bottom: 20px;
+.cta-section p{
+  /* color:#ddd; */
+  margin-bottom:30px;
+  font-size:1.1rem;
    background:linear-gradient(
     145deg,
     #ffe066,
@@ -130,106 +245,138 @@
   background-clip:text; 
 }
 
-.cta-button {
+.cta-button{
+  display:inline-block;
+
   background:linear-gradient(
     145deg,
     #ffe066,
     #b1a560,
     #d4a017
   );
-  color: #000;
-  padding: 12px 24px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background 0.3s ease;
+
+  color:#000;
+
+  padding:14px 36px;
+
+  border-radius:12px;
+
+  text-decoration:none;
+
+  font-weight:700;
+
+  transition:.3s ease;
+
+  box-shadow:
+    0 0 15px rgba(212,160,23,.25);
 }
 
-.cta-button:hover {
-  background-color: #e3e8ff;
+.cta-button:hover{
+  transform:translateY(-3px);
+   background:linear-gradient(
+    145deg,
+    #ffe066,
+    #b1a560,
+    #d4a017
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  background-clip:text; 
+
+  box-shadow:
+    0 0 30px rgba(255,224,102,.35);
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .hero-title {
-    font-size: 2.4rem;
+/* ==========================
+   TABLET
+========================== */
+
+@media(max-width:1024px){
+
+  .hero-title{
+    font-size:2.5rem;
   }
 
-  .content-container {
-    padding: 30px 25px;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-section {
-    height: 280px;
-  }
-
-  .hero-title {
-    font-size: 1.8rem;
-    width: 280px;
-    margin-top: 18px;
-  }
-
-  .hero-subtitle {
-    font-size: 1rem;
-  }
-
-  .content-container {
-    margin: 30px 15px 50px;
-    padding: 25px 20px;
-  }
-
-  .content-container h2 {
-    font-size: 1.4rem;
-    margin-top: 30px;
-  }
-
-  .content-container p {
-    font-size: 1rem;
-    margin-bottom: 18px;
-  }
-
-  .btn-contact {
-    padding: 12px 26px;
-    font-size: 1rem;
-    margin-bottom: 30px;
+  .content-container{
+    margin:30px 20px;
   }
 }
 
-@media (max-width: 480px) {
-  .hero-section {
-    height: 220px;
+/* ==========================
+   MOBILE
+========================== */
+
+@media(max-width:768px){
+
+  .hero-section{
+    height:340px;
   }
 
-  .hero-title {
-    font-size: 1.5rem;
+  .hero-title{
+    font-size:2rem;
   }
 
-  .hero-subtitle {
-    font-size: 0.9rem;
+  .hero-subtitle{
+    font-size:1rem;
   }
 
-  .content-container {
-    margin: 20px 10px 40px;
-    padding: 20px 15px;
+  .btn-contact{
+    padding:12px 24px;
   }
 
-  .content-container h2 {
-    font-size: 1.2rem;
-    margin-top: 25px;
+  .content-container{
+    margin:20px 12px;
+    padding:22px 18px;
   }
 
-  .content-container p {
-    font-size: 0.95rem;
-    margin-bottom: 14px;
+  .content-container h2{
+    font-size:1.3rem;
   }
 
-  .btn-contact {
-    padding: 10px 22px;
-    font-size: 0.95rem;
+  .content-container p{
+    font-size:.95rem;
   }
 
+  .cta-section{
+    padding:30px 15px;
+  }
+
+  .cta-section h2{
+    font-size:1.5rem;
+  }
+
+  .cta-section p{
+    font-size:1rem;
+  }
 }
 
+/* ==========================
+   SMALL MOBILE
+========================== */
 
+@media(max-width:480px){
+
+  .hero-section{
+    height:280px;
+  }
+
+  .hero-title{
+    font-size:1.6rem;
+  }
+
+  .hero-subtitle{
+    font-size:.9rem;
+  }
+
+  .content-container h2{
+    font-size:1.15rem;
+  }
+
+  .cta-button,
+  .btn-contact{
+    width:100%;
+    max-width:260px;
+  }
+}
