@@ -2282,8 +2282,8 @@
   visibility: hidden;
   transition: all 0.3s ease;
   z-index: 9999;
-  width: 170px;
-  max-width: 170px;
+  width: 160px;
+  max-width: 160px;
   left: 100%;
 }
 
