@@ -2163,7 +2163,6 @@
 }
 
 /* ===== PRICING GRID ===== */
-
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -2272,7 +2271,6 @@
   top: -120px;
   left: 50%;
   transform: translateX(-50%);
-  width: 260px;
   padding: 12px 15px;
   background: white;
   color: #000;
@@ -2284,6 +2282,9 @@
   visibility: hidden;
   transition: all 0.3s ease;
   z-index: 9999;
+  width: 170px;
+  max-width: 170px;
+  left: 100%;
 }
 
 .tooltip:hover .tooltip-box {
