@@ -18,6 +18,9 @@ export class HomeComponent implements OnInit {
 
   {
     image: 'assets/images/slideshow3.jpg'
+  },
+    {
+    image: 'assets/images/slideshow4.jpg'
   }
 ];
 
