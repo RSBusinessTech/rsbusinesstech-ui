@@ -2000,7 +2000,7 @@
   </section>
 
   <!-- TESTIMONIALS -->
-  <section class="testimonial-section">
+  <!-- <section class="testimonial-section">
   <div class="section-heading reveal">
     <span class="line"></span>
 
@@ -2050,7 +2050,87 @@
 
     </div>
   </div>
- </section>
+ </section> -->
+
+ <!-- TESTIMONIALS -->
+<section class="testimonial-section">
+
+  <div class="section-heading reveal">
+    <span class="line"></span>
+    <h2>What Our Clients Say</h2>
+    <span class="line"></span>
+  </div>
+
+  <div class="testimonial-grid">
+
+    <div
+      class="testimonial-card reveal"
+      *ngFor="let testimonial of testimonials">
+
+      <!-- Header -->
+      <div class="testimonial-header">
+
+        <img
+          [src]="testimonial.photo"
+          [alt]="testimonial.name"
+          class="client-photo">
+
+        <div class="client-details">
+
+          <h3>{{ testimonial.name }}</h3>
+
+          <span class="designation">
+            {{ testimonial.designation }}
+          </span>
+
+          <i class="designation">({{ testimonial.company }})</i>
+            
+
+          <div class="stars">
+            ★★★★★
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Review -->
+
+      <p class="testimonial-text">
+        "{{ testimonial.message }}"
+      </p>
+
+      <!-- Footer -->
+
+      <div class="testimonial-footer">
+
+        <div class="client-info">
+
+          <img
+            [src]="testimonial.flag"
+            [alt]="testimonial.country"
+            class="testimonial-flag">
+
+          <h4>{{ testimonial.company }}</h4>
+
+        </div>
+
+        <a
+          [href]="'https://wa.me/' + testimonial.whatsapp"
+          target="_blank"
+          class="whatsapp-link">
+
+          <i class="fab fa-whatsapp"></i>
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 
   <section class="why-choose-section">
   <!-- HEADER -->

@@ -102,32 +102,93 @@ projects = [
   }
  ];
 
- testimonials = [
-    {
-    name: 'LashMap Beauty Studio',
+//  testimonials = [
+//     {
+//     name: 'LashMap Beauty Studio',
+//     country: 'Australia',
+//     flag: 'assets/icons/australia.png',
+//     whatsapp: '+61450096817',
+//     message:
+//       'Outstanding service and great attention to detail. Highly recommended for businesses looking for a professional online presence.'
+//   },
+//   {
+//     name: 'Vyen Property Advisor',
+//     country: 'Malaysia',
+//     flag: 'assets/icons/malaysia.png',
+//     whatsapp: '+60162907662',
+//     message:
+//       'RS BusinessTech delivered exactly what we needed. Professional communication, fast delivery and excellent support throughout the project.'
+//   },
+//   {
+//     name: 'RS SuperMart',
+//     country: 'India',
+//     flag: 'assets/icons/india.png',
+//     whatsapp: '+918284948635',
+//     message:
+//       'Very satisfied with the website and software solution. Everything was delivered on time and exceeded expectations.'
+//   }
+//  ];
+
+testimonials = [
+  {
+    name: 'Ah Seng/ Ah Ling',
+    designation: 'Founder & Owner',
+    company: 'LashMap Beauty Studio',
     country: 'Australia',
     flag: 'assets/icons/australia.png',
+    photo: 'assets/images/lashmap.jpg',
     whatsapp: '+61450096817',
     message:
       'Outstanding service and great attention to detail. Highly recommended for businesses looking for a professional online presence.'
   },
+
   {
-    name: 'Vyen Property Advisor',
+    name: 'Viven Chia',
+    designation: 'Property Advisor',
+    company: 'Vyen Property Advisor',
     country: 'Malaysia',
     flag: 'assets/icons/malaysia.png',
+    photo: 'assets/images/viven.jpeg',
     whatsapp: '+60162907662',
     message:
       'RS BusinessTech delivered exactly what we needed. Professional communication, fast delivery and excellent support throughout the project.'
   },
+
   {
-    name: 'RS SuperMart',
+    name: 'Rohit Sharma',
+    designation: 'Business Owner',
+    company: 'RS SuperMart',
     country: 'India',
     flag: 'assets/icons/india.png',
+    photo: 'assets/images/rohit.jpeg',
     whatsapp: '+918284948635',
     message:
       'Very satisfied with the website and software solution. Everything was delivered on time and exceeded expectations.'
-  }
- ];
+  },
+    {
+    name: 'Ana Ang',
+    designation: 'Property Advisor',
+    company: 'Ana Ang Property',
+    country: 'Malaysia',
+    flag: 'assets/icons/malaysia.png',
+    photo: 'assets/images/ana.jpg',
+    whatsapp: '+60164079644',
+    message:
+     'RS BusinessTech created a professional and elegant website that perfectly represents my property business. The design, responsiveness, and attention to detail exceeded my expectations. I highly recommend their services.'
+  },
+   {
+    name: 'Sue Malli',
+    designation: 'Property Advisor',
+    company: '1 Pavilion Square KLCC',
+    country: 'Malaysia',
+    flag: 'assets/icons/malaysia.png',
+    photo: 'assets/images/sue.jpeg',
+    whatsapp: '+60123815970',
+    message:
+     'RS BusinessTech delivered a premium website that perfectly showcases the luxury and prestige of 1 Pavilion Square KLCC. The modern design, smooth user experience, and attention to detail have helped us present the development professionally.'
+  },
+
+];
 
   goToProject(index: number): void {
    this.currentProject = index;
