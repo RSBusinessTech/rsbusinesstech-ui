@@ -131,7 +131,7 @@ projects = [
 
 testimonials = [
   {
-    name: 'Ah Seng/ Ah Ling',
+    name: 'Ah Seng / Ah Ling',
     designation: 'Founder & Owner',
     company: 'LashMap Beauty Studio',
     country: 'Australia',
