@@ -94,14 +94,29 @@ projects = [
     flag: 'assets/icons/malaysia.png',
     url: 'https://vyenpropertyadvisor.com/home'
   },
-
   {
     title: 'RS SuperMart',
     category: 'E-Commerce Website',
-    website: 'www.rssupermart.com.com',
+    website: 'www.rssupermart.com',
     image: 'assets/icons/rssupermarthomepage.jpg',
     flag: 'assets/icons/india.png',
     url: 'https://rssupermart.com/home'
+  },
+    {
+    title: 'Ana Ang Property',
+    category: 'Real Estate Agent Portfolio Website',
+    website: 'www.anaangproperty.com',
+    image: 'assets/icons/anaangpropertyhomepage.jpg',
+    flag: 'assets/icons/malaysia.png',
+    url: 'https://anaangproperty.com/home'
+  },
+    {
+    title: '1Pavilion Square KLCC',
+    category: 'Luxury Residential Tower',
+    website: 'www.1pavilionsquareklcc.com',
+    image: 'assets/icons/1pavilionsquareklcchomepage.jpg',
+    flag: 'assets/icons/malaysia.png',
+    url: 'https://1pavilionsquareklcc.com/home'
   }
  ];
 
