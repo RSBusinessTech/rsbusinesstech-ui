@@ -633,21 +633,20 @@
 }
 
 .view-all-btn:hover {
+  background: linear-gradient(
+    145deg,
+    #ffe066,
+    #b1a560,
+    #d4a017
+  );
 
-  background:
-    linear-gradient(
-      145deg,
-      #ffe066,
-      #b1a560,
-      #d4a017
-    );
-
+  -webkit-background-clip: border-box;
+  -webkit-text-fill-color: #111;
   color: #111;
 
   transform: translateY(-4px);
 
-  box-shadow:
-    0 0 35px rgba(255,215,0,0.35);
+  box-shadow: 0 0 35px rgba(255,215,0,.35);
 }
 
 /* =========================================================
